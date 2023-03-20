@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.myapp.myb.admin.IAdminRepository">
+	<resultMap id="adminMap" type="com.project.myapp.myb.admin.AdminVO">
+		<result property="adminId" column="ADMIN_ID" />
+		<result property="adminName" column="ADMIN_NAME" />
+		<result property="adminEmail" column="ADMIN_EMAIL" />
+		<result property="adminPw" column="ADMIN_PW" />
+	</resultMap>
+	
+	<!-- 작성자 : 김대영 -->
+	<select id="getAdminList" resultMap="adminMap">
+		SELECT * FROM ADMIN
+		ORDER BY admin_id DESC
+	</select>
+</mapper>
