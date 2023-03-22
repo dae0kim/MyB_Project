@@ -10,5 +10,5 @@ public class NoticeVO {
 	private String noticeTitle;
 	private String noticeContent;
 	private Date noticeDate;
-	private int principalId;
+	private int adminId;
 }

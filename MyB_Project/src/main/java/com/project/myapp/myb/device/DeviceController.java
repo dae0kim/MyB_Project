@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class DeviceController {
 
-@RequestMapping(value="/")
-public String firstLoad(HttpServletRequest request,Model model){
-		
-	    Device device = DeviceUtils.getCurrentDevice(request);
-	    if (device.isMobile()) {
-	        System.out.println("모바일 장치입니다.");
-	        return "/mindex";
-	    } else if (device.isTablet()) {
-	        System.out.println("태블릿 장치입니다.");
-	        return "/index";
-	    } else {
-	        System.out.println("PC입니다.");
-	        return "/index";
-	    }
-	}
+	@RequestMapping(value="/")
+	public String firstLoad(HttpServletRequest request,Model model){
+			
+		    Device device = DeviceUtils.getCurrentDevice(request);
+		    if (device.isMobile()) {
+		        System.out.println("모바일 장치입니다.");
+		        return "/mindex";
+		    } else if (device.isTablet()) {
+		        System.out.println("태블릿 장치입니다.");
+		        return "/index";
+		    } else {
+		        System.out.println("PC입니다.");
+		        return "/index";
+		    }
+		}
 }

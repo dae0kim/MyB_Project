@@ -1,0 +1,47 @@
+.header_wrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-content: center space-evenly;
+    align-items: center;
+    align-content: center;
+    
+    
+    position: absolute;
+    width: 100%;
+    height: 65px;
+    left: 0px;
+    top: 0px;
+
+    background: #F2BE5C;
+}
+.alarmtitle_wrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-content: center space-evenly;
+    align-items: center;
+    align-content: center;
+    
+    padding-top: 90px;
+    padding-bottom: 30px;
+
+    width: 100%;
+    height: 20px;
+
+}
+.alarmcontent_wrap{
+    align-items: center;
+    align-content: center;
+
+    width: 87%;
+    height: 650px;
+
+    margin:auto;
+
+    background: #dadada;
+}
+
+#alarm_title{
+    font-size: 1.5em;
+    grid-column-start: 1;
+    margin-left: 20px;
+}

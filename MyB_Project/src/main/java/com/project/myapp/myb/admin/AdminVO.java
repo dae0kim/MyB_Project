@@ -8,4 +8,6 @@ public class AdminVO {
 	private String adminName;
 	private String adminEmail;
 	private String adminPw;
+	private String adminPhone;
+	private String adminLevel;
 }

@@ -1,0 +1,48 @@
+#head_icon{
+    padding: 30px 30px 10px 30px;
+}
+#head_icon img{
+    width: auto;
+    height: 2em;
+    
+}
+
+.selectsearch{
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+#address{
+    display: flex;
+    padding: 20px 26px 10px;
+    justify-content: space-between;
+}
+
+select {
+    height: 48px;
+    width: 49%; 
+    border: 1px solid #999;
+    font-family: inherit;  
+    background: url('../image/arrow.jpg') no-repeat 95% 50%; 
+    border-radius: 0px; 
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 6px;
+    text-align: center;
+    }
+
+#search {
+    text-align: center;
+}
+
+#search > input[type="text"]{
+    width: 85%;
+    height: 48px;
+    box-sizing: border-box;
+    margin : 10px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+    text-align: center;
+}

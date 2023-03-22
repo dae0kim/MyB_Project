@@ -2,16 +2,42 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.myapp.myb.admin.IAdminRepository">
-	<resultMap id="adminMap" type="com.project.myapp.myb.admin.AdminVO">
-		<result property="adminId" column="ADMIN_ID" />
-		<result property="adminName" column="ADMIN_NAME" />
-		<result property="adminEmail" column="ADMIN_EMAIL" />
-		<result property="adminPw" column="ADMIN_PW" />
-	</resultMap>
-	
-	<!-- 작성자 : 김대영 -->
-	<select id="getAdminList" resultMap="adminMap">
-		SELECT * FROM ADMIN
-		ORDER BY admin_id DESC
+
+	<!-- 로그인 시도 -->
+	<select id="selectAdmin" parameterType="string" resultType="com.project.myapp.myb.admin.AdminVO">
+	<![CDATA[
+		SELECT 
+			ADMIN_ID AS adminId,
+			ADMIN_NAME AS adminName,
+			ADMIN_EMAIL AS adminEmail,
+			ADMIN_PW AS adminPw,
+			ADMIN_PHONE AS adminPhone,
+			ADMIN_LEVEL AS adminLevel 
+		FROM 
+			ADMIN 
+		WHERE ADMIN_EMAIL = #{email}
+	]]>
 	</select>
+	
+	<!-- 로그인 시도 -->
+	<select id="getPassword" parameterType="string" resultType="string">
+	<![CDATA[
+		SELECT
+			ADMIN_PW AS adminPw
+		FROM
+			ADMIN
+		WHERE ADMIN_EMAIL = #{email}
+	]]>
+	</select>
+	
+	<!-- 회원가입(원장 한정) -->
+	<insert id="insertAdmin" parameterType="com.project.myapp.myb.admin.AdminVO">
+	<![CDATA[
+		INSERT INTO ADMIN
+			(ADMIN_ID,ADMIN_NAME,ADMIN_EMAIL,ADMIN_PW,ADMIN_PHONE)
+		VALUES
+			(ADMIN_SEQ.nextval,#{adminName},#{adminEmail},#{adminPw},#{adminPhone})
+	]]>
+	</insert>
+	
 </mapper>

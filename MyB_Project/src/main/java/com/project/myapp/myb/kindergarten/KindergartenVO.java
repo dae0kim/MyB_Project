@@ -1,5 +1,7 @@
 package com.project.myapp.myb.kindergarten;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -11,5 +13,13 @@ public class KindergartenVO {
 	private String kindergartenCity;
 	private String kindergartenGu;
 	private String kindergartenStat;
-	private int principalId;
+	private int adminId;
+	
+	private MultipartFile file;
+	
+	private int fileId;
+	private String fileName;
+	private long fileSize;
+	private String fileType;
+	
 }

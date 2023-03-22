@@ -1,0 +1,102 @@
+@charset "UTF-8";
+body{
+	font-family: Nanum Gothic;
+}
+/* 상단 네비 바 */
+#nav_wrap{
+	height: 50px;
+}
+.navbar {
+  margin-bottom: 0;
+  background-color: #78bfb8;
+  z-index: 9999;
+  border: 0;
+  font-size: 12px !important;
+  line-height: 1.42857143 !important;
+  letter-spacing: 4px;
+  border-radius: 0;
+  font-family: Nanum Gothic;
+}
+.navbar li a,
+.navbar .navbar-brand {
+  color: #fff !important;
+}
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+  color: #78bfb8 !important;
+  background-color: #fff !important;
+}
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+  color: #fff !important;
+}
+
+#jb-container {
+  height: 100%;
+  border: 1px solid #bcbcbc;
+}
+#jb-content {
+  width: 80%;
+  height: 1030px;
+  padding: 20px;
+  margin-bottom: 20px;
+  /* float: right; */
+  display: inline-block;
+  border: 1px solid #bcbcbc;
+}
+
+/* 홈 메인 아이콘*/
+#home_icon{
+	font-size: 18rem;
+	color: #78bfb8;
+}
+.home_menu_icon{
+	text-align:center;
+	display:inline-block;
+	margin:0px 80px 0px 80px;
+}
+
+/* 사이드 바 */
+#jb-sidebar {
+  width: 20%;
+  padding: 20px;
+  margin-bottom: 20px;
+  float: left;
+  border: 1px solid #bcbcbc;
+  /* display: inline-block; */
+}
+#sidebar_user{
+	text-align:center;
+	margin-bottom:50px;
+}
+#sidebar_icon{
+	font-size: 10rem;
+	color: #78bfb8;
+}
+#sidebar_menu_list{
+	font-size:2rem;
+}
+#sidebar_menu_list ul li{
+	margin: 0;
+    padding: 20px 0 15px 25px;
+    list-style: none;
+    background-image: url(../../images/icons/star-solid.svg);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size:20px;
+}
+#sidebar_menu_list ul li a{
+	text-decoration:none;
+	color:black;
+}
+#sidebar_menu_list ul li a:hover{
+	font-size:2.5rem;
+	font-weight:700;
+}
+
+/* 푸터 */
+#jb-footer {
+  clear: both;
+  padding: 20px;
+  border: 1px solid #bcbcbc;
+}

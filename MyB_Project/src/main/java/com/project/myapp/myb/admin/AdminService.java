@@ -12,10 +12,25 @@ public class AdminService implements IAdminService {
 	@Autowired
 	@Qualifier("IAdminRepository")
 	IAdminRepository adminRepository;
-	
+
 	@Override
-	public List<AdminVO> getAdminList() {
-		return adminRepository.getAdminList();
+	public void insertAdmin(AdminVO admin) {
+		adminRepository.insertAdmin(admin);
+	}
+
+	@Override
+	public String checkAdminLevel(String email) {
+		return adminRepository.checkAdminLevel(email);
+	}
+
+	@Override
+	public AdminVO selectAdmin(String email) {
+		return adminRepository.selectAdmin(email);
+	}
+
+	@Override
+	public String getPassword(String email) {
+		return adminRepository.getPassword(email);
 	}
 
 }

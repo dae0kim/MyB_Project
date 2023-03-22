@@ -12,5 +12,5 @@ public class ComplainVO {
 	private Date complainDate;
 	private String complainStat;
 	private int parentId;
-	private int principalId;
+	private int adminId;
 }

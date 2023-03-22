@@ -1,0 +1,43 @@
+#head_icon{
+    padding: 30px 30px 10px 30px;
+}
+#head_icon img{
+    width: auto;
+    height: 2em;
+    
+}
+
+#join{
+    padding-top: 20px;
+}
+
+
+.terms_wrap {
+    width: 80%; 
+    height: 500px;
+    margin: auto;
+    padding: 20px;
+
+}
+
+.terms_wrap .text {
+    height: 550px; 
+    border: 1px solid black; 
+    background-color: white;
+    white-space: pre-line; 
+    overflow-y: scroll; 
+    margin: 0 auto 20px;
+    border-radius: 5px;
+}
+.terms_wrap p {
+    text-align: right;
+    padding-bottom: 15px;    
+}
+.terms_wrapract .box {
+    width: 100px; 
+    height: 40px;  
+    padding: 8px; 
+    margin: 0 3px;
+   }
+
+

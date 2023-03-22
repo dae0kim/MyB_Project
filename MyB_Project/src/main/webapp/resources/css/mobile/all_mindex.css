@@ -1,0 +1,67 @@
+.logo_wrap {
+	width: 400px;
+	height: 400px;
+	padding: 110px 20px 20px 20px;
+	box-sizing: border-box;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#login_logo img {
+	width: auto;
+	height: 12em;
+}
+
+#logo_name {
+	font-size: 1.8em;
+}
+
+.login-wrap {
+	width: 400px;
+	height: 350px;
+	padding: 40px;
+	box-sizing: border-box;
+	text-align: center;
+	display: flex;
+	border-color: transparent;
+	flex-direction: column;
+}
+
+button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+button {
+	margin-top: 20px;
+	font-size: 16px;
+	font-weight: 700;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	width: auto;
+	height: 48px;
+	border: 2px solid black;
+	border-radius: 6px;
+	color: white;
+	font: inherit;
+}
+
+#loginparent {
+	font-size: 16px;
+	background-color: #F2BE5C;
+}
+
+#loginteacher {
+	font-size: 16px;
+	background-color: #5FAAD9;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
