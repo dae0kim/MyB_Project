@@ -30,10 +30,15 @@
 
 <div id="jb-container">
       <div id="jb-sidebar">
-        <h2>Sidebar</h2>
+      <div id="sidebar_user">
+      	<i id="sidebar_icon" class="fa-regular fa-user"></i>
+        <h2>${loginUser.adminName} 관리자님</h2>      
+      </div>
+      <div id="sidebar_menu_list">      
         <ul>
-          <li>Lorem</li>
-          <li>Ipsum</li>
-          <li>Dolor</li>
+          <li><a href="<c:url value='/kindergarten/request/list' />">어린이집 등록 요청 확인</a></li>
+          <li><a href="<c:url value='/diseaselog/chart' />">통계 - 지역</a></li>
+          <li><a href="<c:url value='#' />">통계 - 날짜</a></li>
         </ul>
+      </div>
       </div>

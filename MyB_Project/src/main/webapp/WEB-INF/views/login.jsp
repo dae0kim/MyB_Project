@@ -27,7 +27,7 @@
 	        <div>
 	        	<span style="color:red;">${message}</span>
 	        </div>
-	        <div id="join">아직 회원이 아니시라면?  <a href="<c:url value='/principal/join' />">회원가입</a></div>
+	        <div id="join">아직 회원이 아니시라면?  <a id="web_join_text" href="<c:url value='/principal/join' />">회원가입</a></div>
 	    </div>
 	</div>
 	

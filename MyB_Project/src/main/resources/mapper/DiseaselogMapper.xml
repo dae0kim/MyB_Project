@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.myapp.myb.diseaselog.IDiseaselogRepository">
+	
+	<!-- 그냥 화면 띄우기용도 -->
+	<select id="showview" resultType="int">
+	<![CDATA[
+		select count(diseaselog_id)
+		from diseaselog
+	]]>
+	</select>
+	
+	
+	<!-- 관리자 통계 첫 화면 : 각 구별 최근 2주 전체 환자 수 -->
+	<select id="countChildGuList" resultType="com.project.myapp.myb.diseaselog.DiseaselogVO">
+		<![CDATA[
+			SELECT 
+				kindergarten_gu AS kindergartenGu,
+			 	count(*) AS totalPatient
+			FROM diseaselog
+			WHERE diseaselog_date >= TO_CHAR(SYSDATE-14,'YYYY-MM-DD')
+			GROUP BY (kindergarten_gu)
+		]]>
+	</select>
+
+	<select id="countChildDiseaseList" parameterType="String" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				d.disease_name AS diseaseName,
+			 	count(dl.diseaselog_id) AS totalPatient
+			FROM diseaselog dl, disease d
+			WHERE 
+                dl.diseaselog_date >= TO_CHAR(SYSDATE-14,'YYYY-MM-DD')
+                AND dl.disease_id = d.disease_id
+                AND dl.kindergarten_gu=#{gu}
+			GROUP BY (d.disease_name)
+		]]>
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.myapp.myb.classroom.IClassroomRepository">
+
+	<!-- 반 이름 리스트 -->
+	<select id="getClassroomNameList" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+	<![CDATA[
+		select 
+			c.classroom_name AS classroomName,
+			c.classroom_id AS classroomId
+		from 
+		    kindergarten k JOIN classroom c
+		on k.kindergarten_id = c.kindergarten_id
+		where k.admin_id=#{adminId}
+	]]>
+	</select>
+
+	<!-- 특정 반 이름 -->
+	<select id="getClassroomName" parameterType="int" resultType="String">
+	<![CDATA[
+		select 
+			classroom_name AS classroomName 
+		from classroom
+		where classroom_id = #{classroomId}
+	]]>
+	</select>
+
+	<!-- 특정 반 시퀀스 -->
+	<select id="getClassroomSeq" parameterType="com.project.myapp.myb.classroom.ClassroomSeqVO" resultType="int">
+	<![CDATA[
+		select 
+			c.classroom_id AS classroomId 
+		from admin a, kindergarten k, classroom c
+		where 
+			(a.admin_id = k.admin_id AND k.kindergarten_id = c.kindergarten_id) AND
+			a.admin_id = #{adminId} AND c.classroom_name=#{classroomName}
+	]]>
+	</select>
+
+	
+	<!-- 반 상세정보 반환 -->
+	<select id="getClassroomInfo" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomListVO">
+	<![CDATA[
+		select 
+		    akcrt.classroom_id AS classroomId,
+		    akcrt.classroom_name AS classroomName,
+		    akcrt.teacher_name AS teacherName,
+		    crc.count AS count
+		from
+		    (select 
+		        akcr.kindergarten_id,
+		        akcr.classroom_id,
+		        akcr.classroom_name,
+		        crt.teacher_name
+		    from
+		        (select 
+		            ak.kindergarten_id AS kindergarten_id,
+		            kcr.classroom_id AS classroom_id,
+		            kcr.classroom_name AS classroom_name
+		        from 
+		            ((select 
+		                k.kindergarten_id AS kindergarten_id
+		            from 
+		                admin a JOIN kindergarten k
+		            on a.admin_id = k.admin_id
+		            ) ak 
+		            JOIN 
+		                (select 
+		                    k.kindergarten_id AS kindergarten_id,
+		                    cr.classroom_id AS classroom_id,
+		                    cr.classroom_name AS classroom_name
+		                from
+		                    kindergarten k JOIN classroom cr
+		                    on k.kindergarten_id = cr.kindergarten_id) kcr
+		            on ak.kindergarten_id = kcr.kindergarten_id)) akcr
+		            JOIN (select 
+		                    t.classroom_id AS classroom_id,
+		                    t.teacher_name AS teacher_name
+		                from
+		                    classroom cr JOIN teacher t
+		                on cr.classroom_id = t.classroom_id) crt
+		            on akcr.classroom_id = crt.classroom_id) akcrt
+		                JOIN (select
+		                        c.classroom_id,
+		                        count(child_id) as count 
+		                        from
+		                            classroom cr JOIN child c
+		                        on cr.classroom_id = c.classroom_id
+		                        group by c.classroom_id) crc
+		                    on akcrt.classroom_id = crc.classroom_id
+		       where akcrt.classroom_id = #{classroomId}
+	]]>
+	</select>
+	
+	<!-- 반 등록 -->
+	<insert id="insertClassroom" parameterType="com.project.myapp.myb.classroom.ClassroomVO">
+	<![CDATA[
+		INSERT INTO classroom(
+			classroom_ID,
+			classroom_NAME,
+			kindergarten_ID
+			)
+		VALUES(
+		CLASSROOM_SEQ.nextval,
+		#{classroomName},
+		#{kindergartenId}
+		)
+	]]>
+	</insert>
+	
+	<!-- 반 정보(이름) 수정 -->
+	<update id="updateClassroom" parameterType="com.project.myapp.myb.classroom.ClassroomVO">
+	<![CDATA[
+		UPDATE classroom
+		SET classroom_name=#{classroomName}
+		WHERE classroom_id=#{classroomId}
+	]]>
+	</update>
+	
+	<!-- 현재 어린이집의 반 개수 반환 -->
+	<select id="getClassroomCount" parameterType="int" resultType="int">
+	<![CDATA[
+		select 
+			count(c.classroom_id) AS count
+		from 
+			kindergarten k Join classroom c
+			on k.kindergarten_id = c.kindergarten_id
+		where k.kindergarten_id = #{kindergartenId}
+	]]>
+	</select>
+	
+</mapper>

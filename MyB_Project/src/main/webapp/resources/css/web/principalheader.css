@@ -40,20 +40,79 @@ body{
   height: 1030px;
   padding: 20px;
   margin-bottom: 20px;
-  /* float: right; */
   display: inline-block;
-  border: 1px solid #bcbcbc;
+  text-align:center;
 }
 
 /* 홈 메인 아이콘*/
-#home_icon{
+.web_prin_icon_container{
+	text-align:center; 
+	padding-top:50px;
+	margin-bottom:50px;
+}
+.web_prin_home_icon{
 	font-size: 18rem;
 	color: #78bfb8;
 }
+.web_kinder_chk_icon{
+	font-size:40rem;
+	margin-bottom:50px;
+}
+.web_kinder_chk_container{
+	width:100%;
+}
 .home_menu_icon{
+	width:225px;
 	text-align:center;
 	display:inline-block;
 	margin:0px 80px 0px 80px;
+}
+.home_menu_icon a{
+	text-decoration:none;
+	color:black;
+}
+.home_menu_icon a:hover{
+	color:grey;
+}
+/* 버튼 */
+.web_btn_big {
+	width:600px;
+	height:60px;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    margin-top:50px;
+    font-size: 2.5rem;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    background-color:#78bfb8;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+.web_btn_small {
+	width:300px;
+	height:50px;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    margin-top:50px;
+    margin-bottom:50px;
+    font-size: 2rem;
+    text-align: center;
+    color: black;
+    border-radius: 10px;
+    background-color:#78bfb8;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.web_btn:hover {
+    text-shadow: 1px 1px 1px #000;
+}
+
+.web_btn:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* 사이드 바 */
@@ -76,11 +135,14 @@ body{
 #sidebar_menu_list{
 	font-size:2rem;
 }
+#sidebar_menu_list ul{
+	padding:0px;
+}
 #sidebar_menu_list ul li{
 	margin: 0;
     padding: 20px 0 15px 25px;
     list-style: none;
-    background-image: url(../../images/icons/star-solid.svg);
+    background-image: url(../../images/webicons/star-solid.svg);
     background-position: left center;
     background-repeat: no-repeat;
     background-size:20px;
@@ -98,5 +160,5 @@ body{
 #jb-footer {
   clear: both;
   padding: 20px;
-  border: 1px solid #bcbcbc;
+  background-color: #f6f6f6;
 }

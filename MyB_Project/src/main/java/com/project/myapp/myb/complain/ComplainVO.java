@@ -13,4 +13,7 @@ public class ComplainVO {
 	private String complainStat;
 	private int parentId;
 	private int adminId;
+	
+	private String parentName;
+	private String parentPhone;
 }

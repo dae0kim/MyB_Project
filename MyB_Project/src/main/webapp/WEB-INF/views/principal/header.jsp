@@ -36,11 +36,11 @@
       </div>
       <div id="sidebar_menu_list">      
         <ul>
-          <li><a href="<c:url value='/kindergarten/insert' />">어린이집 등록</a></li>
-          <li><a href="<c:url value='#' />">반 관리</a></li>
-          <li><a href="<c:url value='#' />">교사 관리</a></li>
-          <li><a href="<c:url value='#' />">1:1 게시판</a></li>
-          <li><a href="<c:url value='#' />">공지사항</a></li>
+          <li><a href="<c:url value='/kindergarten/check' />">어린이집 등록</a></li>
+          <li><a href="<c:url value='/classroom/namelist/${loginUser.adminId}' />">반 관리</a></li>
+          <li><a href="<c:url value='/teacher/list/${loginUser.adminId}' />">교사 관리</a></li>
+          <li><a href="<c:url value='/complain/list/${loginUser.adminId}' />">컴플레인 게시판</a></li>
+          <li><a href="<c:url value='/notice/list/${loginUser.adminId}' />">공지사항</a></li>
           <li><a href="<c:url value='#' />">출결 통계</a></li>
           <li><a href="<c:url value='#' />">질병 통계</a></li>
         </ul>

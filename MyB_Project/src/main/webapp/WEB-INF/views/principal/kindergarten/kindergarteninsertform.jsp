@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
-<%@include file="staticFiles.jsp" %>
+<%@include file="../staticFiles.jsp" %>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-<%@include file="header.jsp" %>
+<%@include file="../header.jsp" %>
 	<form action="<c:url value='/kindergarten/insert'/>" method="post" enctype="multipart/form-data">
 		<div class="join_form_text">
          <span>어린이집 이름</span>
@@ -23,24 +23,22 @@
         </div>
         <input type="text" id="sample6_postcode" placeholder=" 우편번호" readonly>
 		<input type="button" onclick="sample6_execDaumPostcode()" value=" 우편번호 찾기"><br>
-		<input type="text" id="sample6_address" placeholder=" 주소" readonly><br>
+		<input type="text" id="sample6_address" name="kindergartenAddress" placeholder=" 주소" readonly><br>
 		<input type="text" id="sample6_detailAddress" placeholder=" 상세주소">
 		<input type="text" id="sample6_extraAddress" placeholder=" 참고항목" readonly>
-		<input type="hidden" id="addr_city" name="kindergartenCity">
-		<input type="hidden" id="addr_gu" name="kindergartenGu">
-		
-		
-		
-		
+		<input type="hidden" id="addr_city" name="kindergartenCity" value="">
+		<input type="hidden" id="addr_gu" name="kindergartenGu" value="">
+		<input type="hidden" name="adminId" value="${loginUser.adminId}">
+
 		<div class="join_form_text">
          <span>증명 서류</span><br>
          <p>*모든 서류를 하나의 압축파일로 만들어 업로드 하세요.</p>
         </div>
-        <input type="file" name="file">
+        <input type="file" name="file" accept=".zip" required>
         
         <input type="submit" value="등록 요청하기" onclick="return addrSplit()">
 	</form>
-<%@include file="footer.jsp" %>
+<%@include file="../footer.jsp" %>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
@@ -92,14 +90,13 @@
     }
     
     function addrSplit(){
-    	
     	// 전체 주소
     	var addr = $('#sample6_address').val();
     	// 문자열 분리
-    	
-    	
-    	
-    	
+    	var splits = addr.split(' ',2);
+    	// hidden에 값 전달
+    	$('#addr_city').attr('value',splits[0]);
+    	$('#addr_gu').attr('value',splits[1]);	
     }
     
 </script>

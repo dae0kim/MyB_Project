@@ -22,4 +22,7 @@ public class KindergartenVO {
 	private long fileSize;
 	private String fileType;
 	
+	// 페이징
+	private int page;
+	
 }

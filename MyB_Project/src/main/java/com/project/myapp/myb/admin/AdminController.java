@@ -12,12 +12,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.project.myapp.myb.kindergarten.IKindergartenService;
+import com.project.myapp.myb.kindergarten.KindergartenVO;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	IAdminService adminService;
+	
+	@Autowired
+	IKindergartenService kindergartenService;
 
 	// 로그인 페이지 이동
 	@RequestMapping(value="/login", method=RequestMethod.GET)
@@ -46,13 +53,28 @@ public class AdminController {
 					// 비밀번호 일치
 					session.setAttribute("loginUser", member);
 					session.setAttribute("adminLevel", member.getAdminLevel());
+					session.setAttribute("adminEmail", member.getAdminEmail());
+					session.setAttribute("adminId", member.getAdminId());
 					
 					
 					//해당 아이디의 관리자 레벨이 admin인 경우 시스템 관리자로 인식
 					if((member.getAdminLevel()).equals("admin")) {
 						return "redirect:/admin/home";
 					}else if((member.getAdminLevel()).equals("principal")){
+						
 						//관리자 레벨이 principal인 경우 원장 사용자로 인식
+						KindergartenVO kindergartenVO = kindergartenService.selectKindergarten(member.getAdminId());
+						
+						if(kindergartenVO == null) {
+							session.setAttribute("kindergartenId", null);
+							session.setAttribute("kindergartenStat", null);
+						}else {							
+							int kindergartenId = kindergartenVO.getKindergartenId();
+							String kindergartenStat = kindergartenVO.getKindergartenStat();	
+							session.setAttribute("kindergartenId", kindergartenId);
+							session.setAttribute("kindergartenStat", kindergartenStat);
+						}
+						
 						return "redirect:/principal/home";
 					}
 				}else {
@@ -76,7 +98,7 @@ public class AdminController {
 
 	
 	// 회원가입 약관 페이지 이동
-	@RequestMapping(value="/principal/join", method=RequestMethod.GET)
+	@RequestMapping(value="/principal/join")
 	public String join() {
 		return "/principal/join";
 	}
@@ -95,6 +117,29 @@ public class AdminController {
 		return "redirect:/";
 	}
 	
+   // 이메일 중복체크
+   @RequestMapping(value="/principal/adminEmailChk", method=RequestMethod.POST)
+   @ResponseBody
+   public String adminEmailCheck(String adminEmail) throws Exception {
+	   int result = adminService.emailChk(adminEmail);
+	   if(result != 0) {
+		   return "fail";	// 중복된 이메일
+	   } else {
+		   return "success"; // 중복된 이메일X
+	   }
+   }
+   
+   // 폰번호 중복체크
+   @RequestMapping(value="/principal/adminPhoneChk", method=RequestMethod.POST)
+   @ResponseBody
+   public String adminPhoneCheck(String adminPhone) throws Exception {
+	   int result = adminService.phoneChk(adminPhone);
+	   if(result != 0) {
+		   return "fail";	// 중복된 폰번호
+	   } else {
+		   return "success"; // 중복된 폰번호X
+	   }
+   }
 	
 	
 	

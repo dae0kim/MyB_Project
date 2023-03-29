@@ -40,4 +40,22 @@
 	]]>
 	</insert>
 	
+	<!-- 이메일 중복체크 -->
+	<select id="emailChk" resultType="int">
+		<![CDATA[
+			SELECT count(*)
+			FROM admin
+			WHERE admin_email=#{adminEmail}
+		]]>
+	</select>
+	
+	<!-- 전화번호 중복체크 -->
+	<select id="phoneChk" resultType="int">
+		<![CDATA[
+			SELECT count(*)
+			FROM admin
+			WHERE admin_phone=#{adminPhone}
+		]]>
+	</select>
+	
 </mapper>

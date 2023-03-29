@@ -9,7 +9,9 @@ public class TeacherVO {
 	private String teacherEmail;
 	private String teacherPw;
 	private String teacherPhone;
-	private int principalId;
+	private int adminId;
 	private int classroomId;
 	private int kindergartenId;
+	
+	private String classroomName;
 }

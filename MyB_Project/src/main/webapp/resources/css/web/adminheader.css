@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body{
+	font-family: Nanum Gothic;
+}
+/* 상단 네비 바 */
 #nav_wrap{
 	height: 50px;
 }
@@ -40,6 +44,39 @@
   display: inline-block;
   border: 1px solid #bcbcbc;
 }
+/* 홈 메인 아이콘*/
+#home_icon{
+	font-size: 18rem;
+	color: #F25C5C;
+}
+.home_menu_icon{
+	text-align:center;
+	display:inline-block;
+	margin:0px 80px 0px 80px;
+}
+/* 버튼 */
+.web_btn {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6), inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.web_btn:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.web_btn:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+}
+/* 사이드 바 */
 #jb-sidebar {
   width: 20%;
   padding: 20px;
@@ -48,6 +85,39 @@
   border: 1px solid #bcbcbc;
   /* display: inline-block; */
 }
+#sidebar_user{
+	text-align:center;
+	margin-bottom:50px;
+}
+#sidebar_icon{
+	font-size: 10rem;
+	color: #F25C5C;
+}
+#sidebar_menu_list{
+	font-size:2rem;
+}
+#sidebar_menu_list ul{
+	padding:0px;
+}
+#sidebar_menu_list ul li{
+	margin: 0;
+    padding: 20px 0 15px 25px;
+    list-style: none;
+    background-image: url(../../images/webicons/star-solid.svg);
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size:20px;
+}
+#sidebar_menu_list ul li a{
+	text-decoration:none;
+	color:black;
+}
+#sidebar_menu_list ul li a:hover{
+	font-size:2.5rem;
+	font-weight:700;
+}
+
+/* 푸터 */
 #jb-footer {
   clear: both;
   padding: 20px;

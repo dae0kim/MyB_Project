@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -45,14 +46,24 @@
             위 개인정보의 수집 및 이용에 대한 동의를 거부할 수 있으나, 동의를 거부할 경우 회원 가입이 제한됩니다.</p>
         </div>
         <div>
-            <p><input type="checkbox" required> 다음 약관에 동의합니다.</p>
-            <p><input type="button" class="box" onClick="location.href='<c:url value='/principal/joinform' />'" value="다음으로"></p>
+            <p><input type="checkbox" id="chk"><a id="termstext">다음 약관에 동의합니다.</a></p>
+            <div>
+	            <input id="web_jointerm_nextbtn" type="button" class="box" onClick="location.href='<c:url value='/principal/joinform' />'" value="다음으로">
+            </div>
         </div>
      </div>
 	
-	<script>
-
-    </script>
+<script type="text/javascript">
+	// 체크박스 체크여부 확인
+	 jQuery(document).ready(function() {    
+           jQuery("#web_jointerm_nextbtn").click(function() {
+               if(!jQuery("#chk").is(":checked")) {
+                   alert("약관내용을 확인해 보시고 동의해 주세요.");
+                   window.location.href = "./join";
+               }
+           });
+       });
+</script>
 	
 </body>
 </html>

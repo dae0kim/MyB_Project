@@ -52,13 +52,20 @@ body {
 }
 
 #login_form > input[type="submit"]{
-    color: #fff;
+    color:black;
     font-size: 16px;
     background-color: #78BFB8;
-    margin-top: 20px;
+    margin-top: 60px;
+}
+#login_form > input[type="submit"]:hover{
+    font-size: 25px;
 }
 
 
 #join{
     padding-top: 20px;
+}
+#web_join_text{
+	text-decoration:none;
+	color:blue;
 }

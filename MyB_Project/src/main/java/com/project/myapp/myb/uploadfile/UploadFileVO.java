@@ -9,5 +9,5 @@ public class UploadFileVO {
 	private long fileSize;
 	private String fileType;
 	private byte[] fileData;
-	private int kindergartenId;
+	private int adminId;
 }

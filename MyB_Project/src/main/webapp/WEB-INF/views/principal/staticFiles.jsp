@@ -17,6 +17,9 @@
     <link href='https://fonts.googleapis.com/css?family=Nanum Gothic' rel='stylesheet'>
     
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/web/principalheader.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/web/teacherjoin.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/web/table.css">
+	
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     

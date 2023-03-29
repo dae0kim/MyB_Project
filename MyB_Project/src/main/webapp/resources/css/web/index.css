@@ -18,14 +18,46 @@ h4 {
   font-weight: 400;
   margin-bottom: 30px;
 }
+
+
+/* 웹 메인 이미지 구역 */
+#web_main_title p{
+	font-size: 40px;
+}
+#web_main_title h1{
+	font-size: 60px;
+}
+#web_main_webp{
+	height: 720px;
+	width: 660px;
+}
+.web_main_top{
+	display: inline-block;
+}
 .jumbotron {
   background-color: #78bfb8;
-  color: #fff;
-  padding: 100px 25px;
+  color: black;
+  padding: 100px 25px 0px 25px;
   font-family: Nanum Gothic;
+}
+
+
+/* 웹 about 구역 */
+#check_icon{
+	font-size: 20rem;
+	color: #78bfb8;
+}
+#bell_icon{
+	font-size: 20rem;
+	color: #78bfb8;
+	margin-left: 50px;
+    margin-top: 35px;
 }
 .container-fluid {
   padding: 60px 0 0 0;
+}
+.row{
+	margin: 30px !important;
 }
 .bg-grey {
   background-color: #f6f6f6;
@@ -107,11 +139,13 @@ h4 {
   background-color: #78bfb8;
   color: #fff;
 }
+
+/* 상단 네비바 */
 .navbar {
   margin-bottom: 0;
   background-color: #78bfb8;
   z-index: 9999;
-  border: 0;
+  border-bottom: 1px solid #f0f0f0;
   font-size: 12px !important;
   line-height: 1.42857143 !important;
   letter-spacing: 4px;

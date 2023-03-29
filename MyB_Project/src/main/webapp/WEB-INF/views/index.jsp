@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/web/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <script src="https://kit.fontawesome.com/a566e7b2bd.js" crossorigin="anonymous"></script>
   </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -46,38 +48,29 @@
     </nav>
 
     <div class="jumbotron text-center">
-      <h1>Company</h1>
-      <p>We specialize in blablabla</p>
+    	<div id="web_main_title" class="web_main_top">
+	      <p>사랑하는 내 아이를 위한 서비스</p>    	
+	      <h1>마이비</h1>
+    	</div>
+    	<div id="web_main_image" class="web_main_top">
+    		<img id="web_main_webp" alt="main image" src="<c:url value='/resources/images/web/visual_main.webp' />">
+    	</div>
     </div>
 
-    <!-- Container (About Section) -->
     <div id="about" class="container-fluid">
       <div class="row">
         <div class="col-sm-8">
-          <h2>About Company Page</h2>
+          <h2>원과 가정을 연결하는 소통 파트너</h2>
           <br />
           <h4>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            아이를 위한 부모님의 마음도, 선생님의 진심도 마이비는 다 아니까.
+			두 마음을 이어주는 올바른 소통방법, 마이비.
           </h4>
           <br />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat
-            non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
-          </p>
           <br />
         </div>
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-signal logo"></span>
+          <i id="check_icon" class="fa-solid fa-list-check slideanim"></i>
         </div>
       </div>
     </div>
@@ -85,71 +78,58 @@
     <div class="container-fluid bg-grey">
       <div class="row">
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-globe logo slideanim"></span>
+          <i id="bell_icon" class="fa-solid fa-bell slideanim"></i>
         </div>
         <div class="col-sm-8">
-          <h2>Our Values</h2>
+          <h2>아이를 위한 질병 알림 서비스를 받아보세요</h2>
           <br />
           <h4>
-            <strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
+            같은 구 단위 내에 여러 어린이집으로부터 각종 질병에 걸린 원생들의 데이터를 수집하고,이를 활용하여
+            현재 어떤 질병이 유행중인지 파악합니다.<br>
+            이 정보는 알림 서비스를 통해 지역 사용자들에게 전달됩니다.
           </h4>
           <br />
-          <p>
-            <strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat.
-          </p>
         </div>
       </div>
     </div>
 
-    <!-- Container (Services Section) -->
     <div id="services" class="container-fluid text-center">
-      <h2>SERVICES</h2>
-      <h4>What we offer</h4>
+      <h2>서비스</h2>
+      <h4>왜 마이비를 사용해야 할까요?</h4>
       <br />
       <div class="row slideanim">
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-off logo-small"></span>
-          <h4>POWER</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
+          <i class="fa-solid fa-list logo-small"></i>
+          <h4>요청사항</h4>
+          <p>자녀 관리에 필요한 요청사항을 간편하게 공유합니다</p>
         </div>
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-heart logo-small"></span>
-          <h4>LOVE</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
+          <i class="fa-solid fa-virus-slash logo-small"></i>
+          <h4>질병 알림</h4>
+          <p>같은 지역 내 유행성 질병을 파악할 수 있습니다.</p>
         </div>
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-lock logo-small"></span>
-          <h4>JOB DONE</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
+          <i class="fa-solid fa-house-user logo-small"></i>
+          <h4>원 관리</h4>
+          <p>원장님은 보다 간편하게 원 관리를 할 수 있습니다.</p>
         </div>
       </div>
       <br /><br />
       <div class="row slideanim">
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-leaf logo-small"></span>
-          <h4>GREEN</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
+          <i class="fa-solid fa-hand-holding-dollar logo-small"></i>
+          <h4>비용</h4>
+          <p>합리적인 비용으로 고품질 서비스를 받을 수 있습니다.</p>
         </div>
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-certificate logo-small"></span>
-          <h4>CERTIFIED</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
+          <i class="fa-solid fa-screwdriver-wrench logo-small"></i>
+          <h4>편리성</h4>
+          <p>사용자들의 불편사항을 없애기 위해 꾸준히 노력합니다.</p>
         </div>
         <div class="col-sm-4">
-          <span class="glyphicon glyphicon-wrench logo-small"></span>
-          <h4 style="color: #303030">HARD WORK</h4>
-          <p>Lorem ipsum dolor sit amet..</p>
+          <i class="fa-solid fa-chart-pie logo-small"></i>
+          <h4>확실한 정보</h4>
+          <p>수 많은 양질의 데이터를 활용하여 정확한 정보를 전달합니다.</p>
         </div>
       </div>
     </div>
@@ -161,14 +141,14 @@
       <div id="contact" class="container-fluid bg-grey">
         <h2 class="text-center">CONTACT</h2>
         <div class="row">
-          <p>Contact us and we'll get back to you within 24 hours.</p>
+          <p>24시간 내로 응답을 해드립니다.</p>
           <p>
-            <span class="glyphicon glyphicon-map-marker"></span> Chicago, US
+            <span class="glyphicon glyphicon-map-marker"></span> Seoul, Republic of Korea
           </p>
-          <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+          <p><span class="glyphicon glyphicon-phone"></span> +82 010-2818-3641</p>
           <p>
             <span class="glyphicon glyphicon-envelope"></span>
-            myemail@something.com
+            myb@gmail.com
           </p>
         </div>
       </div>

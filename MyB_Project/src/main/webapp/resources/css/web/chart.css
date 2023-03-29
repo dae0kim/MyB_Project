@@ -1,0 +1,23 @@
+@charset "UTF-8";
+#web_map_container{
+	margin:auto;
+	text-align:center;
+}
+.mapArea {
+  width: 900px;
+  height: 900px;
+  background: #fff;
+  text-align:center;
+  margin-right:auto;
+  margin-left:auto;
+}
+#locName {
+  width: auto;
+  height: 50px;
+  background: #fff;
+  text-align:center;
+  font-size:5rem;
+}
+#paper{
+	text-align:center;
+}

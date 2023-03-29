@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.myapp.myb.complain.IComplainRepository">
+	
+	<!-- 페이징 처리 된 컴플레인 리스트 -->
+	<select id="selectComplainList" parameterType="hashmap" resultType="com.project.myapp.myb.complain.ComplainVO">
+	<![CDATA[
+		SELECT 
+			complain_id 		AS complainId, 
+			complain_title 		AS complainTitle, 
+			complain_content		AS complainContent, 
+			complain_date AS complainDate,
+			complain_stat AS complainStat, 
+			admin_id AS adminId,
+			parent_id AS parentId 
+		FROM (
+			SELECT 
+				complain_id, complain_title, 
+				complain_content, complain_date, complain_stat, admin_id, parent_id, 
+				rownum AS rnum
+			FROM (
+				SELECT * 
+				FROM complain
+				where admin_id=#{adminId}
+				ORDER BY complain_stat, complain_id
+			)
+		)
+		WHERE rnum BETWEEN #{start} AND #{end}
+	]]>
+	</select>
+	
+	<!-- 전체 컴플레인 개수 반환 -->
+	<select id="selectTotalComplainCount" parameterType="int" resultType="int">
+	<![CDATA[
+		SELECT 
+			COUNT(*) AS count
+		FROM 
+			complain
+		WHERE
+			admin_id=#{adminId}
+	]]>
+	</select>
+
+	<!-- 컴플레인 상세정보 확인 -->
+	<select id="selectComplainInfo" parameterType="int" resultType="com.project.myapp.myb.complain.ComplainVO">
+	<![CDATA[
+		select
+			complain_id AS complainId,
+			complain_title AS complainTitle,
+			complain_content AS complainContent,
+			complain_date AS complainDate,
+			complain_stat AS complainStat,
+			admin_id AS adminId,
+			parent_id AS parentId
+		from
+			complain
+		where complain_id=#{complainId}
+	]]>
+	</select>
+	<select id="selectComplainDetail" parameterType="int" resultType="com.project.myapp.myb.complain.ComplainDetailVO">
+		<![CDATA[
+			SELECT
+				p.parent_name AS parentname,  
+				p.parent_phone AS parentphone,
+				c.child_name AS childName,
+				cr.classroom_name AS classroomName,
+                cp.complain_id AS complainId
+			FROM
+				parent p, child c, classroom cr, complain cp
+			WHERE
+				(p.parent_id=c.parent_id) AND (c.classroom_id=cr.classroom_id) AND
+				(p.parent_id=cp.parent_id) AND cp.complain_id=#{complainId}
+		]]>
+	</select>
+	
+	<!-- 컴플레인 상태 업데이트 -->
+	<update id="updateComplain" parameterType="int">
+	<![CDATA[
+		UPDATE complain
+		SET 
+			complain_stat='Y'
+		WHERE complain_id=#{complainId}
+	]]>
+	</update>
+	
+</mapper>

@@ -33,4 +33,14 @@ public class AdminService implements IAdminService {
 		return adminRepository.getPassword(email);
 	}
 
+	@Override
+	public int emailChk(String adminEmail) {
+		return adminRepository.emailChk(adminEmail);
+	}
+
+	@Override
+	public int phoneChk(String adminPhone) {
+		return adminRepository.phoneChk(adminPhone);
+	}
+
 }

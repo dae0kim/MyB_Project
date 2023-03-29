@@ -8,6 +8,10 @@ public interface IAdminService {
 	// 회원가입
 	void insertAdmin(AdminVO admin);
 	
+	// 중복체크
+	int emailChk(String adminEmail);
+	int phoneChk(String adminPhone);
+	
 	// 로그인 - 성공하면 해당 사용자 객체 반환 필요
 	AdminVO selectAdmin(String email);
 	String getPassword(String email);
