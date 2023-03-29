@@ -57,6 +57,221 @@ public class DiseaselogController {
 	//관리자 통계 첫 화면
 	@RequestMapping("/diseaselog/chart")
 	public String selectDiseaselog(HttpSession session, Model model) {
+		
+		List<DiseaselogVO> diseaselogVO = diseaselogService.countChildGuList();
+		
+		for (DiseaselogVO e : diseaselogVO) {
+            
+            String gu="";
+            int count=0;
+            
+            switch (e.getKindergartenGu()) {
+            	case "강남구":
+            		gu="gangnam";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("gangnamGu",gu);
+            		model.addAttribute("gangnamCount",count);
+            
+            		break;
+            	case "강동구":
+            		gu="gangdong";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("gangdongGu",gu);
+            		model.addAttribute("gangdongCount",count);
+            		
+            		break;
+            	case "강북구":
+            		gu="gangbuk";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("gangbukGu",gu);
+            		model.addAttribute("gangbukCount",count);
+            		
+            		break;
+            	case "강서구":
+            		gu="gangseo";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("gangseoGu",gu);
+            		model.addAttribute("gangseoCount",count);
+            		
+            		break;
+            	case "관악구":
+            		gu="gwanak";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("gwanakGu",gu);
+            		model.addAttribute("gwanakCount",count);
+            		
+            		break;
+            	case "광진구":
+            		gu="gwangjin";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("gwangjinGu",gu);
+            		model.addAttribute("gwangjinCount",count);
+            		
+            		break;
+            	case "구로구":
+            		gu="guro";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("guroGu",gu);
+            		model.addAttribute("guroCount",count);
+            		
+            		break;
+            	case "금천구":
+            		gu="geumcheon";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("geumcheonGu",gu);
+            		model.addAttribute("geumcheonCount",count);
+            		
+            		break;
+            	case "노원구":
+            		gu="nowon";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("nowonGu",gu);
+            		model.addAttribute("nowonCount",count);
+            		
+            		break;
+            	case "도봉구":
+            		gu="dobong";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("dobongGu",gu);
+            		model.addAttribute("dobongCount",count);
+            		
+            		break;
+            	case "동대문구":
+            		gu="ddm";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("ddmGu",gu);
+            		model.addAttribute("ddmCount",count);
+            		
+            		break;
+            	case "동작구":
+            		gu="dongjak";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("dongjakGu",gu);
+            		model.addAttribute("dongjakCount",count);
+            		
+            		break;
+            	case "마포구":
+            		gu="mapo";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("mapoGu",gu);
+            		model.addAttribute("mapoCount",count);
+            		
+            		break;
+            	case "서대문구":
+            		gu="sdm";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("sdmGu",gu);
+            		model.addAttribute("sdmCount",count);
+            		
+            		break;
+            	case "서초구":
+            		gu="seocho";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("seochoGu",gu);
+            		model.addAttribute("seochoCount",count);
+            		
+            		break;
+            	case "성동구":
+            		gu="seongdong";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("seongdongGu",gu);
+            		model.addAttribute("seongdongCount",count);
+            		
+            		break;
+            	case "성북구":
+            		gu="seongbuk";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("seongbukGu",gu);
+            		model.addAttribute("seongbukCount",count);
+            		
+            		break;
+            	case "송파구":
+            		gu="songpa";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("songpaGu",gu);
+            		model.addAttribute("songpaCount",count);
+            		
+            		break;
+            	case "양천구":
+            		gu="yangcheon";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("yangcheonGu",gu);
+            		model.addAttribute("yangcheonCount",count);
+            		
+            		break;
+            	case "영등포구":
+            		gu="yeongdeungpo";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("yeongdeungpoGu",gu);
+            		model.addAttribute("yeongdeungpoCount",count);
+            		
+            		break;
+            	case "용산구":
+            		gu="yongsan";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("yongsanGu",gu);
+            		model.addAttribute("yongsanCount",count);
+            		
+            		break;
+            	case "은평구":
+            		gu="eunpyeong";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("eunpyeongGu",gu);
+            		model.addAttribute("eunpyeongCount",count);
+            		
+            		break;
+            	case "종로구":
+            		gu="jongno";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("jongnoGu",gu);
+            		model.addAttribute("jongnoCount",count);
+            		
+            		break;
+            	case "중구":
+            		gu="jung";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("jungGu",gu);
+            		model.addAttribute("jungCount",count);
+            		
+            		break;
+            	case "중랑구":
+            		gu="jungnang";
+            		count=e.getTotalPatient();
+            		
+            		model.addAttribute("jungnangGu",gu);
+            		model.addAttribute("jungnangCount",count);
+            		
+            		break;
+            }
+            
+        }
+		
+		
+		
 		model.addAttribute("diseaselogVO",diseaselogService.countChildGuList());
 		return "/admin/diseasechart";
 	}
