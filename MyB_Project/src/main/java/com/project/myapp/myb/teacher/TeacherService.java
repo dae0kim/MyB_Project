@@ -13,18 +13,30 @@ public class TeacherService implements ITeacherService {
 	@Qualifier("ITeacherRepository")
 	ITeacherRepository teacherRepository;
 
-
 	@Override
 	public TeacherVO selectTeacher(String teacherEmail) {
 		return teacherRepository.selectTeacher(teacherEmail);
 	}
 
+	// (0329 합침 일형추가)
+	/*
+	 * @Override public TeacherVO getTeacherInfo(String teacherId) { return
+	 * teacherRepository.getTeacherInfo(teacherId); }
+	 */
+
+	// (0329 합침 일형추가)
 	@Override
-	public TeacherVO getTeacherInfo(String teacherId) {
-		return teacherRepository.getTeacherInfo(teacherId);
+	public int emailChk(String teacherEmail) throws Exception {
+		return teacherRepository.emailChk(teacherEmail);
 	}
 
-	//---------------------- 웹 기능 ----------------------
+	// (0329 합침 일형추가)
+	@Override
+	public int pwChk(String teacherEmail, String teacherPw) throws Exception {
+		return teacherRepository.pwChk(teacherEmail, teacherPw);
+	}
+	
+	/* -----------------------------웹 기능----------------------------- */
 	@Override
 	public void insertTeacher(TeacherVO teacherVO) {
 		teacherRepository.insertTeacher(teacherVO);
@@ -50,10 +62,11 @@ public class TeacherService implements ITeacherService {
 		teacherRepository.deleteTeacher(teacherId);
 	}
 
+	/*
 	@Override
 	public int emailChk(String teacherEmail) {
 		return teacherRepository.emailChk(teacherEmail);
-	}
+	}*/
 
 	@Override
 	public int phoneChk(String teacherPhone) {

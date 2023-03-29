@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -34,6 +36,28 @@ public class KindergartenController {
 	@Autowired
 	IAdminService adminService;
 	
+	// 어린이집 검색 페이지로 이동 (0323 문수지 작성)
+	@RequestMapping(value="/parent/mparent_select_kinder", method=RequestMethod.GET)
+	public String kindergartenSearchForm() {
+		return "parent/mparent_select_kinder";
+	}
+	
+	// 어린이집 검색 (0323 문수지 작성)
+	@RequestMapping(value="/parent/mparent_select_kinder", method=RequestMethod.POST)
+	public String kindergartenSearch(@RequestParam(required=false, defaultValue="") String kindergartenNameKeyword, @Param(value="kindergartenCity") String kindergartenCity, @Param(value="kindergartenGu") String kindergartenGu, HttpSession session, Model model) {
+		try {
+			List<KindergartenVO> kindergartenList = kindergartenService.searchListByNameKeyword(kindergartenNameKeyword, kindergartenCity, kindergartenGu);
+			model.addAttribute("kindergartenList", kindergartenList);
+			model.addAttribute("kindergartenNameKeyword", kindergartenNameKeyword);
+			model.addAttribute("kindergartenCity", kindergartenCity);
+			model.addAttribute("kindergartenGu", kindergartenGu);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return "parent/mparent_select_kinder";
+	}
+	
+	/* -----------------------------웹 기능----------------------------- */
 	// 어린이집 등록 상태 확인을 위한 페이지 이동
 	@RequestMapping(value="/kindergarten/check", method=RequestMethod.GET)
 	public String kindergartenCheck() {		

@@ -10,6 +10,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.project.myapp.myb.parent.IParentService;
+import com.project.myapp.myb.parent.ParentVO;
 
 
 @Controller
@@ -18,6 +22,48 @@ public class ComplainController {
 	@Autowired
 	IComplainService complainService;
 	
+	@Autowired
+	   IParentService parentService;
+	
+	// 1:1문의하기로 이동
+	@RequestMapping(value="/parent/mparent_sidemenu_qna")
+	public String parentQna(HttpSession session, Model model) {
+		String parentEmail = (String) session.getAttribute("parentEmail");
+		ParentVO parent = parentService.selectParent(parentEmail);
+		model.addAttribute("parent", parent);
+		
+		int parentId = parent.getParentId();
+		List<ComplainVO> complainList = complainService.selectComplainList(parentId);
+		model.addAttribute("complainList", complainList);
+		
+		return "parent/mparent_sidemenu_qna";
+	}
+
+	// 1:1문의 작성으로 이동
+	@RequestMapping(value="/parent/mparent_sidemenu_qnawrite", method=RequestMethod.GET)
+	public String parentQnaWriteForm(HttpSession session, Model model) {
+		String parentEmail = (String) session.getAttribute("parentEmail");
+		ParentVO parent = parentService.selectParent(parentEmail);
+		model.addAttribute("parent", parent);
+		return "parent/mparent_sidemenu_qnawrite";
+	}
+
+	// 1:1문의 작성
+	@RequestMapping(value="/parent/mparent_sidemenu_qnawrite", method=RequestMethod.POST)
+	public String parentQnaWrite(ComplainVO complain) {	
+		complainService.insertComplain(complain); // 컴플레인 테이블에 정보 저장
+		return "redirect:/parent/mparent_sidemenu_qna";
+	}
+	
+	// 1:1문의 상세보기 이동
+	@RequestMapping(value="/parent/mparent_sidemenu_qnadetail/{complainId}", method=RequestMethod.GET)
+	public String parentQnaView(@PathVariable int complainId, HttpSession session, Model model) {
+		ComplainVO complain = complainService.selectComplain(complainId);
+		model.addAttribute("complain", complain);
+		return "parent/mparent_sidemenu_qnadetail";
+	}
+	
+	/* -----------------------------웹 기능----------------------------- */
 	// 공지사항 전체 조회
 	@RequestMapping(value = "/complain/list/{adminId}/{page}")
 	public String selectComplainList(@PathVariable int adminId,@PathVariable int page, HttpSession session, Model model) {

@@ -5,8 +5,15 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface IComplainRepository {
-
-	//---------------------- 웹 기능 ----------------------
+	
+	// 1:1문의 작성 (0328 문수지 작성)
+	void insertComplain(ComplainVO complain);
+	// 1:1문의 리스트 불러오기 (0328 문수지 작성)
+	List<ComplainVO> selectComplainList(int parentId);
+	// 1:1문의 상세보기 (0328 문수지 작성)
+	ComplainVO selectComplain(@Param("complainId") int complainId);
+	
+	/* -----------------------------웹 기능----------------------------- */
 	// 접속중인 원장 어린이집의 모든 컴플레인 리스트 가져오기
 	List<ComplainVO> selectComplainList(@Param("adminId") int adminId,@Param("start") int start,@Param("end") int end);
 	// 전체 공지사항 개수 반환

@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -21,30 +23,43 @@ public class DiseaselogController {
 	@Autowired
 	IDiseaselogService diseaselogService;
 	
+	// (0329 합침 일형추가)
+	@RequestMapping(value="/teacher/mteacher_disease", method=RequestMethod.POST)
+	public String insertDiseaseLog(@RequestParam("classroomId") int classroomId, 
+								   @RequestParam("kindergartenId") int kindergartenId,
+								   @RequestParam("kindergartenCity") String kindergartenCity,
+								   @RequestParam("kindergartenGu") String kindergartenGu,	
+								   @RequestParam("childId[]") int[] childIds,	
+								   @RequestParam("diseaseId[]") int[] diseaseIds) {
+		System.out.println("diseaseId[]" + diseaseIds.length);
+	    for (int i=0; i<diseaseIds.length; i++) {
+	        DiseaselogVO diseaselogvo = new DiseaselogVO();
+	        
+	        // 고정으로 들어가는 요소
+	        diseaselogvo.setClassroomId(classroomId);
+	        diseaselogvo.setKindergartenId(kindergartenId);
+	        diseaselogvo.setKindergartenCity(kindergartenCity);
+	        diseaselogvo.setKindergartenGu(kindergartenGu);
+	        
+	        // 반복해서 들어가는 요소
+	        diseaselogvo.setDiseaseId(diseaseIds[i]);
+	        diseaselogvo.setChildId(childIds[i]);
+	        
+	        
+	        diseaselogService.insertDiseaseLog(diseaselogvo);	        
+	    }
+	    return "redirect:/teacher/mteacher_web_main";
+	}
+	
+	
+	
+	/* -----------------------------웹 기능----------------------------- */
 	//관리자 통계 첫 화면
 	@RequestMapping("/diseaselog/chart")
 	public String selectDiseaselog(HttpSession session, Model model) {
-		//기본 출력 구 설정
-		/*
-		 * String gu = "seongbuk"; model.addAttribute("gu",gu);
-		 */
 		model.addAttribute("diseaselogVO",diseaselogService.countChildGuList());
 		return "/admin/diseasechart";
 	}
-	
-	//지도에서 구 눌렀을 때 처음 동작 - 어떤 구가 눌렸는지 인식하고 구 명칭을 전달
-	/*
-	 * @RequestMapping("/diseaselog/{gu}") public String selectChart(@PathVariable
-	 * String gu,Model model) { System.out.println(gu+"@@@@@@@@@@@@@@@@@@@@@@@");
-	 * return "redirect:/diseaselog/chart/"+gu; }
-	 * 
-	 * @RequestMapping("/diseaselog/chart/{gu}") public String
-	 * selectChart1(@PathVariable String gu,Model model) {
-	 * model.addAttribute("gu",gu);
-	 * model.addAttribute("diseaselogVO",diseaselogService.countChildGuList());
-	 * 
-	 * return "/admin/diseasechart"; //return "/admin/chartmain"; }
-	 */
 	
 	@RequestMapping(value="/diseaselog/chart/json/{gu}")
 	public @ResponseBody JSONObject getJSONMemberDiseaseList(@PathVariable String gu) {

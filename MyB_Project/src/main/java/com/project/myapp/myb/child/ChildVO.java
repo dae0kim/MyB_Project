@@ -8,7 +8,7 @@ import lombok.Data;
 public class ChildVO {
 	private int childId;
 	private String childName;
-	private Date childDate;
+	private String childDate;
 	private String childSex;
 	private int parentId;
 	private int classroomId;

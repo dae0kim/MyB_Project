@@ -6,7 +6,16 @@ import org.apache.ibatis.annotations.Param;
 
 public interface INoticeRepository {
 
-	//---------------------- 웹 기능 ----------------------
+	
+	// (0329 합침 일형추가)
+	// 공지 불러오기
+	List<NoticeVO> getNoticeList();
+	
+	// (0329 합침 일형추가)
+	//공지 상세
+	NoticeVO setNoticeView(int noticeId);
+	
+	/* -----------------------------웹 기능----------------------------- */
 	// 접속중인 원장이 작성한 모든 공지사항 가져오기
 	List<NoticeVO> selectNoticeList(@Param("adminId") int adminId,@Param("start") int start,@Param("end") int end);
 	// 전체 공지사항 개수 반환

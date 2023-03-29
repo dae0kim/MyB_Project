@@ -21,9 +21,10 @@
 			<img id="porfile_img"
 				src="${pageContext.request.contextPath}/resources/image/teacher_woman_student.png">
 		</div>
-		<div class="child_name">${loginUser.teacherName}</div>
-		<div class="kindergarten_name">${loginUser.kindergartenId}</div>
-		<div class="kindergarten_class">${loginUser.classroomId}</div>
+		<div class="teacher_name">${loginUser.teacherName}</div>
+		<div class="classroom_name">${classroom.classroomName}</div>
+		<div class="kindergarten_class">${kindergarten.kindergartenName}</div>
+		
 	</div>
 
 
@@ -31,38 +32,36 @@
 		<div>
 			<div id="noticebox_title">공지사항</div>
 			
+		
 			<div class="notice_box">
-				<table>
-					<thead>
-						<tr>
-							<td scope="col">제목</td>
-							<td scope="col">날짜</td>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td scope="row">제목입니다</td>
-							<td scope="row">230317</td>
-						</tr>
-					</tbody>
+				<table class="notice_table">
+					<tr>
+						<th>날짜</th>						
+						<th>내용</th>
+					</tr>
+						<c:forEach var="noticelist" items="${noticelist}">
+					<tr>
+						<td class="noticeDate"> <fmt:formatDate pattern="yyyy-MM-dd" value="${noticelist.noticeDate}"/></td>
+						<td class="noticeContent">${noticelist.noticeContent}</td>
+					</tr>
+				</c:forEach>
 				</table>
 			</div>
 			
 			<div id="notice_list">
-				<a href='<c:url value="./notice_detail" />'>더보기</a>
+				<a href='<c:url value="./mteacher_notice_detail" />'>더보기</a>
 			</div>
 		</div>
 
 		<div>
 
 			<button id="request_list" type="button">
-				<a href='<c:url value="./mteacher_requset_list" />'>요청사항 확인</a>
+				<a href='<c:url value="./mteacher_requset_list/${loginUser.teacherId}" />'>요청사항 확인</a>
 			</button>
 				
 				
-				<a href="./mteacher_disease">원생 질병관리</a>
-			<button id="disease_control" type="button">
-				
+			<button id="disease_list" type="button">
+				<a href='<c:url value="./mteacher_disease/${loginUser.teacherId}" />'>원생 질병관리</a>
 			</button>
 
 

@@ -12,4 +12,7 @@ public class ParentVO {
 	private String parentRelation;
 	private String parentCity;
 	private String parentGu;
+	
+	// (0329 합침 일형추가)
+	private int requestId;
 }

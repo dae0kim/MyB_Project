@@ -13,6 +13,7 @@
 	<script src="https://kit.fontawesome.com/a566e7b2bd.js"	crossorigin="anonymous"></script>
 	<link href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_header.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Nanum Gothic'rel='stylesheet'>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 </head>
 <body>
 

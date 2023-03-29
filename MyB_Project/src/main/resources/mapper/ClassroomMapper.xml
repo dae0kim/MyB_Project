@@ -3,6 +3,64 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.myapp.myb.classroom.IClassroomRepository">
 
+	<!-- 해당하는 어린이집의 반들 출력(0323 문수지 작성)-->
+	<select id="selectClassroomList" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+		<![CDATA[
+			SELECT
+				classroom_id AS "classroomId",
+				classroom_name AS "classroomName"
+			FROM
+				classroom
+			WHERE
+				kindergarten_id = #{kindergartenId}
+		]]>
+	</select>
+	
+	<!-- 어린이집 정보 불러오기(0327 문수지 작성) -->
+	<select id="selectClassroom" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+		<![CDATA[
+			SELECT
+				classroom_id as "classroomId", classroom_name as "classroomName", kindergarten_id as "kindergartenId"
+			FROM
+				classroom
+			WHERE 
+				classroom_id = #{classroomId}
+		]]>
+	</select>
+	
+	<!-- (0329 합침 일형추가) -->
+	<select id="getTeacherClass" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+			select classroom_name AS classroomName
+		    from classroom c, teacher t
+		    where t.teacher_id = #{teacherId} AND (c.classroom_id = t.classroom_id)
+	</select>
+	
+	<!-- (0329 합침 일형추가) -->
+	<select id="getClassroomId" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+		select c.classroom_id AS classroomId
+	    from classroom c, teacher t
+	    where t.teacher_id = #{teacherId} AND (c.classroom_id = t.classroom_id)
+	</select>
+	
+	<!-- (0329 합침 일형추가) -->
+	<select id="getClassName" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+	
+		SELECT 
+			classroom_id AS classroom_Id,
+			classroom_name AS classroomName,
+			kindergarten_id AS kindergartenId
+		from 
+			classroom
+		where 
+			classroom_id = (
+								SELECT classroom_id AS classroomId
+								FROM TEACHER
+								WHERE teacher_email = #{teacherEmail})
+		
+	</select>
+
+
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 반 이름 리스트 -->
 	<select id="getClassroomNameList" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomVO">
 	<![CDATA[

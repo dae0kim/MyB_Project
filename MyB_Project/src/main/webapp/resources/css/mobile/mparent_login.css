@@ -66,6 +66,20 @@
     margin-top: 20px;
 }
 
+/*존재하지 않는 이메일*/
+.email_ok{
+	color : red;
+	display : none;
+	font-size : 15px;
+	padding-top: 5px;
+}
+/*잘못된 비밀번호 입력*/
+.pw_fail{
+	color : red;
+	display : none;
+	font-size : 15px;
+	padding-top: 5px;
+}
 
 #join{
     padding-top: 20px;

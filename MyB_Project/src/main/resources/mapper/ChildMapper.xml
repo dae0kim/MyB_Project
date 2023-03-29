@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.myapp.myb.child.IChildRepository">
+	
+	<!-- 어린이 정보 삽입 (0324 문수지) -->
+	<insert id="insertChild" parameterType="com.project.myapp.myb.child.ChildVO">
+		<![CDATA[
+			INSERT INTO
+				child (child_id, child_name, child_date, child_sex, parent_id, classroom_id, kindergarten_id)
+			VALUES
+				(child_seq.NEXTVAL, #{childName}, #{childDate}, #{childSex}, #{parentId}, #{classroomId}, #{kindergartenId})
+		]]>
+	</insert>
+	
+	<!-- 첫째 어린이 정보 불러오기 (0327 문수지) -->
+	<select id="selectChild" parameterType="string" resultType="com.project.myapp.myb.child.ChildVO">
+		<![CDATA[
+			SELECT
+				child_id as "childId", child_name as "childName", child_date as "childDate", child_sex as "childSex", parent_id as "parentId", classroom_id as "classroomId", kindergarten_id as "kindergartenId"
+			FROM
+				child
+			WHERE parent_id =  (SELECT parent_id
+								FROM parent
+								WHERE parent_email = #{parentEmail})
+					AND rownum = 1
+			ORDER BY child_id					
+		]]>
+	</select>
+	
+	<!-- 모든 자녀 정보 불러오기 (0328 문수지) -->
+	<select id="selectAllChildList" parameterType="string" resultType="com.project.myapp.myb.child.ChildVO">
+		<![CDATA[
+			SELECT
+				child_id as "childId", child_name as "childName", child_date as "childDate", child_sex as "childSex", parent_id as "parentId", classroom_id as "classroomId", kindergarten_id as "kindergartenId"
+			FROM
+				child
+			WHERE parent_id =  (SELECT parent_id
+								FROM parent
+								WHERE parent_email = #{parentEmail})
+			ORDER BY child_id					
+		]]>
+	</select>
+
+	<!-- 	(0329 합침 일형추가) -->
+	<select id = "getChildNameList" resultType="com.project.myapp.myb.child.ChildVO" parameterType="int">	
+		SELECT 
+			child_name AS childName,
+			child_id AS childId
+		FROM child c, teacher t
+		WHERE t.teacher_id=#{teacherId} AND (c.classroom_id = t.classroom_id)
+	</select>
+	
+</mapper>

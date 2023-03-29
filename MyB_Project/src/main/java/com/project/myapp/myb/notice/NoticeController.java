@@ -18,6 +18,59 @@ public class NoticeController {
 	@Autowired
 	INoticeService noticeService;
 	
+	
+	// (0329 합침 일형추가)
+	// 공지사항 출력
+	@RequestMapping(value="/teacher/mteacher_notice_detail")
+	public String noticeDetail(Model model) {
+		
+		List<NoticeVO> noticelist = noticeService.getNoticeList();
+		model.addAttribute("noticelist", noticelist);
+		
+		System.out.println("noticelist : " + noticelist);
+		
+		return "/teacher/mteacher_notice_detail";
+	}
+	
+	
+	// (0329 합침 일형추가)
+	// 공지사항 상세
+	@RequestMapping(value="/teacher/notice/{noticeId}")
+	public String setNoticeView(@PathVariable int noticeId, Model model) {
+		
+		NoticeVO noticeview = noticeService.setNoticeView(noticeId);
+		model.addAttribute("noticeview", noticeview);
+		
+		System.out.println("noticeview : " + noticeview);
+		
+		return "/teacher/mteacher_notice_detail_view";
+		
+	}
+	
+	// 부모
+	// 공지사항 출력
+	@RequestMapping(value="/parent/mparent_notice_detail")
+	public String parentNoticeDetail(Model model) {
+		
+		List<NoticeVO> noticelist = noticeService.getNoticeList();
+		model.addAttribute("noticelist", noticelist);
+		
+		return "/parent/mparent_notice_detail";
+	}
+	
+	// 부모
+	// 공지사항 상세
+	@RequestMapping(value="/parent/notice/{noticeId}")
+	public String setParentNoticeView(@PathVariable int noticeId, Model model) {
+		
+		NoticeVO noticeview = noticeService.setNoticeView(noticeId);
+		model.addAttribute("noticeview", noticeview);
+		
+		return "/parent/mparent_notice_detail_view";
+		
+	}
+	
+	/* -----------------------------웹 기능----------------------------- */
 	// 공지사항 전체 조회
 	@RequestMapping(value = "/notice/list/{adminId}/{page}")
 	public String selectNoticeList(@PathVariable int adminId,@PathVariable int page, HttpSession session, Model model) {

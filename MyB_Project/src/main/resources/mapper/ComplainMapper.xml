@@ -3,6 +3,50 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.myapp.myb.complain.IComplainRepository">
 	
+	<!-- 1:1문의 작성 (0328 문수지 작성)-->
+	<insert id="insertComplain" parameterType="com.project.myapp.myb.complain.ComplainVO">
+		<![CDATA[
+			INSERT INTO
+				complain (complain_id, complain_title, complain_content, parent_id)
+			VALUES
+				(complain_seq.NEXTVAL, #{complainTitle}, #{complainContent}, #{parentId})
+		]]>
+	</insert>
+	
+	<!-- 1:1문의 리스트 불러오기 (0328 문수지 작성)-->
+	<select id="selectComplainList" parameterType="int" resultType="com.project.myapp.myb.complain.ComplainVO">
+		<![CDATA[
+			SELECT
+				complain_id AS "complainId",
+				complain_title AS "complainTitle",
+				TO_CHAR(complain_date, 'YYYY/MM/DD') AS "complainDate",
+				complain_stat AS "complainStat"
+			FROM
+				complain
+			WHERE
+				parent_id = #{parentId}
+			ORDER BY complain_id
+		]]>
+	</select>
+
+	<!-- 1:1문의 상세보기 (0328 문수지 작성)-->
+	<select id="selectComplain" parameterType="int" resultType="com.project.myapp.myb.complain.ComplainVO">
+		<![CDATA[
+			SELECT
+				complain_id AS "complainId",
+				complain_title AS "complainTitle",
+				TO_CHAR(complain_date, 'YYYY/MM/DD') AS "complainDate",
+				complain_stat AS "complainStat",
+				complain_content AS "complainContent"
+			FROM
+				complain
+			WHERE
+				complain_id = #{complainId}
+		]]>
+	</select>	
+	
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 페이징 처리 된 컴플레인 리스트 -->
 	<select id="selectComplainList" parameterType="hashmap" resultType="com.project.myapp.myb.complain.ComplainVO">
 	<![CDATA[

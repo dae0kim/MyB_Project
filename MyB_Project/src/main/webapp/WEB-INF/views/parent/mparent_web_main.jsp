@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file="../p_header.jsp"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,53 +8,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">>
     <title>mwebmain</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/m_web_main.css">    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_notice_detail.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/mparent_web_main.css">    
 </head>
 <body>
-    <div class ="header_wrap">
-    </div>
-
     <div class="profile_box"> 
-        <div class="profile_icon"><img id="porfile_img" src="image/img.jpg"></div>
+        <div class="profile_icon"><img id="porfile_img" src="${pageContext.request.contextPath}/resources/images/babytest.jpg"></div>
         <div class="child_name">   
-            김수아
+            ${childName}
         </div>
         <div class="kindergarten_name">
-            일일어린이집
+            ${kindergartenName}
         </div>
         <div class="kindergarten_class">
-            개나리반
+             ${classroomName}
         </div>
     </div>
 
     <div class="parentmain_wrap">
         <div>
             <div id="noticebox_title">공지사항</div>
-            <div class="notice_box">
-                <table>
-                    <thead>
-                        <tr>
-                            <td scope="col">제목</td>
-                            <td scope="col">날짜</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td scope="row">제목입니다</td>
-                            <td scope="row">230317</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div id="notice_list">더보기</div>
-        </div>
+			
+		
+			<div class="notice_box">
+				<table class="notice_table">
+					<tr>
+						<th>날짜</th>						
+						<th>내용</th>
+					</tr>
+						<c:forEach var="noticelist" items="${noticelist}">
+					<tr>
+						<td class="noticeDate"> <fmt:formatDate pattern="yyyy-MM-dd" value="${noticelist.noticeDate}"/></td>
+						<td class="noticeContent">${noticelist.noticeContent}</td>
+					</tr>
+				</c:forEach>
+				</table>
+			</div>
+			
+			<div id="notice_list">
+				<a href='<c:url value="./mparent_notice_detail" />'>더보기</a>
+			</div>
+		</div>
 
         <div>
-            <button type="button" class="gorequest_btn">요청사항 작성</button>
+            <button type="button" id="request_list" onClick="location.href='./mparent_request'">요청사항 작성</button>
             <br>
-            <button type="button" class="gorequestcheck_btn">요청사항 확인</button>
+            <button type="button" id="disease_control">요청사항 확인</button>
         </div>
     </div>
 </body>

@@ -3,6 +3,66 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.myapp.myb.kindergarten.IKindergartenRepository">
 	
+	<!-- 어린이집 검색 (0323 문수지 작성) -->
+	<select id="searchListByNameKeyword" parameterType="hashmap" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+		<![CDATA[
+			SELECT
+				kindergarten_id AS "kindergartenId",
+				kindergarten_name AS "kindergartenName",
+				kindergarten_address AS "kindergartenAddress",
+				kindergarten_phone AS "kindergartenPhone"
+			FROM (
+				SELECT
+				    kindergarten_id, kindergarten_name, kindergarten_address, kindergarten_phone
+				FROM
+				    kindergarten
+				WHERE
+				    kindergarten_city=#{kindergartenCity}
+					AND kindergarten_gu=#{kindergartenGu}
+					AND kindergarten_stat='Y'
+			)
+			WHERE kindergarten_name Like #{kindergartenNameKeyword}
+		]]>
+	</select>
+	
+	<!-- 어린이집 정보 불러오기 (0324 문수지 작성) -->
+	<select id="selectKindergartenById" parameterType="int" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+		<![CDATA[
+			SELECT
+				kindergarten_id AS "kindergartenId",
+				kindergarten_name AS "kindergartenName",
+				kindergarten_phone AS "kindergartenPhone",
+				kindergarten_address AS "kindergartenAddress",
+				kindergarten_city AS "kindergartenCity",
+				kindergarten_gu AS "kindergartenGu",
+				kindergarten_stat AS "kindergartenStat",
+				admin_id AS "adminId"
+			FROM kindergarten
+			WHERE kindergarten_id = #{kindergartenId}
+		]]>
+	</select>
+	
+	<!-- (0329 합침 일형추가) -->
+	<select id="getKindergartenName" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+	
+    SELECT 
+		kindergarten_name AS kindergartenName,
+		kindergarten_id AS kindergartenId,
+		kindergarten_city AS kindergartenCity,
+		kindergarten_gu AS kindergartenGu
+	from 
+		kindergarten
+	where 
+		kindergarten_id = (
+							SELECT kindergarten_id AS kindergartenId
+							FROM TEACHER
+							WHERE teacher_email = #{teacherEmail})
+	
+	</select>
+	
+	
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 접속중인 원장의 어린이집 정보 반환 -->
 	<select id="selectKindergarten" parameterType="int" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
 	<![CDATA[

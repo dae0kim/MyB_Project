@@ -1,5 +1,8 @@
 package com.project.myapp.myb.disease;
 
-public interface IDiseaseService {
+import java.util.List;
 
+public interface IDiseaseService {
+	// (0329 합침 일형추가)
+	List<DiseaseVO> getDiseaseList();
 }

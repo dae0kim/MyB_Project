@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.myapp.myb.child.ChildVO;
+import com.project.myapp.myb.child.IChildService;
 import com.project.myapp.myb.classroom.ClassroomListVO;
 import com.project.myapp.myb.classroom.ClassroomSeqVO;
 import com.project.myapp.myb.classroom.ClassroomVO;
 import com.project.myapp.myb.classroom.IClassroomService;
+import com.project.myapp.myb.disease.DiseaseVO;
+import com.project.myapp.myb.disease.IDiseaseService;
+import com.project.myapp.myb.diseaselog.DiseaselogVO;
+import com.project.myapp.myb.diseaselog.IDiseaselogService;
+import com.project.myapp.myb.kindergarten.IKindergartenService;
+import com.project.myapp.myb.kindergarten.KindergartenVO;
+import com.project.myapp.myb.notice.INoticeService;
+import com.project.myapp.myb.notice.NoticeVO;
 
 @Controller
 public class TeacherController {
@@ -27,60 +38,143 @@ public class TeacherController {
 	ITeacherService teacherService;
 	
 	@Autowired
+	IDiseaseService diseaseService;
+	
+	@Autowired
 	IClassroomService classroomService;
+	
+	@Autowired
+	IChildService childService;
+	
+	@Autowired
+	INoticeService noticeService;
+	
+	@Autowired
+	IKindergartenService kindergartenService;
+	
+	@Autowired
+	IDiseaselogService diseaselogService;
 
 
-	@RequestMapping(value="/teacher/mteacher_disease")
-	public String moveDisease(Model model) {
-		return "/teacher/mteacher_disease";
-	}
-	
-	@RequestMapping(value="/teacher/mteacher_web_main")
-	public String moveTeacherMain(Model model) {
-		return "/teacher/mteacher_web_main";
-	}
-	
-	//로그인 관련
-	@RequestMapping(value="/teacher/mteacher_login", method=RequestMethod.GET)
-	public String teacherLogin() {
-		return "teacher/mteacher_login";
-	}
-	
-	@RequestMapping(value="/teacher/mlogin_teacher", method=RequestMethod.POST)
-	public String teacherLogin(String teacherEmail, String teacherPw, HttpSession session, Model model) {
-		System.out.println(teacherEmail);
-		TeacherVO teacher = teacherService.selectTeacher(teacherEmail);
-		if(teacher != null) {
-			String dbPassword = teacher.getTeacherPw();
-			if(dbPassword == null) {
-				model.addAttribute("message", "NOT_VALID_TEACHER");
-			} else {
-				System.out.println(teacherPw);
-				if(dbPassword.equals(teacherPw)) {
-					session.setAttribute("teacherEmail", teacherEmail);
-					session.setAttribute("loginUser", teacher);
-					return "/teacher/mteacher_web_main";
-				} else {
-					model.addAttribute("message", "WRONG_PASSWORD");
-				}
-			}
-		} else {
-			model.addAttribute("message", "TEACHER_NOT_FOUND");
+	//교사 웹 메인 이동
+		@RequestMapping(value="/teacher/mteacher_web_main")
+		public String moveTeacherMain(Model model) {
+			
+			List<NoticeVO> noticelist = noticeService.getNoticeList();
+			model.addAttribute("noticelist", noticelist);
+			
+			
+			
+			
+			return "/teacher/mteacher_web_main";
+		}	
+		
+		
+		// 원생 질병관리 이동 + 질병정보 입력 + 반 정보 입력
+		@RequestMapping(value="/teacher/mteacher_disease/{teacherId}")
+		public String moveDisease(@PathVariable int teacherId, Model model) {	
+			
+			// 질병명 리스트
+			List<DiseaseVO> diseaseList = diseaseService.getDiseaseList();
+			model.addAttribute("diseaseList", diseaseList);
+			
+			// 반 원생 리스트
+			List<ChildVO> getChildNameList = childService.getChildNameList(teacherId);
+			model.addAttribute("getChildNameList", getChildNameList);
+			
+			// 반 이름
+			ClassroomVO teacherclass = classroomService.getTeacherClass(teacherId);
+			model.addAttribute("teacherclass", teacherclass);
+			
+			// 반 식별번호(id)
+			ClassroomVO classroomid = classroomService.getClassroomId(teacherId);
+			model.addAttribute("classroomid", classroomid);
+			
+			
+			List<DiseaselogVO> setdiseaseid = diseaselogService.setDiseaseId(teacherId);
+			model.addAttribute("setdiseaseid", setdiseaseid);
+			System.out.println("질병아이디 : " + setdiseaseid);
+			
+					
+			return "/teacher/mteacher_disease";
 		}
-		session.invalidate();
-		return "teacher/mlogin_teacher";
-	}//로그인 관련 끝
+
+		
+		
+		//로그인 관련
+		@RequestMapping(value="/teacher/mteacher_login", method=RequestMethod.GET)
+		public String teacherLogin() {
+			return "teacher/mteacher_login";
+		}
+		
+		
+		@RequestMapping(value="/teacher/mteacher_login", method=RequestMethod.POST)
+		public String teacherLogin(String teacherEmail, String teacherPw, HttpSession session, Model model) {
+			System.out.println(teacherEmail);
+		TeacherVO teacher = teacherService.selectTeacher(teacherEmail);
+		ClassroomVO classroom = classroomService.getClassName(teacherEmail);
+		KindergartenVO kindergarten = kindergartenService.getKindergartenName(teacherEmail);
+		
+		
+			if(teacher != null) {
+				String dbPassword = teacher.getTeacherPw();
+				if(dbPassword == null) {
+					model.addAttribute("message", "NOT_VALID_TEACHER");
+				} else {
+					System.out.println(teacherPw);
+					if(dbPassword.equals(teacherPw)) {
+						session.setAttribute("teacherEmail", teacherEmail);
+						session.setAttribute("loginUser", teacher);
+						session.setAttribute("classroom", classroom);
+						session.setAttribute("kindergarten", kindergarten);
+
+						return "redirect:/teacher/mteacher_web_main";
+					} else {
+						model.addAttribute("message", "WRONG_PASSWORD");
+					}
+				}
+			} else {
+				model.addAttribute("message", "TEACHER_NOT_FOUND");
+			}
+			session.invalidate();
+			return "teacher/mteacher_login";
+		}//로그인 관련 끝
+		
+		
+		//로그아웃
+		@RequestMapping(value="/teacher/mteacher_logout", method=RequestMethod.GET)
+		public String teacherLogout(HttpSession session, HttpServletRequest request) {
+			session.invalidate();
+		
+			return "mindex";
+		}
+		
+		//login email check
+		@ResponseBody
+		@RequestMapping(value="/teacher/teacherEmailChk", method=RequestMethod.POST)
+		public String teacherEmailCheck(String teacherEmail) throws Exception{
+			int result = teacherService.emailChk(teacherEmail);
+			if(result != 0) {
+			   return "fail";	// 중복된 이메일
+		   } else {
+			   return "success"; // 중복된 이메일X
+		   }
+		}
+		
+		//login password check
+		@ResponseBody
+		@RequestMapping(value="/teacher/teacherPwChk", method=RequestMethod.POST)
+		public String teacherPwCheck(@Param(value="teacherEmail")String teacherEmail, @Param(value="teacherPw")String teacherPw) throws Exception{
+			int result = teacherService.pwChk(teacherEmail, teacherPw);
+			System.out.println("결과값 = "+result);
+			   if(result != 0) {
+				   return "fail";	// 비밀번호 틀림
+			   } else {
+				   return "success"; // 비밀번호 맞춤
+			   }
+		}
 	
-	
-	//로그아웃
-	@RequestMapping(value="/teacher/mteacher_logout", method=RequestMethod.GET)
-	public String teacherLogout(HttpSession session, HttpServletRequest request) {
-		session.invalidate();
-	
-		return "mindex";
-	}
-	
-	//---------------------- 웹 기능 ----------------------
+	/* -----------------------------웹 기능----------------------------- */
 	//교사 목록 출력
 	@RequestMapping(value="/teacher/list/{adminId}")
 	public String getAllTeacher(@PathVariable int adminId,Model model,HttpSession session, HttpServletRequest request) {
@@ -129,6 +223,7 @@ public class TeacherController {
 	}
 	
    // 이메일 중복체크
+	/*
    @RequestMapping(value="/teacher/teacherEmailChk", method=RequestMethod.POST)
    @ResponseBody
    public String teacherEmailCheck(String teacherEmail) throws Exception {
@@ -140,7 +235,7 @@ public class TeacherController {
 	   } else {
 		   return "success"; // 중복된 이메일X
 	   }
-   }
+   }*/
    
    // 폰번호 중복체크
    @RequestMapping(value="/teacher/teacherPhoneChk", method=RequestMethod.POST)

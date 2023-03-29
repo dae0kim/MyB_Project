@@ -3,6 +3,41 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.myapp.myb.diseaselog.IDiseaselogRepository">
 	
+	<!-- (0329 합침 일형추가) -->
+	<update id="insertDiseaseLog" parameterType="com.project.myapp.myb.diseaselog.DiseaselogVO">
+	MERGE INTO diseaselog d USING 
+	(SELECT
+				*
+	FROM dual)
+	ON (child_id = #{childId} AND diseaselog_date = to_char(sysdate,'yyyy-mm-dd'))
+	WHEN MATCHED THEN
+	UPDATE SET d.disease_id = #{diseaseId}
+	
+	WHEN NOT MATCHED THEN
+	INSERT ( 	d.diseaselog_id, 
+				d.diseaselog_date, 
+				d.disease_id,  
+				d.classroom_id,
+				d.kindergarten_id,
+				d.kindergarten_city,
+				d.kindergarten_gu,
+				d.child_id)
+	VALUES(DISEASELOG_SEQ.nextval, to_char(sysdate,'yyyy-mm-dd'), #{diseaseId}, #{classroomId}, #{kindergartenId}, #{kindergartenCity}, #{kindergartenGu}, #{childId})
+	
+	
+	</update>
+	
+	<!-- (0329 합침 일형추가) -->
+	<select id="setDiseaseId" resultType="com.project.myapp.myb.diseaselog.DiseaselogVO">
+			SELECT
+				disease_id AS diseaseId
+			FROM 
+				diseaselog d, teacher t
+			where t.teacher_id = #{teacherId} AND d.diseaselog_date = to_char(sysdate,'yyyy-mm-dd') AND d.child_id= #{childId}
+	</select>
+	
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 그냥 화면 띄우기용도 -->
 	<select id="showview" resultType="int">
 	<![CDATA[

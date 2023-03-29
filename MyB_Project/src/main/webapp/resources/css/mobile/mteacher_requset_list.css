@@ -1,4 +1,4 @@
-.noticedetailtitle_wrap{
+.title_wrap{
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-content: center space-evenly;
@@ -13,7 +13,7 @@
 
 }
 
-#noticedetail_title{
+#title_name{
     font-size: 1.5em;
     grid-column-start: 1;
     margin-left: 20px;
@@ -42,69 +42,13 @@
 
 
 
-
-
-
-/* 라디오버튼 */
-    .test_obj input[type="radio"] {
-        display: none;
-    }
- 
-    .test_obj input[type="radio"] + span {
-        display: inline-block;
-        padding: 15px 10px;
-        border: 1px solid #dfdfdf;
-        background-color: #ffffff;
-        text-align: center;
-        cursor: pointer;
-    }
- 
-    .test_obj input[type="radio"]:checked + span {
-        background-color: #113a6b;
-        color: #ffffff;
-    }
-    	
-		
-		
-		
-		
-		
-		
-		
-/* 드롭박스 */
-
-select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  
-  color: #444;
-  background-color: #fff;
-  
-  padding: .6em 1.4em .5em .8em;
-  margin: 0;
-  
-  border: 1px solid #aaa;
-  border-radius: .5em;
-  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+/*애 이름*/
+#childname{
+	display: inline-block;
+    padding: 7px;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    width: 54px;
 }
 
-select:hover {
-  border-color: #888;
-}
-
-select:focus {
-  border-color: #aaa;
-  box-shadow: 0 0 1px 3px rgba(59, 153, 252, .7);
-  box-shadow: 0 0 0 3px -moz-mac-focusring;
-  color: #222;
-  outline: none;
-}
-
-select:disabled {
-  opacity: 0.5;
-}

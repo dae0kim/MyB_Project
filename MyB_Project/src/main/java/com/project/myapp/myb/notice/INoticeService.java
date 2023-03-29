@@ -4,7 +4,15 @@ import java.util.List;
 
 public interface INoticeService {
 
-	//---------------------- 웹 기능 ----------------------
+	// (0329 합침 일형추가)
+	// 공지 불러오기
+	List<NoticeVO> getNoticeList();
+	
+	// (0329 합침 일형추가)
+	//공지 상세
+	NoticeVO setNoticeView(int noticeId);
+	
+	/* -----------------------------웹 기능----------------------------- */
 	// 접속중인 원장이 작성한 모든 공지사항 가져오기
 	List<NoticeVO> selectNoticeList(int adminId,int page);
 	// 전체 공지사항 개수 반환

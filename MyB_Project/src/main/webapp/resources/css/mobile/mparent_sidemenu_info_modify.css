@@ -1,0 +1,152 @@
+.title_wrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-content: center space-evenly;
+    align-items: center;
+    align-content: center;
+    
+    padding-top: 90px;
+    padding-bottom: 20px;
+
+    width: 100%;
+    height: 20px;
+
+}
+
+#title_name{
+    font-size: 1.5em;
+    grid-column-start: 1;
+    margin-left: 20px;
+}
+
+.info_wrap{
+    width: 400px;
+        height: 350px;
+        padding: 40px;
+        box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        border-color: transparent;
+        flex-direction: column;
+        
+}
+
+#update-form{
+    text-align: center;
+  
+
+}
+
+#update-form > input{
+    width: 85%;
+    height: 45px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+#update-form > input::value{
+    color: #D2D2D2;
+}
+
+#update-form > input[type="button"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: #F2BE5C;
+}
+.info-name{
+	text-align: left;
+	padding-left: 20px;
+	padding-bottom: 5px;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+
+#join{
+    padding-top: 20px;
+}
+
+.info_wrap {
+    width: 80%; 
+    height: 500px;
+    margin: auto;
+    padding: 20px;
+
+}
+
+.info_wrap .text {
+    height: 550px; 
+    border: 1px solid black; 
+    background-color: white;
+    white-space: pre-line; 
+    overflow-y: scroll; 
+    margin: 0 auto 20px;
+    border-radius: 5px;
+}
+.info_wrap p {
+    text-align: right;
+    padding-bottom: 15px;    
+}
+
+#relation{
+    width: 85%;
+    height: 48px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+
+#address{
+    display: flex;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    justify-content: space-between;
+}
+
+/*비밀번호 일치*/
+.pw_re_input_1{
+	color : green;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+/*비밀번호 불일치*/
+.pw_re_input_2{
+	color : red;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+/*비밀번호 정규식 불충족*/
+.pw_input{
+	color : red;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+#joinstring{
+    border : none;
+    font-size : 10px;
+  	height : auto;
+    width: 80%; 
+    margin: auto;
+	text-align : left;
+	padding-bottom: 10px;
+}
+
+select {
+    height: 45px;
+    width: 49%; 
+    border: 1px solid #999;
+    font-family: inherit;  
+    background: url('../image/arrow.jpg') no-repeat 95% 50%; 
+    border-radius: 0px; 
+    -webkit-appearance: none; 
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 6px;
+    text-align: center;
+    }

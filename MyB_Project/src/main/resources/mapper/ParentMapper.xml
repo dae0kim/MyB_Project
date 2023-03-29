@@ -2,24 +2,56 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.project.myapp.myb.parent.IParentRepository">
-	
-	<insert id="insertParent" parameterType="com.project.myapp.myb.parent.ParentVO">
+
+	<!-- 요청사항 작성하기 (0328 문수지)-->
+	<insert id="insertRequest" parameterType="com.project.myapp.myb.request.RequestVO">
 		<![CDATA[
 			INSERT INTO
-				parent (parent_id, parent_name, parent_email, parent_pw, parent_phone, parent_relation, parent_city, parent_gu)
+				request (request_id, request_date, request_content1, request_content2, request_content3, request_content4, request_content5, parent_id, child_id, classroom_id)
 			VALUES
-				(parent_seq.NEXTVAL, #{parentName}, #{parentEmail}, #{parentPw}, #{parentPhone}, #{parentRelation}, #{parentCity}, #{parentGu})
+				(REQUEST_SEQ.NEXTVAL, #{requestDate}, #{requestContent1}, #{requestContent2}, #{requestContent3}, #{requestContent4}, #{requestContent5}, #{parentId}, #{childId}, #{classroomId})
 		]]>
 	</insert>
 	
-	<select id="selectParent" parameterType="string" resultType="com.project.myapp.myb.parent.ParentVO">
-		<![CDATA[
-			SELECT
-				parent_id as "parentid", parent_name as "parentname", parent_email as "parentemail", parent_pw as "parentpw", parent_phone as "parentphone", parent_relation as "parentrelation", parent_city as "parentcity", parent_gu as "parentgu"
-			FROM
-				parent
-			WHERE parent_email=#{parentEmail}
-		]]>
+	<!-- (0329 합침 일형추가) -->
+	<select id="getRequestList" resultType="com.project.myapp.myb.request.RequestVO">
+		SELECT t.teacher_id, r.request_id, p.parent_id, p.parent_name
+		FROM request r, teacher t, parent p
+		WHERE (r.classroom_id = t.classroom_id) AND (p.parent_id=r.parent_id);
+	</select>
+
+	<!-- (0329 합침 일형추가) -->
+	<select id="getRequestIdList" resultType="com.project.myapp.myb.request.RequestVO">
+		SELECT
+			r.request_id AS requestId,
+			r.request_date AS requestDate, 
+            r.request_content1 AS requestContent1, 
+            r.request_content2 AS requestContent2,
+            r.request_content3 AS requestContent3,
+            r.request_content4 AS requestContent4,
+            r.request_content5 AS requestContent5,
+            r.request_stat AS requestStat,
+            r.parent_id AS parentId,
+            r.child_id AS childId,
+            r.classroom_id AS classroomId,
+			t.teacher_id AS teacherId
+		FROM 
+			request r, teacher t
+		WHERE
+			t.teacher_id = #{teacherId}
+	</select>
+
+	<!-- (0329 합침 일형추가) -->
+	<select id="getCheckDetail" resultType="com.project.myapp.myb.request.RequestVO">
+		SELECT 
+        request_id AS requestId,
+		request_content1 AS requestContent1,
+		request_content2 AS requestContent2,
+		request_content3 AS requestContent3,
+		request_content4 AS requestContent4,
+		request_content5 AS requestContent5
+		FROM request
+		WHERE request_id=#{requestId}
 	</select>
 	
 </mapper>

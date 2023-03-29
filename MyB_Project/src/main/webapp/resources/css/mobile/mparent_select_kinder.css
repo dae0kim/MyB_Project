@@ -24,7 +24,7 @@ select {
     width: 49%; 
     border: 1px solid #999;
     font-family: inherit;  
-    background: url('../image/arrow.jpg') no-repeat 95% 50%; 
+    background: url('../images/arrow.jpg') no-repeat 95% 50%; 
     border-radius: 0px; 
     -webkit-appearance: none; 
     -moz-appearance: none;
@@ -35,14 +35,42 @@ select {
 
 #search {
     text-align: center;
+    padding-bottom: 3px;
 }
 
 #search > input[type="text"]{
-    width: 85%;
+    width: 70%;
     height: 48px;
     box-sizing: border-box;
-    margin : 10px;
+    padding-left: 26px;
+    margin-top : 5px;
+    margin-bottom : 5px;
     border-radius: 6px;
     background-color: #F8F8F8;
-    text-align: center;
+}
+#search > input[type="submit"]{
+	width: 15%;
+	height: 48px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #F2BE5C;
+    border-radius: 6px;
+    margin-top : 5px;
+}
+
+/*어린이집 리스트*/
+#kindergartenlist{
+	padding: 3px;
+	margin-left: 5px;
+}
+/*어린이집 리스트 각 항목*/
+.listtext{
+	padding: 2px;
+	font-size: 15px;
+}
+/*어린이집 검색결과가 없을 경우*/
+#nosearh{
+	padding: 5px;
+	margin-left: 5px;
+	font-size: 15px;
 }

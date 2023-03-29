@@ -37,7 +37,7 @@
     color: #D2D2D2;
 }
 
-#login-form > input[type="submit"]{
+#login-form > input[type="button"]{
     color: #fff;
     font-size: 16px;
     background-color: #F2BE5C;
@@ -48,7 +48,6 @@
 #join{
     padding-top: 20px;
 }
-
 
 .join_wrap {
     width: 80%; 
@@ -72,13 +71,64 @@
     padding-bottom: 15px;    
 }
 
+/*사용 가능한 이메일*/
+.email_ok{
+	color : green;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+/*사용 불가능한 이메일*/
+.email_already{
+	color : red;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+/*이메일 정규식 불충족*/
+.email_validation{
+	color : red;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+
+/*비밀번호 일치*/
+.pw_re_input_1{
+	color : green;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+/*비밀번호 불일치*/
+.pw_re_input_2{
+	color : red;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+/*비밀번호 정규식 불충족*/
+.pw_input{
+	color : red;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+/*중복된 휴대폰번호*/
+.phone_already{
+	color : red;
+	display : none;
+	font-size : 12px;
+	padding-top: 3px;
+}
+
 #joinstring{
     border : none;
     font-size : 10px;
 	  height : auto;
       width: 80%; 
       margin: auto;
-      padding-top: 3px;
+      padding-top: 10px;
 	  text-align : left;
 }
 
@@ -102,6 +152,7 @@ select {
     -moz-appearance: none;
     appearance: none;
     border-radius: 6px;
+    text-align: center;
     }
 
 #address{

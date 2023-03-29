@@ -13,6 +13,20 @@ public class NoticeService implements INoticeService {
 	@Qualifier("INoticeRepository")
 	INoticeRepository noticeRepository;
 	
+	// (0329 합침 일형추가)
+	@Override
+	public List<NoticeVO> getNoticeList() {
+		return noticeRepository.getNoticeList();
+	}
+
+	// (0329 합침 일형추가)
+	@Override
+	public NoticeVO setNoticeView(int noticeId) {
+		// TODO Auto-generated method stub
+		return noticeRepository.setNoticeView(noticeId);
+	}
+	
+	/* -----------------------------웹 기능----------------------------- */
 	@Override
 	public List<NoticeVO> selectNoticeList(int adminId,int page) {
 		int start = (page-1)*10-1;

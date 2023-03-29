@@ -29,7 +29,25 @@
 			WHERE teacher_id=#{teacherId}
 	</select>
 	
-	<!-- ************** 웹 기능 ************** -->
+	
+	<select id="emailChk" resultType="int">
+		<![CDATA[
+			SELECT count(*)
+			FROM teacher
+			WHERE teacher_email=#{teacherEmail}
+		]]>
+	</select>
+	
+	
+	<select id="pwChk" resultType="int" parameterType="map">
+		<![CDATA[
+			SELECT count(*)
+			FROM teacher
+			WHERE teacher_email=#{teacherEmail} AND teacher_pw=#{teacherPw}
+		]]>
+	</select>
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 교사 등록 -->
 	<insert id="insertTeacher" parameterType="com.project.myapp.myb.teacher.TeacherVO">
 	<![CDATA[
@@ -43,13 +61,13 @@
 	</insert>
 	
 	<!-- 이메일 중복체크 -->
-	<select id="emailChk" resultType="int">
+	<!-- <select id="emailChk" resultType="int">
 		<![CDATA[
 			SELECT count(*)
 			FROM teacher
 			WHERE teacher_email=#{teacherEmail}
 		]]>
-	</select>
+	</select> -->
 	
 	<!-- 전화번호 중복체크 -->
 	<select id="phoneChk" resultType="int">
