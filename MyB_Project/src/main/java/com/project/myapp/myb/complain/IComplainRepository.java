@@ -15,7 +15,7 @@ public interface IComplainRepository {
 	
 	/* -----------------------------웹 기능----------------------------- */
 	// 접속중인 원장 어린이집의 모든 컴플레인 리스트 가져오기
-	List<ComplainVO> selectComplainList(@Param("adminId") int adminId,@Param("start") int start,@Param("end") int end);
+	List<ComplainVO> selectComplainList2(@Param("adminId") int adminId,@Param("start") int start,@Param("end") int end);
 	// 전체 공지사항 개수 반환
 	int selectTotalComplainCount(int adminId);
 	

@@ -73,7 +73,7 @@ public class ComplainController {
 		if(stat != null) {
 			if(stat.equals("Y")) {
 				session.setAttribute("page", page);
-				List<ComplainVO> complainList = complainService.selectComplainList(adminId,page);
+				List<ComplainVO> complainList = complainService.selectComplainList2(adminId,page);
 				model.addAttribute("complainList", complainList);
 				int bbsCount = complainService.selectTotalComplainCount(adminId);
 				int totalPage = 0;

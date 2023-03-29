@@ -32,9 +32,9 @@ public class ComplainService implements IComplainService {
 	
 	/* -----------------------------웹 기능----------------------------- */
 	@Override
-	public List<ComplainVO> selectComplainList(int adminId, int page) {
+	public List<ComplainVO> selectComplainList2(int adminId, int page) {
 		int start = (page-1)*10-1;
-		return complainRepository.selectComplainList(adminId, start, start+9);
+		return complainRepository.selectComplainList2(adminId, start, start+9);
 	}
 
 	@Override

@@ -48,7 +48,7 @@
 	
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 페이징 처리 된 컴플레인 리스트 -->
-	<select id="selectComplainList" parameterType="hashmap" resultType="com.project.myapp.myb.complain.ComplainVO">
+	<select id="selectComplainList2" parameterType="hashmap" resultType="com.project.myapp.myb.complain.ComplainVO">
 	<![CDATA[
 		SELECT 
 			complain_id 		AS complainId, 
