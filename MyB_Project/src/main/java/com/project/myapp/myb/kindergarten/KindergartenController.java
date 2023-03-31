@@ -29,68 +29,96 @@ import com.project.myapp.myb.uploadfile.UploadFileVO;
 
 @Controller
 public class KindergartenController {
-	
+
 	@Autowired
 	IKindergartenService kindergartenService;
-	
+
 	@Autowired
 	IAdminService adminService;
-	
+
 	// 어린이집 검색 페이지로 이동 (0323 문수지 작성)
-	@RequestMapping(value="/parent/mparent_select_kinder", method=RequestMethod.GET)
+	@RequestMapping(value = "/parent/mparent_select_kinder", method = RequestMethod.GET)
 	public String kindergartenSearchForm() {
 		return "parent/mparent_select_kinder";
 	}
-	
+
 	// 어린이집 검색 (0323 문수지 작성)
-	@RequestMapping(value="/parent/mparent_select_kinder", method=RequestMethod.POST)
-	public String kindergartenSearch(@RequestParam(required=false, defaultValue="") String kindergartenNameKeyword, @Param(value="kindergartenCity") String kindergartenCity, @Param(value="kindergartenGu") String kindergartenGu, HttpSession session, Model model) {
+	@RequestMapping(value = "/parent/mparent_select_kinder", method = RequestMethod.POST)
+	public String kindergartenSearch(@RequestParam(required = false, defaultValue = "") String kindergartenNameKeyword,
+			@Param(value = "kindergartenCity") String kindergartenCity,
+			@Param(value = "kindergartenGu") String kindergartenGu, HttpSession session, Model model) {
 		try {
-			List<KindergartenVO> kindergartenList = kindergartenService.searchListByNameKeyword(kindergartenNameKeyword, kindergartenCity, kindergartenGu);
+			List<KindergartenVO> kindergartenList = kindergartenService.searchListByNameKeyword(kindergartenNameKeyword,
+					kindergartenCity, kindergartenGu);
 			model.addAttribute("kindergartenList", kindergartenList);
 			model.addAttribute("kindergartenNameKeyword", kindergartenNameKeyword);
 			model.addAttribute("kindergartenCity", kindergartenCity);
 			model.addAttribute("kindergartenGu", kindergartenGu);
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "parent/mparent_select_kinder";
 	}
-	
+
+	// Mypage에서 어린이집 검색 페이지로 이동 (0329 문수지 수정)
+	@RequestMapping(value = "/parent/mparent_select_kinder_mypage", method = RequestMethod.GET)
+	public String kindergartenMypageSearchForm() {
+		return "parent/mparent_select_kinder_mypage";
+	}
+
+	// Mypage에서 어린이집 검색 (0329 문수지 수정)
+	@RequestMapping(value = "/parent/mparent_select_kinder_mypage", method = RequestMethod.POST)
+	public String kindergartenMypageSearch(
+			@RequestParam(required = false, defaultValue = "") String kindergartenNameKeyword,
+			@Param(value = "kindergartenCity") String kindergartenCity,
+			@Param(value = "kindergartenGu") String kindergartenGu, HttpSession session, Model model) {
+		try {
+			List<KindergartenVO> kindergartenList = kindergartenService.searchListByNameKeyword(kindergartenNameKeyword,
+					kindergartenCity, kindergartenGu);
+			model.addAttribute("kindergartenList", kindergartenList);
+			model.addAttribute("kindergartenNameKeyword", kindergartenNameKeyword);
+			model.addAttribute("kindergartenCity", kindergartenCity);
+			model.addAttribute("kindergartenGu", kindergartenGu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "parent/mparent_select_kinder_mypage";
+	}
+
 	/* -----------------------------웹 기능----------------------------- */
 	// 어린이집 등록 상태 확인을 위한 페이지 이동
-	@RequestMapping(value="/kindergarten/check", method=RequestMethod.GET)
-	public String kindergartenCheck() {		
-		return "/principal/kindergarten/kindergartencheck";			
+	@RequestMapping(value = "/kindergarten/check", method = RequestMethod.GET)
+	public String kindergartenCheck() {
+		return "/principal/kindergarten/kindergartencheck";
 	}
 
 	// 어린이집 등록 페이지 이동
-	@RequestMapping(value="/kindergarten/form", method=RequestMethod.GET)
-	public String kindergartenForm(HttpSession session, HttpServletRequest request) {		
+	@RequestMapping(value = "/kindergarten/form", method = RequestMethod.GET)
+	public String kindergartenForm(HttpSession session, HttpServletRequest request) {
 		return "/principal/kindergarten/kindergarteninsertform";
 	}
-	
+
 	// 어린이집 등록 양식 제출
-	@RequestMapping(value="/kindergarten/insert", method=RequestMethod.POST)
-	public String kindergartenInsert(KindergartenVO kindergartenVO, BindingResult results, 
-			RedirectAttributes redirectAttrs,HttpSession session, HttpServletRequest request) {
-		
-		try{
+	@RequestMapping(value = "/kindergarten/insert", method = RequestMethod.POST)
+	public String kindergartenInsert(KindergartenVO kindergartenVO, BindingResult results,
+			RedirectAttributes redirectAttrs, HttpSession session, HttpServletRequest request) {
+
+		try {
 			MultipartFile mfile = kindergartenVO.getFile();
-			if(mfile!=null && !mfile.isEmpty()) {
+			if (mfile != null && !mfile.isEmpty()) {
 				UploadFileVO file = new UploadFileVO();
 				file.setFileName(mfile.getOriginalFilename());
 				file.setFileSize(mfile.getSize());
 				file.setFileType(mfile.getContentType());
 				file.setFileData(mfile.getBytes());
 				kindergartenService.insertKindergarten(kindergartenVO, file);
-				
+
 				session.setAttribute("kindergartenStat", "N");
-				
-			}else {
+
+			} else {
 				kindergartenService.insertKindergarten(kindergartenVO);
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			redirectAttrs.addFlashAttribute("message", e.getMessage());
 		}
@@ -114,8 +142,7 @@ public class KindergartenController {
 		}
 		return new ResponseEntity<byte[]>(file.getFileData(), headers, HttpStatus.OK);
 	}
-	
-	
+
 	// 어린이집 요청 목록 리스트 출력
 	@RequestMapping("/kindergarten/request/list/{page}")
 	public String getKindergartenList(@PathVariable int page, HttpSession session, Model model) {
@@ -124,19 +151,19 @@ public class KindergartenController {
 		model.addAttribute("kindergartenList", kindergartenList);
 		int bbsCount = kindergartenService.selectTotalKindergartenCount();
 		int totalPage = 0;
-		if(bbsCount > 0) {
-			totalPage= (int)Math.ceil(bbsCount/10.0);
+		if (bbsCount > 0) {
+			totalPage = (int) Math.ceil(bbsCount / 10.0);
 		}
 		model.addAttribute("totalPageCount", totalPage);
 		model.addAttribute("page", page);
 		return "admin/kindergartenlist";
 	}
-	
+
 	@RequestMapping("/kindergarten/request/list")
 	public String getKindergartenList(HttpSession session, Model model) {
-		return getKindergartenList(1,session,model);
+		return getKindergartenList(1, session, model);
 	}
-	
+
 	// 어린이집 등록 요청 상세정보 조회
 	@RequestMapping("/kindergarten/info/{kindergartenId}/{page}")
 	public String getKindergartenDetails(@PathVariable int kindergartenId, @PathVariable int page, Model model) {
@@ -150,19 +177,19 @@ public class KindergartenController {
 	public String getKindergartenDetails(@PathVariable int kindergartenId, Model model) {
 		return getKindergartenDetails(kindergartenId, 1, model);
 	}
-	
+
 	// 어린이집 등록 승인
-	@RequestMapping(value="/kindergarten/approve/{kindergartenId}") 
-	public String updateKindergartenStatus(@PathVariable int kindergartenId, Model model) { 
-		kindergartenService.updateKindergartenApprove(kindergartenId); 
-		return "redirect:/kindergarten/info/{kindergartenId}"; 
+	@RequestMapping(value = "/kindergarten/approve/{kindergartenId}")
+	public String updateKindergartenStatus(@PathVariable int kindergartenId, Model model) {
+		kindergartenService.updateKindergartenApprove(kindergartenId);
+		return "redirect:/kindergarten/info/{kindergartenId}";
 	}
-	
+
 	// 어린이집 등록 거절
-	@RequestMapping(value="/kindergarten/disapprove/{kindergartenId}") 
-	public String deleteKindergartenStatus(@PathVariable int kindergartenId, Model model) { 
-		kindergartenService.deleteKindergartenDisapprove(kindergartenId); 
-		return "redirect:/kindergarten/request/list"; 
+	@RequestMapping(value = "/kindergarten/disapprove/{kindergartenId}")
+	public String deleteKindergartenStatus(@PathVariable int kindergartenId, Model model) {
+		kindergartenService.deleteKindergartenDisapprove(kindergartenId);
+		return "redirect:/kindergarten/request/list";
 	}
-	
+
 }

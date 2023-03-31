@@ -49,6 +49,17 @@
 			child_id AS childId
 		FROM child c, teacher t
 		WHERE t.teacher_id=#{teacherId} AND (c.classroom_id = t.classroom_id)
+		ORDER BY 2
 	</select>
 	
+	<!-- 해당 자녀 정보 불러오기 (0328 문수지) -->
+	<select id="selectChildById" parameterType="int" resultType="com.project.myapp.myb.child.ChildVO">
+		<![CDATA[
+			SELECT
+				child_id as "childId", child_name as "childName", child_date as "childDate", child_sex as "childSex", parent_id as "parentId", classroom_id as "classroomId", kindergarten_id as "kindergartenId"
+			FROM
+				child
+			WHERE child_id = #{childId}			
+		]]>
+	</select>
 </mapper>

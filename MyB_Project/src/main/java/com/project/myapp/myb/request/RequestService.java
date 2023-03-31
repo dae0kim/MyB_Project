@@ -18,6 +18,12 @@ public class RequestService implements IRequestService{
 	public void insertRequest(RequestVO request) {
 		requestRepository.insertRequest(request);
 	}
+	
+	// 요청사항 확인하기 (0330 문수지)
+	@Override
+	public RequestVO selectRequest(int childId, String requestDate) {
+		return requestRepository.selectRequest(childId, requestDate);
+	}
 
 	// (0329 합침 일형추가)
 	@Override
@@ -37,6 +43,16 @@ public class RequestService implements IRequestService{
 		System.out.println("서비스동작확인");
 		return requestRepository.getCheckDetail(requestId);
 	}
+
+	@Override
+	public void updateRequest(RequestVO requestvo) {
+		// TODO Auto-generated method stub
+		requestRepository.updateRequest(requestvo);
+	}
+
+
+
+
 
 }
 

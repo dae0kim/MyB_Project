@@ -13,7 +13,12 @@ public class RequestVO {
 	private String requestContent3;
 	private String requestContent4;
 	private String requestContent5;
-	private String requestStat;
+	private String requestStat1;
+	private String requestStat2;
+	private String requestStat3;
+	private String requestStat4;
+	private String requestStat5;
+	private String requestComment;	
 	private int parentId;
 	private int childId;
 	private int classroomId;

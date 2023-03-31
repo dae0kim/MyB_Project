@@ -1,20 +1,4 @@
-.header_wrap{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    place-content: center space-evenly;
-    align-items: center;
-    align-content: center;
-    
-    
-    position: absolute;
-    width: 100%;
-    height: 65px;
-    left: 0px;
-    top: 0px;
-
-    background: #F2BE5C;
-}
-.requestchecktitle_wrap{
+.title_wrap{
     display: grid;
     grid-template-columns: 1fr 1fr;
     place-content: center space-evenly;
@@ -22,30 +6,62 @@
     align-content: center;
     
     padding-top: 90px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 
     width: 100%;
     height: 20px;
 
 }
-.requestcheckcontent_wrap{
-    align-items: center;
-    align-content: center;
-
-    width: 87%;
-    height: 650px;
-
-    margin:auto;
-
-    background: #dadada;
+.title_wrap > input[type="submit"]{
+    color: #fff;
+    font-size: 16px;
+    background-color: #F2BE5C;
+    border-radius: 6px;
+    width: 100px;
+    height: 30px;
+    
 }
 
-#requestcheck_title{
+#title_name{
     font-size: 1.5em;
     grid-column-start: 1;
     margin-left: 20px;
 }
-#requestcheck_content{
-    font-size: 1em;
-    grid-column-start: 1;
+
+.request_wrap{
+    width: 400px;
+    height: 350px;
+    padding: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    border-color: transparent;
+    flex-direction: column;
+        
+}
+
+#request-form{
+    text-align: center;
+  
+
+}
+
+#request-form > input{
+    width: 85%;
+    height: 48px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+#request-form > input::value{
+    color: #D2D2D2;
+}
+
+.request-name{
+	text-align: left;
+	padding-left: 25px;
+	padding-bottom: 5px;
+	font-size: 0.8em;
+	font-weight: bold;
 }

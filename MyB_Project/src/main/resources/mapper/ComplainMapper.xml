@@ -19,7 +19,7 @@
 			SELECT
 				complain_id AS "complainId",
 				complain_title AS "complainTitle",
-				TO_CHAR(complain_date, 'YYYY/MM/DD') AS "complainDate",
+				complain_date AS "complainDate",
 				complain_stat AS "complainStat"
 			FROM
 				complain
@@ -35,7 +35,7 @@
 			SELECT
 				complain_id AS "complainId",
 				complain_title AS "complainTitle",
-				TO_CHAR(complain_date, 'YYYY/MM/DD') AS "complainDate",
+				complain_date AS "complainDate",
 				complain_stat AS "complainStat",
 				complain_content AS "complainContent"
 			FROM

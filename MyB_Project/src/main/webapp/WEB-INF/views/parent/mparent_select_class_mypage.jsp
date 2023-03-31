@@ -15,7 +15,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_select_class.css" rel="stylesheet"> 
 </head>
 <body>
-	<form action="<c:url value='/parent/mparent_select_class'/>"  method="post">
+	<form action="<c:url value='/parent/mparent_select_class_mypage'/>"  method="post">
 	    <div id="head_icon"><img src="../resources/images/logo.png"><b> 어린이집 등록</b></div>
 		
 	    <div id="kindergartenName">
@@ -56,7 +56,7 @@
 	            </div>
 	            <div id="babydate">
 	                <div id="babytext">생년월일</div> <br>
-	            	<input type="text" class="childDate_input" name="childDate" id="childDate" required>
+	                <input type="text" class="childDate_input" name="childDate" id="childDate" required>
 	            </div>
 	        </div>
 	    </div>

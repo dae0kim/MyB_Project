@@ -8,6 +8,7 @@ public interface IKindergartenService {
 	
 	// 어린이집 검색 (0323 문수지 작성)
 	List<KindergartenVO> searchListByNameKeyword(String kindergartenNameKeyword, String kindergartenCity, String kindergartenGu);
+	
 	// 어린이집 정보 불어오기 (0324 문수지 작성)
 	KindergartenVO selectKindergartenById(int kindergartenId);
 	

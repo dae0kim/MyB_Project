@@ -3,13 +3,17 @@ package com.project.myapp.myb.diseaselog;
 import java.util.List;
 import java.util.Map;
 
+import com.project.myapp.myb.classroom.ClassroomSeqVO;
+import com.project.myapp.myb.disease.DiseaseVO;
+
 public interface IDiseaselogRepository {
 	
 	// (0329 합침 일형추가)
 	void insertDiseaseLog (DiseaselogVO diseaselogvo);
-	// (0329 합침 일형추가)
-	List<DiseaselogVO> setDiseaseId(int teacherId);
 	
+	List<DiseaselogVO> defaultDisase(int teacherId);
+	
+	List<DiseaselogEtcVO> test(int classroomId);
 	
 	/* -----------------------------웹 기능----------------------------- */
 	void showview();

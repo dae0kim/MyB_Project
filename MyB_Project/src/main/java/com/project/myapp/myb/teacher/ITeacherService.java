@@ -5,8 +5,6 @@ import java.util.List;
 public interface ITeacherService {
 	
 	TeacherVO selectTeacher(String teacherEmail);
-	// (0329 합침 일형추가)
-	/* TeacherVO getTeacherInfo(String teacherId); */
 	
 	// 로그인 체크부분(0329 합침 일형추가)
 	int emailChk(String teacherEmail) throws Exception;

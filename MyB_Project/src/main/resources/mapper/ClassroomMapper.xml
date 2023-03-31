@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.myapp.myb.classroom.IClassroomRepository">
+<mapper
+	namespace="com.project.myapp.myb.classroom.IClassroomRepository">
 
-	<!-- 해당하는 어린이집의 반들 출력(0323 문수지 작성)-->
-	<select id="selectClassroomList" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+	<!-- 해당하는 어린이집의 반들 출력(0323 문수지 작성) -->
+	<select id="selectClassroomList" parameterType="int"
+		resultType="com.project.myapp.myb.classroom.ClassroomVO">
 		<![CDATA[
 			SELECT
 				classroom_id AS "classroomId",
@@ -15,9 +17,10 @@
 				kindergarten_id = #{kindergartenId}
 		]]>
 	</select>
-	
+
 	<!-- 어린이집 정보 불러오기(0327 문수지 작성) -->
-	<select id="selectClassroom" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+	<select id="selectClassroom" parameterType="int"
+		resultType="com.project.myapp.myb.classroom.ClassroomVO">
 		<![CDATA[
 			SELECT
 				classroom_id as "classroomId", classroom_name as "classroomName", kindergarten_id as "kindergartenId"
@@ -27,42 +30,41 @@
 				classroom_id = #{classroomId}
 		]]>
 	</select>
-	
+
 	<!-- (0329 합침 일형추가) -->
-	<select id="getTeacherClass" resultType="com.project.myapp.myb.classroom.ClassroomVO">
-			select classroom_name AS classroomName
-		    from classroom c, teacher t
-		    where t.teacher_id = #{teacherId} AND (c.classroom_id = t.classroom_id)
+	<select id="getTeacherClass"
+		resultType="com.project.myapp.myb.classroom.ClassroomVO">
+		select
+		c.classroom_name AS classroomName,
+		c.classroom_id AS classroomId
+		from classroom c, teacher t
+		where t.teacher_id = #{teacherId} AND (c.classroom_id = t.classroom_id)
 	</select>
-	
+
+
 	<!-- (0329 합침 일형추가) -->
-	<select id="getClassroomId" resultType="com.project.myapp.myb.classroom.ClassroomVO">
-		select c.classroom_id AS classroomId
-	    from classroom c, teacher t
-	    where t.teacher_id = #{teacherId} AND (c.classroom_id = t.classroom_id)
-	</select>
-	
-	<!-- (0329 합침 일형추가) -->
-	<select id="getClassName" resultType="com.project.myapp.myb.classroom.ClassroomVO">
-	
-		SELECT 
-			classroom_id AS classroom_Id,
-			classroom_name AS classroomName,
-			kindergarten_id AS kindergartenId
-		from 
-			classroom
-		where 
-			classroom_id = (
-								SELECT classroom_id AS classroomId
-								FROM TEACHER
-								WHERE teacher_email = #{teacherEmail})
-		
+	<select id="getClassName"
+		resultType="com.project.myapp.myb.classroom.ClassroomVO">
+
+		SELECT
+		classroom_id AS classroom_Id,
+		classroom_name AS classroomName,
+		kindergarten_id AS kindergartenId
+		from
+		classroom
+		where
+		classroom_id = (
+		SELECT classroom_id AS classroomId
+		FROM TEACHER
+		WHERE teacher_email = #{teacherEmail})
+
 	</select>
 
 
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 반 이름 리스트 -->
-	<select id="getClassroomNameList" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomVO">
+	<select id="getClassroomNameList" parameterType="int"
+		resultType="com.project.myapp.myb.classroom.ClassroomVO">
 	<![CDATA[
 		select 
 			c.classroom_name AS classroomName,
@@ -75,7 +77,8 @@
 	</select>
 
 	<!-- 특정 반 이름 -->
-	<select id="getClassroomName" parameterType="int" resultType="String">
+	<select id="getClassroomName" parameterType="int"
+		resultType="String">
 	<![CDATA[
 		select 
 			classroom_name AS classroomName 
@@ -85,7 +88,9 @@
 	</select>
 
 	<!-- 특정 반 시퀀스 -->
-	<select id="getClassroomSeq" parameterType="com.project.myapp.myb.classroom.ClassroomSeqVO" resultType="int">
+	<select id="getClassroomSeq"
+		parameterType="com.project.myapp.myb.classroom.ClassroomSeqVO"
+		resultType="int">
 	<![CDATA[
 		select 
 			c.classroom_id AS classroomId 
@@ -96,9 +101,10 @@
 	]]>
 	</select>
 
-	
+
 	<!-- 반 상세정보 반환 -->
-	<select id="getClassroomInfo" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomListVO">
+	<select id="getClassroomInfo" parameterType="int"
+		resultType="com.project.myapp.myb.classroom.ClassroomListVO">
 	<![CDATA[
 		select 
 		    akcrt.classroom_id AS classroomId,
@@ -150,9 +156,10 @@
 		       where akcrt.classroom_id = #{classroomId}
 	]]>
 	</select>
-	
+
 	<!-- 반 등록 -->
-	<insert id="insertClassroom" parameterType="com.project.myapp.myb.classroom.ClassroomVO">
+	<insert id="insertClassroom"
+		parameterType="com.project.myapp.myb.classroom.ClassroomVO">
 	<![CDATA[
 		INSERT INTO classroom(
 			classroom_ID,
@@ -166,18 +173,20 @@
 		)
 	]]>
 	</insert>
-	
+
 	<!-- 반 정보(이름) 수정 -->
-	<update id="updateClassroom" parameterType="com.project.myapp.myb.classroom.ClassroomVO">
+	<update id="updateClassroom"
+		parameterType="com.project.myapp.myb.classroom.ClassroomVO">
 	<![CDATA[
 		UPDATE classroom
 		SET classroom_name=#{classroomName}
 		WHERE classroom_id=#{classroomId}
 	]]>
 	</update>
-	
+
 	<!-- 현재 어린이집의 반 개수 반환 -->
-	<select id="getClassroomCount" parameterType="int" resultType="int">
+	<select id="getClassroomCount" parameterType="int"
+		resultType="int">
 	<![CDATA[
 		select 
 			count(c.classroom_id) AS count
@@ -187,5 +196,5 @@
 		where k.kindergarten_id = #{kindergartenId}
 	]]>
 	</select>
-	
+
 </mapper>

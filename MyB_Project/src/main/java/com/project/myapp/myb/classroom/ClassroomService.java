@@ -32,11 +32,6 @@ public class ClassroomService implements IClassroomService {
 		return classroomRepository.getTeacherClass(teacherId);
 	}
 
-	// (0329 합침 일형추가)
-	@Override
-	public ClassroomVO getClassroomId(int teacherId) {
-		return classroomRepository.getClassroomId(teacherId);
-	}
 
 	// (0329 합침 일형추가)
 	@Override

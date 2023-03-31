@@ -1,6 +1,5 @@
 package com.project.myapp.myb.diseaselog;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,21 +13,26 @@ public class DiseaselogService implements IDiseaselogService {
 	@Autowired
 	@Qualifier("IDiseaselogRepository")
 	IDiseaselogRepository diseaselogRepository;
-	
+
 	// (0329 합침 일형추가)
 	@Override
 	public void insertDiseaseLog(DiseaselogVO diseaselogvo) {
 		diseaselogRepository.insertDiseaseLog(diseaselogvo);
-		
+
 	}
 
-	// (0329 합침 일형추가)
 	@Override
-	public List<DiseaselogVO> setDiseaseId(int teacherId) {
-		// TODO Auto-generated method stub
-		return diseaselogRepository.setDiseaseId(teacherId);
+	public List<DiseaselogVO> defaultDisase(int teacherId) {
+		// TODO Auto-generated method stub return
+		return diseaselogRepository.defaultDisase(teacherId);
 	}
-	
+
+	@Override
+	public List<DiseaselogEtcVO> test(int classroomId) {
+		// TODO Auto-generated method stub
+		return diseaselogRepository.test(classroomId);
+	}
+
 	/* -----------------------------웹 기능----------------------------- */
 	@Override
 	public void showview() {

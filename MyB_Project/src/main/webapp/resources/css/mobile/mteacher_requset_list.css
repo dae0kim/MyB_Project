@@ -19,7 +19,7 @@
     margin-left: 20px;
 }
 
-.request_list_wrap {
+.requestChk {
 	display : grid;
 	align-items: center;
 	align-content: center;
@@ -32,18 +32,39 @@
 	justify-items: center;
 }
 
-#request_box{
-	display: inline-flex;
-    width: 96%;
-    border: 1px solid red;
-    align-items: center;
-    border-radius: 6px;
+#requestBox{
+	display : grid;
+	grid-template-columns: 0.8fr 1.2fr 1fr;
+	margin: auto;
+	width: 99%;
+    height: 3em;
+	background-color: transparent;
+	border : 1px solid green;
+	align-items: center;
 }
 
 
 
 /*애 이름*/
-#childname{
+#parentname{
+	display: inline-block;
+    padding: 7px;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    width: 54px;
+}
+
+#parentname{
+	display: inline-block;
+    padding: 7px;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    width: 54px;
+}
+
+#parentRelation{
 	display: inline-block;
     padding: 7px;
     border: 1px solid #dfdfdf;

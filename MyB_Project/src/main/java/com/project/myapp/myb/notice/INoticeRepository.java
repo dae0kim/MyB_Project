@@ -18,6 +18,7 @@ public interface INoticeRepository {
 	/* -----------------------------웹 기능----------------------------- */
 	// 접속중인 원장이 작성한 모든 공지사항 가져오기
 	List<NoticeVO> selectNoticeList(@Param("adminId") int adminId,@Param("start") int start,@Param("end") int end);
+	
 	// 전체 공지사항 개수 반환
 	int selectTotalNoticeCount(int adminId);
 	

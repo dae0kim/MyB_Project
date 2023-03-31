@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.myapp.myb.disease.IDiseaseRepository">
+<mapper
+	namespace="com.project.myapp.myb.disease.IDiseaseRepository">
 
 	<!-- (0329 합침 일형추가) -->
-	<select id="getDiseaseList" resultType="com.project.myapp.myb.disease.DiseaseVO">
+	<select id="getDiseaseList"
+		resultType="com.project.myapp.myb.disease.DiseaseVO">
 		SELECT
-			disease_id AS diseaseId,
-			disease_name AS diseaseName
-		FROM 
-			disease
+		disease_id AS diseaseId,
+		disease_name AS diseaseName
+		FROM
+		disease
 	</select>
 
 
