@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.myapp.myb.teacher.ITeacherRepository">
-	
-	<select id="selectTeacher" parameterType="string" resultType="com.project.myapp.myb.teacher.TeacherVO">
+<mapper
+	namespace="com.project.myapp.myb.teacher.ITeacherRepository">
+
+	<select id="selectTeacher" parameterType="string"
+		resultType="com.project.myapp.myb.teacher.TeacherVO">
 		<![CDATA[
 			SELECT	
 				teacher_id AS teacherId,
@@ -16,20 +18,21 @@
 			WHERE teacher_email=#{teacherEmail}
 		]]>
 	</select>
-	
-	
-	<select id="getTeacherInfo" resultType="com.project.myapp.myb.teacher.TeacherVO">
-			SELECT	
-				teacher_id AS teacherId,
-				teacher_name AS teacherName,
-				classroom_Id AS classroomId,
-				kindergarten_Id AS kindergartenId
-			FROM
-				teacher
-			WHERE teacher_id=#{teacherId}
+
+
+	<select id="getTeacherInfo"
+		resultType="com.project.myapp.myb.teacher.TeacherVO">
+		SELECT
+		teacher_id AS teacherId,
+		teacher_name AS teacherName,
+		classroom_Id AS classroomId,
+		kindergarten_Id AS kindergartenId
+		FROM
+		teacher
+		WHERE teacher_id=#{teacherId}
 	</select>
-	
-	
+
+
 	<select id="emailChk" resultType="int">
 		<![CDATA[
 			SELECT count(*)
@@ -37,8 +40,8 @@
 			WHERE teacher_email=#{teacherEmail}
 		]]>
 	</select>
-	
-	
+
+
 	<select id="pwChk" resultType="int" parameterType="map">
 		<![CDATA[
 			SELECT count(*)
@@ -46,10 +49,11 @@
 			WHERE teacher_email=#{teacherEmail} AND teacher_pw=#{teacherPw}
 		]]>
 	</select>
-	
+
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 교사 등록 -->
-	<insert id="insertTeacher" parameterType="com.project.myapp.myb.teacher.TeacherVO">
+	<insert id="insertTeacher"
+		parameterType="com.project.myapp.myb.teacher.TeacherVO">
 	<![CDATA[
 		INSERT INTO TEACHER
 			(TEACHER_ID,TEACHER_NAME,TEACHER_EMAIL,TEACHER_PW,TEACHER_PHONE,
@@ -59,16 +63,11 @@
 			 #{adminId},#{classroomId},#{kindergartenId})
 	]]>
 	</insert>
-	
+
 	<!-- 이메일 중복체크 -->
-	<!-- <select id="emailChk" resultType="int">
-		<![CDATA[
-			SELECT count(*)
-			FROM teacher
-			WHERE teacher_email=#{teacherEmail}
-		]]>
-	</select> -->
-	
+	<!-- <select id="emailChk" resultType="int"> <![CDATA[ SELECT count(*) FROM 
+		teacher WHERE teacher_email=#{teacherEmail} ]]> </select> -->
+
 	<!-- 전화번호 중복체크 -->
 	<select id="phoneChk" resultType="int">
 		<![CDATA[
@@ -77,10 +76,11 @@
 			WHERE teacher_phone=#{teacherPhone}
 		]]>
 	</select>
-	
-	
+
+
 	<!-- 교사 목록 출력 -->
-	<select id="selectTeacherList" parameterType="int" resultType="com.project.myapp.myb.teacher.TeacherVO">
+	<select id="selectTeacherList" parameterType="int"
+		resultType="com.project.myapp.myb.teacher.TeacherVO">
 	<![CDATA[
 		select 
 			t.teacher_id AS teacherId,
@@ -100,7 +100,8 @@
 	</select>
 
 	<!-- 교사 상세정보 -->
-	<select id="selectTeacherInfo" parameterType="int" resultType="com.project.myapp.myb.teacher.TeacherVO">
+	<select id="selectTeacherInfo" parameterType="int"
+		resultType="com.project.myapp.myb.teacher.TeacherVO">
 	<![CDATA[
 		select 
 			t.teacher_id AS teacherId,
@@ -118,9 +119,10 @@
             t.teacher_id=#{teacherId}
 	]]>
 	</select>
-	
+
 	<!-- 교사 정보 수정 -->
-	<update id="updateTeacher" parameterType="com.project.myapp.myb.teacher.TeacherVO">
+	<update id="updateTeacher"
+		parameterType="com.project.myapp.myb.teacher.TeacherVO">
 	<![CDATA[
 		UPDATE 
 			teacher
@@ -133,10 +135,11 @@
 		WHERE teacher_id=#{teacherId}
 	]]>
 	</update>
-	
+
 	<!-- 교사 정보 삭제 -->
 	<delete id="deleteTeacher" parameterType="int">
-		DELETE FROM teacher WHERE teacher_id = #{teacherId}	
+		DELETE FROM teacher
+		WHERE teacher_id = #{teacherId}
 	</delete>
-	
+
 </mapper>

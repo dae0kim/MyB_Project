@@ -37,5 +37,12 @@ public class ChildService implements IChildService {
 	public List<ChildVO> getChildNameList(int teacherId) {
 		return childRepository.getChildNameList(teacherId);
 	}
+	
+	//0330 수지
+	@Override
+	public ChildVO selectChildById(int childId) {
+		return childRepository.selectChildById(childId);
+	}
 
 }
+

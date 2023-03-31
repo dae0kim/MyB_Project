@@ -6,13 +6,13 @@ public interface IClassroomRepository {
 	
 	// 해당하는 어린이집의 반들 출력(0323 문수지 작성)
 	List<ClassroomVO> selectClassroomList(int kindergartenId);
+	
 	// 어린이집 정보 불러오기(0327 문수지 작성)
 	ClassroomVO selectClassroom(int classroomId);
 	
 	// (0329 합침 일형추가)
 	ClassroomVO getTeacherClass(int teacherId);
-	// (0329 합침 일형추가)
-	ClassroomVO getClassroomId(int teacherId);
+
 	// (0329 합침 일형추가)
 	ClassroomVO getClassName(String classroomName);	
 

@@ -1,6 +1,5 @@
 package com.project.myapp.myb.diseaselog;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -31,22 +30,27 @@ public class DiseaselogController {
 								   @RequestParam("kindergartenGu") String kindergartenGu,	
 								   @RequestParam("childId[]") int[] childIds,	
 								   @RequestParam("diseaseId[]") int[] diseaseIds) {
-		System.out.println("diseaseId[]" + diseaseIds.length);
-	    for (int i=0; i<diseaseIds.length; i++) {
+		for (int i=0; i<diseaseIds.length; i++) {
 	        DiseaselogVO diseaselogvo = new DiseaselogVO();
 	        
-	        // 고정으로 들어가는 요소
-	        diseaselogvo.setClassroomId(classroomId);
-	        diseaselogvo.setKindergartenId(kindergartenId);
-	        diseaselogvo.setKindergartenCity(kindergartenCity);
-	        diseaselogvo.setKindergartenGu(kindergartenGu);
 	        
-	        // 반복해서 들어가는 요소
-	        diseaselogvo.setDiseaseId(diseaseIds[i]);
-	        diseaselogvo.setChildId(childIds[i]);
-	        
-	        
-	        diseaselogService.insertDiseaseLog(diseaselogvo);	        
+	        // diseaseId = 0 이 아닐때만 작동함
+	        if(diseaseIds[i] != 0) {
+		        diseaselogvo.setClassroomId(classroomId);
+		        diseaselogvo.setKindergartenId(kindergartenId);
+		        diseaselogvo.setKindergartenCity(kindergartenCity);
+		        diseaselogvo.setKindergartenGu(kindergartenGu);
+		        
+		        // 반복해서 들어가는 요소
+		        diseaselogvo.setDiseaseId(diseaseIds[i]);
+		        diseaselogvo.setChildId(childIds[i]);
+		        
+		        // vo 추가로인한 set추가 (의미없음)
+		        diseaselogvo.setTotalPatient(i);
+		        
+		        
+		        diseaselogService.insertDiseaseLog(diseaselogvo);
+		    }
 	    }
 	    return "redirect:/teacher/mteacher_web_main";
 	}

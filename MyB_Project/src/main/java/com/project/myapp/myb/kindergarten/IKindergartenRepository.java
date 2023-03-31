@@ -11,6 +11,7 @@ public interface IKindergartenRepository {
 	
 	// 어린이집 검색 (0323 문수지 작성)
 	List<KindergartenVO> searchListByNameKeyword(@Param("kindergartenNameKeyword") String kindergartenNameKeyword, @Param(value="kindergartenCity") String kindergartenCity, @Param(value="kindergartenGu") String kindergartenGu);
+	
 	// 어린이집 정보 불어오기 (0324 문수지 작성)
 	KindergartenVO selectKindergartenById(int kindergartenId);
 

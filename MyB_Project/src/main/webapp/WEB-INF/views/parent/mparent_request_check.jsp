@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@include file="../p_header.jsp"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,13 +13,13 @@
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
     <title>request</title>
     <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_request.css" rel="stylesheet">    
+    <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_request_check.css" rel="stylesheet">    
 </head>
 <body>
-	<form action="<c:url value='/parent/mparent_request'/>" method="post">
+	<form action="<c:url value='/parent/mparent_request_check'/>" method="post">
 	    <div class="title_wrap">
-			<div id="title_name" style="font-weight : 700;">요청사항 작성</div>
-			<input type="submit" value="작성하기">	
+			<div id="title_name" style="font-weight : 700;">요청사항 확인</div>
+			<input type="submit" value="조회하기">	
 		</div>
 		
 	    <div class="request_wrap">
@@ -43,21 +42,30 @@
 	            <input type="hidden" name="kindergartenId" value="">
 	            <input type="hidden" name="parentId" value="${parentId}">
 	    	
-	    		<div class="request-name">요청날짜를 선택해주세요.</div> 
+	    		<div class="request-name">요청날짜를 선택해주세요.</div>
 				<input type="text" name="requestDate" id="requestDate" required>
 				
-				<div class="request-name">요청사항을 등록해주세요.</div>
-				<input type="text" class="requestContent1_input" name="requestContent1" id="requestContent1">
-				<input type="text" class="requestContent2_input" name="requestContent2" id="requestContent2">
-				<input type="text" class="requestContent3_input" name="requestContent3" id="requestContent3">
-				<input type="text" class="requestContent4_input" name="requestContent4" id="requestContent4">
-				<input type="text" class="requestContent5_input" name="requestContent5" id="requestContent5">
+				<div class="request-name">요청사항을 확인해주세요.</div>
+				<input type="text" class="requestContent1_input" name="requestContent1" value="${requestVO.requestContent1}" readonly>
+				<input type="checkbox" name="requestStat1" <c:if test="${requestVO.requestStat1 eq 'Y'}">checked</c:if> onClick="return false;">
+				<input type="text" class="requestContent2_input" name="requestContent2" value="${requestVO.requestContent2}" readonly>
+				<input type="checkbox" name="requestStat2" <c:if test="${requestVO.requestStat2 eq 'Y'}">checked</c:if> onClick="return false;">
+				<input type="text" class="requestContent3_input" name="requestContent3" value="${requestVO.requestContent3}" readonly>
+				<input type="checkbox" name="requestStat3" <c:if test="${requestVO.requestStat3 eq 'Y'}">checked</c:if> onClick="return false;">
+				<input type="text" class="requestContent4_input" name="requestContent4" value="${requestVO.requestContent4}" readonly>
+				<input type="checkbox" name="requestStat4" <c:if test="${requestVO.requestStat4 eq 'Y'}">checked</c:if> onClick="return false;">
+				<input type="text" class="requestContent5_input" name="requestContent5" value="${requestVO.requestContent5}" readonly>
+	        	<input type="checkbox" name="requestStat5" <c:if test="${requestVO.requestStat5 eq 'Y'}">checked</c:if> onClick="return false;">
+	        	
+	        	<div>담당 교사의 코멘트를 확인해주세요.</div>
+		        <div>
+		            <p>${requestVO.requestComment}</p>
+		        </div>    
 	        </div>
 	    </div>
     </form>
 
 <script type="text/javascript">
-	// childId값에 따라 해당 자녀의 classroomId, kindergartenId 불러오기
 	$('.childId_input').on("propertychange change keyup paste input", function() {
 		var childId = $('.childId_input').val(); // childId_input에 입력되는 값
 		var data = {childId : childId} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)

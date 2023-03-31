@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../p_header.jsp"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
@@ -35,7 +36,7 @@
 		                    <td scope="row" style="padding-left:10px; padding-right:3px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">
 		                    	<a href="./mparent_sidemenu_qnadetail/${complain.complainId}">${complain.complainTitle}</a>
 		                    </td>
-		                    <td scope="row" style="padding-left:10px; padding-right:3px;">${complain.complainDate}</td>
+		                    <td scope="row" style="padding-left:10px; padding-right:3px;"><fmt:formatDate pattern="yyyy-MM-dd" value="${complain.complainDate}"/></td>
 		                    <td scope="row" style="padding-left:10px; padding-right:3px;">${complain.complainStat}</td>
 		                </tr>
 		            </tbody>

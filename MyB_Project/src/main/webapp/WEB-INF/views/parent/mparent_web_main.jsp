@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../p_header.jsp"%>    
 <!DOCTYPE html>
 <html>
@@ -54,7 +55,7 @@
         <div>
             <button type="button" id="request_list" onClick="location.href='./mparent_request'">요청사항 작성</button>
             <br>
-            <button type="button" id="disease_control">요청사항 확인</button>
+            <button type="button" id="disease_control" onClick="location.href='./mparent_request_check'">요청사항 확인</button>
         </div>
     </div>
 </body>

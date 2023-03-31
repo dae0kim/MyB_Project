@@ -9,30 +9,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_requset_list.css"ㅍ rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_requset_list.css" rel="stylesheet">
 </head>
 <body>
 	<div class="title_wrap">
 		<div id="title_name" style="font-weight: 700;">요청사항 목록</div>
 	</div>
 	
-		<c:forEach items="${getRequestIdList }" var="getRequestIdList" varStatus="status2">
+<%-- 		<c:forEach items="${getRequestIdList }" var="getRequestIdList" varStatus="status2">
 		<div>${getRequestIdList.requestId}</div>
 		</c:forEach>
-		
+		 --%>
 		
  		
 		<%-- <c:set var="getRequestIdList" value="${getRequestIdList.requestId}" />  --%>
+		
+		<div class="requestChk">
 		<c:forEach items="${getParentName }" var="getParentName" varStatus="status">
+		<div id="requestBox">  
 		
 			<div id="parentname">${getParentName.parentName}</div>
 			<div id="parentRelation">${getParentName.parentRelation}</div>
 		
 			
 			<a href='<c:url value="/teacher/mteacher_requset_check/${getParentName.requestId}" />' class="button">요청사항 확인</a>
-			
+		</div>
 		</c:forEach>
 
-	
+	</div>
 </body>
 </html>

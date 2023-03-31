@@ -29,7 +29,7 @@
 
 				<div id="menulist">
 					<div class="menu">
-						<a href='<c:url value="/parent/mparent_select_kinder"/>'>자녀 등록</a>
+						<a href='<c:url value="/parent/mparent_select_kinder_mypage"/>'>자녀 등록</a>
 					</div>
 					<div class="menu">
 						<a href='<c:url value="/parent/mparent_sidemenu_info"/>'>내 정보</a>

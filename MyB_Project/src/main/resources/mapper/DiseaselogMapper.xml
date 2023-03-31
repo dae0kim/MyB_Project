@@ -1,42 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.myapp.myb.diseaselog.IDiseaselogRepository">
-	
+<mapper
+	namespace="com.project.myapp.myb.diseaselog.IDiseaselogRepository">
+
 	<!-- (0329 합침 일형추가) -->
-	<update id="insertDiseaseLog" parameterType="com.project.myapp.myb.diseaselog.DiseaselogVO">
-	MERGE INTO diseaselog d USING 
-	(SELECT
-				*
-	FROM dual)
-	ON (child_id = #{childId} AND diseaselog_date = to_char(sysdate,'yyyy-mm-dd'))
-	WHEN MATCHED THEN
-	UPDATE SET d.disease_id = #{diseaseId}
-	
-	WHEN NOT MATCHED THEN
-	INSERT ( 	d.diseaselog_id, 
-				d.diseaselog_date, 
-				d.disease_id,  
-				d.classroom_id,
-				d.kindergarten_id,
-				d.kindergarten_city,
-				d.kindergarten_gu,
-				d.child_id)
-	VALUES(DISEASELOG_SEQ.nextval, to_char(sysdate,'yyyy-mm-dd'), #{diseaseId}, #{classroomId}, #{kindergartenId}, #{kindergartenCity}, #{kindergartenGu}, #{childId})
-	
-	
+	<update id="insertDiseaseLog"
+		parameterType="com.project.myapp.myb.diseaselog.DiseaselogVO">
+		MERGE INTO diseaselog d USING
+		(SELECT
+		*
+		FROM dual)
+		ON (child_id = #{childId} AND diseaselog_date =
+		to_char(sysdate,'yyyy-mm-dd'))
+		WHEN MATCHED THEN
+		UPDATE SET d.disease_id = #{diseaseId}
+
+		WHEN NOT MATCHED THEN
+		INSERT ( d.diseaselog_id,
+		d.diseaselog_date,
+		d.disease_id,
+		d.classroom_id,
+		d.kindergarten_id,
+		d.kindergarten_city,
+		d.kindergarten_gu,
+		d.child_id)
+		VALUES(DISEASELOG_SEQ.nextval, to_char(sysdate,'yyyy-mm-dd'), #{diseaseId}, #{classroomId},
+		#{kindergartenId}, #{kindergartenCity}, #{kindergartenGu}, #{childId})
 	</update>
-	
-	<!-- (0329 합침 일형추가) -->
-	<select id="setDiseaseId" resultType="com.project.myapp.myb.diseaselog.DiseaselogVO">
-			SELECT
-				disease_id AS diseaseId
-			FROM 
-				diseaselog d, teacher t
-			where t.teacher_id = #{teacherId} AND d.diseaselog_date = to_char(sysdate,'yyyy-mm-dd') AND d.child_id= #{childId}
+
+
+
+
+	<select id="defaultDisase"
+		resultType="com.project.myapp.myb.diseaselog.DiseaselogVO">
+		SELECT
+		d.diseaselog_id AS diseaselogId,
+		d.disease_id AS diseaseId,
+		d.child_id AS childId
+		FROM
+		DISEASELOG d, TEACHER t
+		WHERE t.teacher_id = #{teacherId}
+		AND (d.classroom_id = t.classroom_id)
+		AND (d.diseaselog_date = to_char(SYSDATE,'yyyy-mm-dd'))
 	</select>
-	
-	
+
+	<select id="test"
+		resultType="com.project.myapp.myb.diseaselog.DiseaselogEtcVO">
+		select
+		cn.childId AS childId,
+		cn.childName AS childName,
+		NVL(dl.disease_id,0) AS diseaseId
+		from (
+		select
+		c.child_id AS childId,
+		c.child_name AS childName
+		from
+		classroom cr, child c, teacher t
+		where
+		t.teacher_id = #{teacherId} AND
+		t.classroom_id = cr.classroom_id AND
+		cr.classroom_id = c.classroom_id)
+		cn left outer join diseaselog dl
+		on cn.childId = dl.child_id
+		AND dl.diseaselog_date = to_char(SYSDATE,'YYYY-MM-dd')
+		ORDER BY child_id
+	</select>
+
+
+
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 그냥 화면 띄우기용도 -->
 	<select id="showview" resultType="int">
@@ -45,10 +77,11 @@
 		from diseaselog
 	]]>
 	</select>
-	
-	
+
+
 	<!-- 관리자 통계 첫 화면 : 각 구별 최근 2주 전체 환자 수 -->
-	<select id="countChildGuList" resultType="com.project.myapp.myb.diseaselog.DiseaselogVO">
+	<select id="countChildGuList"
+		resultType="com.project.myapp.myb.diseaselog.DiseaselogVO">
 		<![CDATA[
 			SELECT 
 				kindergarten_gu AS kindergartenGu,
@@ -59,7 +92,8 @@
 		]]>
 	</select>
 
-	<select id="countChildDiseaseList" parameterType="String" resultType="hashmap">
+	<select id="countChildDiseaseList" parameterType="String"
+		resultType="hashmap">
 		<![CDATA[
 			SELECT 
 				d.disease_name AS diseaseName,
@@ -72,6 +106,6 @@
 			GROUP BY (d.disease_name)
 		]]>
 	</select>
-	
-	
+
+
 </mapper>

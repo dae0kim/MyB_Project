@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.myapp.myb.request.IRequestRepository">
-	
-	<!-- 요청사항 작성하기 (0328 문수지)-->
-	<insert id="insertRequest" parameterType="com.project.myapp.myb.request.RequestVO">
+<mapper
+	namespace="com.project.myapp.myb.request.IRequestRepository">
+
+	<!-- 요청사항 작성하기 (0328 문수지) -->
+	<insert id="insertRequest"
+		parameterType="com.project.myapp.myb.request.RequestVO">
 		<![CDATA[
 			INSERT INTO
 				request (request_id, request_date, request_content1, request_content2, request_content3, request_content4, request_content5, parent_id, child_id, classroom_id)
@@ -12,46 +14,68 @@
 				(REQUEST_SEQ.NEXTVAL, #{requestDate}, #{requestContent1}, #{requestContent2}, #{requestContent3}, #{requestContent4}, #{requestContent5}, #{parentId}, #{childId}, #{classroomId})
 		]]>
 	</insert>
-	
-	<!-- (0329 합침 일형추가) -->
-	<select id="getRequestList" resultType="com.project.myapp.myb.request.RequestVO">
-		SELECT t.teacher_id, r.request_id, p.parent_id, p.parent_name
-		FROM request r, teacher t, parent p
-		WHERE (r.classroom_id = t.classroom_id) AND (p.parent_id=r.parent_id);
+
+	<!-- 요청사항 확인하기 (0330 문수지) -->
+	<select id="selectRequest" parameterType="hashmap"
+		resultType="com.project.myapp.myb.request.RequestVO">
+		<![CDATA[
+			SELECT
+				request_id AS requestId,
+				request_date AS requestDate,
+				request_content1 AS requestContent1,
+				request_content2 AS requestContent2,
+				request_content3 AS requestContent3,
+				request_content4 AS requestContent4,
+				request_content5 AS requestContent5,
+				request_comment AS requestComment,
+				request_stat1 AS requestStat1,
+				request_stat2 AS requestStat2,
+				request_stat3 AS requestStat3,
+				request_stat4 AS requestStat4,
+				request_stat5 AS requestStat5
+			FROM request
+			WHERE TO_CHAR(request_date, 'YYYY/MM/DD') = #{requestDate} AND child_id = #{childId}		
+		]]>
 	</select>
 
+
 	<!-- (0329 합침 일형추가) -->
-	<select id="getRequestIdList" resultType="com.project.myapp.myb.request.RequestVO">
+	<select id="getCheckDetail"
+		resultType="com.project.myapp.myb.request.RequestVO">
 		SELECT
-			r.request_id AS requestId,
-			r.request_date AS requestDate, 
-            r.request_content1 AS requestContent1, 
-            r.request_content2 AS requestContent2,
-            r.request_content3 AS requestContent3,
-            r.request_content4 AS requestContent4,
-            r.request_content5 AS requestContent5,
-            r.request_stat AS requestStat,
-            r.parent_id AS parentId,
-            r.child_id AS childId,
-            r.classroom_id AS classroomId,
-			t.teacher_id AS teacherId
-		FROM 
-			request r, teacher t
-		WHERE
-			t.teacher_id = #{teacherId}
-	</select>
-
-	<!-- (0329 합침 일형추가) -->
-	<select id="getCheckDetail" resultType="com.project.myapp.myb.request.RequestVO">
-		SELECT 
-        request_id AS requestId,
+		request_id AS requestId,
 		request_content1 AS requestContent1,
-		request_content2 AS requestContent2,
+		request_content2 AS
+		requestContent2,
 		request_content3 AS requestContent3,
-		request_content4 AS requestContent4,
-		request_content5 AS requestContent5
-		FROM request
+		request_content4
+		AS requestContent4,
+		request_content5 AS requestContent5,
+		request_comment AS requestComment,
+		request_stat1 AS requestStat1,
+		request_stat2 AS requestStat2,
+		request_stat3 AS requestStat3,
+		request_stat4 AS requestStat4,
+		request_stat5 AS requestStat5
+		FROM
+		request
 		WHERE request_id=#{requestId}
 	</select>
-	
+
+	<update id="updateRequest"
+		parameterType="com.project.myapp.myb.request.RequestVO">
+		UPDATE
+		request
+		SET
+		request_stat1 = #{requestStat1},
+		request_stat2 = #{requestStat2},
+		request_stat3 = #{requestStat3},
+		request_stat4 = #{requestStat4},
+		request_stat5 = #{requestStat5},
+		request_comment = #{requestComment}
+		WHERE
+		request_id = #{requestId}
+	</update>
 </mapper>
+
+

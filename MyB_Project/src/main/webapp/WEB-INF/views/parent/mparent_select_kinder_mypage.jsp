@@ -16,7 +16,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_select_kinder.css" rel="stylesheet">
 </head>
 <body>
-	<form action="<c:url value='/parent/mparent_select_kinder'/>" role="search" method="post">
+	<form action="<c:url value='/parent/mparent_select_kinder_mypage'/>" role="search" method="post">
 	    <div id="head_icon"><img src="../resources/images/logo.png"><b> 어린이집 등록</b></div>
 	        <div id="address">
 	            <select name="kindergartenCity" id="kindergartenCity" style="
@@ -40,7 +40,7 @@
 		<hr style="border: solid 2px black; width: 100%;">
 	
 		<c:forEach var="kindergarten" items="${kindergartenList}">
-			<div id="kindergartenlist" onclick="location.href='./mparent_select_class/${kindergarten.kindergartenId}'">
+			<div id="kindergartenlist" onclick="location.href='./mparent_select_class_mypage/${kindergarten.kindergartenId}'">
 				<div class="listtext">${kindergarten.kindergartenName}</div>
 				<div class="listtext"><p>${kindergarten.kindergartenAddress}</p></div>
 				<div class="listtext">${kindergarten.kindergartenPhone}</div>

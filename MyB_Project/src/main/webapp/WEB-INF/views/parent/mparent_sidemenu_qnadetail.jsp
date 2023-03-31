@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../p_header.jsp"%> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>        
 <!DOCTYPE html>
 <html>
@@ -23,7 +24,7 @@
     <div class="sidemenuqna_wrap">
     	<div class="sidemenuqnacontent_wrap">
             <div>제목: ${complain.complainTitle}</div>
-            <div>작성일: ${complain.complainDate}</div>
+            <div>작성일: <fmt:formatDate pattern="yyyy-MM-dd" value="${complain.complainDate}"/></div>
             <br>
             <p>${complain.complainContent}</p>
         </div>
