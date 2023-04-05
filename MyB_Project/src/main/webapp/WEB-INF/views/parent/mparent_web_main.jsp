@@ -37,7 +37,7 @@
 						<span class="btntitle">요청사항 작성</span>
 						<span class="btncontent">선생님에게 요청사항을 보낼 수 있어요</span>
 					</div>
-					<img src="../resources/images/images/mobile/mparent_request.png" width="140" style="padding-top:50px;">
+					<img src="../resources/images/images/mobile/mparent_request.png" width="100%" style="padding-top:20px;">
 				</div>
             </button>
 			</div>
@@ -48,9 +48,9 @@
             	<div class="btnimg">
 					<div class="btnwrite">
 						<span class="btntitle">요청사항 확인</span>
-						<span class="btncontent">선생님에게 보낸 요청사항을 확인할 수 있어요</span>
+						<span class="btncontent">보낸 요청사항을 확인할 수 있어요</span>
 					</div>
-					<img src="../resources/images/images/mobile/mparent_requestchk.png" width="140" style="padding-top:30px;">
+					<img src="../resources/images/images/mobile/mparent_requestchk.png" width="100%" style="padding-top:20px;">
 				</div>
             </button>
 			</div>
