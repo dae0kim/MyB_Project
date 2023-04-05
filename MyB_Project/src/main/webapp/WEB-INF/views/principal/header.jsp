@@ -68,7 +68,7 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav" style="padding-top: 30px;">
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/kindergarten/check' />" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">어린이집 등록</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/kindergarten/check' />" aria-expanded="false"><i class="fa-solid fa-house"></i><span class="hide-menu">어린이집 등록</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/classroom/namelist/${loginUser.adminId}' />" aria-expanded="false"><i class="fa-solid fa-chalkboard"></i><span class="hide-menu">반 관리</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/teacher/list/${loginUser.adminId}' />" aria-expanded="false"><i class="fa-solid fa-chalkboard-user"></i><span class="hide-menu">교사 관리</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/complain/list/${loginUser.adminId}' />" aria-expanded="false"><i class="fa-regular fa-face-angry"></i><span class="hide-menu">컴플레인</span></a></li>

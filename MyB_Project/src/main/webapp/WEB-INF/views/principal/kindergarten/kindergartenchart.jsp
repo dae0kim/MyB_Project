@@ -110,6 +110,7 @@
 		    chart: {
 		      title: '',
 		      subtitle: '',
+		      fontSize: 20,
 		    }
 		  };
 		

@@ -10,23 +10,20 @@
 }
 /* 히트맵 */
 #web_map_container{
-	height: auto;
-  	margin-right:10%;
- 	margin-left:10%;	
+	height: auto;	
 	text-align:center;
+	display: flex;
 }
 .mapArea {
-  width: 900px;
+  width: auto;
   height: auto;
   text-align:center;
-  margin-right:10%;
-  margin-left:10%;
 }
 #locName {
   width: auto;
   height: 50px;
   text-align:center;
-  font-size:5rem;
+  /* font-size:5rem; */
   margin-bottom:2rem;
 }
 #paper{
@@ -36,8 +33,8 @@
 
 /* 서울시 차트 */
 #web_chart_container{
-	width:900px;
-	height:500px;
+ 	width:700px;
+	height:500px; 
 	display:none;
 }
 #piechart_3d{
@@ -50,16 +47,18 @@
 	text-align:center;
 }
 #web_chart_title{
-	font-size:5rem;
+	font-size:1.5rem;
 	font-weight:700;
 }
 
 /* 어린이집 전체 차트 */
 #columnchart_material{
-	width: 90%; 
+	/* width: 90%; */ 
 	height: 500px;
 	margin-right:auto;
 	margin-left:auto;
+	margin-bottom:50px;
+	border: solid 3px black;
 }
 #web_classroom_select{
  	width: 90%; 

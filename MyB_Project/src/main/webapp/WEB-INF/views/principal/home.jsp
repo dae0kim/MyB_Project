@@ -121,44 +121,73 @@
                         <div class="card-header" id="headingOne">
                           <h5 class="mb-0">
                             <a  data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
-                                <span>Accordion Example 1</span>
+                                <i class="m-r-5 fa fa-circle-info" aria-hidden="true"></i>
+                                <span>반 관리 & 교사 관리</span>
                             </a>
                           </h5>
                         </div>
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                           <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          	<p>
+                          		[반 관리]<br>
+                          		어린이집의 반을 등록할 수 있습니다. 
+                          		원장님이 등록하신 반은 부모님이 자녀 정보를 기입할 때 반 선택 목록에서 보여지게 됩니다.
+                          	</p>
+                          	<p>
+                          		[교사 관리]<br>
+                          		어린이집에 소속된 교사 정보를 조회,등록,수정,삭제할 수 있습니다. 
+                          		교사 등록시 앱 사용을 위한 계정을 만들어줄 수 있습니다.
+                          	</p>
                           </div>
                         </div>
                     </div>
+                    
                     <div class="card m-b-0 border-top" style="margin-bottom:0px;">
                         <div class="card-header" id="headingTwo">
                           <h5 class="mb-0">
                             <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
-                                <span>Accordion Example 2</span>
+                                <i class="m-r-5 fa fa-circle-info" aria-hidden="true"></i>
+                                <span>컴플레인 & 공지사항</span>
                             </a>
                           </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                           <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          	<p>
+                          		[컴플레인]<br>
+                          		학부모가 등록한 컴플레인 게시물을 확인할 수 있습니다. 
+                          		처리상태를 변경하여 확인한 게시물임을 알 수 있습니다.
+                          	</p>
+                          	<p>
+                          		[공지사항]<br>
+                          		어린이집의 공지사항을 조회,등록,수정,삭제할 수 있습니다.
+                          		상단 고정 여부를 선택하여 공지사항 목록의 최상단에 특정 공지사항을 보여줄 수 있습니다.
+                          	</p>
                           </div>
                         </div>
-                    </div>
+                    </div> 
                     <div class="card m-b-0 border-top">
                         <div class="card-header" id="headingThree">
                           <h5 class="mb-0">
                             <a class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <i class="m-r-5 fa fa-magnet" aria-hidden="true"></i>
-                                <span>Accordion Example 3</span>
+                                <i class="m-r-5 fa fa-circle-info" aria-hidden="true"></i>
+                                <span>출결통계 & 질병통계</span>
                             </a>
                           </h5>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
                           <div class="card-body">
-                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                          	<p>
+                          		[출결통계]<br>
+                          		어린이집 원생들의 출결상태를 그래프로 확인할 수 있습니다.
+                          		모든 반의 총원,결석인원,출석인원을 볼 수 있습니다.
+                          		반을 선택하여 조회하면 해당 반 원생들이 어떤 질병으로 인해 결석했는지 확인할 수 있습니다. 
+                          	</p>
+                          	<p>
+                          		[질병통계]<br>
+                          		서울시 각 구별 어린이들의 질병 발생 현황을 확인할 수 있습니다.
+                          		조회를 원하는 구를 지도에서 클릭하면 해당 구에서 어떤 질병이 유행중인지 확인할 수 있습니다.
+                          	</p>
                           </div>
                         </div>
                     </div>

@@ -39,46 +39,19 @@
             <!-- ============================================================== -->
             <div class="container-fluid">
             	<div id="web_map_container">	
-					<div class="mapArea">
-				      <div id="paper"></div>
-				      <div id="statisticsInfo">	      	
-				      		<input type="hidden" id="gangnamCount" value="${gangnamCount}" />	      		
-				      		<input type="hidden" id="gangdongCount" value="${gangdongCount}" />	      		
-				      		<input type="hidden" id="gangbukCount" value="${gangbukCount}" />	      		
-				      		<input type="hidden" id="gangseoCount" value="${gangseoCount}" />	      		
-				      		<input type="hidden" id="gwanakCount" value="${gwanakCount}" />	      		
-				      		<input type="hidden" id="gwangjinCount" value="${gwangjinCount}" />	      		
-				      		<input type="hidden" id="guroCount" value="${guroCount}" />	      		
-				      		<input type="hidden" id="geumcheonCount" value="${geumcheonCount}" />	      		
-				      		<input type="hidden" id="nowonCount" value="${nowonCount}" />	      		
-				      		<input type="hidden" id="dobongCount" value="${dobongCount}" />	      		
-				      		<input type="hidden" id="ddmCount" value="${ddmCount}" />	      		
-				      		<input type="hidden" id="dongjakCount" value="${dongjakCount}" />	      		
-				      		<input type="hidden" id="mapoCount" value="${mapoCount}" />	      		
-				      		<input type="hidden" id="sdmCount" value="${sdmCount}" />	      		
-				      		<input type="hidden" id="seochoCount" value="${seochoCount}" />	      		
-				      		<input type="hidden" id="seongdongCount" value="${seongdongCount}" />	      		
-				      		<input type="hidden" id="seongbukCount" value="${seongbukCount}" />	      		
-				      		<input type="hidden" id="songpaCount" value="${songpaCount}" />	      		
-				      		<input type="hidden" id="yangcheonCount" value="${yangcheonCount}" />	      		
-				      		<input type="hidden" id="yeongdeungpoCount" value="${yeongdeungpoCount}" />	      		
-				      		<input type="hidden" id="yongsanCount" value="${yongsanCount}" />	      		
-				      		<input type="hidden" id="eunpyeongCount" value="${eunpyeongCount}" />	      		
-				      		<input type="hidden" id="jongnoCount" value="${jongnoCount}" />	      		
-				      		<input type="hidden" id="jungCount" value="${jungCount}" />	      		
-				      		<input type="hidden" id="jungnangCount" value="${jungnangCount}" />	      		
-				      </div>
-				      <br>
-				      
+					<div class="mapArea" style="display:inline-block;">
+				      <div id="paper"></div>				      
+				      <br>		      
 			      	  <div id="web_chart_comment">
 			      	  	*지도를 클릭하시면 해당 구의 환자 데이터를 보실 수 있습니다.
 			      	  </div>
-			      	  <div id="locName"></div>
-			      	  <br>
-				      <div id="web_chart_container">
+				    </div>
+				    <div id="adfsa" style="display:inline-block;">
+				    	<div id="web_chart_container">
 				      	  <div id="web_chart_title_container">
+				      	  	<!-- <div id="locName"></div> -->
 				      	  	<div id="web_chart_title">
-				      	  		질병별 발생 비율
+				      	  		<span id="locName"></span> 질병 발생 비율
 				      	  	</div>
 				      	  	<div id="web_chart_subtitle">
 				      	  		[최근 2주간 데이터를 나타냅니다]
@@ -88,7 +61,34 @@
 				      </div>
 				    </div>
 				</div>
-            </div>    
+            </div>
+            <div id="statisticsInfo">	      	
+	    		<input type="hidden" id="gangnamCount" value="${gangnamCount}" />	      		
+	    		<input type="hidden" id="gangdongCount" value="${gangdongCount}" />	      		
+	    		<input type="hidden" id="gangbukCount" value="${gangbukCount}" />	      		
+	    		<input type="hidden" id="gangseoCount" value="${gangseoCount}" />	      		
+	    		<input type="hidden" id="gwanakCount" value="${gwanakCount}" />	      		
+	    		<input type="hidden" id="gwangjinCount" value="${gwangjinCount}" />	      		
+	    		<input type="hidden" id="guroCount" value="${guroCount}" />	      		
+	    		<input type="hidden" id="geumcheonCount" value="${geumcheonCount}" />	      		
+	    		<input type="hidden" id="nowonCount" value="${nowonCount}" />	      		
+	    		<input type="hidden" id="dobongCount" value="${dobongCount}" />	      		
+	    		<input type="hidden" id="ddmCount" value="${ddmCount}" />	      		
+	    		<input type="hidden" id="dongjakCount" value="${dongjakCount}" />	      		
+	    		<input type="hidden" id="mapoCount" value="${mapoCount}" />	      		
+	    		<input type="hidden" id="sdmCount" value="${sdmCount}" />	      		
+	    		<input type="hidden" id="seochoCount" value="${seochoCount}" />	      		
+	    		<input type="hidden" id="seongdongCount" value="${seongdongCount}" />	      		
+	    		<input type="hidden" id="seongbukCount" value="${seongbukCount}" />	      		
+	    		<input type="hidden" id="songpaCount" value="${songpaCount}" />	      		
+	    		<input type="hidden" id="yangcheonCount" value="${yangcheonCount}" />	      		
+	    		<input type="hidden" id="yeongdeungpoCount" value="${yeongdeungpoCount}" />	      		
+	    		<input type="hidden" id="yongsanCount" value="${yongsanCount}" />	      		
+	    		<input type="hidden" id="eunpyeongCount" value="${eunpyeongCount}" />	      		
+	    		<input type="hidden" id="jongnoCount" value="${jongnoCount}" />	      		
+	    		<input type="hidden" id="jungCount" value="${jungCount}" />	      		
+	    		<input type="hidden" id="jungnangCount" value="${jungnangCount}" />	      		
+		    </div>    
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
@@ -124,7 +124,7 @@
 	<script type="text/javascript">
 	$(function () {
 	    var R = Raphael("paper", 900, 700);
-	    R.canvas.style.zoom = 0.8;
+	    R.canvas.style.zoom = 0.65;
 	
 	    var attr = {
 	      fill: "#fff",
@@ -344,8 +344,6 @@
 	        
 	        /* 마우스 올릴 때 */
 	        st[0].onmouseover = function () {
-	      	console.log(st.id);
-	          //$("#locName").text(locInfo[state][0]);
 	          if (current == st.id) {
 	            return;
 	          }
@@ -384,10 +382,9 @@
 	            }).responseText;
 	
 	  	  var data = new google.visualization.DataTable(jsonData);
-	  	  console.log("데이터 테이블 :" +data);
 	  	  
 	      var options = {
-	    	  legend: 'bottom',		
+    	    legend: 'right',		
 	        fontSize: 20,
 	        subtitle: 'dd',
 	        is3D: true,

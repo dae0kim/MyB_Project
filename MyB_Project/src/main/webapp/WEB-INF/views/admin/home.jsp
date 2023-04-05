@@ -42,7 +42,7 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <!-- Column -->
-                    <div class="col-md-6 col-xlg-3">
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
                         <div class="card card-hover">
                         	<a href="<c:url value='/kindergarten/request/list' />">
                             <div class="box bg-cyan text-center">
@@ -53,7 +53,7 @@
                         </div>
                     </div>               
                     <!-- Column -->
-                    <div class="col-md-6 col-xlg-3">
+                    <div class="col-md-6 col-lg-2 col-xlg-3">
                         <div class="card card-hover">
                         	<a href="<c:url value='/diseaselog/check' />">
                             <div class="box bg-danger text-center">

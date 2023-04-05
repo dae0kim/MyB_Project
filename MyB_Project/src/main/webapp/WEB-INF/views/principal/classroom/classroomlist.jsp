@@ -29,7 +29,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">컴플레인 목록</h5>
+                                <h5 class="card-title">반 목록</h5>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>

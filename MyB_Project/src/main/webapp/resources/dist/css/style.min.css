@@ -99,7 +99,7 @@ section {
 body {
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #3e5569;
@@ -1694,7 +1694,7 @@ pre code {
   border: 0;
 }
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(0, 0, 0, 0.05);
+  /* background-color: rgba(0, 0, 0, 0.05); */
 }
 .table-hover tbody tr:hover {
   background-color: #f8f9fa;
@@ -9430,6 +9430,7 @@ html[dir="ltr"] body .p-l-0 {
 #main-wrapper .left-sidebar[data-sidebarbg="skin5"],
 #main-wrapper .left-sidebar[data-sidebarbg="skin5"] ul {
   background: #1f262d;
+  font-size: 1.8rem;
 }
 #main-wrapper .left-sidebar[data-sidebarbg="skin5"] .create-btn,
 #main-wrapper .left-sidebar[data-sidebarbg="skin5"] ul .create-btn {
@@ -9440,7 +9441,7 @@ html[dir="ltr"] body .p-l-0 {
   overflow: hidden;
 }
 .page-wrapper {
-  background: #eeeeee;
+  /* background: #eeeeee; */
   position: relative;
   margin-left: 250px;
 }
@@ -9750,6 +9751,7 @@ ul.list-style-none li a:hover {
   position: relative;
   font-weight: 600;
   margin-bottom: 10px;
+  font-size: 2.5rem;
 }
 .card .card-actions {
   float: right;
@@ -10192,6 +10194,7 @@ ul.list-style-none li a:hover {
 }
 .page-breadcrumb .page-title {
   margin-bottom: 0px;
+  font-size:2.5rem;
 }
 .page-breadcrumb .breadcrumb {
   padding: 0px;
@@ -10235,7 +10238,7 @@ ul.list-style-none li a:hover {
   -ms-flex-align: center;
   align-items: center;
   line-height: 25px;
-  opacity: 0.6;
+  /* opacity: 0.6; */
 }
 .sidebar-nav ul .sidebar-item .sidebar-link i {
   font-style: normal;
@@ -10294,6 +10297,7 @@ ul.list-style-none li a:hover {
 }
 .sidebar-nav ul li {
   list-style: none;
+  margin-bottom: 2rem;
 }
 .collapse.in {
   display: block;

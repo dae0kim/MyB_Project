@@ -215,3 +215,12 @@ footer .glyphicon {
     font-size: 150px;
   }
 }
+
+#index_logo_text{
+	font-size:2em; 
+	font-weight:700;
+}
+.index_nav_text{
+	font-size:1.5em; 
+	font-weight:700;
+}

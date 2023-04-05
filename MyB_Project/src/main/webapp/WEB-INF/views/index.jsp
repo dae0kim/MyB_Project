@@ -37,14 +37,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage">MyB</a>
+          <a class="navbar-brand" href="#myPage"><span id="index_logo_text">MyB</span></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#services">SERVICES</a></li>
-            <li><a href="<c:url value='/login' />">LOGIN</a></li>
-            <li><a href="<c:url value='/principal/joinform' />">JOIN</a></li>
+            <li><a href="#about"><span class="index_nav_text">ABOUT</span></a></li>
+            <li><a href="#services"><span class="index_nav_text">SERVICES</span></a></li>
+            <li><a href="<c:url value='/login' />"><span class="index_nav_text">LOGIN</span></a></li>
+            <li><a href="<c:url value='/principal/joinform' />"><span class="index_nav_text">JOIN</span></a></li>
           </ul>
         </div>
       </div>
@@ -53,7 +53,7 @@
     <div class="jumbotron text-center">
     	<div id="web_main_title" class="web_main_top">
 	      <p>사랑하는 내 아이를 위한 서비스</p>    	
-	      <h1>마이비</h1>
+	      <h1>MyB</h1>
     	</div>
     	<div id="web_main_image" class="web_main_top">
     		<img id="web_main_webp" alt="main image" src="<c:url value='/resources/images/web/visual_main.webp' />">
@@ -67,7 +67,7 @@
           <br />
           <h4>
             아이를 위한 부모님의 마음도, 선생님의 진심도 마이비는 다 아니까.
-			두 마음을 이어주는 올바른 소통방법, 마이비.
+			두 마음을 이어주는 올바른 소통방법, MyB
           </h4>
           <br />
           <br />
