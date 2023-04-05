@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 #web_map_container{
 	margin:auto;
 	text-align:center;
@@ -20,4 +21,43 @@
 }
 #paper{
 	text-align:center;
+}
+
+
+/* 서울시 차트 */
+#web_chart_container{
+	width:900px;
+	height:500px;
+	display:none;
+}
+#piechart_3d{
+	width: 100%; 
+	height: 100%;
+}
+
+/* 서울시 구별 차트 제목 */
+#web_chart_title_container{
+	text-align:center;
+}
+#web_chart_title{
+	font-size:5rem;
+	font-weight:700;
+}
+
+/* 어린이집 반별 차트 */
+#web_classroom_chart_container{
+	width:900px;
+	height:500px;
+	display:none;
+}
+#piechart2_3d{
+	width: 100%; 
+	height: 100%;
+}
+#web_classroom_chart_title_container{
+	text-align:center;
+}
+#web_classroom_chart_title{
+	font-size:5rem;
+	font-weight:700;
 }

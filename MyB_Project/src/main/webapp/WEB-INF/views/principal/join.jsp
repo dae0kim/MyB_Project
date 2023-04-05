@@ -48,7 +48,7 @@
         <div>
             <p><input type="checkbox" id="chk"><a id="termstext">다음 약관에 동의합니다.</a></p>
             <div>
-	            <input id="web_jointerm_nextbtn" type="button" class="box" onClick="location.href='<c:url value='/principal/joinform' />'" value="다음으로">
+	            <input id="web_jointerm_nextbtn" type="button" class="box" value="다음으로">
             </div>
         </div>
      </div>
@@ -58,8 +58,10 @@
 	 jQuery(document).ready(function() {    
            jQuery("#web_jointerm_nextbtn").click(function() {
                if(!jQuery("#chk").is(":checked")) {
-                   alert("약관내용을 확인해 보시고 동의해 주세요.");
-                   window.location.href = "./join";
+                   alert("약관에 동의해 주세요.");
+                   //window.location.href = "./join";
+               }else{
+            	   window.location.href = "./joinform";
                }
            });
        });

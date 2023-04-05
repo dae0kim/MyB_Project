@@ -1,11 +1,16 @@
 package com.project.myapp.myb.admin;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+/**
+ * 원장 사용자, 시스템 관리자와 관련된 기능을 담는 서비스클래스입니다.
+ * 
+ * @author 김대영
+ * @since 2023.04.04
+ *
+ */
 @Service
 public class AdminService implements IAdminService {
 
@@ -31,16 +36,6 @@ public class AdminService implements IAdminService {
 	@Override
 	public String getPassword(String email) {
 		return adminRepository.getPassword(email);
-	}
-
-	@Override
-	public int emailChk(String adminEmail) {
-		return adminRepository.emailChk(adminEmail);
-	}
-
-	@Override
-	public int phoneChk(String adminPhone) {
-		return adminRepository.phoneChk(adminPhone);
 	}
 
 }

@@ -16,6 +16,13 @@ import com.project.myapp.myb.alarm.IAlarmService;
 import com.project.myapp.myb.parent.IParentService;
 import com.project.myapp.myb.teacher.ITeacherService;
 
+/**
+ * 공지사항과 관련된 기능을 담는 컨트롤러클래스입니다.
+ * 
+ * @author 손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Controller
 public class NoticeController {
 
@@ -81,102 +88,109 @@ public class NoticeController {
 
 	}
 
-	/* -----------------------------웹 기능----------------------------- */
-	// 공지사항 전체 조회
-	@RequestMapping(value = "/notice/list/{adminId}/{page}")
-	public String selectNoticeList(@PathVariable int adminId, @PathVariable int page, HttpSession session,
-			Model model) {
-
+	/* -----------------------------웹 기능 : 김대영----------------------------- */
+	/**
+	 * 공지사항 전체 조회를 위한 메서드입니다.
+	 * 
+	 * @param adminId 사용자 식별번호를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 사용자의 상태에 맞는 화면을 반환합니다.
+	 */
+	@RequestMapping(value = "/notice/list/{adminId}")
+	public String selectNoticeList(@PathVariable int adminId, HttpSession session, Model model) {
+		
 		String stat = (String) session.getAttribute("kindergartenStat");
-
-		if (stat != null) {
-			if (stat.equals("Y")) {
-				session.setAttribute("page", page);
-				List<NoticeVO> noticeList = noticeService.selectNoticeList(adminId, page);
+		
+		if(stat != null) {
+			if(stat.equals("Y")) {
+				List<NoticeVO> noticeList = noticeService.selectNoticeList(adminId);
 				model.addAttribute("noticeList", noticeList);
-				int bbsCount = noticeService.selectTotalNoticeCount(adminId);
-				int totalPage = 0;
-				if (bbsCount > 0) {
-					totalPage = (int) Math.ceil(bbsCount / 10.0);
-				}
-				model.addAttribute("totalPageCount", totalPage);
-				model.addAttribute("page", page);
 				return "/principal/notice/noticelist";
 			}
-		} else {
+		}else {
 			return "redirect:/kindergarten/check";
 		}
 		return "redirect:/kindergarten/check";
-	}
+	}	
 
-	@RequestMapping("/notice/list/{adminId}")
-	public String selectNoticeList(@PathVariable int adminId, HttpSession session, Model model) {
-		return selectNoticeList(adminId, 1, session, model);
-	}
-
-	// 공지사항 상세 정보 조회
-	@RequestMapping(value = "/notice/info/{noticeId}/{page}")
-	public String selectNoticeInfo(@PathVariable int noticeId, @PathVariable int page, Model model) {
+	/**
+	 * 공지사항 상세 정보 조회를 위한 메서드입니다.
+	 * 
+	 * @param noticeId 공지사항 식별번호를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 공지사항 상세정보 페이지를 반환합니다.
+	 */
+	@RequestMapping(value = "/notice/info/{noticeId}")
+	public String selectNoticeInfo(@PathVariable int noticeId, Model model) {
 		NoticeVO noticeVO = noticeService.selectNoticeInfo(noticeId);
 		model.addAttribute("noticeVO", noticeVO);
-		model.addAttribute("page", page);
 		return "/principal/notice/noticeinfo";
 	}
 
-	@RequestMapping(value = "/notice/info/{noticeId}")
-	public String selectNoticeInfo(@PathVariable int noticeId, Model model) {
-		return selectNoticeInfo(noticeId, 1, model);
-	}
-
-	// 공지사항 입력 페이지 이동
+	/**
+	 * 공지사항 입력 페이지 이동을 위한 메서드입니다.
+	 * 
+	 * @param model 모델객체를 입력합니다.
+	 * @return 공지사항 등록화면을 반환합니다.
+	 */
 	@RequestMapping(value = "/notice/insert", method = RequestMethod.GET)
 	public String insertNotice(Model model) {
 		return "/principal/notice/noticeinsertform";
 	}
-
-	// 공지사항 등록
-		// 알람등록 (0403 문수지 수정)
+	
+	/**
+	 * 공지사항 등록을 위한 메서드입니다.
+	 * 
+	 * @param noticeVO 공지사항 정보가 담긴 객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @return 공지사항 목록 화면으로 이동하라는 요청을 반환합니다.
+	 */
 	@RequestMapping(value = "/notice/insert", method = RequestMethod.POST)
-	public String insertNotice(NoticeVO noticeVO, HttpSession session) {
+	public String insertNotice(NoticeVO noticeVO,HttpSession session) {
 		noticeService.insertNotice(noticeVO);
-		int adminId = ((Integer) session.getAttribute("adminId")).intValue();
-		
-		// 알람메시지 보내기 (0403 문수지 추가)
-		String alarmMessage="새로운 공지사항이 등록되었습니다.";
-		
-		List<Integer> teacherIds = teacherService.selectTeacherIdByAdmin(adminId); // 해당 유치원에 소속하는 teacherId 리스트 저장
-		for(int teacherId : teacherIds) {
-			alarmService.insertTeacherAlarm(teacherId, alarmMessage); // 선생님에게 알람 보내기
-		}
-		
-		List<Integer> parentIds = parentService.selectParentIdByAdmin(adminId); // 해당 유치원에 소속하는 parentId 리스트 저장
-		for(int parentId : parentIds) {
-			alarmService.insertAlarm(parentId, alarmMessage); // 부모님에게 알람 보내기
-		}
-		
-		return "redirect:/notice/list/" + adminId;
+		int adminId = ((Integer)session.getAttribute("adminId")).intValue();
+		return "redirect:/notice/list/"+adminId;
 	}
 
-	// 공지사항을 수정 페이지 이동
+	/**
+	 * 공지사항 수정 페이지 이동을 위한 메서드입니다.
+	 * 
+	 * @param noticeId 공지사항 식별번호를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 공지사항 수정화면을 반환합니다.
+	 */
 	@RequestMapping(value = "/notice/update/{noticeId}", method = RequestMethod.GET)
 	public String updateNotice(@PathVariable int noticeId, Model model) {
 		NoticeVO noticeVO = noticeService.selectNoticeInfo(noticeId);
 		model.addAttribute("noticeVO", noticeVO);
 		return "/principal/notice/noticeupdate";
 	}
-
-	// 공지사항 수정
+	
+	/**
+	 * 공지사항 수정을 위한 메서드입니다.
+	 * 
+	 * @param noticeVO 수정된 공지사항 정보가 담긴 객체를 입력합니다.
+	 * @return 공지사항 상세정보 화면으로 이동하라는 요청을 반환합니다.
+	 */
 	@RequestMapping(value = "/notice/update", method = RequestMethod.POST)
 	public String updateNotice(NoticeVO noticeVO) {
 		noticeService.updateNotice(noticeVO);
 		return "redirect:/notice/info/" + noticeVO.getNoticeId();
 	}
 
-	// 공지사항 삭제
+	/**
+	 * 공지사항 삭제를 위한 메서드입니다.
+	 * 
+	 * @param noticeId 공지사항 식별번호를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 공지사항 목록 화면으로 이동하라는 요청을 반환합니다.
+	 */
 	@RequestMapping(value = "/notice/delete/{noticeId}")
-	public String deleteTeacher(@PathVariable int noticeId, HttpSession session, HttpServletRequest request) {
+	public String deleteTeacher(@PathVariable int noticeId,HttpSession session, HttpServletRequest request) {
 		noticeService.deleteNotice(noticeId);
-		int adminId = ((Integer) session.getAttribute("adminId")).intValue();
-		return "redirect:/notice/list/" + adminId;
+		int adminId = ((Integer)session.getAttribute("adminId")).intValue();
+		return "redirect:/notice/list/"+adminId;
 	}
 }

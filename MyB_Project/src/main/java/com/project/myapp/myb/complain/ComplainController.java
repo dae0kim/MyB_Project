@@ -17,7 +17,13 @@ import com.project.myapp.myb.child.IChildService;
 import com.project.myapp.myb.parent.IParentService;
 import com.project.myapp.myb.parent.ParentVO;
 
-
+/**
+ * 컴플레인과 관련된 기능을 담는 컨트롤러클래스입니다.
+ * 
+ * @author 문수지,손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Controller
 public class ComplainController {
 	
@@ -70,25 +76,24 @@ public class ComplainController {
 		return "parent/mparent_sidemenu_qnadetail";
 	}
 	
-	/* -----------------------------웹 기능----------------------------- */
-	// 공지사항 전체 조회
-	@RequestMapping(value = "/complain/list/{adminId}/{page}")
-	public String selectComplainList(@PathVariable int adminId,@PathVariable int page, HttpSession session, Model model) {
+	/* -----------------------------웹 기능 : 김대영----------------------------- */
+	/**
+	 * 원장 사용자의 어린이집에 등록된 모든 컴플레인 조회를 위한 메서드입니다.
+	 * 
+	 * @param adminId 사용자 식별번호를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 어린이집 등록이 끝난 사용자라면 컴플레인 목록 화면을, 아니라면 어린이집 등록 여부 확인 화면을 반환합니다.
+	 */
+	@RequestMapping(value = "/complain/list/{adminId}")
+	public String selectComplainList(@PathVariable int adminId,HttpSession session, Model model) {
 		
 		String stat = (String) session.getAttribute("kindergartenStat");
 		
 		if(stat != null) {
 			if(stat.equals("Y")) {
-				session.setAttribute("page", page);
-				List<ComplainVO> complainList = complainService.selectComplainList2(adminId,page);
+				List<ComplainVO> complainList = complainService.selectComplainList2(adminId);
 				model.addAttribute("complainList", complainList);
-				int bbsCount = complainService.selectTotalComplainCount(adminId);
-				int totalPage = 0;
-				if(bbsCount > 0) {
-					totalPage= (int)Math.ceil(bbsCount/10.0);
-				}
-				model.addAttribute("totalPageCount", totalPage);
-				model.addAttribute("page", page);
 				return "/principal/complain/complainlist";
 			}
 		}else {
@@ -96,32 +101,34 @@ public class ComplainController {
 		}
 		return "redirect:/kindergarten/check";
 	}
-	
-	@RequestMapping("/complain/list/{adminId}")
-	public String selectComplainList(@PathVariable int adminId,HttpSession session, Model model) {
-		return selectComplainList(adminId,1,session,model);
-	}
 
-	// 공지사항 상세 정보 조회
-	@RequestMapping(value = "/complain/info/{complainId}/{page}")
-	public String selectComplainInfo(@PathVariable int complainId, @PathVariable int page,  Model model) {
+	/**
+	 * 컴플레인 상세정보 조회를 위한 메서드입니다.
+	 * 
+	 * @param complainId 컴플레인 식별번호를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 컴플레인 상세정보 페이지를 반환합니다.
+	 */
+	@RequestMapping(value = "/complain/info/{complainId}")
+	public String selectComplainInfo(@PathVariable int complainId,  Model model) {
 		ComplainVO complainVO = complainService.selectComplainInfo(complainId);
 		ComplainDetailVO complainDetailVO = complainService.selectComplainDetail(complainId);
 
 		model.addAttribute("complainVO", complainVO);
 		model.addAttribute("complainDetailVO", complainDetailVO);
-		model.addAttribute("page", page);
 		return "/principal/complain/complaininfo";
-	}
-
-	@RequestMapping(value = "/complain/info/{complainId}")
-	public String selectNoticeInfo(@PathVariable int complainId,Model model) {
-		return selectComplainInfo(complainId, 1, model);
 	}	
 	
-	// 공지사항 삭제
+	/**
+	 * 컴플레인 상태 업데이트를 위한 메서드입니다.
+	 * 
+	 * @param complainId 컴플레인 식별번호를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 컴플레인 상세정보 페이지로 이동하라는 요청을 반환합니다.
+	 */
 	@RequestMapping(value = "/complain/update/{complainId}")
-	public String deleteTeacher(@PathVariable int complainId,HttpSession session, HttpServletRequest request) {
+	public String updateComplain(@PathVariable int complainId,HttpSession session, HttpServletRequest request) {
 		complainService.updateComplain(complainId);
 		return "redirect:/complain/info/"+complainId;
 	}

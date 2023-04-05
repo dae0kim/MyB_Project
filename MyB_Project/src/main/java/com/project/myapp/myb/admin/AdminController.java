@@ -1,22 +1,24 @@
 package com.project.myapp.myb.admin;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mobile.device.Device;
-import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.project.myapp.myb.kindergarten.IKindergartenService;
 import com.project.myapp.myb.kindergarten.KindergartenVO;
 
+/**
+ * 원장 사용자, 시스템 관리자와 관련된 기능을 담는 컨트롤러클래스입니다.
+ * 
+ * @author 김대영
+ * @since 2023.04.04
+ *
+ */
 @Controller
 public class AdminController {
 	
@@ -26,13 +28,25 @@ public class AdminController {
 	@Autowired
 	IKindergartenService kindergartenService;
 
-	// 로그인 페이지 이동
+	/**
+	 * 로그인 페이지로 이동하는 메서드입니다.
+	 * 
+	 * @return 로그인 페이지를 반환합니다.
+	 */
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login() {
 		return "/login";
 	}
 	
-	// 로그인
+	/**
+	 * 로그인을 시도할 때 계정 정보 확인을 하는 메서드입니다.
+	 * 
+	 * @param email 이메일을 입력합니다.
+	 * @param password 비밀번호를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 로그인에 실패했다면 다시 로그인화면을, 사용자가 원장이라면 원장 메인화면을, 시스템 관리자라면 관리자 메인화면을 반환합니다.
+	 */
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(String email, String password, HttpSession session, Model model) {
 
@@ -89,61 +103,50 @@ public class AdminController {
 		return "/login";
 	}
 	
-	// 로그아웃
+	/**
+	 * 로그아웃을 실행하는 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 메인 화면을 반환합니다.
+	 */
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
 	public String logout(HttpSession session, HttpServletRequest request) {
 		session.invalidate(); //세션 정보 삭제
 		return "redirect:/";
 	}
 
-	
-	// 회원가입 약관 페이지 이동
-	@RequestMapping(value="/principal/join")
-	public String join() {
-		return "/principal/join";
-	}
-
-	// 회원가입 정보 기입 페이지 이동
+	/**
+	 * 회원가입 페이지로 이동하는 메서드입니다.
+	 * 
+	 * @return 회원가입 화면을 반환합니다.
+	 */
 	@RequestMapping(value="/principal/joinform", method=RequestMethod.GET)
 	public String joinForm() {
 		return "/principal/joinform";
 	}
 
-	// 회원가입 완료버튼 동작
+	/**
+	 * 회원가입을 통해 입력받은 가입자의 정보를 DB에 전달하는 메서드입니다.
+	 * 
+	 * @param member 가입자의 정보를 담은 객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @return 메인화면을 반환합니다.
+	 */
 	@RequestMapping(value="/principal/insert", method=RequestMethod.POST)
-	public String memberInsert(AdminVO member, HttpSession session) {
+	public String memberInsert(AdminVO member, HttpSession session) {		
 		adminService.insertAdmin(member);
 		session.invalidate();
 		return "redirect:/";
 	}
-	
-   // 이메일 중복체크
-   @RequestMapping(value="/principal/adminEmailChk", method=RequestMethod.POST)
-   @ResponseBody
-   public String adminEmailCheck(String adminEmail) throws Exception {
-	   int result = adminService.emailChk(adminEmail);
-	   if(result != 0) {
-		   return "fail";	// 중복된 이메일
-	   } else {
-		   return "success"; // 중복된 이메일X
-	   }
-   }
-   
-   // 폰번호 중복체크
-   @RequestMapping(value="/principal/adminPhoneChk", method=RequestMethod.POST)
-   @ResponseBody
-   public String adminPhoneCheck(String adminPhone) throws Exception {
-	   int result = adminService.phoneChk(adminPhone);
-	   if(result != 0) {
-		   return "fail";	// 중복된 폰번호
-	   } else {
-		   return "success"; // 중복된 폰번호X
-	   }
-   }
-	
-	
-	
-	
+		
+	/**
+	 * url을 통해 원장 권한이 없는 사용자의 접속을 방지하는 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 권한이 없는 사용자의 경우 메인 화면을, 원장인 경우 원장 메인화면을 반환합니다.
+	 */
 	@RequestMapping(value="/principal/home")
 	public String principalHome(HttpSession session, HttpServletRequest request) {
 		
@@ -158,6 +161,13 @@ public class AdminController {
 		}
 	}
 	
+	/**
+	 * url을 통해 시스템 관리자 권한이 없는 사용자의 접속을 방지하는 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 권한이 없는 사용자의 경우 메인 화면을, 시스템 관리자인 경우 관리자 메인화면을 반환합니다.
+	 */
 	@RequestMapping(value="/admin/home")
 	public String adminHome(HttpSession session, HttpServletRequest request) {
 		

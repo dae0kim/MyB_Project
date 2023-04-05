@@ -6,6 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+/**
+ * 공지사항과 관련된 기능을 담는 서비스클래스입니다.
+ * 
+ * @author 손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Service
 public class NoticeService implements INoticeService {
 
@@ -26,16 +33,10 @@ public class NoticeService implements INoticeService {
 		return noticeRepository.setNoticeView(noticeId);
 	}
 	
-	/* -----------------------------웹 기능----------------------------- */
+	/* -----------------------------웹 기능 : 김대영----------------------------- */
 	@Override
-	public List<NoticeVO> selectNoticeList(int adminId,int page) {
-		int start = (page-1)*10-1;
-		return noticeRepository.selectNoticeList(adminId,start, start+9);
-	}
-	
-	@Override
-	public int selectTotalNoticeCount(int adminId) {
-		return noticeRepository.selectTotalNoticeCount(adminId);
+	public List<NoticeVO> selectNoticeList(int adminId) {
+		return noticeRepository.selectNoticeList(adminId);
 	}
 
 	@Override
@@ -57,8 +58,5 @@ public class NoticeService implements INoticeService {
 	public void deleteNotice(int noticeId) {
 		noticeRepository.deleteNotice(noticeId);
 	}
-
-
-
 
 }

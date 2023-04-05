@@ -6,6 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+/**
+ * 반과 관련된 기능을 담는 서비스클래스입니다.
+ * 
+ * @author 문수지,손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Service
 public class ClassroomService implements IClassroomService {
 
@@ -40,7 +47,7 @@ public class ClassroomService implements IClassroomService {
 	}
 	
 	
-	/* -----------------------------웹 기능----------------------------- */
+	/* -----------------------------웹 기능 : 김대영----------------------------- */
 	@Override
 	public void insertClassroom(ClassroomVO classroom) {
 		classroomRepository.insertClassroom(classroom);

@@ -128,8 +128,8 @@
 	]]>
 	</insert>
 	
-	<!-- 페이징 처리 된 어린이집 등록 요청 리스트 반환 -->
-	<select id="selectKindergartenList" parameterType="hashmap" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+	<!-- 어린이집 등록 요청 리스트 반환 -->
+	<select id="selectKindergartenList" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
 	<![CDATA[
 		SELECT 
 			KINDERGARTEN_ID 		AS kindergartenId, 
@@ -137,18 +137,8 @@
 			KINDERGARTEN_PHONE		AS kindergartenPhone, 
 			KINDERGARTEN_ADDRESS	AS kindergartenAddress, 
 			KINDERGARTEN_STAT		AS kindergartenStat 
-		FROM (
-			SELECT 
-				KINDERGARTEN_ID, KINDERGARTEN_NAME, 
-				KINDERGARTEN_PHONE, KINDERGARTEN_ADDRESS, KINDERGARTEN_STAT, 
-				rownum AS rnum
-			FROM (
-				SELECT * 
-				FROM KINDERGARTEN
-				ORDER BY KINDERGARTEN_STAT, KINDERGARTEN_ID
-			)
-		)
-		WHERE rnum BETWEEN #{start} AND #{end}
+		FROM 
+			kindergarten
 	]]>
 	</select>
 	
@@ -222,14 +212,81 @@
 	]]>
 	</delete>
 	
-	<!-- 전체 어린이집 등록 요청 개수 반환 -->
-	<select id="selectTotalKindergartenCount" resultType="int">
-	<![CDATA[
-		SELECT 
-			COUNT(*) AS count
-		FROM 
-			KINDERGARTEN 
-	]]>
+	<!-- 원장의 어린이집 각 반별 결석 현황을 반환 -->
+	<select id="countAbsentList" resultType="hashmap">
+		<![CDATA[
+			select 
+			    cr.classroom_name AS classroomName,
+			    count(dl.diseaselog_id) AS totalPatient
+			from 
+			    classroom cr left outer join diseaselog dl
+			on cr.classroom_id = dl.classroom_id
+			and dl.diseaselog_date = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+			where cr.kindergarten_id = #{kindergarten_id}
+			group by cr.classroom_name
+			order by 1
+		]]>
+	</select>
+
+	<!-- 원장의 어린이집 각 반별 총 인원을 반환 -->
+	<select id="countStudentList" parameterType="int" resultType="hashmap">
+		<![CDATA[
+			select 
+			    cr.classroom_name AS classroomName,
+			    count(c.child_id) AS totalStudent
+			from 
+			    classroom cr left outer join child c
+            on cr.classroom_id = c.classroom_id
+            where cr.kindergarten_id=#{kindergarten_id}
+            group by cr.classroom_name
+            order by 1
+		]]>
+	</select>
+
+	<!-- 원장의 어린이집 각 반별 출석 인원을 반환 -->
+	<select id="countAttendanceList" resultType="hashmap">
+		<![CDATA[
+			select 
+			    tp.classroomName AS classroomName,
+			    (ts.totalStudent - tp.totalPatient) AS totalAttendance
+			from 
+			    (select 
+                        cr.classroom_name AS classroomName,
+                        count(dl.diseaselog_id) AS totalPatient
+                    from 
+                        classroom cr left outer join diseaselog dl
+                    on cr.classroom_id = dl.classroom_id
+                    and dl.diseaselog_date = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                    where cr.kindergarten_id = #{kindergarten_id}
+                    group by cr.classroom_name
+                    order by 1) tp,
+			            (select 
+							    cr.classroom_name AS classroomName,
+							    count(c.child_id) AS totalStudent
+							from 
+							    classroom cr left outer join child c
+				            on cr.classroom_id = c.classroom_id
+				            where cr.kindergarten_id=#{kindergarten_id}
+				            group by cr.classroom_name
+				            order by 1) ts
+			where tp.classroomName = ts.classroomName
+			ORDER BY 1
+		]]>
+	</select>
+	
+	<!-- 원장의 어린이집 각 반의 질병별 환자수 반환 -->
+	<select id="countClassroomDiseaseList" parameterType="int" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				d.disease_name AS diseaseName,
+			 	count(dl.diseaselog_id) AS totalPatient
+			FROM diseaselog dl, disease d
+			WHERE 
+                dl.diseaselog_date = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                AND dl.disease_id = d.disease_id
+                AND dl.classroom_id = #{classroomId}
+			GROUP BY (d.disease_name)
+		]]>
 	</select>
 	
 </mapper>

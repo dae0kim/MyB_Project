@@ -1,90 +1,155 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <%@include file="../staticFiles.jsp" %>
-
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
-<%@include file="../header.jsp" %>
-	<div id="join_body">
-	<div class="join_wrap">
-	<div id="jb-content">
-	<form id="join-form" action="<c:url value='/teacher/insert'/>" method="post">
-		<div class="join_form_text">
-         <span>이름</span>
+<body>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
         </div>
-        <input type="text" name="teacherName" placeholder=" 이름" required>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+		<%@include file="../header.jsp" %>
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+            <div class="card" style="margin:10% 15% 10% 15%;">
+                <form id="join-form" class="form-horizontal" action="<c:url value='/teacher/insert'/>" method="post">
+                    <div class="card-body">
+                        <h4 class="card-title">교사 정보 등록</h4>
+                        
+                        <div class="form-group row">
+                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">이름</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="teacherName" name="teacherName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="bname" class="col-sm-3 text-right control-label col-form-label">이메일</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="teacherEmail" name="teacherEmail" onkeyup="noSpace(this);" onchange="noSpace(this);" required />
+                            </div>
+                            <div class="web_join_warning_text">
+	                   	        <!-- email 중복 체크 -->
+								<span class="email_already">해당 이메일이 이미 존재합니다.</span>
+								<!-- email 정규식 체크 -->
+								<span class="email_validation">이메일 형식대로 입력해주세요.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">비밀번호</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="teacherPw" name="teacherPw" required/>
+                            </div>
+                        </div>
 
-		<div class="join_form_text">
-         <span>교사 계정 아이디</span>
+                        <div class="form-group row">
+                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">연락처</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="teacherPhone" name="teacherPhone" placeholder="　('-'없이 번호만 입력)" oninput="autoHyphen(this)" maxlength="13" required/>
+                            </div>
+                            <div class="web_join_warning_text">
+	                            <span class="phone_already">해당 번호가 이미 존재합니다.</span>
+                            </div> 
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="dname" class="col-sm-3 text-right control-label col-form-label">담당교실</label>
+                            <div class="col-sm-5">
+                            	<select name="classroomId" class="select2 form-control custom-select" style="width: 40%; height:36px;">
+									<c:forEach items="${classroomList}" var="classroomList">
+										<option value="${classroomList.classroomId}">${classroomList.classroomName}</option>
+									</c:forEach>
+								</select>
+                            </div>
+                        </div>
+                        <input type="hidden" name="adminId" value="${loginUser.adminId}">
+                        <input type="hidden" name="kindergartenId" value="${kindergartenId}">
+                        
+	                    <div class="border-top">
+	                        <div class="card-body">
+	                        	<button type="button" id="join_btn" class="btn btn-success">등록하기</button>
+	                            <button type="button" class="btn btn-secondary" onclick="location.href='<c:url value='/teacher/list/${loginUser.adminId}'/>'">돌아가기</button>
+	                        </div>
+	                    </div>
+                    </div>
+                </form>
+            </div>
+            </div>    
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+        	<%@include file="../footer.jsp" %>
         </div>
-		<input type="email" class="teacherEmail_input" name="teacherEmail" id="teacherEmail" value="${teacherVO.teacherEmail}"onkeyup="noSpace(this);" onchange="noSpace(this);" placeholder="　Email" required>
-		<!-- email 중복 체크 -->
-		<!-- 			<span class="email_ok">사용 가능한 이메일입니다.</span> -->
-		<span class="email_already">해당 이메일이 이미 존재합니다.</span>
-		<!-- email 정규식 체크 -->
-		<span class="email_validation">이메일 형식대로 입력해주세요.</span>
-		
-		<div class="join_form_text">
-         <span>교사 계정 비밀번호</span>
-        </div>
-        <input type="text" name="teacherPw" placeholder=" 비밀번호" required>
-
-		<div class="join_form_text">
-         <span>전화번호</span>
-        </div>
-        <input type="text" class="teacherPhone_input" name="teacherPhone" id="teacherPhone" value="${teacherVO.teacherPhone}" placeholder="　('-'없이 번호만 입력)" oninput="autoHyphen(this)" maxlength="13" required>
-        <span class="phone_already">해당 번호가 이미 존재합니다.</span>
-        
-        
-        <div class="join_form_text">
-         <span>담당 교실</span>
-        </div>
-
-		<input type="hidden" name="adminId" value="${loginUser.adminId}">
-
-        <select name="classroomId">
-        	<c:forEach var="classroomList" items="${classroomList}" >
-        		<option value="${classroomList.classroomId}">${classroomList.classroomName}</option>
-        	</c:forEach>
-        </select>
-		
-		<input type="hidden" name="kindergartenId" value="${kindergartenId}">
-        
-        <input type="submit" class="join_btn" value="등록하기" >
-	</form>
-	</div>
-	</div>
-	</div>
-<%@include file="../footer.jsp" %>
-<script type="text/javascript">
-
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+	<!-- ============================================================== -->
+	<!-- All Required js -->
+	<!-- ============================================================== -->
+	<script src="${pageContext.request.contextPath}/resources/assets/libs/jquery/dist/jquery.min.js"></script>
+	<!-- Bootstrap tether Core JavaScript -->
+	<script src="${pageContext.request.contextPath}/resources/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="${pageContext.request.contextPath}/resources/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="${pageContext.request.contextPath}/resources/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="${pageContext.request.contextPath}/resources/dist/js/custom.min.js"></script>
+	<script>
+	$('[data-toggle="tooltip"]').tooltip();
+	$(".preloader").fadeOut();
+	</script>	
+	<script type="text/javascript">
+	
 	// 유효성 검사 체크
 	var emailokCheck = false;
 	var emailvalCheck =false;
 	var phoneokCheck = false;
 	
 	$(document).ready(function() {	
-		$(".join_btn").click(function() {
+		$("#join_btn").click(function() {
 			
-			if(emailokCheck&&emailvalCheck&&phoneokCheck) {
-				$("#login-form").attr("action", "././insert");
-				$("#login-form").submit();
+			if(emailokCheck&&phoneokCheck) {
+				$("#join-form").attr("action", "./insert");
+				$("#join-form").submit();
+				alert("교사 정보 등록이 완료되었습니다.");
+			}else{
+				alert("기입하신 정보를 확인해주세요.");				
 			}
-			alert("기입하신 정보를 확인해주세요.");
 			return false;
 		});
 	});
 	
 	// 이메일 중복검사
-	$('.teacherEmail_input').on("propertychange change keyup paste input", function() {
-		var teacherEmail = $('.teacherEmail_input').val(); // teacherEmail_input에 입력되는 값
-		var data = {teacherEmail : teacherEmail} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
+	$('#teacherEmail').on("focusout", function() {
+		var email = $('#teacherEmail').val(); // teacherEmail에 입력되는 값
+		var data = {email : email} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
 		
 		$.ajax({
 			type : "post",
-			url : "././teacherEmailChk",
+			url : "<c:url value='/device/userEmailChk'/>",
 			data : data,
 			success : function(result) {
 				if(result != 'fail') {
@@ -101,8 +166,8 @@
 	});
 	
 	// 이메일 정규식 검사
-	$('.teacherEmail_input').on("propertychange change keyup paste input", function() {
-		var email = $('.teacherEmail_input').val();
+	$('#teacherEmail').on("propertychange change keyup paste input", function() {
+		var email = $('#teacherEmail').val();
 		var reg = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i;
 		
 		if(email.match(reg) == null) { // 조건 불충족
@@ -122,13 +187,13 @@
 	}
 	
 	// 휴대폰 번호 중복검사
-	$('.teacherPhone_input').on("propertychange change keyup paste input", function() {
-		var teacherPhone = $('.teacherPhone_input').val(); // parentEmail_input에 입력되는 값
-		var data = {teacherPhone : teacherPhone} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
+	$('#teacherPhone').on("focusout", function() {
+		var phone = $('#teacherPhone').val(); // parentEmail_input에 입력되는 값
+		var data = {phone : phone} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
 		
 		$.ajax({
 			type : "post",
-			url : "././teacherPhoneChk",
+			url : "<c:url value='/device/userPhoneChk'/>",
 			data : data,
 			success : function(result) {
 				if(result != 'fail') {
@@ -156,3 +221,4 @@
 </script>
 </body>
 </html>
+

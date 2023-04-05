@@ -28,8 +28,8 @@
 	</select>
 	
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
-	<!-- 페이징 처리 된 공지사항 리스트 -->
-	<select id="selectNoticeList" parameterType="hashmap" resultType="com.project.myapp.myb.notice.NoticeVO">
+	<!-- 공지사항 리스트 -->
+	<select id="selectNoticeList" parameterType="int" resultType="com.project.myapp.myb.notice.NoticeVO">
 	<![CDATA[
 		SELECT 
 			notice_id 		AS noticeId, 
@@ -38,31 +38,9 @@
 			notice_date AS noticeDate,
 			notice_stat AS noticeStat, 
 			admin_id AS adminId 
-		FROM (
-			SELECT 
-				notice_id, notice_title, 
-				notice_content, notice_date, notice_stat, admin_id, 
-				rownum AS rnum
-			FROM (
-				SELECT * 
-				FROM notice
-				where admin_id=#{adminId}
-				ORDER BY notice_stat, notice_id DESC
-			)
-		)
-		WHERE rnum BETWEEN #{start} AND #{end}
-	]]>
-	</select>
-	
-	<!-- 전체 공지사항 개수 반환 -->
-	<select id="selectTotalNoticeCount" parameterType="int" resultType="int">
-	<![CDATA[
-		SELECT 
-			COUNT(*) AS count
 		FROM 
-			notice 
-		WHERE
-			admin_id=#{adminId}
+			notice
+		WHERE admin_id=#{adminId}
 	]]>
 	</select>
 

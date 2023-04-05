@@ -70,18 +70,8 @@
 
 
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
-	<!-- 그냥 화면 띄우기용도 -->
-	<select id="showview" resultType="int">
-	<![CDATA[
-		select count(diseaselog_id)
-		from diseaselog
-	]]>
-	</select>
-
-
 	<!-- 관리자 통계 첫 화면 : 각 구별 최근 2주 전체 환자 수 -->
-	<select id="countChildGuList"
-		resultType="com.project.myapp.myb.diseaselog.DiseaselogVO">
+	<select id="countChildGuList" resultType="com.project.myapp.myb.diseaselog.DiseaselogVO">
 		<![CDATA[
 			SELECT 
 				kindergarten_gu AS kindergartenGu,
@@ -92,8 +82,7 @@
 		]]>
 	</select>
 
-	<select id="countChildDiseaseList" parameterType="String"
-		resultType="hashmap">
+	<select id="countChildDiseaseList" parameterType="String" resultType="hashmap">
 		<![CDATA[
 			SELECT 
 				d.disease_name AS diseaseName,

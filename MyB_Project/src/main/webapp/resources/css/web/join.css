@@ -1,90 +1,4 @@
 @charset "UTF-8";
-body{
-	background-color:#f5f6f7;
-	font-family: Nanum Gothic;
-}
-#join_body{
-	padding-right: 35%;
-	padding-left: 35%;
-}
-.logo_wrap{
-    height: 400px;
-    padding: 110px 20px 20px 20px;
-    box-sizing: border-box;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#login_logo img{
-    width: auto;
-    height: 12em;
-    
-}
-
-#logo_name{
-    font-size: 1.8em;
-}
-
-
-.join_wrap{
-	height: 350px;
-	padding: 40px;
-	box-sizing: border-box;
-	text-align: center;
-	display: flex;
-	border-color: transparent;
-	flex-direction: column;
-}
-
-#join-form > input{
-    width: 100%;
-    height: 48px;
-    box-sizing: border-box;
-    /* margin-bottom: 20px; */
-    border-radius: 6px;
-    background-color: #F8F8F8;
-}
-#join-form > input::placeholder{
-    color: #D2D2D2;
-}
-
-#join-form > input[type="submit"]{
-    color:black;
-    font-size: 16px;
-    background-color: #78BFB8;
-    margin-top: 50px;
-    margin-bottom:50px;
-}
-#join-form > input[type="submit"]:hover{
-    font-size: 25px;
-}
-
-#join{
-    padding-top: 20px;
-}
-
-.join_form_text{
-	text-align:left;
-	font-size:1.5rem;
-	margin-top:20px;
-}
-#web_jointerm_nextbtn{
-	font-size:16px;
-	height:48px;
-	width:100%;
-	background-color: #78BFB8;
-	border:2px solid black;
-	border-radius:6px;
-	margin-bottom:50px;
-}
-
-#web_jointerm_nextbtn:hover{
-	font-size:25px;
-}
-
 #joinstring{
     border : none;
     font-size : 0.8rem;
@@ -94,13 +8,16 @@ body{
     padding-top: 3px;
 	text-align : left;
 }
-
+.web_join_warning_text{
+	text-align:center !important;
+}
 /*사용 가능한 이메일*/
 .email_ok{
 	color : green;
 	display : none;
 	font-size : 12px;
 	padding-top: 3px;
+	text-align:center !important;
 }
 /*사용 불가능한 이메일*/
 .email_already{
@@ -108,6 +25,7 @@ body{
 	display : none;
 	font-size : 12px;
 	padding-top: 3px;
+	text-align:center !important;
 }
 /*이메일 정규식 불충족*/
 .email_validation{
@@ -115,6 +33,7 @@ body{
 	display : none;
 	font-size : 12px;
 	padding-top: 3px;
+	text-align:center !important;
 }
 
 /*비밀번호 일치*/
@@ -123,6 +42,7 @@ body{
 	display : none;
 	font-size : 12px;
 	padding-top: 3px;
+	text-align:center !important;
 }
 /*비밀번호 불일치*/
 .pw_re_input_2{
@@ -130,6 +50,7 @@ body{
 	display : none;
 	font-size : 12px;
 	padding-top: 3px;
+	text-align:center !important;
 }
 /*비밀번호 정규식 불충족*/
 .pw_input{
@@ -137,7 +58,7 @@ body{
 	display : none;
 	font-size : 12px;
 	padding-top: 3px;
-	text-align:center;
+	text-align:center !important;
 }
 /*중복된 휴대폰번호*/
 .phone_already{
@@ -145,31 +66,5 @@ body{
 	display : none;
 	font-size : 12px;
 	padding-top: 3px;
+	text-align:center !important;
 }
-
-.terms_wrap {
-    width: 40%; 
-    height: 500px;
-    margin: auto;
-    padding: 20px;
-
-}
-
-.terms_wrap .text {
-    height: 550px; 
-    border: 1px solid black; 
-    background-color: white;
-    white-space: pre-line; 
-    overflow-y: scroll; 
-    margin: 0 auto 20px;
-    border-radius: 5px;
-}
-.terms_wrap p {
-    text-align: right;
-    padding-bottom: 15px;    
-}
-.terms_wrapract .box {
-    width: 100px; 
-    height: 40px;  
-    padding: 8px; 
-    margin: 0 3px;}

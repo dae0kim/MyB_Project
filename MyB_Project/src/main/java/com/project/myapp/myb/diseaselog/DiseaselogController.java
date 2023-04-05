@@ -16,6 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * 질병로그 데이터와 관련된 기능을 담는 컨트롤러클래스입니다.
+ * 
+ * @author 손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Controller
 public class DiseaselogController {
 	
@@ -57,8 +64,47 @@ public class DiseaselogController {
 	
 	
 	
-	/* -----------------------------웹 기능----------------------------- */
-	//관리자 통계 첫 화면
+	/* -----------------------------웹 기능 : 김대영----------------------------- */
+	/**
+	 * 질병 통계화면으로 이동하기 전 사용자를 구분하기 위한 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 접속을 시도한 사용자에 따라 화면을 반환합니다.
+	 */
+	@RequestMapping("/diseaselog/check")
+	public String checkUser(HttpSession session, Model model) {
+		
+		// 1. 해당 페이지 접속 시도하는 사용자가 시스템 관리자인지, 원장인지 구분
+		String adminLevel = (String) session.getAttribute("adminLevel");
+		
+		if(adminLevel.equals("admin")) {
+			return "redirect:/diseaselog/chart";
+		}else {
+			// 접속 시도 사용자가 원장이라면
+			String stat = (String) session.getAttribute("kindergartenStat");
+			
+			// 어린이집이 등록 된 원장인지, 아닌지 구분
+			if(stat != null) {
+				// stat이 null이 아니라면 Y=등록이 끝났거나, N=승인 대기중인 경우
+				if(stat.equals("Y")) {
+					return "redirect:/diseaselog/chart";
+				}else {
+					return "redirect:/kindergarten/check";					
+				}
+			}else {
+				return "redirect:/kindergarten/check";
+			}
+		}
+	}
+		
+	/**
+	 * 질병 통계 화면 이동을 위한 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 질병 통계 화면을 반환합니다.
+	 */
 	@RequestMapping("/diseaselog/chart")
 	public String selectDiseaselog(HttpSession session, Model model) {
 		
@@ -273,96 +319,71 @@ public class DiseaselogController {
             }
             
         }
-		
-		
-		
 		model.addAttribute("diseaselogVO",diseaselogService.countChildGuList());
 		return "/admin/diseasechart";
 	}
 	
+	/**
+	 * 질병 통계정보를 그래프에 나타내기 위해 JSON객체로 반환하여 전달하기 위한 메서드입니다.
+	 * 
+	 * @param gu 구 이름을 입력합니다.
+	 * @return JSON객체에 담긴 데이터를 반환합니다.
+	 */
 	@RequestMapping(value="/diseaselog/chart/json/{gu}")
 	public @ResponseBody JSONObject getJSONMemberDiseaseList(@PathVariable String gu) {
-		System.out.println(gu+"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
 		
 		String temp = "";
 		if(gu.equals("seongdong")) {
 			temp="성동구";
-			System.out.println(temp);
 		}else if(gu.equals("gangseo")) {
 			temp="강서구";
-			System.out.println(temp);
 		}else if(gu.equals("yangcheon")) {
 			temp="양천구";
-			System.out.println(temp);
 		}else if(gu.equals("guro")) {
 			temp="구로구";
-			System.out.println(temp);
 		}else if(gu.equals("geumcheon")) {
 			temp="금천구";
-			System.out.println(temp);
 		}else if(gu.equals("gwanak")) {
 			temp="관악구";
-			System.out.println(temp);
 		}else if(gu.equals("dongjak")) {
 			temp="동작구";
-			System.out.println(temp);
 		}else if(gu.equals("seocho")) {
 			temp="서초구";
-			System.out.println(temp);
 		}else if(gu.equals("gangnam")) {
 			temp="강남구";
-			System.out.println(temp);
 		}else if(gu.equals("songpa")) {
 			temp="송파구";
-			System.out.println(temp);
 		}else if(gu.equals("gangdong")) {
 			temp="강동구";
-			System.out.println(temp);
 		}else if(gu.equals("eunpyeong")) {
 			temp="은평구";
-			System.out.println(temp);
 		}else if(gu.equals("yeongdeungpo")) {
 			temp="영등포구";
-			System.out.println(temp);
 		}else if(gu.equals("jungnang")) {
 			temp="중랑구";
-			System.out.println(temp);
 		}else if(gu.equals("nowon")) {
 			temp="노원구";
-			System.out.println(temp);
 		}else if(gu.equals("dobong")) {
 			temp="도봉구";
-			System.out.println(temp);
 		}else if(gu.equals("gangbuk")) {
 			temp="강북구";
-			System.out.println(temp);
 		}else if(gu.equals("jongno")) {
 			temp="종로구";
-			System.out.println(temp);
 		}else if(gu.equals("sdm")) {
 			temp="서대문구";
-			System.out.println(temp);
 		}else if(gu.equals("mapo")) {
 			temp="마포구";
-			System.out.println(temp);
 		}else if(gu.equals("yongsan")) {
 			temp="용산구";
-			System.out.println(temp);
 		}else if(gu.equals("jung")) {
 			temp="중구";
-			System.out.println(temp);
 		}else if(gu.equals("seongbuk")) {
 			temp="성북구";
-			System.out.println(temp);
 		}else if(gu.equals("ddm")) {
 			temp="동대문구";
-			System.out.println(temp);
 		}else if(gu.equals("gwangjin")) {
 			temp="광진구";
-			System.out.println(temp);
 		}
-
-		System.out.println("맵리스트 : " + diseaselogService.countChildDiseaseList(temp));
 		
 		List<Map<String, Object>> maplist = diseaselogService.countChildDiseaseList(temp);
 		

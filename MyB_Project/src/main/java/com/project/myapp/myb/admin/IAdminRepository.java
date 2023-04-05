@@ -1,26 +1,43 @@
 package com.project.myapp.myb.admin;
 
-import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
+/**
+ * 원장 사용자, 시스템 관리자와 관련된 기능을 담는 레포지토리 인터페이스입니다.
+ * 
+ * @author 김대영
+ * @since 2023.04.04
+ *
+ */
 public interface IAdminRepository {
 
-	// 회원가입
+	/**
+	 * 원장 사용자의 회원가입을 통해 사용자 정보를 DB에 넣어주는 메서드입니다. 
+	 * 
+	 * @param admin 원장 사용자의 정보를 담은 VO객체를 입력합니다.
+	 */
 	void insertAdmin(AdminVO admin);
-	
-	// 중복체크
-	int emailChk(String adminEmail);
-	int phoneChk(String adminPhone);
-	
-	// 로그인 - 성공하면 해당 사용자 객체 반환 필요
+
+	/**
+	 * 로그인을 시도한 사용자 정보를 VO객체로 받아오는 메서드입니다.
+	 * 
+	 * @param email 이메일을 입력합니다. 
+	 * @return 해당 이메일을 사용하는 사용자 정보를 DB에서 받아와 VO객체로 반환합니다.
+	 */
 	AdminVO selectAdmin(String email);
+	
+	/**
+	 * 로그인을 시도한 사용자의 이메일을 통해 비밀번호를 반환하는 메서드입니다.
+	 * 
+	 * @param email 이메일을 입력합니다.
+	 * @return 입력받은 이메일을 사용하는 사용자의 비밀번호를 반환합니다.
+	 */
 	String getPassword(String email);
 	
-	
-	
-	// 관리자 레벨 분류
-	// 로그인 시점의 입력받은 email을 통해 admin테이블에서
-	// 해당 email을 가진 사용자의 레벨을 string으로 반환
+	/**
+	 * 로그인을 시도한 사용자가 원장 사용자인지, 시스템 관리자인지 구분하기 위한 메서드입니다.
+	 * 
+	 * @param email 이메일을 입력합니다.
+	 * @return 입력받은 이메일을 사용하는 사용자의 레벨을 반환합니다.
+	 */
 	String checkAdminLevel(String email);
 }

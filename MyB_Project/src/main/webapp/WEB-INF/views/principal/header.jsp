@@ -1,48 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
- 
-<div id="nav_wrap">  
-<nav class="navbar navbar-default navbar-fixed-top">
- <div class="container">
-   <div class="navbar-header">
-     <button
-       type="button"
-       class="navbar-toggle"
-       data-toggle="collapse"
-       data-target="#myNavbar"
-     >
-       <span class="icon-bar"></span>
-       <span class="icon-bar"></span>
-       <span class="icon-bar"></span>
-     </button>
-     <a class="navbar-brand" href="<c:url value='/principal/home'/>">MyB</a>
-   </div>
-   <div class="collapse navbar-collapse" id="myNavbar">
-     <ul class="nav navbar-nav navbar-right">
-       <li><a href="<c:url value='/logout' />">LOGOUT</a></li>
-      </ul>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<!-- ============================================================== -->
+<!-- Topbar header - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<header class="topbar" data-navbarbg="skin5">
+    <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+        <div class="navbar-header" data-logobg="skin5">
+            <!-- This is for the sidebar toggle which is visible on mobile only -->
+            <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+            <!-- ============================================================== -->
+            <!-- Logo -->
+            <!-- ============================================================== -->
+            <a class="navbar-brand" href="<c:url value='/principal/home'/>">
+                <!-- Logo icon -->
+                <b class="logo-icon" style="padding-left: 10px;">
+                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                    <!-- Dark Logo icon -->
+                    <img src="${pageContext.request.contextPath}/resources/images/webicons/favicon.png" alt="homepage" class="light-logo" style="width:30px; height:28px;"/>
+                   
+                </b>
+                <!--End Logo icon -->
+                 <!-- Logo text -->
+                <span class="logo-text">
+                     <!-- dark Logo text -->
+                     <img src="${pageContext.request.contextPath}/resources/images/webicons/logo-text-white.png" alt="homepage" class="light-logo" style="width:140px; height:64px; margin-top:9px;"/>
+                    
+                </span>
+            </a>
+            <!-- ============================================================== -->
+            <!-- Toggle which is visible on mobile only -->
+            <!-- ============================================================== -->
+            <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+            <!-- ============================================================== -->
+            <!-- toggle and nav items -->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav float-left mr-auto">
+                <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
+            </ul>
+            <!-- ============================================================== -->
+            <!-- Right side toggle and nav items -->
+            <!-- ============================================================== -->
+            <ul class="navbar-nav float-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="${pageContext.request.contextPath}/resources/assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                    <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<c:url value='/logout' />"><i class="fa fa-power-off" style="margin-right: 5px; margin-left: 5px;"></i>로그아웃</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- ============================================================== -->
+<!-- End Topbar header -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Left Sidebar - style you can find in sidebar.scss  -->
+<!-- ============================================================== -->
+<aside class="left-sidebar" data-sidebarbg="skin5">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav" style="padding-top: 30px;">
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/kindergarten/check' />" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">어린이집 등록</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/classroom/namelist/${loginUser.adminId}' />" aria-expanded="false"><i class="fa-solid fa-chalkboard"></i><span class="hide-menu">반 관리</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/teacher/list/${loginUser.adminId}' />" aria-expanded="false"><i class="fa-solid fa-chalkboard-user"></i><span class="hide-menu">교사 관리</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/complain/list/${loginUser.adminId}' />" aria-expanded="false"><i class="fa-regular fa-face-angry"></i><span class="hide-menu">컴플레인</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/notice/list/${loginUser.adminId}' />" aria-expanded="false"><i class="fa-solid fa-clipboard-list"></i><span class="hide-menu">공지사항</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/kindergarten/chart/${loginUser.adminId}' />" aria-expanded="false"><i class="fa-solid fa-person-circle-question"></i><span class="hide-menu">출결 통계</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/diseaselog/check' />" aria-expanded="false"><i class="fa-solid fa-virus-covid"></i><span class="hide-menu">질병 통계</span></a></li>
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
     </div>
-  </div>
-</nav>
-</div>
-
-<div id="jb-container">
-      <div id="jb-sidebar">
-      <div id="sidebar_user">
-      	<i id="sidebar_icon" class="fa-regular fa-user"></i>
-        <h2>${loginUser.adminName} 원장님</h2>      
-      </div>
-      <div id="sidebar_menu_list">      
-        <ul>
-          <li><a href="<c:url value='/kindergarten/check' />">어린이집 등록</a></li>
-          <li><a href="<c:url value='/classroom/namelist/${loginUser.adminId}' />">반 관리</a></li>
-          <li><a href="<c:url value='/teacher/list/${loginUser.adminId}' />">교사 관리</a></li>
-          <li><a href="<c:url value='/complain/list/${loginUser.adminId}' />">컴플레인 게시판</a></li>
-          <li><a href="<c:url value='/notice/list/${loginUser.adminId}' />">공지사항</a></li>
-          <li><a href="<c:url value='#' />">출결 통계</a></li>
-          <li><a href="<c:url value='#' />">질병 통계</a></li>
-        </ul>
-      </div>
-      </div>
+    <!-- End Sidebar scroll-->
+</aside>

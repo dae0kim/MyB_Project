@@ -29,6 +29,13 @@ import com.project.myapp.myb.kindergarten.KindergartenVO;
 import com.project.myapp.myb.notice.INoticeService;
 import com.project.myapp.myb.notice.NoticeVO;
 
+/**
+ * 교사와 관련된 기능을 담는 컨트롤러클래스입니다.
+ * 
+ * @author 손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Controller
 public class TeacherController {
 
@@ -174,121 +181,146 @@ public class TeacherController {
 		return "teacher/mteacher_alarm"; 
 	}
 
-	/* -----------------------------웹 기능----------------------------- */
-	// 교사 목록 출력
-	@RequestMapping(value = "/teacher/list/{adminId}")
-	public String getAllTeacher(@PathVariable int adminId, Model model, HttpSession session,
-			HttpServletRequest request) {
-
+	/* -----------------------------웹 기능 : 김대영----------------------------- */
+	/**
+	 * 교사 목록 출력을 위한 메서드입니다.
+	 * 
+	 * @param adminId 사용자 식별번호를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 사용자 상태에 맞는 화면을 반환합니다.
+	 */
+	@RequestMapping(value="/teacher/list/{adminId}")
+	public String getAllTeacher(@PathVariable int adminId,Model model,HttpSession session, HttpServletRequest request) {
+		
 		String stat = (String) session.getAttribute("kindergartenStat");
-
-		if (stat != null) {
-			int kindergartenId = ((Integer) session.getAttribute("kindergartenId")).intValue();
+		
+		if(stat != null) {
+			int kindergartenId = ((Integer)session.getAttribute("kindergartenId")).intValue();
 			int classroomCount = classroomService.getClassroomCount(kindergartenId);
 
-			if (stat.equals("Y")) {
-				if (classroomCount > 0) {
+			if(stat.equals("Y")) {
+				if(classroomCount > 0) {
 					List<TeacherVO> teacherList = teacherService.selectTeacherList(adminId);
 					model.addAttribute("teacherList", teacherList);
-					return "/principal/teacher/teacherlist";
-				} else {
-					return "redirect:/classroom/check";
+					return "/principal/teacher/teacherlist";								
+				}else {
+					return "redirect:/classroom/check";					
 				}
 			}
-		} else {
+		}else {
 			return "redirect:/kindergarten/check";
 		}
 		return "redirect:/kindergarten/check";
 	}
-
-	// 교사 등록 페이지 이동
-	@RequestMapping(value = "/teacher/insert", method = RequestMethod.GET)
-	public String insertTeacher(Model model, HttpSession session, HttpServletRequest request) {
-
-		int adminId = ((Integer) session.getAttribute("adminId")).intValue();
-		List<ClassroomVO> classroomList = classroomService.getClassroomNameList(adminId);
-
-		model.addAttribute("classroomList", classroomList);
-
+	
+	/**
+	 * 교사 등록 페이지 이동을 위한 메서드입니다.
+	 * 
+	 * @param model 모델객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 교사 등록 화면을 반환합니다.
+	 */
+	@RequestMapping(value="/teacher/insert", method=RequestMethod.GET)
+	public String insertTeacher(Model model, HttpSession session, HttpServletRequest request) {		
+		
+		int adminId = ((Integer)session.getAttribute("adminId")).intValue();
+		List<ClassroomVO> classroomList = classroomService.getClassroomNameList(adminId); 
+		
+		model.addAttribute("classroomList",classroomList);
+		
 		return "/principal/teacher/teacherinsertform";
 	}
-
-	// 교사 정보 등록
-	@RequestMapping(value = "/teacher/insert", method = RequestMethod.POST)
-	public String insertTeacher(TeacherVO teacherVO, HttpSession session, HttpServletRequest request) {
+	
+	/**
+	 * 교사 정보 등록을 위한 메서드입니다.
+	 * 
+	 * @param teacherVO 교사 정보가 담긴 객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 교사 목록 화면으로 이동하는 요청을 반환합니다.
+	 */
+	@RequestMapping(value="/teacher/insert", method=RequestMethod.POST)
+	public String insertTeacher(TeacherVO teacherVO,HttpSession session, HttpServletRequest request) {
 		teacherService.insertTeacher(teacherVO);
-
-		int adminId = ((Integer) session.getAttribute("adminId")).intValue();
-
-		return "redirect:/teacher/list/" + adminId;
+		
+		int adminId = ((Integer)session.getAttribute("adminId")).intValue();
+		
+		return "redirect:/teacher/list/"+adminId;
 	}
-
-	// 폰번호 중복체크
-	@RequestMapping(value = "/teacher/teacherPhoneChk", method = RequestMethod.POST)
-	@ResponseBody
-	public String teacherPhoneCheck(String teacherPhone) throws Exception {
-		int result = teacherService.phoneChk(teacherPhone);
-		System.out.println("번호:" + teacherPhone);
-		System.out.println("결과값:" + result);
-		if (result != 0) {
-			return "fail"; // 중복된 폰번호
-		} else {
-			return "success"; // 중복된 폰번호X
-		}
-	}
-
-	// 교사 상세정보 조회
-	@RequestMapping(value = "/teacher/info/{teacherId}")
-	public String getTeacherIdInfo(@PathVariable int teacherId, Model model, HttpSession session,
-			HttpServletRequest request) {
-
+	
+	/**
+	 * 교사 상세정보 조회를 위한 메서드입니다.
+	 * 
+	 * @param teacherId 교사 식별번호를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 교사 상세정보 화면을 반환합니다.
+	 */
+	@RequestMapping(value="/teacher/info/{teacherId}")
+	public String getTeacherIdInfo(@PathVariable int teacherId,Model model,HttpSession session, HttpServletRequest request) {
+		
 		TeacherVO teacherInfo = teacherService.selectTeacherInfo(teacherId);
-
-		model.addAttribute("teacherInfo", teacherInfo);
-
-		return "/principal/teacher/teacherinfo";
+		
+		model.addAttribute("teacherInfo",teacherInfo);
+		
+		return "/principal/teacher/teacherinfo";				
 	}
-
-	// 교사 정보 수정 페이지로 이동
-	@RequestMapping(value = "/teacher/update/{teacherId}", method = RequestMethod.GET)
-	public String updateTeacher(@PathVariable int teacherId, Model model, HttpSession session,
-			HttpServletRequest request) {
-
-		int adminId = ((Integer) session.getAttribute("adminId")).intValue();
-		List<ClassroomVO> classroomList = classroomService.getClassroomNameList(adminId);
+	
+	/**
+	 * 교사 정보 수정 페이지로 이동하기 위한 메서드입니다.
+	 * 
+	 * @param teacherId 교사 식별번호를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 교사 정보 수정 화면을 반환합니다.
+	 */
+	@RequestMapping(value="/teacher/update/{teacherId}", method=RequestMethod.GET)
+	public String updateTeacher(@PathVariable int teacherId,Model model,HttpSession session, HttpServletRequest request) {
+		
+		int adminId = ((Integer)session.getAttribute("adminId")).intValue();
+		List<ClassroomVO> classroomList = classroomService.getClassroomNameList(adminId); 
 		TeacherVO teacherInfo = teacherService.selectTeacherInfo(teacherId);
-
-		model.addAttribute("classroomList", classroomList);
-		model.addAttribute("teacherInfo", teacherInfo);
-
-		return "/principal/teacher/teacherupdate";
+				
+		model.addAttribute("classroomList",classroomList);
+		model.addAttribute("teacherInfo",teacherInfo);
+				
+		return "/principal/teacher/teacherupdate";				
 	}
-
-	// 교사 정보 수정
-	@RequestMapping(value = "/teacher/update", method = RequestMethod.POST)
-	public String updateTeacher(TeacherVO teacherVO, HttpSession session, HttpServletRequest request) {
-		System.out.println(teacherVO.getTeacherId());
-		teacherService.updateTeacher(teacherVO);
-		return "redirect:/teacher/info/" + teacherVO.getTeacherId();
+	
+	
+	/**
+	 * 교사 정보 수정을 위한 메서드입니다.
+	 * 
+	 * @param teacherVO 수정된 교사정보가 담긴 객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 교사 상세정보 화면으로 이동하는 요청을 반환합니다.
+	 */
+	@RequestMapping(value="/teacher/update", method=RequestMethod.POST)
+	public String updateTeacher(TeacherVO teacherVO,HttpSession session, HttpServletRequest request) {
+		teacherService.updateTeacher(teacherVO);	
+		return "redirect:/teacher/info/"+teacherVO.getTeacherId();
 	}
-
-	// 교사 정보 삭제 페이지 이동
-	@RequestMapping(value = "/teacher/delete/{teacherId}", method = RequestMethod.GET)
-	public String deleteTeacher(@PathVariable int teacherId, Model model) {
-
-		TeacherVO teacherInfo = teacherService.selectTeacherInfo(teacherId);
-		model.addAttribute("teacherInfo", teacherInfo);
-
-		return "/principal/teacher/teacherdelete";
-	}
-
-	// 교사 정보 삭제
-	@RequestMapping(value = "/teacher/delete/{teacherId}", method = RequestMethod.POST)
-	public String deleteTeacher(@PathVariable int teacherId, HttpSession session, HttpServletRequest request) {
+	
+	/**
+	 * 교사정보 삭제를 위한 메서드입니다.
+	 * 
+	 * @param teacherId 교사 식별번호를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param request 요청정보를 입력합니다.
+	 * @return 교사 목록 화면으로 이동하는 요청을 반환합니다.
+	 */
+	@RequestMapping(value = "/teacher/delete/{teacherId}")
+	public String deleteTeacher(@PathVariable int teacherId,HttpSession session, HttpServletRequest request) {
 		teacherService.deleteTeacher(teacherId);
-		int adminId = ((Integer) session.getAttribute("adminId")).intValue();
+		int adminId = ((Integer)session.getAttribute("adminId")).intValue();
 
-		return "redirect:/teacher/list/" + adminId;
+		return "redirect:/teacher/list/"+adminId;
 	}
 
 }

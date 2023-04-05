@@ -6,6 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+/**
+ * 컴플레인과 관련된 기능을 담는 서비스클래스입니다.
+ * 
+ * @author 문수지,손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Service
 public class ComplainService implements IComplainService {
 	
@@ -30,16 +37,10 @@ public class ComplainService implements IComplainService {
 		return complainRepository.selectComplain(complainId);
 	}
 	
-	/* -----------------------------웹 기능----------------------------- */
+	/* -----------------------------웹 기능 : 김대영----------------------------- */
 	@Override
-	public List<ComplainVO> selectComplainList2(int adminId, int page) {
-		int start = (page-1)*10-1;
-		return complainRepository.selectComplainList2(adminId, start, start+9);
-	}
-
-	@Override
-	public int selectTotalComplainCount(int adminId) {
-		return complainRepository.selectTotalComplainCount(adminId);
+	public List<ComplainVO> selectComplainList2(int adminId) {
+		return complainRepository.selectComplainList2(adminId);
 	}
 
 	@Override

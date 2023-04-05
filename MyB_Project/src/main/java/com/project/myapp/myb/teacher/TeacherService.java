@@ -6,6 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+/**
+ * 교사와 관련된 기능을 담는 서비스클래스입니다.
+ * 
+ * @author 손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Service
 public class TeacherService implements ITeacherService {
 	
@@ -36,7 +43,12 @@ public class TeacherService implements ITeacherService {
 		return teacherRepository.pwChk(teacherEmail, teacherPw);
 	}
 	
-	/* -----------------------------웹 기능----------------------------- */
+	@Override
+	public List<Integer> selectTeacherIdByAdmin(int adminId) {
+		return teacherRepository.selectTeacherIdByAdmin(adminId);
+	}
+	
+	/* -----------------------------웹 기능 : 김대영----------------------------- */
 	@Override
 	public void insertTeacher(TeacherVO teacherVO) {
 		teacherRepository.insertTeacher(teacherVO);
@@ -60,22 +72,6 @@ public class TeacherService implements ITeacherService {
 	@Override
 	public void deleteTeacher(int teacherId) {
 		teacherRepository.deleteTeacher(teacherId);
-	}
-
-	/*
-	@Override
-	public int emailChk(String teacherEmail) {
-		return teacherRepository.emailChk(teacherEmail);
-	}*/
-
-	@Override
-	public int phoneChk(String teacherPhone) {
-		return teacherRepository.phoneChk(teacherPhone);
-	}
-
-	@Override
-	public List<Integer> selectTeacherIdByAdmin(int adminId) {
-		return teacherRepository.selectTeacherIdByAdmin(adminId);
 	}
 
 }

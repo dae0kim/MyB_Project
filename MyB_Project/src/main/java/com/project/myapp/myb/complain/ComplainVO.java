@@ -4,6 +4,13 @@ import java.util.Date;
 
 import lombok.Data;
 
+/**
+ * 컴플레인 정보를 담는 클래스입니다.
+ * 
+ * @author 문수지,손일형,김대영
+ * @since 2023.04.04
+ *
+ */
 @Data
 public class ComplainVO {
 	private int complainId;
@@ -13,7 +20,7 @@ public class ComplainVO {
 	private String complainStat;
 	private int parentId;
 	private int adminId;
-	private int childId; // 0403 추가
+	private int childId; 
 	
 	private String parentName;
 	private String parentPhone;

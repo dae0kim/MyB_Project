@@ -54,7 +54,7 @@
 	
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 페이징 처리 된 컴플레인 리스트 -->
-	<select id="selectComplainList2" parameterType="hashmap" resultType="com.project.myapp.myb.complain.ComplainVO">
+	<select id="selectComplainList2" parameterType="int" resultType="com.project.myapp.myb.complain.ComplainVO">
 	<![CDATA[
 		SELECT 
 			complain_id 		AS complainId, 
@@ -64,31 +64,9 @@
 			complain_stat AS complainStat, 
 			admin_id AS adminId,
 			parent_id AS parentId 
-		FROM (
-			SELECT 
-				complain_id, complain_title, 
-				complain_content, complain_date, complain_stat, admin_id, parent_id, 
-				rownum AS rnum
-			FROM (
-				SELECT * 
-				FROM complain
-				where admin_id=#{adminId}
-				ORDER BY complain_stat, complain_id
-			)
-		)
-		WHERE rnum BETWEEN #{start} AND #{end}
-	]]>
-	</select>
-	
-	<!-- 전체 컴플레인 개수 반환 -->
-	<select id="selectTotalComplainCount" parameterType="int" resultType="int">
-	<![CDATA[
-		SELECT 
-			COUNT(*) AS count
 		FROM 
 			complain
-		WHERE
-			admin_id=#{adminId}
+		WHERE admin_id=#{adminId}
 	]]>
 	</select>
 
@@ -108,6 +86,8 @@
 		where complain_id=#{complainId}
 	]]>
 	</select>
+	
+	<!-- 컴플레인 작성자 상세정보 확인 -->
 	<select id="selectComplainDetail" parameterType="int" resultType="com.project.myapp.myb.complain.ComplainDetailVO">
 		<![CDATA[
 			SELECT
@@ -119,8 +99,11 @@
 			FROM
 				parent p, child c, classroom cr, complain cp
 			WHERE
-				(p.parent_id=c.parent_id) AND (c.classroom_id=cr.classroom_id) AND
-				(p.parent_id=cp.parent_id) AND cp.complain_id=#{complainId}
+				(p.parent_id=c.parent_id) 
+                AND (c.classroom_id=cr.classroom_id) 
+                AND (p.parent_id=cp.parent_id) 
+                AND (c.child_id = cp.child_id)
+                AND cp.complain_id=#{complainId}
 		]]>
 	</select>
 	
@@ -135,10 +118,3 @@
 	</update>
 	
 </mapper>
-
-
-
-<!-- 			INSERT INTO
-				complain (complain_id, complain_title, complain_content, parent_id)
-			VALUES
-				(complain_seq.NEXTVAL, #{complainTitle}, #{complainContent}, #{parentId}) -->

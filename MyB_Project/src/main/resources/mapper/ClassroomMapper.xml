@@ -63,8 +63,7 @@
 
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 반 이름 리스트 -->
-	<select id="getClassroomNameList" parameterType="int"
-		resultType="com.project.myapp.myb.classroom.ClassroomVO">
+	<select id="getClassroomNameList" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomVO">
 	<![CDATA[
 		select 
 			c.classroom_name AS classroomName,
@@ -73,12 +72,12 @@
 		    kindergarten k JOIN classroom c
 		on k.kindergarten_id = c.kindergarten_id
 		where k.admin_id=#{adminId}
+		order by 1
 	]]>
 	</select>
 
 	<!-- 특정 반 이름 -->
-	<select id="getClassroomName" parameterType="int"
-		resultType="String">
+	<select id="getClassroomName" parameterType="int" resultType="String">
 	<![CDATA[
 		select 
 			classroom_name AS classroomName 
@@ -88,9 +87,7 @@
 	</select>
 
 	<!-- 특정 반 시퀀스 -->
-	<select id="getClassroomSeq"
-		parameterType="com.project.myapp.myb.classroom.ClassroomSeqVO"
-		resultType="int">
+	<select id="getClassroomSeq" parameterType="com.project.myapp.myb.classroom.ClassroomSeqVO" resultType="int">
 	<![CDATA[
 		select 
 			c.classroom_id AS classroomId 
@@ -101,10 +98,9 @@
 	]]>
 	</select>
 
-
+	
 	<!-- 반 상세정보 반환 -->
-	<select id="getClassroomInfo" parameterType="int"
-		resultType="com.project.myapp.myb.classroom.ClassroomListVO">
+	<select id="getClassroomInfo" parameterType="int" resultType="com.project.myapp.myb.classroom.ClassroomListVO">
 	<![CDATA[
 		select 
 		    akcrt.classroom_id AS classroomId,
@@ -156,10 +152,9 @@
 		       where akcrt.classroom_id = #{classroomId}
 	]]>
 	</select>
-
+	
 	<!-- 반 등록 -->
-	<insert id="insertClassroom"
-		parameterType="com.project.myapp.myb.classroom.ClassroomVO">
+	<insert id="insertClassroom" parameterType="com.project.myapp.myb.classroom.ClassroomVO">
 	<![CDATA[
 		INSERT INTO classroom(
 			classroom_ID,
@@ -173,20 +168,18 @@
 		)
 	]]>
 	</insert>
-
+	
 	<!-- 반 정보(이름) 수정 -->
-	<update id="updateClassroom"
-		parameterType="com.project.myapp.myb.classroom.ClassroomVO">
+	<update id="updateClassroom" parameterType="com.project.myapp.myb.classroom.ClassroomVO">
 	<![CDATA[
 		UPDATE classroom
 		SET classroom_name=#{classroomName}
 		WHERE classroom_id=#{classroomId}
 	]]>
 	</update>
-
+	
 	<!-- 현재 어린이집의 반 개수 반환 -->
-	<select id="getClassroomCount" parameterType="int"
-		resultType="int">
+	<select id="getClassroomCount" parameterType="int" resultType="int">
 	<![CDATA[
 		select 
 			count(c.classroom_id) AS count

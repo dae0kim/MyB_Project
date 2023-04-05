@@ -7,6 +7,9 @@
     <title>MyB</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/resources/images/webicons/favicon.png">
+    
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -41,7 +44,7 @@
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#services">SERVICES</a></li>
             <li><a href="<c:url value='/login' />">LOGIN</a></li>
-            <li><a href="<c:url value='/principal/join' />">JOIN</a></li>
+            <li><a href="<c:url value='/principal/joinform' />">JOIN</a></li>
           </ul>
         </div>
       </div>
