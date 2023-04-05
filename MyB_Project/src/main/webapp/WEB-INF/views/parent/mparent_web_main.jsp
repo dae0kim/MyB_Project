@@ -24,33 +24,33 @@
 					<span id="noticetitle">공지사항</span>
 					<span id="noticecontent">공지사항을 확인할 수 있어요</span>
 				</div>
-				<img src="../resources/images/images/mobile/mparent_notice1.png" width="140" style="padding-top:13px;">
+				<img src="../resources/images/images/mobile/mparent_notice.png" width="148" style="padding-top:13px;">
 			</div>
 		</button>
 	</div>
 			
 	<div class="request_wrap">
-			<div id="request_list">
+			<div id="request">
             <button type="button" id="requestbtn"  onClick="location.href='./mparent_request'">
             	<div class="btnimg">
 					<div class="btnwrite">
 						<span class="btntitle">요청사항 작성</span>
 						<span class="btncontent">선생님에게 요청사항을 보낼 수 있어요</span>
 					</div>
-					<img src="../resources/images/images/mobile/mparent_request.png" width="140" style="padding-top:13px;">
+					<img src="../resources/images/images/mobile/mparent_request.png" width="140" style="padding-top:50px;">
 				</div>
             </button>
 			</div>
 			
 			
-			<div id="disease_control">
+			<div id="requestchk">
             <button type="button" id="requestchkbtn" onClick="location.href='./mparent_request_check'">
             	<div class="btnimg">
 					<div class="btnwrite">
 						<span class="btntitle">요청사항 확인</span>
 						<span class="btncontent">선생님에게 보낸 요청사항을 확인할 수 있어요</span>
 					</div>
-					<img src="../resources/images/images/mobile/mparent_requestcheck.png" width="135">
+					<img src="../resources/images/images/mobile/mparent_requestchk.png" width="140" style="padding-top:30px;">
 				</div>
             </button>
 			</div>

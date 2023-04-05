@@ -37,7 +37,7 @@
 	   </div>
 	   
 	   <div id="textlow3">
-	   		<img id="familyimg" src="../resources/images/images/mobile/mparent_family.png">
+	   		<img id="familyimg" src="../resources/images/images/mobile/mparent_header.png">
 	   </div>
 	</div>
 </div>
