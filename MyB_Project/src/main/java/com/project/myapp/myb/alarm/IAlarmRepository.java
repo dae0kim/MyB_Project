@@ -7,7 +7,8 @@ import org.apache.ibatis.annotations.Param;
 public interface IAlarmRepository {
 	
 	// 부모 알람
-	void insertAlarm(@Param("parentId") int parentId, @Param("alarmMessage") String alarmMessage);
+	void insertAlarm(@Param("parentId") int parentId, @Param("alarmMessage") String alarmMessage, @Param("childId") int childId);
+	void insertParentAlarm(@Param("parentId") int parentId, @Param("alarmMessage") String alarmMessage);
 	void insertNoticeAlarm(@Param("parentId") int parentId, @Param("alarmMessage") String alarmMessage);
 	void updateAlarmChecked(int parentId);
 	List<AlarmVO> getAlarm(int parentId);

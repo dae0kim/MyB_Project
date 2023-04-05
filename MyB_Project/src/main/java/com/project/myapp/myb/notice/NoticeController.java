@@ -160,7 +160,7 @@ public class NoticeController {
 		
 		List<Integer> parentIds = parentService.selectParentIdByAdmin(adminId); // 해당 유치원에 소속하는 parentId 리스트 저장
 		for(int parentId : parentIds) {
-			alarmService.insertAlarm(parentId, alarmMessage); // 부모님에게 알람 보내기
+			alarmService.insertParentAlarm(parentId, alarmMessage); // 부모님에게 알람 보내기
 		}
 		return "redirect:/notice/list/"+adminId;
 	}

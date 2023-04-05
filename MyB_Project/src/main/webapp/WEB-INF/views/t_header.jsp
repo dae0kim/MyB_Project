@@ -40,8 +40,11 @@
 		<div id="header_logo">
 			<img src="../resources/images/logo.png">
 		</div>
+		<!-- 알람 메시지 목록 페이지로 이동 -->
 		<div id="header_alarm">
-			<a href="알람 링크"><i class="fa-regular fa-bell"></i></a>
+			<a href='<c:url value="/teacher/mteacher_alarm"/>'><i id="notbell" class="fa-regular fa-bell"></i></a>
+			<a href='<c:url value="/teacher/mteacher_alarm"/>'><i id="bell" class="fa-solid fa-bell" style="color: #f00000; display: none;"></i></a>
+			
 		</div>
 	</div>
 	<script>
@@ -66,6 +69,54 @@
 				;
 			});
 		});
+		
+		window.onload = function checkForNotifications() {
+		    $.ajax({
+		        url: '${pageContext.request.contextPath}/checkteacheralarm',
+		        type: 'GET',
+		        dataType: 'json',
+		        success: function(data) {
+		        	if (data.hasNewTeacherAlarm) {
+		        		//새로운 알림이 있으면 빨간색으로 변경
+		        	   
+		        		$('#bell').css('display', 'inline-block');
+		        	    $('#notbell').css('display', 'none'); 
+		        	    console.log("new");
+		        	} else {
+		        	   
+		        	    $('#bell').css('display', 'none'); 
+		        	    $('#notbell').css('display', 'inline-block');
+		        	    console.log("nothing");
+		        	}
+		            //다음 실행 시간 설정
+// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
+		        },
+		        // data 전송 실패 시
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            console.error('Error checking for notifications:', textStatus, errorThrown);
+// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
+		        }
+		    });
+		}
+		
+		
+
+		$(document).on('click', '#header_alarm', function() {
+		    $.ajax({
+		        url: '${pageContext.request.contextPath}/updateteacheralarm',
+		        type: 'POST',
+		        data: {teacherId: '${teacherId}'},
+		        success: function() {
+		            console.log("Alarm update successful");
+		           
+		        },
+		        error: function(jqXHR, textStatus, errorThrown) {
+		            console.error('Error updating alarm:', textStatus, errorThrown);
+		        }
+		    });
+		});
+		// Start checking for notifications
+		checkForNotifications();
 	</script>
 
 </body>

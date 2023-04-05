@@ -4,15 +4,23 @@
     <mapper namespace="com.project.myapp.myb.alarm.IAlarmRepository">
     
     <!-- 부모님 -->
-    <!-- 알람 테이블에 알림 삽입 (0401 문수지) -->
+    <!-- 요청사항 알람 테이블에 알림 삽입 (0401 문수지) -->
     <insert id="insertAlarm" parameterType="map">
     	<![CDATA[
-			MERGE INTO ALARM USING
+			MERGE INTO alarm USING
 			(SELECT * FROM DUAL)
-			ON (parent_id = #{parentId} AND alarm_date = to_char(sysdate,'yyyy-mm-dd'))
+			ON (child_id = #{childId} AND alarm_date = to_char(sysdate,'yyyy-mm-dd'))
 			WHEN NOT MATCHED THEN
-			INSERT (alarm_id, parent_id, alarm_message, alarm_date, alarm_checked) 
-			VALUES (alarmSeq.nextval, #{parentId}, #{alarmMessage}, to_char(sysdate,'yyyy-mm-dd'), 'no')
+			INSERT (alarm_id, parent_id, child_id, alarm_message, alarm_date, alarm_checked) 
+			VALUES (alarmSeq.nextval, #{parentId}, #{childId}, #{alarmMessage}, to_char(sysdate,'yyyy-mm-dd'), 'no')
+    	]]>
+    </insert>
+
+    <!-- 공지사항 알람 테이블에 알림 삽입 (0405 문수지) -->
+    <insert id="insertParentAlarm" parameterType="map">
+    	<![CDATA[
+			INSERT INTO ALARM (alarm_id, parent_id, alarm_message, alarm_date, alarm_checked) 
+    		VALUES(alarmSeq.nextval, #{parentId}, #{alarmMessage}, SYSDATE, 'no')
     	]]>
     </insert>
     

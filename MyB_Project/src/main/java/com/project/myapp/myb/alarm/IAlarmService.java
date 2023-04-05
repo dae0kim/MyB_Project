@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface IAlarmService {
 	
-	void insertAlarm(int parentId, String alarmMessage);
+	void insertAlarm(int parentId, String alarmMessage, int childId);
+	void insertParentAlarm(int parentId, String alarmMessage);
 	void updateAlarmChecked(int parentId);
 	List<AlarmVO> getAlarm(int parentId);
 	boolean hasNewAlarm(int parentId);

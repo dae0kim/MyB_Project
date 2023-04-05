@@ -9,6 +9,7 @@ public class AlarmVO {
 	private int alarmId;
 	private int parentId;
 	private int teacherId;
+	private int childId;
 	private String alarmMessage;
 	private Date alarmDate;
 	private String alarmChecked;

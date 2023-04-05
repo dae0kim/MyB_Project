@@ -129,7 +129,7 @@ public class RequestController {
 	// (0329 합침 일형추가)
 	//(0401 수지 수정)
 	@RequestMapping(value = "/teacher/mteacher_requset_check", method = RequestMethod.POST)
-	public String updateRequest(RequestVO requestvo, @RequestParam("parentId") int parentId, Model model, HttpSession session) {	//(0401 수지 parameter 추가)
+	public String updateRequest(RequestVO requestvo, @RequestParam("parentId") int parentId, @RequestParam("childId") int childId, Model model, HttpSession session) {	//(0401 수지 parameter 추가)
 
 		String alarmMessage="요청사항이 답변되었습니다.";	//(0401 수지 추가) 알람 메세지 설정
 		
@@ -137,34 +137,35 @@ public class RequestController {
 			requestvo.setRequestStat1("N");
 		} else{
 			requestvo.setRequestStat1("Y");
-			alarmService.insertAlarm(parentId, alarmMessage); //(0401 수지 추가) insertAlarm 실행 (DB에 알람 정보 생성)
+			alarmService.insertAlarm(parentId, alarmMessage, childId); //(0401 수지 추가) insertAlarm 실행 (DB에 알람 정보 생성)
 		}
 
 		if (requestvo.getRequestStat2() == null) {
 			requestvo.setRequestStat2("N");
 		} else {
 			requestvo.setRequestStat2("Y");
-			alarmService.insertAlarm(parentId, alarmMessage);
+			alarmService.insertAlarm(parentId, alarmMessage, childId);
 		} 
+		
 		if (requestvo.getRequestStat3() == null) {
 			requestvo.setRequestStat3("N");
 		} else {
 			requestvo.setRequestStat3("Y");
-			alarmService.insertAlarm(parentId, alarmMessage);
+			alarmService.insertAlarm(parentId, alarmMessage, childId);
 		}
 
 		if (requestvo.getRequestStat4() == null) {
 			requestvo.setRequestStat4("N");
 		} else {
 			requestvo.setRequestStat4("Y");
-			alarmService.insertAlarm(parentId, alarmMessage);
+			alarmService.insertAlarm(parentId, alarmMessage, childId);
 		}
 
 		if (requestvo.getRequestStat5() == null) {
 			requestvo.setRequestStat5("N");
 		} else {
 			requestvo.setRequestStat5("Y");
-			alarmService.insertAlarm(parentId, alarmMessage);
+			alarmService.insertAlarm(parentId, alarmMessage, childId);
 		}
 
 		model.addAttribute("requestvo", requestvo);

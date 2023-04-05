@@ -76,7 +76,8 @@
 		request_stat2 AS requestStat2,
 		request_stat3 AS requestStat3,
 		request_stat4 AS requestStat4,
-		request_stat5 AS requestStat5
+		request_stat5 AS requestStat5,
+		child_id AS childId
 		FROM
 		request
 		WHERE request_id=#{requestId}

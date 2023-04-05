@@ -14,8 +14,13 @@ public class AlarmService implements IAlarmService {
 	IAlarmRepository alarmRepository;
 
 	@Override
-	public void insertAlarm(int parentId, String alarmMessage) {
-		alarmRepository.insertAlarm(parentId, alarmMessage);
+	public void insertAlarm(int parentId, String alarmMessage, int childId) {
+		alarmRepository.insertAlarm(parentId, alarmMessage, childId);
+	}
+
+	@Override
+	public void insertParentAlarm(int parentId, String alarmMessage) {
+		alarmRepository.insertParentAlarm(parentId, alarmMessage);
 	}
 
 	@Override

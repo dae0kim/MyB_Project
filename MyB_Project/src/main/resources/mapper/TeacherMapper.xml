@@ -51,13 +51,14 @@
 	</select>
 	
 	<!-- adminId에 따른 teacherId 가져오기 (0403 문수지) -->
-	<select id="selectTeacherIdByAdmin" parameterType="int" resultType="int">
+	<select id="selectTeacherIdByAdmin" parameterType="int" resultMap="intResultMap">
 		<![CDATA[
 			SELECT teacher_id AS "teacherId"
 			FROM teacher
 			WHERE admin_id = #{adminId}
 		]]>
 	</select>
+	<resultMap type="Integer" id="intResultMap"></resultMap>
 
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 교사 등록 -->

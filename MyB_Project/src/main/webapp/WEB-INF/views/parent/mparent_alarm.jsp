@@ -30,8 +30,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<button type="button" onClick="location.href='javascript:history.back();'">돌아가기</button>
-
+<!-- 	<button type="button" onClick="location.href='javascript:history.back();'">돌아가기</button> -->
+	<a href='<c:url value="/parent/mparent_web_main"/>'>뒤로가기</a>
 
 </body>
 </html>

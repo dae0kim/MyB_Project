@@ -17,20 +17,27 @@
 <div class="pheader">
 
 	<div class="header_wrap">
-		<div id="login_logo"><img src="../resources/images/logo.png" style="height: 30px;">MyB</div>
-			
-		<div id="textlow1">
-			<a href='<c:url value="/parent/mparent_alarm"/>'><i class="fa-regular fa-bell"></i></a>
+		<div id="login_logo">
+			<img src="../resources/images/logo.png">
+		</div>
+
+		<div id="maintitle">
+			MyB
 		</div>
 			
-		<div id="textlow2">		      
-	            ${childName}<br>
-	            ${kindergartenName}<br>
-	            ${classroomName}
+		<div id="textlow1">
+			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="notbell" class="fa-regular fa-bell"></i></a>
+			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="bell" class="fa-solid fa-bell" style="color: #f00000; display: none;"></i></a>
+		</div>
+			
+		<div id="textlow2">
+	            <p id="name">${childName}</p><br>
+	            <p id="kinder">${kindergartenName}</p><br>
+	            <p id="classroom">${classroomName}</p>
 	   </div>
 	   
 	   <div id="textlow3">
-	   		<img src="../resources/images/images/mobile/mparent_family.png" style="width: 8em;">
+	   		<img id="familyimg" src="../resources/images/images/mobile/mparent_family.png">
 	   </div>
 	</div>
 </div>
@@ -58,7 +65,7 @@
 
 	<script>
 		
-		function checkForNotifications() {
+		window.onload = function checkForNotifications() {
 		    $.ajax({
 		        url: '${pageContext.request.contextPath}/checkalarm',
 		        type: 'GET',
@@ -67,20 +74,22 @@
 		        	if (data.hasNewAlarm) {
 		        		//새로운 알림이 있으면 빨간색으로 변경
 		        	   
-		        	    $('#textlow1 i').css('color', 'red'); 
+		        	    $('#bell').css('display', 'inline-block');
+		        	    $('#notbell').css('display', 'none'); 
 		        	    console.log("new");
 		        	} else {
 		        	   
-		        	    $('#textlow1 i').css('color', 'black'); 
+		        	    $('#bell').css('display', 'none'); 
+		        	    $('#notbell').css('display', 'inline-block');
 		        	    console.log("nothing");
 		        	}
 		            //다음 실행 시간 설정
-		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
+// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
 		        },
 		        // data 전송 실패 시
 		        error: function(jqXHR, textStatus, errorThrown) {
 		            console.error('Error checking for notifications:', textStatus, errorThrown);
-		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
+// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
 		        }
 		    });
 		}

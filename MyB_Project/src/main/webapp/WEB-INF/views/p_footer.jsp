@@ -14,7 +14,7 @@
 	<div id="footer1">
 		<div class="mouseevent">
 			<div id="childplus">
-				<a href='<c:url value="/parent/mparent_select_kinder"/>'>
+				<a href='<c:url value="/parent/mparent_select_kinder_mypage"/>'>
 					<i class="fa-solid fa-baby fa-xl" style="color: #5e5e5e; font-size: 1.4em;"></i>
 					<i class="fa-solid fa-plus fa-xs" style="color: #5e5e5e; font-size: 0.7em;"></i>
 				</a>
