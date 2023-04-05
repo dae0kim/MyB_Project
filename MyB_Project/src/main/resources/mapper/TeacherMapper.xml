@@ -49,6 +49,15 @@
 			WHERE teacher_email=#{teacherEmail} AND teacher_pw=#{teacherPw}
 		]]>
 	</select>
+	
+	<!-- adminId에 따른 teacherId 가져오기 (0403 문수지) -->
+	<select id="selectTeacherIdByAdmin" parameterType="int" resultType="int">
+		<![CDATA[
+			SELECT teacher_id AS "teacherId"
+			FROM teacher
+			WHERE admin_id = #{adminId}
+		]]>
+	</select>
 
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
 	<!-- 교사 등록 -->

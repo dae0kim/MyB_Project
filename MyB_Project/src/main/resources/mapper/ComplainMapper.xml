@@ -5,11 +5,17 @@
 	
 	<!-- 1:1문의 작성 (0328 문수지 작성)-->
 	<insert id="insertComplain" parameterType="com.project.myapp.myb.complain.ComplainVO">
-		<![CDATA[
-			INSERT INTO
-				complain (complain_id, complain_title, complain_content, parent_id)
-			VALUES
-				(complain_seq.NEXTVAL, #{complainTitle}, #{complainContent}, #{parentId})
+		<![CDATA[		
+		INSERT INTO
+        complain (complain_id, complain_title, complain_content, parent_id, admin_id, child_id)
+        VALUES
+        (complain_seq.NEXTVAL, #{complainTitle}, #{complainContent}, #{parentId}, 
+        	(SELECT admin_id
+			 FROM kindergarten
+			 WHERE kindergarten_id = 
+				(SELECT kindergarten_id
+		    	 FROM child
+		    	 WHERE parent_id = #{parentId} and rownum=1)), #{childId})
 		]]>
 	</insert>
 	
@@ -129,3 +135,10 @@
 	</update>
 	
 </mapper>
+
+
+
+<!-- 			INSERT INTO
+				complain (complain_id, complain_title, complain_content, parent_id)
+			VALUES
+				(complain_seq.NEXTVAL, #{complainTitle}, #{complainContent}, #{parentId}) -->

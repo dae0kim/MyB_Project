@@ -14,15 +14,15 @@
 </head>
 
 <body>
-		<div class="noticedetailtitle_wrap">
-        <div id="noticedetail_title" style="font-weight : 700;">공지사항</div>
+<div class="wrap">
+		<div class="title_wrap">
+        <div id="title_name" style="font-weight : 700;">공지사항</div>
         <div id="noticedetail_btn">
             <button type="button"><a href='<c:url value="./mteacher_web_main"/>'>돌아가기</a></button>
         </div>
         </div>
 
     <div class="noticedetailcontent_wrap">
-    	<div>
               <div id="notice_box">
                 <table class="notice_table">
 					<tr>
@@ -40,6 +40,7 @@
 				</table>
             </div>
             </div>
+    </div>
     </div>
 </body>
 

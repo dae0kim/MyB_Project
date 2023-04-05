@@ -81,5 +81,10 @@ public class ParentService implements IParentService {
 		// TODO Auto-generated method stub
 		return parentRepository.getParentName(teacherId);
 	}
+
+	@Override
+	public List<Integer> selectParentIdByAdmin(int adminId) {
+		return parentRepository.selectParentIdByAdmin(adminId);
+	}
 	
 }

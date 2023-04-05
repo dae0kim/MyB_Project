@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../p_header.jsp"%> 
+<%@include file="../p_header2.jsp"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -16,7 +16,9 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_request.css" rel="stylesheet">    
 </head>
+
 <body>
+	<div class="wrapper">
 	<form action="<c:url value='/parent/mparent_request'/>" method="post">
 	    <div class="title_wrap">
 			<div id="title_name" style="font-weight : 700;">요청사항 작성</div>
@@ -26,14 +28,8 @@
 	    <div class="request_wrap">
 	    	<div id="request-form">
 	    		<div class="request-name">해당하는 자녀를 선택해주세요.</div>
-	    		<select name="childId" class="childId_input" id="childId" style="
-	    			margin-bottom: 20px;
-		          	height: 48px;
-		        	width: 85%;
-		        	border: 1px solid #999;
-		        	font-family: inherit;
-		            background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" required> 
-	                <option value="">- 자녀 선택</option>
+	    		<select name="childId" class="childId_input" id="childId" required> 
+	                <option value="">자녀 선택</option>
 	                <c:forEach var="child" items="${childList}">
 	                	<option value="${child.childId}">${child.childName}</option>
 	                </c:forEach>
@@ -55,6 +51,7 @@
 	        </div>
 	    </div>
     </form>
+   </div>
 
 <script type="text/javascript">
 	// childId값에 따라 해당 자녀의 classroomId, kindergartenId 불러오기
@@ -96,3 +93,5 @@
 </script>
 </body>
 </html>
+
+<%@include file="../p_footer.jsp"%>

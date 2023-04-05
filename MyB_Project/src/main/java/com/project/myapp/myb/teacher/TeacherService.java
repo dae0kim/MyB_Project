@@ -73,4 +73,9 @@ public class TeacherService implements ITeacherService {
 		return teacherRepository.phoneChk(teacherPhone);
 	}
 
+	@Override
+	public List<Integer> selectTeacherIdByAdmin(int adminId) {
+		return teacherRepository.selectTeacherIdByAdmin(adminId);
+	}
+
 }

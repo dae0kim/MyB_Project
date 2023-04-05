@@ -1,4 +1,4 @@
-.header_wrap{
+.headgrid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     place-content: center space-evenly;

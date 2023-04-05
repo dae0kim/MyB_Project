@@ -8,10 +8,30 @@
 	<insert id="insertRequest"
 		parameterType="com.project.myapp.myb.request.RequestVO">
 		<![CDATA[
-			INSERT INTO
-				request (request_id, request_date, request_content1, request_content2, request_content3, request_content4, request_content5, parent_id, child_id, classroom_id)
+			MERGE INTO REQUEST USING DUAL
+			ON (request_date = to_char(#{requestDate},'yyyy-mm-dd') AND (child_id = #{childId}))
+			WHEN NOT MATCHED THEN
+			INSERT 
+				(request_id, 
+				request_date, 
+				request_content1, 
+				request_content2, 
+				request_content3, 
+				request_content4, 
+				request_content5, 
+				parent_id, child_id, 
+				classroom_id)
 			VALUES
-				(REQUEST_SEQ.NEXTVAL, #{requestDate}, #{requestContent1}, #{requestContent2}, #{requestContent3}, #{requestContent4}, #{requestContent5}, #{parentId}, #{childId}, #{classroomId})
+				(REQUEST_SEQ.NEXTVAL, 
+				to_char(#{requestDate},'yyyy-mm-dd'), 
+				#{requestContent1}, 
+				#{requestContent2}, 
+				#{requestContent3}, 
+				#{requestContent4}, 
+				#{requestContent5}, 
+				#{parentId}, 
+				#{childId}, 
+				#{classroomId})
 		]]>
 	</insert>
 

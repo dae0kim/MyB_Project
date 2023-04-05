@@ -1,67 +1,173 @@
-.title_wrap{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-content: center space-evenly;
-    align-items: center;
-    align-content: center;
-    
-    padding-top: 90px;
-    padding-bottom: 20px;
-
-    width: 100%;
-    height: 20px;
-
+html {
+	height: 100%;
 }
-.title_wrap > input[type="submit"]{
-    color: #fff;
+
+body {
+	margin: 0;
+	height: 100%;
+}
+
+.wrap {
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 50px; /* footer height */
+}
+
+.wrapper {
+	margin: 0;
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 50px;
+	text-align: -webkit-center;
+}
+
+#childId {
+	margin-bottom: 20px;
+    height: 48px;
+    width: 100%;
+    border: 2px solid black;
+    font-family: inherit;
+    border-radius: 6px;
+    text-align: center;
+    background-color: #F8F8F8;
+}
+
+.title_wrap {
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 86%;
+    height: 100%;
+    padding: 23px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.title_wrap>input[type="submit"] {
+    color: #000;
     font-size: 16px;
     background-color: #F2BE5C;
     border-radius: 6px;
     width: 100px;
-    height: 30px;
-    
+    height: 40px;
+    justify-self: flex-end;
 }
 
-#title_name{
-    font-size: 1.5em;
+#title_name {
+	font-size: 1.6em;
     grid-column-start: 1;
-    margin-left: 20px;
+    justify-self: left;
 }
 
-.request_wrap{
-    width: 400px;
-    height: 350px;
-    padding: 40px;
-    box-sizing: border-box;
-    text-align: center;
-    display: flex;
-    border-color: transparent;
-    flex-direction: column;
-        
+.request_wrap {
+	width: 100%;
+    height: 100%;
+	padding: 23px;
+	box-sizing: border-box;
+	display: flex;
+	border-color: transparent;
+	flex-direction: column;
+	text-align: -webkit-center;
 }
 
-#request-form{
-    text-align: center;
-  
-
+#request-form {
+	text-align: center;
 }
 
-#request-form > input{
-    width: 85%;
+#request-form>input {
+	width: 100%;
     height: 48px;
     box-sizing: border-box;
     margin-bottom: 20px;
     border-radius: 6px;
     background-color: #F8F8F8;
 }
-#request-form > input::value{
-    color: #D2D2D2;
+
+#request-form>input::value {
+	color: #D2D2D2;
 }
 
-.request-name{
+.request-name {
 	text-align: left;
-	padding-left: 25px;
-	padding-bottom: 5px;
-	font-size: 0.8em;
-	font-weight: bold;
+    padding-bottom: 5px;
+    font-size: 1em;
+    font-weight: bold
+}
+
+#reqcheck {
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    justify-content: start;
+    justify-items: center;
+    align-self: center;
+}
+
+#reqcheck input[type="text" i] {
+	width: 18em;
+	grid-column-start: 1;
+	padding: 0 10px;
+	border: 2px solid black;
+	background-color: #F8F8F8;
+	border-radius: 6px;
+}
+
+#reqcheck {
+	grid-column-start: 2;
+    height: 54px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+input[type="checkbox" i] {
+	width: 60%;
+	height: 48px;
+	cursor: default;
+	appearance: auto;
+	box-sizing: border-box;
+	margin: 3px 3px 3px 4px;
+	padding: initial;
+	border: initial;
+	background-color: #F8F8F8;
+	justify-self: right;
+}
+
+#teachercomment {
+	text-align: left;
+    padding-bottom: 5px;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+#comment {
+    text-align: center;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+
+#comment {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 20px;
+    line-height: normal;
+}
+
+#comment .text {
+    height: auto;
+    border: 1px solid black; 
+    background-color: white;
+    overflow-y: scroll; 
+    margin: 0 auto 20px;
+    border-radius: 6px;
+    font-size: 1em;
+    text-align: left;
+}
+
+#comment p {
+    text-align: right;
+    padding-bottom: 15px;    
 }

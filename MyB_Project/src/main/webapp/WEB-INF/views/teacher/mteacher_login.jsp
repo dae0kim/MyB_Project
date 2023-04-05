@@ -15,16 +15,19 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_login.css" rel="stylesheet">
 </head>
 <body>
+	<div class="border">
+		<div class="headgrid">
+			<div id="login_logo"><img src="../resources/images/logo.png"></div>	
+			<div id="textlow1"><b>교사 로그인</b></div>
+		</div>
 
-    <div class="logo_wrap">
-        <div id="login_logo"><img src="../resources/images/logo.png"></div>
-        <div id="logo_name">myB</div>
-        <div id="teacher_only" style="font-size: 13px; padding-top:10px;">교사 로그인 전용</div>
-    </div>
+		<div class="title_img">
+			<div id="titleimage"><img src="../resources/images/mobile/main.png"></div>
+		</div>
 
-    <div class="login-wrap">
-      
-        <form action="<c:url value='/teacher/mteacher_login'/>" method="post" id="teacher-login-form">
+
+    <div class="login-wrap">    
+       <form action="<c:url value='/teacher/mteacher_login'/>" method="post" id="teacher-login-form">
             <input type="text" class="teacherEmail_input" name="teacherEmail" id="teacherEmail" placeholder="　Email">
             <input type="password" class="teacherPw_input" name="teacherPw" id="teacherPw" placeholder="　Password">
             <input type="submit" value="Login">
@@ -32,6 +35,7 @@
             <span class="email_ok">존재하지 않는 이메일입니다.</span>
             <span class="pw_fail">비밀번호가 틀렸습니다.</span>
         </form>
+        </div>
     </div>
     
  <script type="text/javascript">

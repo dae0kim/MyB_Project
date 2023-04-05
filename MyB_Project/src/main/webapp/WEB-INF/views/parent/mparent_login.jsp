@@ -13,13 +13,18 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_login.css" rel="stylesheet">
 </head>
 <body>
-    <div class="logo_wrap">
-        <div id="login_logo"><img src="../resources/images/logo.png"></div>
-        <div id="logo_name">myB</div>
-    </div>
+	<div class="border">
+		<div class="headgrid">
+			<div id="login_logo"><img src="../resources/images/logo.png"></div>	
+			<div id="textlow1"><b>학부모 로그인</b></div>
+		</div>
 
-    <div class="login-wrap">
-       
+		<div class="title_img">
+			<div id="titleimage"><img src="../resources/images/mobile/main.png"></div>
+		</div>
+
+
+    <div class="login-wrap">    
         <form action="<c:url value='/parent/mparent_login'/>" method="post" id="login-form">
             <input type="text" class="parentEmail_input" name="parentEmail" id="parentEmail" placeholder="　Email">
             <input type="password" class="parentPw_input" name="parentPw" id="parentPw" placeholder="　Password">
@@ -74,6 +79,7 @@
 	});
 	
 </script>
+</div>
     
 </body>
 </html>

@@ -58,7 +58,15 @@
 			WHERE parent_email = #{parentEmail}
 		]]>
 	</update>
-
+	
+	<!-- adminId에 따른 parentId 가져오기 (0403 문수지) -->
+	<select id="selectParentIdByAdmin" parameterType="int" resultType="int" >
+		<![CDATA[
+			SELECT c.parent_id AS "parentId"
+			FROM child c, kindergarten k
+			WHERE c.kindergarten_id = k.kindergarten_id AND k.admin_id=#{adminId}
+		]]>
+	</select>
 
 	<!-- 일형추가 : 부모이름+관계표시 -->
 	<select id="getParentName" parameterType="int"

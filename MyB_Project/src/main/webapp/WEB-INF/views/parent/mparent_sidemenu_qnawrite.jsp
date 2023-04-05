@@ -23,7 +23,20 @@
 		
 	    <div class="sidemenuqna_wrap">
 	        <div class="sidemenuqnacontent_wrap">
-	                    <div>
+	            <div>
+	            	<div class="qna-name">해당하는 자녀를 선택해주세요.</div>
+			    		<select name="childId" class="childId_input" id="childId" style="
+			    			margin-bottom: 20px;
+				          	height: 48px;
+				        	width: 85%;
+				        	border: 1px solid #999;
+				        	font-family: inherit;
+				            background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" required> 
+			                <option value="">- 자녀 선택</option>
+			                <c:forEach var="child" items="${childList}">
+			                	<option value="${child.childId}">${child.childName}</option>
+			                </c:forEach>
+			            </select>	
 	                <div>
 	                    작성자
 	                    <input type="text" value="${parentEmail}" readonly>

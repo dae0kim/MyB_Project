@@ -22,7 +22,7 @@
 	<div class="requestChk">
 	<form id="request-form" action="<c:url value='/teacher/mteacher_requset_check'/>" method="POST">
 	<input type="hidden" id="requestId" name="requestId" value="${getCheckDetail.requestId}">
-	
+	<input type="hidden" id="parentId" name="parentId" value="${parentId}">
 
 	
 	

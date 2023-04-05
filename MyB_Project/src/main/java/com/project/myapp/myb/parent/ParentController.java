@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.myapp.myb.alarm.AlarmVO;
+import com.project.myapp.myb.alarm.IAlarmService;
 import com.project.myapp.myb.child.ChildVO;
 import com.project.myapp.myb.child.IChildService;
 import com.project.myapp.myb.classroom.ClassroomVO;
@@ -50,6 +52,8 @@ public class ParentController {
 		   @Autowired
 		   INoticeService noticeService;
 		   
+		   @Autowired
+		   IAlarmService alarmService;
 		   /***
 		    * @author 문수지
 		    * 이용약관 페이지로 이동
@@ -154,7 +158,9 @@ public class ParentController {
 		               session.setAttribute("parentRelation", parent.getParentRelation());
 		               session.setAttribute("parentId", parent.getParentId());  // 사용자 아이디를 세션에 저장
 		               session.setAttribute("childName", child.getChildName());// 자녀 이름
+		               session.setAttribute("parentName", parent.getParentName());	//부모 이름을 세션에 저장
 		               
+		               System.out.println(parent.getParentName());
 		               // 자녀 어린이집
 		               int kindergartenId = child.getKindergartenId();
 		               KindergartenVO kindergarten = kindergartenService.selectKindergartenById(kindergartenId);
@@ -223,6 +229,16 @@ public class ParentController {
 		   public String parentMypageUpdate(ParentVO parent) {
 			   parentService.updateParent(parent);
 			   return "redirect:/parent/mparent_sidemenu_info";
+		   }
+		   
+		   //알림 목록으로 이동
+		   @RequestMapping(value="/parent/mparent_alarm")
+		   public String parentAlarm(HttpSession session, Model model) {
+			   int parentId = (int) session.getAttribute("parentId");
+			   List<AlarmVO> alarms = alarmService.getAlarm(parentId);
+			   model.addAttribute("alarms", alarms);
+			   return "parent/mparent_alarm";
+			   
 		   }
 	   
 	}

@@ -13,6 +13,7 @@ public class ComplainVO {
 	private String complainStat;
 	private int parentId;
 	private int adminId;
+	private int childId; // 0403 추가
 	
 	private String parentName;
 	private String parentPhone;

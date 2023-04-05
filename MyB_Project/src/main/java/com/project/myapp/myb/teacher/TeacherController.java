@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.project.myapp.myb.alarm.AlarmVO;
+import com.project.myapp.myb.alarm.IAlarmService;
 import com.project.myapp.myb.child.ChildVO;
 import com.project.myapp.myb.child.IChildService;
 import com.project.myapp.myb.classroom.ClassroomVO;
@@ -49,6 +52,9 @@ public class TeacherController {
 
 	@Autowired
 	IDiseaselogService diseaselogService;
+	
+	@Autowired
+	IAlarmService alarmService;
 
 	// 교사 웹 메인 이동
 	@RequestMapping(value = "/teacher/mteacher_web_main")
@@ -157,6 +163,15 @@ public class TeacherController {
 		} else {
 			return "success"; // 비밀번호 맞춤
 		}
+	}
+	
+	// 알림 목록으로 이동 (0403 문수지)
+	@RequestMapping(value="/teacher/mteacher_alarm")
+	public String parentAlarm(HttpSession session, Model model) {
+		int teacherId = (int) session.getAttribute("teacherId");
+		List<AlarmVO> alarms = alarmService.getTeacherAlarm(teacherId);
+		model.addAttribute("alarms", alarms);
+		return "teacher/mteacher_alarm"; 
 	}
 
 	/* -----------------------------웹 기능----------------------------- */

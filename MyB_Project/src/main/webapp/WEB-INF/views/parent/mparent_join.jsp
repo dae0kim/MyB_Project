@@ -14,9 +14,11 @@
 
 </head>
 <body>
-    
-    <div id="head_icon"><img src="../resources/images/logo.png"><b> 회원가입</b></div>
-
+    <div class="border">
+		<div class="headgrid">
+			<div id="login_logo"><img src="../resources/images/logo.png"></div>	
+			<div id="textlow1"><b>회원가입</b></div>
+		</div>
 
     <div class="join_wrap">
         <form id="login-form" action="<c:url value='/parent/mparent_join'/>" method="post">
@@ -42,36 +44,29 @@
             <input type="text" class="parentPhone_input" name="parentPhone" id="parentPhone" value="${parentVO.parentPhone}" placeholder="　Phone('-'없이 번호만 입력)" oninput="autoHyphen(this)" maxlength="13" required>
             <span class="phone_already">해당 번호가 이미 존재합니다.</span>
             
-            <select name="parentRelation" id="parentRelation" style="
-            margin-top: 20px;
-            height: 48px;
-            width: 85%;
-            border: 1px solid #999;
-            font-family: inherit;
-            background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;
-            border-radius: 6px;" 
-            class="parentRelation_input"
+            <select name="parentRelation" class="parentRelation_input"
             required>
-                <option value="">- 자녀와의 관계</option>
+                <option value="">자녀와의 관계</option>
                 <option value="엄마">엄마</option>
                 <option value="아빠">아빠</option>
             </select>
 
             <div id="address">
-               <select name="parentCity" id="parentCity" style="background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" class="parentCity_input" onChange="chnGu(this.value)" required>
-                   <option value="">- 시 선택</option>
+               <select name="parentCity" id="parentCity" onChange="chnGu(this.value)" required>
+                   <option value="">시 선택</option>
                    <option value="서울특별시">서울특별시</option>
                    <option value="부산광역시">부산광역시</option>
                    <option value="광주광역시">광주광역시</option>
                </select>
                <br>
-               <select name="parentGu" id="parentGu" style="background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" display:none; class="parentGu_input" required>
-					<option value="">- 구 선택</option>
+               <select name="parentGu" id="parentGu" class="parentGu_input" required>
+					<option value="">구 선택</option>
                </select>
            </div>
 
-            <input type="button" class="join_btn" value="Join">
+           <input type="button" class="join_btn" value="Join">
         </form>
+    </div>
     </div>
     
 <script type="text/javascript">

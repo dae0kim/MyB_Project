@@ -1,33 +1,67 @@
-.logo_wrap {
-	width: 400px;
-	height: 400px;
-	padding: 110px 20px 20px 20px;
-	box-sizing: border-box;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+.border{
+	width: 100%;
+	height: 900px;
+    border-radius: 20px;
+	background-color: #F2BE5C;	
+}
+
+
+.headgrid {
+    display: grid;
+    grid-template-rows: repeat(2, 50px);
+    grid-template-columns: 40px 190px;
+    width: 80%;
+    height: 120px;
+    justify-items: start;
+    align-items: center;
+    padding: 20% 10% 0%;
 }
 
 #login_logo img {
-	width: auto;
-	height: 12em;
+	grid-column: 1/1;
+	width: 35px;
+	height: auto;
+    font-size : 2em;
 }
 
-#logo_name {
-	font-size: 1.8em;
+#textlow1 {
+	grid-row: 1;
+    grid-column: 2;  
+    font-size : 2em;
+}
+
+#textlow2 {
+	grid-row: 2;
+	grid-column: 2;
+	font-weight: 700;
+    font-size : 3em;
+}
+
+
+.title_img {
+    display: grid;
+    align-items: center;
+    padding: 15px;
+    justify-items: center;
+    padding-top: 0px;
+}
+
+#titleimage img{
+	width: 20em;
+    height: auto;
+    margin-bottom: 3em;
+    margin-top: 3em;
 }
 
 .login-wrap {
-	width: 400px;
-	height: 350px;
-	padding: 40px;
-	box-sizing: border-box;
-	text-align: center;
-	display: flex;
-	border-color: transparent;
-	flex-direction: column;
+    width: 100%;
+    height: 350px;
+    padding: 0% 10%;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    border-color: transparent;
+    flex-direction: column;
 }
 
 button {
@@ -45,20 +79,20 @@ button {
 	display: inline-block;
 	width: auto;
 	height: 48px;
-	border: 2px solid black;
-	border-radius: 6px;
+	border-radius: 10px;
 	color: white;
 	font: inherit;
 }
 
 #loginparent {
 	font-size: 16px;
-	background-color: #F2BE5C;
+	background-color: #44564A;
 }
 
 #loginteacher {
 	font-size: 16px;
-	background-color: #5FAAD9;
+	background-color: #44564A;
+	color : white;
 }
 
 a {

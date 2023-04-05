@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.project.myapp.myb.child.ChildVO;
+import com.project.myapp.myb.child.IChildService;
 import com.project.myapp.myb.parent.IParentService;
 import com.project.myapp.myb.parent.ParentVO;
 
@@ -23,7 +25,10 @@ public class ComplainController {
 	IComplainService complainService;
 	
 	@Autowired
-	   IParentService parentService;
+	IParentService parentService;
+	
+	@Autowired
+	IChildService childService;
 	
 	// 1:1문의하기로 이동
 	@RequestMapping(value="/parent/mparent_sidemenu_qna")
@@ -45,6 +50,8 @@ public class ComplainController {
 		String parentEmail = (String) session.getAttribute("parentEmail");
 		ParentVO parent = parentService.selectParent(parentEmail);
 		model.addAttribute("parent", parent);
+		List<ChildVO> childList = childService.selectAllChildList(parentEmail);
+		model.addAttribute("childList", childList);
 		return "parent/mparent_sidemenu_qnawrite";
 	}
 

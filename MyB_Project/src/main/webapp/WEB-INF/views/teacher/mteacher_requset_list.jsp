@@ -16,6 +16,9 @@
 		<div id="title_name" style="font-weight: 700;">요청사항 목록</div>
 	</div>
 	
+	
+	<input type="hidden" id="parentId" name="parentId" value="${parentId}">
+	
 <%-- 		<c:forEach items="${getRequestIdList }" var="getRequestIdList" varStatus="status2">
 		<div>${getRequestIdList.requestId}</div>
 		</c:forEach>
@@ -25,14 +28,14 @@
 		<%-- <c:set var="getRequestIdList" value="${getRequestIdList.requestId}" />  --%>
 		
 		<div class="requestChk">
-		<c:forEach items="${getParentName }" var="getParentName" varStatus="status">
+		<c:forEach items="${getParentId }" var="getParentId" varStatus="status">
 		<div id="requestBox">  
 		
-			<div id="parentname">${getParentName.parentName}</div>
-			<div id="parentRelation">${getParentName.parentRelation}</div>
+			<div id="parentname">${getParentId.parentName}</div>
+			<div id="parentRelation">${getParentId.parentRelation}</div>
 		
 			
-			<a href='<c:url value="/teacher/mteacher_requset_check/${getParentName.requestId}" />' class="button">요청사항 확인</a>
+			<a href='<c:url value="/teacher/mteacher_requset_check/${getParentId.requestId}?parentId=${getParentId.parentId}" />' class="button">요청사항 확인</a>
 		</div>
 		</c:forEach>
 

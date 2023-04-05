@@ -1,67 +1,96 @@
-.title_wrap{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-content: center space-evenly;
-    align-items: center;
-    align-content: center;
-    
-    padding-top: 90px;
-    padding-bottom: 20px;
-
-    width: 100%;
-    height: 20px;
-
+html {
+	height: 100%;
 }
-.title_wrap > input[type="submit"]{
-    color: #fff;
+
+body {
+	margin: 0;
+	height: 100%;
+}
+
+.wrap {
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 50px; /* footer height */
+}
+
+
+.wrapper {
+	margin: 0;
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 50px;
+	text-align: -webkit-center;
+}
+
+.title_wrap {
+	display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 86%;
+    height: 100%;
+    padding: 23px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.title_wrap>input[type="submit"] {
+    color: #000;
     font-size: 16px;
     background-color: #F2BE5C;
     border-radius: 6px;
     width: 100px;
-    height: 30px;
-    
+    height: 40px;
+    justify-self: flex-end;
 }
 
-#title_name{
-    font-size: 1.5em;
+#title_name {
+	font-size: 1.6em;
     grid-column-start: 1;
-    margin-left: 20px;
+    justify-self: left;
 }
 
-.request_wrap{
-    width: 400px;
-    height: 350px;
-    padding: 40px;
-    box-sizing: border-box;
-    text-align: center;
-    display: flex;
-    border-color: transparent;
-    flex-direction: column;
-        
+.request_wrap {
+	width: 100%;
+    height: 100%;
+	padding: 23px;
+	box-sizing: border-box;
+	display: flex;
+	border-color: transparent;
+	flex-direction: column;
+	text-align: -webkit-center;
 }
 
 #request-form{
     text-align: center;
-  
-
 }
 
-#request-form > input{
-    width: 85%;
+#request-form>input {
+	width: 100%;
     height: 48px;
     box-sizing: border-box;
     margin-bottom: 20px;
     border-radius: 6px;
     background-color: #F8F8F8;
 }
+
 #request-form > input::value{
     color: #D2D2D2;
 }
 
-.request-name{
+.request-name {
 	text-align: left;
-	padding-left: 25px;
-	padding-bottom: 5px;
-	font-size: 0.8em;
-	font-weight: bold;
+    padding-bottom: 5px;
+    font-size: 1em;
+    font-weight: bold
+}
+
+select{
+	width: 100%;
+    height: 48px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+    border : solid 2px black;
+    text-align: center;
 }

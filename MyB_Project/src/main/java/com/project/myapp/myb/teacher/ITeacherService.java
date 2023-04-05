@@ -10,6 +10,8 @@ public interface ITeacherService {
 	int emailChk(String teacherEmail) throws Exception;
 	// (0329 합침 일형추가)
 	int pwChk(String teacherEmail, String teacherPw) throws Exception;
+	// adminId에 따른 teacherId 가져오기 (0403 문수지)
+	List<Integer> selectTeacherIdByAdmin(int adminId);
 	
 	/* -----------------------------웹 기능----------------------------- */
 	//1. 교사 정보 등록 - 이름, 계정(email,pw), 연락처, 담당 반
