@@ -150,6 +150,18 @@ public class NoticeController {
 	public String insertNotice(NoticeVO noticeVO,HttpSession session) {
 		noticeService.insertNotice(noticeVO);
 		int adminId = ((Integer)session.getAttribute("adminId")).intValue();
+		// 알람메시지 보내기 (0403 문수지 추가)
+		String alarmMessage="새로운 공지사항이 등록되었습니다.";
+		
+		List<Integer> teacherIds = teacherService.selectTeacherIdByAdmin(adminId); // 해당 유치원에 소속하는 teacherId 리스트 저장
+		for(int teacherId : teacherIds) {
+			alarmService.insertTeacherAlarm(teacherId, alarmMessage); // 선생님에게 알람 보내기
+		}
+		
+		List<Integer> parentIds = parentService.selectParentIdByAdmin(adminId); // 해당 유치원에 소속하는 parentId 리스트 저장
+		for(int parentId : parentIds) {
+			alarmService.insertAlarm(parentId, alarmMessage); // 부모님에게 알람 보내기
+		}
 		return "redirect:/notice/list/"+adminId;
 	}
 
