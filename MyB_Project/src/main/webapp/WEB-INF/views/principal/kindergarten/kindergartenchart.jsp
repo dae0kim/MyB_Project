@@ -145,9 +145,8 @@
 		  	  console.log("데이터 테이블2 :" +data2);
 		  	  
 		      var options = {
-		    	  legend: 'bottom',		
+		    	legend: 'right',		
 		        fontSize: 20,
-		        subtitle: 'dd',
 		        is3D: true,
 		      };
 		

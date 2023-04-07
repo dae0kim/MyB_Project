@@ -386,7 +386,6 @@
 	      var options = {
     	    legend: 'right',		
 	        fontSize: 20,
-	        subtitle: 'dd',
 	        is3D: true,
 	      };
 	
