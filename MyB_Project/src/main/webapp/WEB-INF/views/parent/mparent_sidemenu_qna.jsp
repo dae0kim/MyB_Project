@@ -15,34 +15,37 @@
 </head>
 <body>
 <div class="wrap">
-    <div class="title_wrap">
-		<div id="title_name" style="font-weight : 700;">1:1 문의</div>
-		<input type="button" value="글 쓰기" onClick="location.href='${pageContext.request.contextPath}/parent/mparent_sidemenu_qnawrite'">	
-	</div>
-        	
+
+		<div class="title_wrap">
+        <div id="title_name" style="font-weight : 700;">1:1 문의</div>
+        <div id="noticedetail_btn">
+            <button type="button" onclick = "location.href = '${pageContext.request.contextPath}/parent/mparent_sidemenu_qnawrite' ">글 쓰기</button>
+        </div>
+        </div>
+        <div id="subtitle">문의 및 컴플레인을 작성 해 주세요</div>
+
 	
 
    <div class="qna_wrap">
 	        <table class="qna_table">
 	                <tr>
-	                    <th scope="cols" style="width:65%;">제목</th>
-						<th scope="cols" style="width:25%;">날짜</th>	
-						<th scope="cols" style="width:10%;">확인여부</th>	
+	                    <th scope="cols" style="width:45%;">제목</th>
+						<th scope="cols" style="width:30%;">날짜</th>	
+						<th scope="cols" style="width:25%;">확인여부</th>	
 	                </tr>
 	            		<c:forEach var="complain" items="${complainList}">
 		                <tr>
-		                    <td scope="row">
-		                    <a href="${pageContext.request.contextPath}/mparent_sidemenu_qnadetail/${complain.complainId}">${complain.complainTitle}</a>
+		                    <td><a class="comtitle" href="${pageContext.request.contextPath}/parent/mparent_sidemenu_qnadetail/${complain.complainId}">${complain.complainTitle}</a>
 		                    </td>
-		                    <td scope="row"><fmt:formatDate  pattern="MM'월' dd'일'" value="${complain.complainDate}"/></td>
-		                    <td scope="row">${complain.complainStat}</td>
+		                    <td class="comdate"><fmt:formatDate  pattern="MM'월' dd'일'" value="${complain.complainDate}"/></td>
+		                    <td class="comstat">${complain.complainStat}</td>
 		                </tr>
 		         </c:forEach>   
 	        </table>
     	</div>
     	
     </div>
-    </div>
+    
 </body>
 </html>
 

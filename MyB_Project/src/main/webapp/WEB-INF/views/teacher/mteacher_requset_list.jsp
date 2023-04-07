@@ -12,34 +12,30 @@
 <link href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_requset_list.css" rel="stylesheet">
 </head>
 <body>
+	<div class="wrap">
 	<div class="title_wrap">
 		<div id="title_name" style="font-weight: 700;">요청사항 목록</div>
 	</div>
-	
-	
-	<input type="hidden" id="parentId" name="parentId" value="${parentId}">
-	
-<%-- 		<c:forEach items="${getRequestIdList }" var="getRequestIdList" varStatus="status2">
-		<div>${getRequestIdList.requestId}</div>
-		</c:forEach>
-		 --%>
+		<div class="diseaselog">
+		<input type="hidden" id="parentId" name="parentId" value="${parentId}">
 		
- 		
-		<%-- <c:set var="getRequestIdList" value="${getRequestIdList.requestId}" />  --%>
 		
-		<div class="requestChk">
 		<c:forEach items="${getParentId }" var="getParentId" varStatus="status">
-		<div id="requestBox">  
+		<div id="diseaseform">
 		
-			<div id="parentname">${getParentId.parentName}</div>
-			<div id="parentRelation">${getParentId.parentRelation}</div>
+		
+			<div id="childname">${getParentId.parentName}　${getParentId.parentRelation}</div>
 		
 			
-			<a href='<c:url value="/teacher/mteacher_requset_check/${getParentId.requestId}?parentId=${getParentId.parentId}" />' class="button">요청사항 확인</a>
-		</div>
+			<button type="button" onclick = "location.href = '${pageContext.request.contextPath}/teacher/mteacher_requset_check/${getParentId.requestId}?parentId=${getParentId.parentId}' ">요청사항 확인</button>
+	</div>
 		</c:forEach>
 
 	</div>
+
+	</div>
 </body>
-<%@include file="../t_footer.jsp"%>
+
 </html>
+
+<%@include file="../t_footer.jsp"%>

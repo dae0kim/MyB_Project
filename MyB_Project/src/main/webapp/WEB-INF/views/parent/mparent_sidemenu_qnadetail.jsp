@@ -1,33 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../p_header.jsp"%> 
+<%@include file="../p_header2.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>        
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.js"></script>
-    <title>sidemenuqnadetail</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/reset.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/mparent_sidemenu_qnadetail.css">    
+<meta charset="UTF-8">
+<title>Insert title here</title>
+     <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
+     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_sidemenu_qnadetail.css" rel="stylesheet">
 </head>
+
 <body>
-    <div class="title_wrap">
-		<div id="title_name" style="font-weight : 700;">1:1 문의</div>
-		<input type="button" value="목록가기" onClick="location.href='javascript:history.back();'">	
-	</div>
-	<div id="sidemenuqna_subtitle">어린이집에 대한 문의 및 불편사항을 적어주세요.</div>
-	
-    <div class="sidemenuqna_wrap">
-    	<div class="sidemenuqnacontent_wrap">
-            <div>제목: ${complain.complainTitle}</div>
-            <div>작성일: <fmt:formatDate pattern="yyyy-MM-dd" value="${complain.complainDate}"/></div>
-            <br>
-            <p>${complain.complainContent}</p>
+<div class="wrap">
+		<div class="title_wrap">
+        <div id="title_name" style="font-weight : 700;">문의내용 확인</div>
+	    <button type="button" onclick = "location.href = '${pageContext.request.contextPath}/parent/mparent_sidemenu_qna' ">돌아가기</button>
         </div>
+
+
+    <div class="notice_wrap">
+    	<div id="notice_form">
+    		<div class="title">
+    		<div id = "titlegrid">
+    		<div>제목</div>
+    		<div>작성일: <fmt:formatDate pattern="MM'월' dd'일'" value="${complain.complainDate}"/></div>
+    		</div>
+    		</div>
+			<input type="text" class="notice_title" name="notcietitle" id="noticetitle" value="${complain.complainTitle}" readonly>
+			
+			<div class="title">내용</div>
+			<div class="notice_content">
+			${complain.complainContent}
+        </div>
+    </div>
+    </div>
     </div>
 </body>
 </html>
+
+
+<%@include file="../p_footer.jsp"%>

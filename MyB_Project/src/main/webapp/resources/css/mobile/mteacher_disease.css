@@ -1,25 +1,67 @@
-.title_wrap{
-    display: grid;
+html {
+   height: 100%;
+}
+
+body {
+   margin: 0;
+   height: 100%;
+   font-family: Nanum Gothic !important;
+}
+
+.wrap {
+   min-height: 100%;
+   position: relative;
+   padding-bottom: 50px; /* footer height */
+   text-align: -webkit-center;
+}
+
+.title_wrap {
+   display: grid;
     grid-template-columns: 1fr 1fr;
-    place-content: center space-evenly;
+    width: 86%;
+    height: 100%;
+    padding: 23px 23px 3px 23px;
+    justify-items: center;
     align-items: center;
-    align-content: center;
-    
-    padding-top: 90px;
-    padding-bottom: 20px;
-
-    width: 100%;
-    height: 20px;
-
-}
-
-#title_name{
-    font-size: 1.5em;
-    grid-column-start: 1;
-    margin-left: 20px;
+    justify-content: center;
+    justify-items: end;
 }
 
 
+.title_wrap input[type="submit" i]{
+    color: #000;
+    font-size: 16px;
+    background-color: #54C9FF;
+    border-radius: 6px;
+    width: 100px;
+    height: 40px;
+    float: right;
+}
+
+
+#title_name {
+   font-size: 1.6em;
+   grid-column-start: 1;
+   justify-self: left;
+   color: #000000;
+}
+
+
+
+
+
+
+/* .title_wrap input[type="submit" i]{
+    color: #000;
+    font-size: 16px;
+    background-color: #54C9FF;
+    border-radius: 6px;
+    width: 100px;
+    height: 40px;
+    float: right;
+}
+
+ */
 
 .diseaselog{
 	display : grid;
@@ -27,8 +69,9 @@
 	width: 90%;
 	height: auto;
 	background-color: transparent;
-	border : 1px solid black;
+/* 	border : 2px solid black; */
 	text-align: center;
+	border-radius : 6px;
 }
 
 
@@ -38,14 +81,25 @@
 	margin: auto;
 	width: 99%;
     height: 3em;
-	background-color: transparent;
-	border : 1px solid green;
-	align-items: center;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+    justify-items: center;
 	
 }
 
 
 
+
+#subtitle{
+	text-align : left;
+	padding-left : 28px;
+	padding-bottom : 30px;
+}
 
 
 
@@ -53,8 +107,7 @@
 #childname{
 	display: inline-block;
     padding: 7px;
-    border: 1px solid #dfdfdf;
-    background-color: #ffffff;
+    background-color: transparent;
     text-align: center;
     width: 54px;
 }
@@ -134,12 +187,13 @@ select {
   color: black;
   background-color: #fff;
   
-  padding: .6em 1.4em .5em .8em;
+  padding: .6em 1em .6em 1em;
   margin: 0;
   
   border: 1px solid #aaa;
   border-radius: .5em;
   box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  text-align : center;
 }
 
 select:hover {
