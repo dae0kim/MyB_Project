@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.myapp.myb.kindergarten.IKindergartenRepository">
+	
+	<!-- 어린이집 검색 (0323 문수지 작성) -->
+	<select id="searchListByNameKeyword" parameterType="hashmap" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+		<![CDATA[
+			SELECT
+				kindergarten_id AS "kindergartenId",
+				kindergarten_name AS "kindergartenName",
+				kindergarten_address AS "kindergartenAddress",
+				kindergarten_phone AS "kindergartenPhone"
+			FROM (
+				SELECT
+				    kindergarten_id, kindergarten_name, kindergarten_address, kindergarten_phone
+				FROM
+				    kindergarten
+				WHERE
+				    kindergarten_city=#{kindergartenCity}
+					AND kindergarten_gu=#{kindergartenGu}
+					AND kindergarten_stat='Y'
+			)
+			WHERE kindergarten_name Like #{kindergartenNameKeyword}
+		]]>
+	</select>
+	
+	<!-- 어린이집 정보 불러오기 (0324 문수지 작성) -->
+	<select id="selectKindergartenById" parameterType="int" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+		<![CDATA[
+			SELECT
+				kindergarten_id AS "kindergartenId",
+				kindergarten_name AS "kindergartenName",
+				kindergarten_phone AS "kindergartenPhone",
+				kindergarten_address AS "kindergartenAddress",
+				kindergarten_city AS "kindergartenCity",
+				kindergarten_gu AS "kindergartenGu",
+				kindergarten_stat AS "kindergartenStat",
+				admin_id AS "adminId"
+			FROM kindergarten
+			WHERE kindergarten_id = #{kindergartenId}
+		]]>
+	</select>
+	
+	<!-- (0329 합침 일형추가) -->
+	<select id="getKindergartenName" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+	
+    SELECT 
+		kindergarten_name AS kindergartenName,
+		kindergarten_id AS kindergartenId,
+		kindergarten_city AS kindergartenCity,
+		kindergarten_gu AS kindergartenGu
+	from 
+		kindergarten
+	where 
+		kindergarten_id = (
+							SELECT kindergarten_id AS kindergartenId
+							FROM TEACHER
+							WHERE teacher_email = #{teacherEmail})
+	
+	</select>
+	
+	
+	
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~웹 기능~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- 접속중인 원장의 어린이집 정보 반환 -->
+	<select id="selectKindergarten" parameterType="int" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+	<![CDATA[
+		SELECT 
+			KINDERGARTEN_ID AS kindergartenId,
+			KINDERGARTEN_NAME AS kindergartenName,
+			KINDERGARTEN_PHONE AS kindergartenPhone,
+			KINDERGARTEN_ADDRESS AS kindergartenAddress,
+			KINDERGARTEN_CITY AS kindergartenCity,
+			KINDERGARTEN_GU AS kindergartenGu,
+			KINDERGARTEN_STAT AS kindergartenStat,
+			ADMIN_ID AS adminId
+		FROM 
+			KINDERGARTEN 
+		WHERE ADMIN_ID = #{adminId}
+	]]>
+	</select>
+	
+	
+	<!-- 어린이집 등록 요청 전송 -->
+	<insert id="insertKindergarten" parameterType="com.project.myapp.myb.kindergarten.KindergartenVO">
+	<![CDATA[
+		INSERT INTO KINDERGARTEN(
+			KINDERGARTEN_ID,
+			KINDERGARTEN_NAME,
+			KINDERGARTEN_PHONE,
+			KINDERGARTEN_ADDRESS,
+			KINDERGARTEN_CITY,
+			KINDERGARTEN_GU,
+			ADMIN_ID
+			)
+		VALUES(
+		KINDERGARTEN_SEQ.nextval,
+		#{kindergartenName},
+		#{kindergartenPhone},
+		#{kindergartenAddress},
+		#{kindergartenCity},
+		#{kindergartenGu},
+		#{adminId}
+		)
+	]]>
+	</insert>
+	
+	<!-- 어린이집 증명서류 업로드 -->
+	<insert id="insertFileData" parameterType="com.project.myapp.myb.uploadfile.UploadFileVO">
+	<![CDATA[
+		INSERT INTO UPLOAD_FILE (
+			file_id, 
+			file_name, 
+			file_size, 
+			file_type, 
+			file_data,
+			admin_id
+			) 
+		VALUES (
+			FILE_SEQ.nextval,  
+			#{fileName}, 
+			#{fileSize}, 
+			#{fileType}, 
+			#{fileData},
+			#{adminId}
+			)
+	]]>
+	</insert>
+	
+	<!-- 어린이집 등록 요청 리스트 반환 -->
+	<select id="selectKindergartenList" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+	<![CDATA[
+		SELECT 
+			KINDERGARTEN_ID 		AS kindergartenId, 
+			KINDERGARTEN_NAME 		AS kindergartenName, 
+			KINDERGARTEN_PHONE		AS kindergartenPhone, 
+			KINDERGARTEN_ADDRESS	AS kindergartenAddress, 
+			KINDERGARTEN_STAT		AS kindergartenStat 
+		FROM 
+			kindergarten
+	]]>
+	</select>
+	
+	<!-- 어린이집 등록 요청 세부 정보 -->
+	<select id="selectKindergartenInfo" parameterType="int" resultType="com.project.myapp.myb.kindergarten.KindergartenVO">
+	<![CDATA[
+		SELECT 
+			K.KINDERGARTEN_ID 		AS kindergartenId, 
+			K.KINDERGARTEN_NAME 	AS kindergartenName, 
+			K.KINDERGARTEN_PHONE	AS kindergartenPhone, 
+			K.KINDERGARTEN_ADDRESS	AS kindergartenAddress, 
+			K.KINDERGARTEN_STAT		AS kindergartenStat,
+			U.FILE_ID 				AS fileId,
+			U.FILE_NAME				AS fileName,
+			U.FILE_SIZE				AS fileSize,
+			U.FILE_TYPE				AS fileType
+		FROM 
+			KINDERGARTEN K JOIN UPLOAD_FILE U
+			ON K.ADMIN_ID = U.ADMIN_ID
+		WHERE K.KINDERGARTEN_ID = #{kindergartenId}
+	]]>
+	</select>
+	
+	<!-- 원장이 등록한 증명서류 가져오기 -->
+	<select id="getFile" parameterType="int" resultType="com.project.myapp.myb.uploadfile.UploadFileVO">
+	<![CDATA[
+		SELECT 
+			file_id				AS fileId,  
+			file_name			AS fileName, 
+			file_size			AS fileSize, 
+			file_type			AS fileType, 
+			file_data 			AS fileData,
+			admin_id 			AS adminId
+		FROM upload_file 
+		WHERE file_id=#{fileId}
+	]]>
+	</select>
+	
+	<!-- 어린이집 등록 승인-->
+	<update id="updateKindergartenApprove" parameterType="int">
+	<![CDATA[
+		UPDATE 
+			KINDERGARTEN 
+		SET 
+			KINDERGARTEN_STAT = 'Y' 
+		WHERE 
+			KINDERGARTEN_ID=#{kindergartenId}
+	]]>
+	</update>
+	
+	<!-- 어린이집 등록 거절 -->
+	<delete id="deleteKindergartenDisapprove" parameterType="int">
+	<![CDATA[
+		DELETE FROM 
+			kindergarten 
+		WHERE
+			kindergarten_id=#{kindergartenId}
+	]]>
+	</delete>
+	
+	<!-- 파일데이터 삭제 -->
+	<delete id="deleteFileData" parameterType="int">
+	<![CDATA[
+		DELETE FROM 
+			upload_file u 
+		WHERE u.admin_id = (
+				SELECT k.admin_id
+				FROM  kindergarten k
+				WHERE k.kindergarten_id=#{kindergartenId}
+			)
+	]]>
+	</delete>
+	
+	<!-- 원장의 어린이집 각 반별 결석 현황을 반환 -->
+	<select id="countAbsentList" resultType="hashmap">
+		<![CDATA[
+			select 
+			    cr.classroom_name AS classroomName,
+			    count(dl.diseaselog_id) AS totalPatient
+			from 
+			    classroom cr left outer join diseaselog dl
+			on cr.classroom_id = dl.classroom_id
+			and dl.diseaselog_date = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+			where cr.kindergarten_id = #{kindergarten_id}
+			group by cr.classroom_name
+			order by 1
+		]]>
+	</select>
+
+	<!-- 원장의 어린이집 각 반별 총 인원을 반환 -->
+	<select id="countStudentList" parameterType="int" resultType="hashmap">
+		<![CDATA[
+			select 
+			    cr.classroom_name AS classroomName,
+			    count(c.child_id) AS totalStudent
+			from 
+			    classroom cr left outer join child c
+            on cr.classroom_id = c.classroom_id
+            where cr.kindergarten_id=#{kindergarten_id}
+            group by cr.classroom_name
+            order by 1
+		]]>
+	</select>
+
+	<!-- 원장의 어린이집 각 반별 출석 인원을 반환 -->
+	<select id="countAttendanceList" resultType="hashmap">
+		<![CDATA[
+			select 
+			    tp.classroomName AS classroomName,
+			    (ts.totalStudent - tp.totalPatient) AS totalAttendance
+			from 
+			    (select 
+                        cr.classroom_name AS classroomName,
+                        count(dl.diseaselog_id) AS totalPatient
+                    from 
+                        classroom cr left outer join diseaselog dl
+                    on cr.classroom_id = dl.classroom_id
+                    and dl.diseaselog_date = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                    where cr.kindergarten_id = #{kindergarten_id}
+                    group by cr.classroom_name
+                    order by 1) tp,
+			            (select 
+							    cr.classroom_name AS classroomName,
+							    count(c.child_id) AS totalStudent
+							from 
+							    classroom cr left outer join child c
+				            on cr.classroom_id = c.classroom_id
+				            where cr.kindergarten_id=#{kindergarten_id}
+				            group by cr.classroom_name
+				            order by 1) ts
+			where tp.classroomName = ts.classroomName
+			ORDER BY 1
+		]]>
+	</select>
+	
+	<!-- 원장의 어린이집 각 반의 질병별 환자수 반환 -->
+	<select id="countClassroomDiseaseList" parameterType="int" resultType="hashmap">
+		<![CDATA[
+			SELECT 
+				d.disease_name AS diseaseName,
+			 	count(dl.diseaselog_id) AS totalPatient
+			FROM diseaselog dl, disease d
+			WHERE 
+                dl.diseaselog_date = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+                AND dl.disease_id = d.disease_id
+                AND dl.classroom_id = #{classroomId}
+			GROUP BY (d.disease_name)
+		]]>
+	</select>
+	
+</mapper>

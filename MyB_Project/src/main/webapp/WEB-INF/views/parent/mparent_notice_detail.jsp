@@ -11,7 +11,7 @@
 <title>Insert title here</title>
 	 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
      <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
-     <link href="${pageContext.request.contextPath}/resources/css/mobile/all_notice_detail.css" rel="stylesheet">
+     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_notice.css" rel="stylesheet">
 </head>
 
 <body style="font-family: Nanum Gothic">

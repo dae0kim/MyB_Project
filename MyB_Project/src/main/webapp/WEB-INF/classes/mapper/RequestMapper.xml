@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.project.myapp.myb.request.IRequestRepository">
+
+	<!-- 요청사항 작성하기 (0328 문수지) -->
+	<insert id="insertRequest"
+		parameterType="com.project.myapp.myb.request.RequestVO">
+		<![CDATA[
+			MERGE INTO REQUEST USING DUAL
+			ON (request_date = to_char(#{requestDate},'yyyy-mm-dd') AND (child_id = #{childId}))
+			WHEN NOT MATCHED THEN
+			INSERT 
+				(request_id, 
+				request_date, 
+				request_content1, 
+				request_content2, 
+				request_content3, 
+				request_content4, 
+				request_content5, 
+				parent_id, child_id, 
+				classroom_id)
+			VALUES
+				(REQUEST_SEQ.NEXTVAL, 
+				to_char(#{requestDate},'yyyy-mm-dd'), 
+				#{requestContent1}, 
+				#{requestContent2}, 
+				#{requestContent3}, 
+				#{requestContent4}, 
+				#{requestContent5}, 
+				#{parentId}, 
+				#{childId}, 
+				#{classroomId})
+		]]>
+	</insert>
+
+	<!-- 요청사항 확인하기 (0330 문수지) -->
+	<select id="selectRequest" parameterType="hashmap"
+		resultType="com.project.myapp.myb.request.RequestVO">
+		<![CDATA[
+			SELECT
+				request_id AS requestId,
+				request_date AS requestDate,
+				request_content1 AS requestContent1,
+				request_content2 AS requestContent2,
+				request_content3 AS requestContent3,
+				request_content4 AS requestContent4,
+				request_content5 AS requestContent5,
+				request_comment AS requestComment,
+				request_stat1 AS requestStat1,
+				request_stat2 AS requestStat2,
+				request_stat3 AS requestStat3,
+				request_stat4 AS requestStat4,
+				request_stat5 AS requestStat5
+			FROM request
+			WHERE TO_CHAR(request_date, 'YYYY/MM/DD') = #{requestDate} AND child_id = #{childId}		
+		]]>
+	</select>
+
+
+	<!-- (0329 합침 일형추가) -->
+	<select id="getCheckDetail"
+		resultType="com.project.myapp.myb.request.RequestVO">
+		SELECT
+		request_id AS requestId,
+		request_content1 AS requestContent1,
+		request_content2 AS
+		requestContent2,
+		request_content3 AS requestContent3,
+		request_content4
+		AS requestContent4,
+		request_content5 AS requestContent5,
+		request_comment AS requestComment,
+		request_stat1 AS requestStat1,
+		request_stat2 AS requestStat2,
+		request_stat3 AS requestStat3,
+		request_stat4 AS requestStat4,
+		request_stat5 AS requestStat5,
+		child_id AS childId
+		FROM
+		request
+		WHERE request_id=#{requestId}
+	</select>
+
+	<update id="updateRequest"
+		parameterType="com.project.myapp.myb.request.RequestVO">
+		UPDATE
+		request
+		SET
+		request_stat1 = #{requestStat1},
+		request_stat2 = #{requestStat2},
+		request_stat3 = #{requestStat3},
+		request_stat4 = #{requestStat4},
+		request_stat5 = #{requestStat5},
+		request_comment = #{requestComment}
+		WHERE
+		request_id = #{requestId}
+	</update>
+</mapper>
+
+

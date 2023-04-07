@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.project.myapp.myb.alarm.IAlarmRepository">
+    
+    <!-- 부모님 -->
+    <!-- 요청사항 알람 테이블에 알림 삽입 (0401 문수지) -->
+    <insert id="insertAlarm" parameterType="map">
+    	<![CDATA[
+			MERGE INTO alarm USING
+			(SELECT * FROM DUAL)
+			ON (child_id = #{childId} AND alarm_date = to_char(sysdate,'yyyy-mm-dd'))
+			WHEN NOT MATCHED THEN
+			INSERT (alarm_id, parent_id, child_id, alarm_message, alarm_date, alarm_checked) 
+			VALUES (alarmSeq.nextval, #{parentId}, #{childId}, #{alarmMessage}, to_char(sysdate,'yyyy-mm-dd'), 'no')
+    	]]>
+    </insert>
+
+    <!-- 공지사항 알람 테이블에 알림 삽입 (0405 문수지) -->
+    <insert id="insertParentAlarm" parameterType="map">
+    	<![CDATA[
+			INSERT INTO ALARM (alarm_id, parent_id, alarm_message, alarm_date, alarm_checked) 
+    		VALUES(alarmSeq.nextval, #{parentId}, #{alarmMessage}, SYSDATE, 'no')
+    	]]>
+    </insert>
+    
+    <!-- 알람메시지 읽음 표시 (0401 문수지) -->
+    <update id="updateAlarmChecked" parameterType="int">
+    	<![CDATA[
+    		UPDATE Alarm 
+    		SET alarm_checked = 'yes' 
+    		WHERE parent_id = #{parentId} AND alarm_checked = 'no'
+    	]]>
+    </update>
+    
+    <!-- 학부모에 해당하는 알람 메시지 불러오기 (0401 문수지) -->
+    <select id="getAlarm" parameterType="int" resultType="com.project.myapp.myb.alarm.AlarmVO">
+    	<![CDATA[
+    		SELECT alarm_id AS "alarmId", parent_id AS "parentId", alarm_message AS "alarmMessage", alarm_date AS "alarmDate", alarm_checked AS "alarmChecked" 
+    		FROM ALARM
+    		WHERE parent_id=#{parentId}
+    		ORDER BY alarm_date DESC
+    	]]>
+    </select>
+    
+    <!-- 새로운 알람 있는지 유무 확인 (0401 문수지) -->
+    <select id="hasNewAlarm" parameterType="int" resultType="int">
+    	<![CDATA[
+		    SELECT COUNT(*) FROM Alarm WHERE parent_id = #{parentId} AND alarm_checked = 'no'
+    	]]>
+    </select>
+    
+    <!-- 선생님 -->
+    <!-- 알람 테이블에 알림 삽입 (0403 문수지) -->
+    <insert id="insertTeacherAlarm" parameterType="map">
+    	<![CDATA[
+			INSERT INTO ALARM (alarm_id, teacher_id, alarm_message, alarm_date, alarm_checked) 
+    		VALUES(alarmSeq.nextval, #{teacherId}, #{alarmMessage}, SYSDATE, 'no')
+    	]]>
+    </insert>
+    
+    <!-- 알람메시지 읽음 표시 (0403 문수지) -->
+    <update id="updateTeacherAlarmChecked" parameterType="int">
+    	<![CDATA[
+    		UPDATE Alarm 
+    		SET alarm_checked = 'yes' 
+    		WHERE teacher_id = #{teacherId} AND alarm_checked = 'no'
+    	]]>
+    </update>
+    
+    <!-- 학부모에 해당하는 알람 메시지 불러오기 (0403 문수지) -->
+    <select id="getTeacherAlarm" parameterType="int" resultType="com.project.myapp.myb.alarm.AlarmVO">
+    	<![CDATA[
+    		SELECT alarm_id AS "alarmId", teacher_id AS "teacherId", alarm_message AS "alarmMessage", alarm_date AS "alarmDate", alarm_checked AS "alarmChecked" 
+    		FROM ALARM
+    		WHERE teacher_id=#{teacherId}
+    		ORDER BY alarm_date DESC
+    	]]>
+    </select>
+    
+    <!-- 새로운 알람 있는지 유무 확인 (0403 문수지) -->
+    <select id="hasNewTeacherAlarm" parameterType="int" resultType="int">
+    	<![CDATA[
+		    SELECT COUNT(*) FROM Alarm WHERE teacher_id = #{teacherId} AND alarm_checked = 'no'
+    	]]>
+    </select>
+    
+    </mapper>
+    

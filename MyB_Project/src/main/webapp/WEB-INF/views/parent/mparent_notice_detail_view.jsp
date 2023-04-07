@@ -11,38 +11,25 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
      <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
-     <link href="${pageContext.request.contextPath}/resources/css/mobile/all_notice_detail.css" rel="stylesheet">
+     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_notice_detail.css" rel="stylesheet">
 </head>
 
 <body>
-	<div class="wrap">
-		<div class="title_wrap">
-        <div id="title_name" style="font-weight : 700;">공지사항</div>
-        <div id="noticedetail_btn">
-            <button type="button" onclick = "location.href = '${pageContext.request.contextPath}/parent/mparent_web_main' ">돌아가기</button>
-        </div>
-        </div>
+<div class="wrapper">
+	<div class="title_wrap">
+		<div id="title_name" style="font-weight : 700;">내 정보</div>
+		<input type="button" onClick="location.href='./mparent_sidemenu_info_modify'" value="수정하기">	
+	</div>
 
-
-    <div class="noticedetailcontent_wrap">
-    	<div>
-              <div id="notice_box">
-                <table class="notice_table">
-					<tr>
-						<td class="noticeId">${noticeview.noticeId}</td>
-					</tr>
-					<tr>
-						<td class="noticeDate"> <fmt:formatDate pattern="yyyy-MM-dd" value="${noticeview.noticeDate}"/></td>
-					</tr>
-					<tr>
-						<td class="noticeTitle">${noticeview.noticeTitle}</td>
-					</tr>
-					<tr>
-						<th class="noticeContent">${noticeview.noticeContent}</th>
-					</tr>
-				</table>
-            </div>
-            </div>
+    <div class="notice_wrap">
+    	<div id="notice_form">
+    		<div class="title">제목
+			<input type="text" class="notice_title" name="notcietitle" id="noticetitle" value="${noticeview.noticeTitle}" readonly>
+			
+			<div class="title">내용</div>
+			<input type="text" class="notice_content" name="noticecontent" id="noticecontent" value="${noticeview.noticeContent}" readonly>
+			
+        </div>
     </div>
     </div>
 </body>

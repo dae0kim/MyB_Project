@@ -1,0 +1,134 @@
+html {
+   height: 100%;
+}
+
+body {
+   margin: 0;
+   height: 100%;
+   font-family: Nanum Gothic !important;
+}
+
+.wrap {
+   min-height: 100%;
+   position: relative;
+   padding-bottom: 50px; /* footer height */
+   text-align: -webkit-center;
+}
+
+
+.wrapper {
+   margin: 0;
+   height: auto;
+   min-height: 100%;
+   padding-bottom: 50px;
+   text-align: -webkit-center;
+}
+
+.title_wrap {
+   display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 86%;
+    height: 100%;
+    padding: 23px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: end;
+}
+
+
+.title_wrap button{
+    color: #000;
+    font-size: 16px;
+    background-color: #F2BE5C;
+    border-radius: 6px;
+    width: 100px;
+    height: 40px;
+    float: right;
+}
+
+
+#title_name {
+   font-size: 1.6em;
+    grid-column-start: 1;
+    justify-self: left;
+}
+
+
+.noticedetailcontent_wrap {
+   width: 100%;
+    height: 100%;
+   padding: 23px;
+   box-sizing: border-box;
+   display: flex;
+   border-color: transparent;
+   flex-direction: column;
+   text-align: -webkit-center;
+}
+
+
+#request-form{
+    text-align: center;
+}
+
+#request-form>input {
+   width: 100%;
+    height: 48px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+
+#request-form > input::value{
+    color: #D2D2D2;
+}
+
+.request-name {
+   text-align: left;
+    padding-bottom: 5px;
+    font-size: 1em;
+    font-weight: bold
+}
+
+
+.notice_table table {
+   width:100%;
+   margin:15px 0;
+   border:0;
+   background-color:#fef1d1;
+   padding: 0.7em;
+   
+}
+.notice_table th {
+   background-color:#FFB400;
+   color:#000000;
+}
+.notice_table,.notice_table th,.table4_5 td {
+   font-size:0.95em;
+   text-align:center;
+   padding:4px;
+   border-collapse:collapse;
+   font-size: 1.1em;
+    text-align: center;
+    padding: 1em;
+    border-collapse: collapse;
+}
+
+
+td{
+   padding: 1.5% !important;
+}
+.notice_table th,.table4_5 td {
+   border: 1px solid #fed46d;
+   border-width:1px 0 1px 0;
+   }
+
+.notice_table tr {
+   border: 1px solid #fed46d;
+   background-color:#fef1d1;
+}
+
+a{
+   text-decoration : none;
+}

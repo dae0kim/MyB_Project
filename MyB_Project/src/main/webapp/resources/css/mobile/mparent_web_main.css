@@ -5,9 +5,10 @@ html, body {
 }
 
 .wrapper {
-	height: 50px;
-	min-height: 61%;
-	padding-bottom: 54px;
+	min-height: 100%;
+    position: relative;
+    padding-bottom: 50px;
+    text-align: -webkit-center;
 }
 
 .request_wrap {
