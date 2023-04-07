@@ -17,8 +17,8 @@
 <body>
 <div class="wrapper">
 	<div class="title_wrap">
-		<div id="title_name" style="font-weight : 700;">공지사항 상세</div>
-		<input type="button" onClick="location.href='./mparent_sidemenu_info_modify'" value="돌아가기">	
+		<div id="title_name" style="font-weight : 700;">공지사항 상세</div>	
+		<input type="button" value="목록가기" onClick="location.href='javascript:history.back();'">	
 	</div>
 
     <div class="notice_wrap">

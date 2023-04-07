@@ -27,7 +27,10 @@
 	justify-self: right;
 	grid-row: 1;
     grid-column: 3;  
-    font-size : 1.5em;    
+    font-size : 1.8em;
+    text-decoration: none;
+ 	color: black;
+        
 }
 
 #textlow2 {

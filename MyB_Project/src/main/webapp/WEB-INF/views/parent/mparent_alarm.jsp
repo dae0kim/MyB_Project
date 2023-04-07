@@ -1,37 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@include file="../p_header2.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
 <head>
-	<title>Alarm List</title>
+<title>Alarm List</title>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_alarm.css" rel="stylesheet">
 </head>
 <body>
-	<h1>Alarm List</h1>
-	<table>
-		<thead>
-			<tr>
-				<th>Alarm ID</th>
-				<th>Parent Id</th>
-				<th>Message</th>
-				<th>Send Date</th>
-				<th>Checked</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${alarms}" var="alarm">
-				<tr>
-					<td>${alarm.alarmId}</td>
-					<td>${alarm.parentId}</td>
-					<td>${alarm.alarmMessage}</td>
-					<td>${alarm.alarmDate}</td>
-					<td>${alarm.alarmChecked}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-<!-- 	<button type="button" onClick="location.href='javascript:history.back();'">돌아가기</button> -->
-	<a href='<c:url value="/parent/mparent_web_main"/>'>뒤로가기</a>
-
+	<div class="wrapper">
+		<div class="title_wrap">
+			<div id="title_name" style="font-weight: 700;">알림</div>
+			<div id="noticedetail_btn">
+				<button type="button"
+					onclick="location.href = '${pageContext.request.contextPath}/parent/mparent_web_main' ">돌아가기</button>
+			</div>
+		</div>
+		<div class="notice_wrap">
+			<div id="notice_form">
+				<div class="title">
+					<div id="titlegrid">
+						<c:forEach items="${alarms}" var="alarm">
+							<div style="font-size: 13px;">
+								<fmt:formatDate pattern="MM'월' dd'일' HH:mm"
+									value="${alarm.alarmDate}" />
+							</div>
+							<div class="content">
+								<input type="text" class="notice_title" name="notcietitle"
+									id="noticetitle" value="${alarm.alarmMessage}" readonly>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
+
+<%@include file="../p_footer.jsp"%>

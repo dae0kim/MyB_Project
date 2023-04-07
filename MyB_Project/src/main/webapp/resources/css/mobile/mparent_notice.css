@@ -50,8 +50,9 @@ body {
 
 #title_name {
    font-size: 1.6em;
-    grid-column-start: 1;
-    justify-self: left;
+   grid-column-start: 1;
+   justify-self: left;
+   color: #000000;
 }
 
 
@@ -106,7 +107,7 @@ body {
    font-weight: bold;
 }
 .notice_table,.notice_table th,.table4_5 td {
-   font-size:0.95em;
+   font-size:0.94em;
    text-align:center;
    padding:4px;
    border-collapse:collapse;
@@ -118,7 +119,9 @@ body {
 
 
 td{
-   padding: 1.5% !important;
+   padding: 1.5% 1.5% 1.5% 5%;
+   font-size: 0.88em;
+   text-align: left;
 }
 .notice_table th,.table4_5 td {
    border: 1em solid #ffffff;;
@@ -132,4 +135,5 @@ td{
 
 a{
    text-decoration : none;
+   color:#000000;
 }

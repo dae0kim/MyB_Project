@@ -26,7 +26,7 @@
 					<span id="noticetitle">공지사항</span>
 					<span id="noticecontent">공지사항을 확인할 수 있어요</span>
 				</div>
-				<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_notice.png" width="148" style="padding-top:13px;">
+				<img src="${pageContext.request.contextPath}/resources/images/mobile/mteacher_notice.png" width="148" style="padding-top:13px;">
 			</div>
 		</button>
 	</div>
@@ -39,7 +39,7 @@
 						<span class="btntitle">요청사항 확인</span>
 						<span class="btncontent">학부모의 요청사항을 확인하세요</span>
 					</div>
-					<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_request.png" width="100%" style="padding-top:20px;">
+					<img src="${pageContext.request.contextPath}/resources/images/mobile/mteacher_requestchk.png" width="100%" style="padding-top:20px;">
 				</div>
             </button>
 			</div>
@@ -52,10 +52,12 @@
 						<span class="btntitle">원생 질병관리</span>
 						<span class="btncontent">원생의 질병상태를 입력하세요</span>
 					</div>
-					<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_requestchk.png" width="100%" style="padding-top:20px;">
+					<img src="${pageContext.request.contextPath}/resources/images/mobile/mteacher_disease.png" width="100%" style="padding-top:20px;">
 				</div>
             </button>
 			</div>
     </div>
 </div>
 </body>
+
+<%@include file="../t_footer.jsp"%>

@@ -12,7 +12,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_terms.css" rel="stylesheet">
     
 </head>
-<body>
+<body style="font-family: Nanum Gothic">
     <div class="border">
 		<div class="headgrid">
 			<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>	

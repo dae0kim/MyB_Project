@@ -12,6 +12,7 @@
 	<script src="https://kit.fontawesome.com/a566e7b2bd.js"	crossorigin="anonymous"></script>
 	<link href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_header.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Nanum Gothic'rel='stylesheet'>
+
 </head>
 <body>
 <div class="pheader">
@@ -26,18 +27,18 @@
 		</div>
 			
 		<div id="textlow1">
-			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="notbell" class="fa-regular fa-bell"></i></a>
+			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="notbell" class="fa-regular fa-bell" style="color: #000000;"></i></a>
 			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="bell" class="fa-solid fa-bell" style="color: #f00000; display: none;"></i></a>
 		</div>
 			
 		<div id="textlow2">
 	            <p id="name">${teacherName}</p><br>
-	            <p id="kinder">${kindergartenName}</p><br>
-	            <p id="classroom">${classroomName}</p>
+	            <p id="kinder">${kindergarten.kindergartenName}</p><br>
+	            <p id="classroom">${classroom.classroomName}</p>
 	   </div>
 	   
 	   <div id="textlow3">
-	   		<img id="familyimg" src="${pageContext.request.contextPath}/resources/images/mobile/mparent_header.png">
+	   		<img id="familyimg" src="${pageContext.request.contextPath}/resources/images/mobile/mteacher_header.png">
 	   </div>
 	</div>
 </div>

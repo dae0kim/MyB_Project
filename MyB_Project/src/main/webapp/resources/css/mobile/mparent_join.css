@@ -20,7 +20,7 @@ body {
     height: 5%;
     justify-items: start;
     align-items: center;
-    padding: 20% 10% 0%;
+    padding: 10% 10% 5%;
 }
 
 #login_logo img {
@@ -33,7 +33,7 @@ body {
 	grid-row: 1;
     grid-column: 2; 
     font-weight: 700;
-    font-size: 2em; 
+    font-size: 1.8em; 
 }
 
 .login-wrap {

@@ -15,7 +15,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_request_check.css" rel="stylesheet">    
 </head>
-<body>
+<body style="font-family: Nanum Gothic">
 <div class="wrapper">
 	<form action="<c:url value='/parent/mparent_request_check'/>" method="post">
 	    <div class="title_wrap">

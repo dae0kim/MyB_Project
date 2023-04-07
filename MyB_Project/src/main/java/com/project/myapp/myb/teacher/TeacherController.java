@@ -343,5 +343,4 @@ public class TeacherController {
 
 		return "redirect:/teacher/list/"+adminId;
 	}
-
 }

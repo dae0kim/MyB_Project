@@ -45,5 +45,5 @@
 </body>
 
 
-
+<%@include file="../t_footer.jsp"%>
 </html>

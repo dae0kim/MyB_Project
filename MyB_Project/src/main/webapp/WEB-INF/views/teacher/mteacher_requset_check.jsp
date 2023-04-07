@@ -83,5 +83,5 @@ $("input:checkbox").change(function() {
 	
 
 </body>
-
+<%@include file="../t_footer.jsp"%>
 </html>

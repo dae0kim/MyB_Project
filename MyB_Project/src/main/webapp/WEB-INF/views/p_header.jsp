@@ -26,7 +26,7 @@
 		</div>
 			
 		<div id="textlow1">
-			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="notbell" class="fa-regular fa-bell"></i></a>
+			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="notbell" class="fa-regular fa-bell" style="color: #000000;"></i></a>
 			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="bell" class="fa-solid fa-bell" style="color: #f00000; display: none;"></i></a>
 		</div>
 			

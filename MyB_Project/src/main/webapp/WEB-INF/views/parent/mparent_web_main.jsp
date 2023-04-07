@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_notice_detail.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/mparent_web_main.css">    
 </head>
-<body>
+<body style="font-family: Nanum Gothic">
 <div class="wrapper">
 
 

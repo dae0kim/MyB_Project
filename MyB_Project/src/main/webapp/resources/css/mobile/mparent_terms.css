@@ -14,7 +14,7 @@
     height: 5%;
     justify-items: start;
     align-items: center;
-    padding: 20% 10% 0%;
+    padding: 10% 10% 5%;
 }
 
 #login_logo img {
@@ -27,7 +27,7 @@
 	grid-row: 1;
     grid-column: 2; 
     font-weight: 700;
-    font-size: 2em; 
+    font-size: 1.8em; 
 }
 
 
@@ -66,10 +66,16 @@
     margin: 0 3px;
    }
 
+#chk {
+	transform: scale(1.8);
+	width: 10%;
+}
 
 #gojoinBtn{
 	color: #fff;
-    font-size: 16px;
+    font-size: 1em;
     background-color: #44564A;
     margin-top: 20px;
+    border-radius: 6px;
+    padding: 2% 4% 2% 4%;
 }
