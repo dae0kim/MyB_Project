@@ -39,7 +39,7 @@
 	        </div>
 	
 	        <div id="search">
-	            <input type="text" name="kindergartenNameKeyword" placeholder="어린이집 명 입력" required>
+	            <input type="text" name="kindergartenNameKeyword" placeholder="어린이집 명 입력">
 	            <input type="submit" value="조회" style="margin-left: 7px;">
 	        </div>
 	        

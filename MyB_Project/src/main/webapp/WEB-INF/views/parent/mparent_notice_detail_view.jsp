@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../p_header.jsp"%>
+<%@include file="../p_header2.jsp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -15,12 +15,14 @@
 </head>
 
 <body>
-		<div class="noticedetailtitle_wrap">
-        <div id="noticedetail_title" style="font-weight : 700;">공지사항 글 읽기</div>
+	<div class="wrap">
+		<div class="title_wrap">
+        <div id="title_name" style="font-weight : 700;">공지사항</div>
         <div id="noticedetail_btn">
-            <button type="button" onClick="location.href='javascript:history.back();'">돌아가기</button>
+            <button type="button" onclick = "location.href = '${pageContext.request.contextPath}/parent/mparent_web_main' ">돌아가기</button>
         </div>
         </div>
+
 
     <div class="noticedetailcontent_wrap">
     	<div>
@@ -42,8 +44,9 @@
             </div>
             </div>
     </div>
+    </div>
 </body>
-
-
-
 </html>
+
+
+<%@include file="../p_footer.jsp"%>

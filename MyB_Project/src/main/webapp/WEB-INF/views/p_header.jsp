@@ -18,7 +18,7 @@
 
 	<div class="header_wrap">
 		<div id="login_logo">
-			<img src="../resources/images/logo.png">
+			<img src="${pageContext.request.contextPath}/resources/images/logo.png">
 		</div>
 
 		<div id="maintitle">
@@ -37,7 +37,7 @@
 	   </div>
 	   
 	   <div id="textlow3">
-	   		<img id="familyimg" src="../resources/images/images/mobile/mparent_header.png">
+	   		<img id="familyimg" src="${pageContext.request.contextPath}/resources/images/mobile/mparent_header.png">
 	   </div>
 	</div>
 </div>

@@ -15,7 +15,7 @@
 <body>
 	<div class="border">
 		<div class="headgrid">
-			<div id="login_logo"><img src="./resources/images/logo.png"></div>
+			<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>
 			
 			<div id="textlow1">Welcome to</div>
 			<div id="textlow2">MyB</div>
@@ -23,14 +23,14 @@
 		
 		
 		<div class="title_img">
-			<div id="titleimage"><img src="./resources/images/mobile/main.png"></div>
+			<div id="titleimage"><img src="${pageContext.request.contextPath}/resources/images/mobile/main.png"></div>
 		</div>
 	
 		<div class="login-wrap">
-			<button id="loginparent" onClick="location.href='./parent/mparent_login'">
+			<button id="loginparent" onClick="location.href='${pageContext.request.contextPath}/parent/mparent_login'">
 				학부모 로그인
 			</button>
-			<button id="loginteacher" onClick="location.href='./teacher/mteacher_login'">
+			<button id="loginteacher" onClick="location.href='${pageContext.request.contextPath}/teacher/mteacher_login'">
 				교사 로그인
 			</button>
 		</div>

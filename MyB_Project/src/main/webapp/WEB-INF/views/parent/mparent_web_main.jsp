@@ -24,7 +24,7 @@
 					<span id="noticetitle">공지사항</span>
 					<span id="noticecontent">공지사항을 확인할 수 있어요</span>
 				</div>
-				<img src="../resources/images/images/mobile/mparent_notice.png" width="148" style="padding-top:13px;">
+				<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_notice.png" width="148" style="padding-top:13px;">
 			</div>
 		</button>
 	</div>
@@ -37,7 +37,7 @@
 						<span class="btntitle">요청사항 작성</span>
 						<span class="btncontent">선생님에게 요청사항을 보낼 수 있어요</span>
 					</div>
-					<img src="../resources/images/images/mobile/mparent_request.png" width="100%" style="padding-top:20px;">
+					<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_request.png" width="100%" style="padding-top:20px;">
 				</div>
             </button>
 			</div>
@@ -50,7 +50,7 @@
 						<span class="btntitle">요청사항 확인</span>
 						<span class="btncontent">보낸 요청사항을 확인할 수 있어요</span>
 					</div>
-					<img src="../resources/images/images/mobile/mparent_requestchk.png" width="100%" style="padding-top:20px;">
+					<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_requestchk.png" width="100%" style="padding-top:20px;">
 				</div>
             </button>
 			</div>

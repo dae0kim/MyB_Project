@@ -19,8 +19,6 @@ import com.project.myapp.myb.alarm.IAlarmService;
 import com.project.myapp.myb.child.ChildVO;
 import com.project.myapp.myb.child.IChildService;
 import com.project.myapp.myb.classroom.IClassroomService;
-import com.project.myapp.myb.notice.INoticeService;
-import com.project.myapp.myb.notice.NoticeVO;
 import com.project.myapp.myb.parent.IParentRepository;
 import com.project.myapp.myb.parent.ParentVO;
 
@@ -44,9 +42,6 @@ public class RequestController {
 	
 	@Autowired
 	IAlarmService alarmService;
-	
-	@Autowired
-	INoticeService noticeService;
 
 	/**
 	 * 요청하기 폼으로 이동하는 메서드입니다
@@ -68,18 +63,11 @@ public class RequestController {
 	 * 요청을 하는 메서드입니다.
 	 * 
 	 * @param request 요청내용을 입력합니다.
-	 * @param model 모델객체를 입력합니다.
 	 * @return 요청이 완료되면 메인화면으로 이동합니다.
 	 */
 	@RequestMapping(value = "/parent/mparent_request", method = RequestMethod.POST)
-	public String request(RequestVO request, Model model) {
+	public String request(RequestVO request) {
 		requestService.insertRequest(request);
-		
-		/* 주석 : 이제 메인에서 공지사항 안보여서 주석처리(0406 손일형)
-		 * // 공지사항 List<NoticeVO> noticelist = noticeService.getNoticeList();
-		 * model.addAttribute("noticelist", noticelist);
-		 */
-		
 		return "parent/mparent_web_main";
 	}
 
@@ -104,12 +92,11 @@ public class RequestController {
 	 * 
 	 * @param childId 자녀 식별번호를 입력합니다.
 	 * @param requestDate 요청날짜를 입력합니다.
-	 * @param model 모댈 객체를 입력합니다 
 	 * @param redirectAttributes 리다이렉트가 발생하기 전 모든 플래시 속성을 세션에 복사합니다.
 	 * @return 요청확인을 반환합니다.
 	 */
 	@RequestMapping(value = "/parent/mparent_request_check", method = RequestMethod.POST)
-	public String requestCheck(@Param("childId") int childId, @Param("requestDate") String requestDate, Model model,
+	public String requestCheck(@Param("childId") int childId, @Param("requestDate") String requestDate,
 			RedirectAttributes redirectAttributes) {
 
 		RequestVO request = requestService.selectRequest(childId, requestDate);

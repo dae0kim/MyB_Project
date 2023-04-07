@@ -97,12 +97,54 @@ body {
 
 
 
+.notice_table table {
+	width:100%;
+	margin:15px 0;
+	border:0;
+	background-color:#fef1d1;
+	padding: 0.7em;
+	
+}
+.notice_table th {
+	background-color:#FFB400;
+	color:#000000;
+}
+.notice_table,.notice_table th,.table4_5 td {
+	font-size:0.95em;
+	text-align:center;
+	padding:4px;
+	border-collapse:collapse;
+	font-size: 1.1em;
+    text-align: center;
+    padding: 1em;
+    border-collapse: collapse;
+}
 
 
+td{
+	padding: 1.5% !important;
+}
+.notice_table th,.table4_5 td {
+	border: 1px solid #fed46d;
+	border-width:1px 0 1px 0;
+	}
+
+.notice_table tr {
+	border: 1px solid #fed46d;
+	background-color:#fef1d1;
+}
+
+/* .notice_table tr:nth-child(odd){
+	background-color:#fef1d1;
+}
+.notice_table tr:nth-child(even){
+	background-color:#fdfdfd;
+}
+ */
 
 /* 테이블관련 */
 
-.notice_table {
+/* .notice_table {
 	width: 100%;
     height: 100%;
 	box-sizing: border-box;
@@ -144,7 +186,7 @@ table.notice_table td {
   background: #F8F8F8;
   cursor:pointer;
 }
-
+ */
 
 a{
 	text-decoration : none;

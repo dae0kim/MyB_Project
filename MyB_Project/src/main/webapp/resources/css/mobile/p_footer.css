@@ -1,11 +1,10 @@
 footer {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr); 
-	height : 50px;
 	position: relative;
 	transform: translateY(-100%);
 	background: #FFDB61;
-	height: 50px;
+	height: 50px !important;
 	align-content: center;
 }
 

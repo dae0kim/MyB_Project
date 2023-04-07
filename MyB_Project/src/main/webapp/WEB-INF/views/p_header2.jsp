@@ -14,7 +14,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Nanum Gothic'rel='stylesheet'>
 		<script>
 		
-		function checkForNotifications() {
+		window.onload = function checkForNotifications() {
 		    $.ajax({
 		        url: '${pageContext.request.contextPath}/checkalarm',
 		        type: 'GET',
@@ -23,20 +23,20 @@
 		        	if (data.hasNewAlarm) {
 		        		//새로운 알림이 있으면 빨간색으로 변경
 		        	   
-		        	    $('#header_alarm i').css('color', 'red'); 
-		        	    console.log("new");
+		        		$('#bell').css('display', 'inline-block');
+		        	    $('#notbell').css('display', 'none');
 		        	} else {
 		        	   
-		        	    $('#header_alarm i').css('color', 'black'); 
-		        	    console.log("nothing");
+		        	    $('#bell').css('display', 'none'); 
+		        	    $('#notbell').css('display', 'inline-block');
 		        	}
 		            //다음 실행 시간 설정
-		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
+// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
 		        },
 		        // data 전송 실패 시
 		        error: function(jqXHR, textStatus, errorThrown) {
 		            console.error('Error checking for notifications:', textStatus, errorThrown);
-		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
+// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
 		        }
 		    });
 		}
@@ -68,10 +68,11 @@
 <div class="pheader">
 
 	<div class="header_wrap">
-		<div id="login_logo"><img src="../resources/images/logo.png" style="width: 35px; height: 30px;">MyB</div>
+		<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png" style="width: 35px; height: 30px;">MyB</div>
 			
 		<div id="textlow1">
-		<a href='<c:url value="/parent/mparent_alarm"/>'><i class="fa-regular fa-bell"></i></a>
+			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="notbell" class="fa-regular fa-bell"></i></a>
+			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="bell" class="fa-solid fa-bell" style="color: #f00000; display: none;"></i></a>
 		</div>
 			
 	</div>

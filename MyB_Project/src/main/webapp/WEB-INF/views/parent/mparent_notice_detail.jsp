@@ -19,7 +19,7 @@
 		<div class="title_wrap">
         <div id="title_name" style="font-weight : 700;">공지사항</div>
         <div id="noticedetail_btn">
-            <button type="button" href='<c:url value="${pageContext.request.contextPath}/mteacher_web_main"/>'>돌아가기</button>
+            <button type="button" onclick = "location.href = '${pageContext.request.contextPath}/parent/mparent_web_main' ">돌아가기</button>
         </div>
         </div>
 

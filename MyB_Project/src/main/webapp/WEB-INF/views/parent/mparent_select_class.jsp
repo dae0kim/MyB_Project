@@ -24,7 +24,8 @@
 		
 		
 	    <div id="kindergartenName">
-	   		${kindergartenName}
+	    	<img id="kindergartenimg" src="${pageContext.request.contextPath}/resources/images/mobile/mparent_selectkinder.png">
+	   		<div id="kindername">${kindergartenName}</div>
 	   		<input type="hidden" name="kindergartenId"  value="${kindergartenId}">
 	   		<input type="hidden" name="parentId" value="${parentId}">
 	   		
