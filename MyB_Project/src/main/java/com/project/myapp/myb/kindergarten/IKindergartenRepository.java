@@ -15,15 +15,31 @@ import com.project.myapp.myb.uploadfile.UploadFileVO;
  *
  */
 public interface IKindergartenRepository {
-	
-	
-	// 어린이집 검색 (0323 문수지 작성)
+
+	/**
+	 * 자녀정보 등록 시 어린이집 검색을 위한 메서드입니다.
+	 * 
+	 * @param kindergartenNameKeyword 검색 키워드를 입력합니다.
+	 * @param kindergartenCity 어린이집 주소 시를 입력합니다.
+	 * @param kindergartenGu 어린이집 주소 구를 입력합니다.
+	 * @return 검색 키워드, 시, 구에 해당하는 어린이집 객체 리스트를 반환합니다.
+	 */
 	List<KindergartenVO> searchListByNameKeyword(@Param("kindergartenNameKeyword") String kindergartenNameKeyword, @Param(value="kindergartenCity") String kindergartenCity, @Param(value="kindergartenGu") String kindergartenGu);
 	
-	// 어린이집 정보 불어오기 (0324 문수지 작성)
+	/**
+	 * 부모 사용자가 로그인 성공 시 자녀의 어린이집 정보를 가져오기 위한 메서드입니다.
+	 * 
+	 * @param kindergartenId 어린이집 식별번호를 입력합니다.
+	 * @return 해당 식별번호를 가진 어린이집 정보를 VO객체로 반환합니다.
+	 */
 	KindergartenVO selectKindergartenById(int kindergartenId);
 
-	// (0329 합침 일형추가)
+	/**
+	 * 교사 사용자가 속한 어린이집 정보를 가져오기 위한 메서드입니다.
+	 * 
+	 * @param kindergartenName 어린이집 이름을 입력합니다.
+	 * @return 해당 어린이집 정보를 VO객체로 반환합니다.
+	 */
 	KindergartenVO getKindergartenName(String kindergartenName);
 	
 	/* -----------------------------웹 기능 : 김대영----------------------------- */

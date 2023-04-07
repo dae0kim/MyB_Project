@@ -13,15 +13,38 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ITeacherRepository {
 	
+	/**
+	 * 교사 로그인시 사용하는 메서드입니다
+	 * 
+	 * @param teacherEmail 교사 이메일을 입력합니다
+	 * @return IF문에 따른 결과를 출력합니다
+	 */
 	TeacherVO selectTeacher(String teacherEmail);
 	
-	// 로그인 체크부분 (0329 합침 일형추가)
+	/**
+	 * 교사 로그인시 이메일 중복여부를 확인하는 메서드입니다.
+	 * 
+	 * @param teacherEmail 교사 이메일을 입력합니다
+	 * @return IF문에 따른 결과를 출력합니다.
+	 */
 	int emailChk(String teacherEmail);
 	
-	// (0329 합침 일형추가)
+	/**
+	 * 교사의 비밀번호 일치 여부를 확인합니다
+	 * 
+	 * @param teacherEmail 이메일을 입력합니다
+	 * @param teacherPw 비밀번호를 입력합니다
+	 * @return 일치여부에 따른 결과를 표시합니다
+	 */
 	int pwChk(@Param(value="teacherEmail")String teacherEmail, @Param(value="teacherPw")String teacherPw);
 	
-	// adminId에 따른 teacherId 가져오기 (0403 문수지)
+	
+	/**
+	 * 관리자 식별번호에 따른 교사 식별번호를 가져오는 메서드입니다.
+	 * 
+	 * @param adminId 원장 식별번호를 입력합니다
+	 * @return 교사 식별번호를 담은 객체를 출력합니다.
+	 */
 	List<Integer> selectTeacherIdByAdmin(int adminId);
 	
 	/* -----------------------------웹 기능 : 김대영----------------------------- */

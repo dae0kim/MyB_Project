@@ -16,41 +16,56 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_select_kinder.css" rel="stylesheet">
 </head>
 <body>
+<div class="border">
 	<form action="<c:url value='/parent/mparent_select_kinder'/>" role="search" method="post">
-	    <div id="head_icon"><img src="../resources/images/logo.png"><b> 어린이집 등록</b></div>
+	   
+		<div class="headgrid">
+			<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>	
+			<div id="textlow1"><b>어린이집 등록</b></div>
+		</div>
+		
+		
+		<div id="selectkinder">
 	        <div id="address">
-	            <select name="kindergartenCity" id="kindergartenCity" style="
-	            background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" onChange="chnGu(this.value)" required>
-	                <option value="">- 시 선택</option>
+	            <select name="kindergartenCity" id="kindergartenCity" style="background-color: #F8F8F8;" onChange="chnGu(this.value)" required>
+	                <option value="">시 선택</option>
 	                <option value="서울">서울특별시</option>
 	                <option value="부산">부산광역시</option>
 	                <option value="광주">광주광역시</option>
 	            </select>
-	            <select name="kindergartenGu" id="kindergartenGu" style="
-	            background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" display:none; required>
-	                <option value="">- 구 선택</option>
+	            <select name="kindergartenGu" id="kindergartenGu" style="background-color: #F8F8F8;"  required>
+	                <option value="">구 선택</option>
 	            </select>
 	        </div>
 	
 	        <div id="search">
 	            <input type="text" name="kindergartenNameKeyword" placeholder="어린이집 명 입력" required>
-	            <input type="submit" value="조회">
+	            <input type="submit" value="조회" style="margin-left: 7px;">
 	        </div>
-
-		<hr style="border: solid 2px black; width: 100%;">
+	        
+	        <hr>
+		</div>
+		
+		
+		
 	
+	<div id="kinderlist">
 		<c:forEach var="kindergarten" items="${kindergartenList}">
 			<div id="kindergartenlist" onclick="location.href='./mparent_select_class/${kindergarten.kindergartenId}'">
-				<div class="listtext">${kindergarten.kindergartenName}</div>
+				<div class="kindername">${kindergarten.kindergartenName}</div>
 				<div class="listtext"><p>${kindergarten.kindergartenAddress}</p></div>
 				<div class="listtext">${kindergarten.kindergartenPhone}</div>
 			</div>
-			<hr style="border: solid 1px gray; width: 100%;">
 		</c:forEach>
 		<c:if test="${fn:length(kindergartenList) == 0}">
 			<div id="nosearh">조회결과가 없습니다.</div>
 		</c:if>
+	</div>
+	
+	
+	
 	</form>
+	</div>
 	
 		
     

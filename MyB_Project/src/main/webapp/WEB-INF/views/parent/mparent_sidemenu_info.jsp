@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../p_header.jsp"%> 
+<%@include file="../p_header2.jsp"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
@@ -13,8 +13,10 @@
 
 </head>
 <body>
+<div class="wrapper">
 	<div class="title_wrap">
 		<div id="title_name" style="font-weight : 700;">내 정보</div>
+		<input type="button" onClick="location.href='./mparent_sidemenu_info_modify'" value="수정하기">	
 	</div>
 
     <div class="info_wrap">
@@ -33,10 +35,10 @@
 			
 			<div class="info-name">주소</div>
 			<input type="text" class="parentAddress_input" name="parentAddress" id="parentAddress" value="${parent.parentCity} ${parent.parentGu}" readonly>
-
-            <input type="button" class="update_btn" onClick="location.href='./mparent_sidemenu_info_modify'" value="수정하기">
         </div>
     </div>
-    
+    </div>
 </body>
 </html>
+
+<%@include file="../p_footer.jsp"%>

@@ -15,8 +15,13 @@
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_select_class.css" rel="stylesheet"> 
 </head>
 <body>
+<div class="border">
 	<form action="<c:url value='/parent/mparent_select_class'/>"  method="post">
-	    <div id="head_icon"><img src="../resources/images/logo.png"><b> 어린이집 등록</b></div>
+		<div class="headgrid">
+			<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>	
+			<div id="textlow1"><b>어린이집 등록</b></div>
+		</div>
+		
 		
 	    <div id="kindergartenName">
 	   		${kindergartenName}
@@ -26,16 +31,15 @@
 	    </div>
 	    
 	    <div id="selectclass">
-            <select name="classroomId" class="classroomId_input" id="classroomId" style="
-	            background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" required> 
-                <option value="">- 반 선택</option>
+            <select name="classroomId" class="classroomId_input" id="classroomId" required> 
+                <option value="">반 선택</option>
                 <c:forEach var="classroom" items="${classroomList}">
                 	<option value="${classroom.classroomId}">${classroom.classroomName}</option>
                 </c:forEach>
             </select>
 	    </div>
 	
-	    <hr style="border: solid 2px black; width: 100%;">
+	    <hr>
 	
 	    <div id="profileplease">
 	        자녀의 프로필을 등록해주세요.
@@ -45,14 +49,14 @@
 			<div id="babyinfo">
 				<div id="babyiconbox">
 		            <div id="babyicon">
-		                <img src="../resources/images/babytest.jpg">
+		                <img src="${pageContext.request.contextPath}/resources/images/mobile/babyselect.png">
 		            </div>
 	            </div>
 	        </div>    
 	        <div id="babyinput">
 	            <div id="babyname">
 	            	<div id="babytext">자녀이름</div> <br>
-	                <input type="text" class="childName_input" id="childName" name="childName" placeholder=" 자녀이름" required>
+	                <input type="text" class="childName_input" id="childName" name="childName" required>
 	            </div>
 	            <div id="babydate">
 	                <div id="babytext">생년월일</div> <br>
@@ -64,9 +68,9 @@
 	    <div class="childbox">
 	    	<div class="childSex">
 	    		<input type="radio" class="childSex_input" id="childSexM" name="childSex" value="M" checked required>
-	    		<label for="childSexM" >남아</label>
+	    		<label for="childSexM" ><div id="gggg">남아</div></label>
 	    		<input type="radio" class="childSex_input" id="childSexF" name="childSex" value="F">
-	    		<label for="childSexF">여아</label>
+	    		<label for="childSexF"><div id="gggg">여아</div></label>
 	    	</div>
 	    </div>
 	
@@ -74,6 +78,7 @@
 	        <input type="submit" value="등록하기" onclick="join()">
 	    </div>
     </form>
+    </div>
  
  <script type="text/javascript">
  	function join() {

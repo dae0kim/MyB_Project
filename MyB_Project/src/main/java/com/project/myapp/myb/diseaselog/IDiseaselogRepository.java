@@ -12,10 +12,16 @@ import java.util.Map;
  */
 public interface IDiseaselogRepository {
 	
-	// (0329 합침 일형추가)
+	/**
+	 * 질병 로그를 삽입해주는 메소드 입니다
+	 * 
+	 * @param diseaselogvo 질병로그를 VO형식으로 입력합니다.
+	 */
 	void insertDiseaseLog (DiseaselogVO diseaselogvo);
 	
-	List<DiseaselogVO> defaultDisase(int teacherId);
+	/*
+	 * //안쓰이는거같은데 확인해라 List<DiseaselogVO> defaultDisase(int teacherId);
+	 */
 	
 	List<DiseaselogEtcVO> test(int classroomId);
 	

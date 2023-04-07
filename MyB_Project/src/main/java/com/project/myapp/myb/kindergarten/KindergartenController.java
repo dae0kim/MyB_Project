@@ -27,8 +27,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.project.myapp.myb.admin.AdminVO;
-import com.project.myapp.myb.admin.IAdminService;
 import com.project.myapp.myb.classroom.ClassroomVO;
 import com.project.myapp.myb.classroom.IClassroomService;
 import com.project.myapp.myb.uploadfile.UploadFileVO;
@@ -47,18 +45,28 @@ public class KindergartenController {
 	IKindergartenService kindergartenService;
 
 	@Autowired
-	IAdminService adminService;
-	
-	@Autowired
 	IClassroomService classroomService;
 
-	// 어린이집 검색 페이지로 이동 (0323 문수지 작성)
+	/**
+	 * 자녀정보 등록 시 어린이집 검색 페이지 이동을 위한 메서드입니다.
+	 * 
+	 * @return 어린이집 검색 페이지를 반환합니다.
+	 */
 	@RequestMapping(value = "/parent/mparent_select_kinder", method = RequestMethod.GET)
 	public String kindergartenSearchForm() {
 		return "parent/mparent_select_kinder";
 	}
 
-	// 어린이집 검색 (0323 문수지 작성)
+	/**
+	 * 어린이집 검색을 위한 메서드입니다.
+	 * 
+	 * @param kindergartenNameKeyword 검색 키워드를 입력합니다.
+	 * @param kindergartenCity 어린이집 주소 시를 입력합니다.
+	 * @param kindergartenGu 어린이집 주소 구를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 검색 결과가 출력되는 페이지를 반환합니다.
+	 */
 	@RequestMapping(value = "/parent/mparent_select_kinder", method = RequestMethod.POST)
 	public String kindergartenSearch(@RequestParam(required = false, defaultValue = "") String kindergartenNameKeyword,
 			@Param(value = "kindergartenCity") String kindergartenCity,
@@ -74,31 +82,6 @@ public class KindergartenController {
 			e.printStackTrace();
 		}
 		return "parent/mparent_select_kinder";
-	}
-
-	// Mypage에서 어린이집 검색 페이지로 이동 (0329 문수지 수정)
-	@RequestMapping(value = "/parent/mparent_select_kinder_mypage", method = RequestMethod.GET)
-	public String kindergartenMypageSearchForm() {
-		return "parent/mparent_select_kinder_mypage";
-	}
-
-	// Mypage에서 어린이집 검색 (0329 문수지 수정)
-	@RequestMapping(value = "/parent/mparent_select_kinder_mypage", method = RequestMethod.POST)
-	public String kindergartenMypageSearch(
-			@RequestParam(required = false, defaultValue = "") String kindergartenNameKeyword,
-			@Param(value = "kindergartenCity") String kindergartenCity,
-			@Param(value = "kindergartenGu") String kindergartenGu, HttpSession session, Model model) {
-		try {
-			List<KindergartenVO> kindergartenList = kindergartenService.searchListByNameKeyword(kindergartenNameKeyword,
-					kindergartenCity, kindergartenGu);
-			model.addAttribute("kindergartenList", kindergartenList);
-			model.addAttribute("kindergartenNameKeyword", kindergartenNameKeyword);
-			model.addAttribute("kindergartenCity", kindergartenCity);
-			model.addAttribute("kindergartenGu", kindergartenGu);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "parent/mparent_select_kinder_mypage";
 	}
 
 	/* -----------------------------웹 기능 : 김대영----------------------------- */

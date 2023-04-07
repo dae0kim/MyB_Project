@@ -20,13 +20,11 @@ public class ComplainService implements IComplainService {
 	@Qualifier("IComplainRepository")
 	IComplainRepository complainRepository;
 	
-	// 1:1문의 작성
 	@Override
 	public void insertComplain(ComplainVO complain) {
 		complainRepository.insertComplain(complain);
 	}
 
-	// 1:1문의 리스트 불러오기
 	@Override
 	public List<ComplainVO> selectComplainList(int parentId) {
 		return complainRepository.selectComplainList(parentId);

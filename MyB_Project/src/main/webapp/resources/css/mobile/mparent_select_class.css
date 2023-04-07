@@ -1,11 +1,49 @@
-#head_icon{
-    padding: 30px 30px 10px 30px;
+body {
+	margin: 0;
+	height: 100%;
+	font-family: Nanum Gothic !important;
 }
-#head_icon img{
-    width: auto;
-    height: 2em;
-    
+
+.border{
+	width: 100%;
+	height: 900px;
+    border-radius: 20px;
+	background-color: #F2BE5C;	
 }
+
+
+.headgrid {
+    display: grid;
+    grid-template-rows: repeat(1, 50px);
+    grid-template-columns: 40px 250px;
+    width: 80%;
+    height: 5%;
+    justify-items: start;
+    align-items: center;
+    padding: 20% 10% 0%;
+}
+
+#login_logo img {
+	grid-column: 1/1;
+	width: 35px;
+	height: auto;
+}
+
+#textlow1 {
+	grid-row: 1;
+    grid-column: 2; 
+    font-weight: 700;
+    font-size: 2em; 
+}
+
+#kindergartenName{
+	font-size: 1.2em;
+    text-align: left;
+    margin-top: 9%;
+    margin-bottom: 2%;
+    margin-left: 7%;
+}
+
 
 #kindername{
     padding-left: 29px;
@@ -17,7 +55,7 @@
     padding-left: 29px;
     padding-bottom: 20px;
     padding-top: 20px;
-
+    font-size: 1.2em;
 }
 
 #selectclass{
@@ -26,15 +64,11 @@
 }
 
 select {
+	background-color: #F8F8F8;
     height: 48px;
-    width: 85%; 
-    border: 1px solid #999;
-    font-family: inherit;  
-    background: url('../images/arrow.jpg') no-repeat 95% 50%; 
-    border-radius: 0px; 
-    -webkit-appearance: none; 
-    -moz-appearance: none;
-    appearance: none;
+    width: 85%;
+    border: 2px solid black;
+    font-family: inherit;
     border-radius: 6px;
     text-align: center;
     }
@@ -47,8 +81,8 @@ select {
 }
 .childbox{
 	display: flex;
-    padding: 20px;
-    justify-content: space-between;
+    padding: 10px;
+    justify-content: space-around;
 }
 
 #babyinfo{
@@ -64,15 +98,17 @@ select {
 
 
 #childName{
-	padding-bottom: 10px;
+	padding-bottom: 10%;
+    margin-bottom: 10%;
+    border-radius : 6px;
 }
-#childName > input[type="text"]{
-	width: 100%;
-    height: 48px;
-    box-sizing: border-box;
-    border-radius: 6px;
-    background-color: #F8F8F8;
+
+
+input[type="text" i] {
+    padding: 5px
 }
+
+
 #childDate > input[type="date"]{
 	width: 100%;
     height: 48px;
@@ -81,27 +117,40 @@ select {
     background-color: #F8F8F8;
     padding-left: 5px;
 }
+
+
 #childDate{
 	padding-bottom: 20px;
+	border-radius : 6px;
+
 }
 #babytext{
 	padding-top: 5px;
 	font-size: 15px;
+	font-weight: 700;
 }
 
 
 
 #babyiconbox{
-    width: 150px;
-    height: 150px; 
-    border-radius: 70%;
+    width: 11em;
+    height: 11em;
     overflow: hidden;
-    border: 1px black;
 }
 
 #babyicon{
-    width: 100%;
-    height: 100%;
+  position: relative;
+  width: 10.5em;
+  height: 10.5em;
+  overflow: hidden;
+}
+
+#babyicon img{
+  position: absolute;
+    top: 0;
+    left: 0;
+    width: 107%;
+    height: 122%;
     object-fit: cover;
 }
 
@@ -114,13 +163,15 @@ select {
 .childSex input[type="radio"]+label{
 	display: inline-block;
     cursor: pointer;
-    height: 24px;
-    width: 90px;
+    height: 3em;
+    width: 13em;
     border: 1px solid #333;
     line-height: 24px;
     text-align: center;
     font-weight:bold;
-    font-size:13px;
+    font-size:0.8em;
+    vertical-align:middle;
+    
 }
 .childSex input[type="radio"]+label{
 	background-color: #fff;
@@ -134,8 +185,25 @@ select {
 #next{
     text-align: center;
 }
-submit{
-    width: 50px;
-    height: 50%;
+
+
+input[type="submit"]{
+    width: 21.3em;
+    height: 3em;
+    color: #fff;
+    font-size: 16px;
+    background-color: #44564A;
 }
 
+
+#gggg{
+	margin-top: 6px;
+}
+
+
+hr {
+    border: 2px solid black;
+    width: auto;
+    margin-top: 7%;
+    margin-bottom: 7%;
+}

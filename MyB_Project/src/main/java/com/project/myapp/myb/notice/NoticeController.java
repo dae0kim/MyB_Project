@@ -38,8 +38,12 @@ public class NoticeController {
 	@Autowired
 	IAlarmService alarmService;
 
-	// (0329 합침 일형추가)
-	// 공지사항 출력
+	/**
+	 * (사용자 : 교사)공지사항을 리스트로 출력하는 메서드입니다
+	 * 
+	 * @param model 모델객체를 입력합니다
+	 * @return 공지사항 리스트 페이지를 반환합니다.
+	 */
 	@RequestMapping(value = "/teacher/mteacher_notice_detail")
 	public String noticeDetail(Model model) {
 
@@ -51,8 +55,14 @@ public class NoticeController {
 		return "/teacher/mteacher_notice_detail";
 	}
 
-	// (0329 합침 일형추가)
-	// 공지사항 상세
+	
+	/**
+	 * (사용자 : 교사)공지사항의 상세내용을 출력하는 메서드입니다.
+	 * 
+	 * @param noticeId 공지사항 식별번호를 입력합니다
+	 * @param model 모델객체를 입력합니다
+	 * @return 공지사항의 상세내용을 반환합니다.
+	 */
 	@RequestMapping(value = "/teacher/notice/{noticeId}")
 	public String setNoticeView(@PathVariable int noticeId, Model model) {
 
@@ -65,8 +75,12 @@ public class NoticeController {
 
 	}
 
-	// 부모
-	// 공지사항 출력
+	/**
+	 * (사용자 : 학부모)공지사항을 리스트로 출력하는 메서드입니다
+	 * 
+	 * @param model 모델객체를 입력합니다
+	 * @return 공지사항 리스트 페이지를 반환합니다.
+	 */
 	@RequestMapping(value = "/parent/mparent_notice_detail")
 	public String parentNoticeDetail(Model model) {
 
@@ -76,8 +90,13 @@ public class NoticeController {
 		return "/parent/mparent_notice_detail";
 	}
 
-	// 부모
-	// 공지사항 상세
+	/**
+	 * (사용자 : 학부모)공지사항의 상세내용을 출력하는 메서드입니다.
+	 * 
+	 * @param noticeId 공지사항 식별번호를 입력합니다
+	 * @param model 모델객체를 입력합니다
+	 * @return 공지사항의 상세내용을 반환합니다.
+	 */
 	@RequestMapping(value = "/parent/notice/{noticeId}")
 	public String setParentNoticeView(@PathVariable int noticeId, Model model) {
 

@@ -75,13 +75,11 @@
 		        		//새로운 알림이 있으면 빨간색으로 변경
 		        	   
 		        	    $('#bell').css('display', 'inline-block');
-		        	    $('#notbell').css('display', 'none'); 
-		        	    console.log("new");
+		        	    $('#notbell').css('display', 'none');
 		        	} else {
 		        	   
 		        	    $('#bell').css('display', 'none'); 
 		        	    $('#notbell').css('display', 'inline-block');
-		        	    console.log("nothing");
 		        	}
 		            //다음 실행 시간 설정
 // 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행

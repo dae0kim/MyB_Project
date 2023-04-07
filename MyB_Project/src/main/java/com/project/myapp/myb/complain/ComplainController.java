@@ -36,7 +36,13 @@ public class ComplainController {
 	@Autowired
 	IChildService childService;
 	
-	// 1:1문의하기로 이동
+	/**
+	 * 1:1 문의 조회를 위한 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 부모 사용자가 작성한 1:1문의 리스트 화면을 반환합니다.
+	 */
 	@RequestMapping(value="/parent/mparent_sidemenu_qna")
 	public String parentQna(HttpSession session, Model model) {
 		String parentEmail = (String) session.getAttribute("parentEmail");
@@ -50,7 +56,13 @@ public class ComplainController {
 		return "parent/mparent_sidemenu_qna";
 	}
 
-	// 1:1문의 작성으로 이동
+	/**
+	 * 1:1 문의 작성 페이지 이동을 위한 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 1:1 문의 작성 페이지를 반환합니다.
+	 */
 	@RequestMapping(value="/parent/mparent_sidemenu_qnawrite", method=RequestMethod.GET)
 	public String parentQnaWriteForm(HttpSession session, Model model) {
 		String parentEmail = (String) session.getAttribute("parentEmail");
@@ -61,14 +73,26 @@ public class ComplainController {
 		return "parent/mparent_sidemenu_qnawrite";
 	}
 
-	// 1:1문의 작성
+	/**
+	 * 1:1 문의 작성을 위한 메서드입니다.
+	 * 
+	 * @param complain 1:1 문의 정보가 담긴 객체를 입력합니다.
+	 * @return 1:1 문의 목록 화면으로 이동하라는 요청을 반환합니다.
+	 */
 	@RequestMapping(value="/parent/mparent_sidemenu_qnawrite", method=RequestMethod.POST)
 	public String parentQnaWrite(ComplainVO complain) {	
-		complainService.insertComplain(complain); // 컴플레인 테이블에 정보 저장
+		complainService.insertComplain(complain);
 		return "redirect:/parent/mparent_sidemenu_qna";
 	}
 	
-	// 1:1문의 상세보기 이동
+	/**
+	 * 1:1 문의 상세 정보 조회를 위한 메서드입니다.
+	 * 
+	 * @param complainId 1:1 문의 식별번호를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return
+	 */
 	@RequestMapping(value="/parent/mparent_sidemenu_qnadetail/{complainId}", method=RequestMethod.GET)
 	public String parentQnaView(@PathVariable int complainId, HttpSession session, Model model) {
 		ComplainVO complain = complainService.selectComplain(complainId);

@@ -15,7 +15,7 @@ public interface IDiseaselogService {
 	// (0329 합침 일형추가)
 	void insertDiseaseLog (DiseaselogVO diseaselogvo);
 	
-	List<DiseaselogVO> defaultDisase(int teacherId);
+	/* List<DiseaselogVO> defaultDisase(int teacherId); */
 	
 	List<DiseaselogEtcVO> test(int classroomId);
 	

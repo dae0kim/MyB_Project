@@ -1,152 +1,126 @@
-.title_wrap{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    place-content: center space-evenly;
-    align-items: center;
-    align-content: center;
-    
-    padding-top: 90px;
-    padding-bottom: 20px;
-
-    width: 100%;
-    height: 20px;
-
+html {
+	height: 100%;
 }
 
-#title_name{
-    font-size: 1.5em;
-    grid-column-start: 1;
-    margin-left: 20px;
+body {
+	margin: 0;
+	height: 100%;
 }
 
-.info_wrap{
-    width: 400px;
-        height: 350px;
-        padding: 40px;
-        box-sizing: border-box;
-        text-align: center;
-        display: flex;
-        border-color: transparent;
-        flex-direction: column;
-        
+.wrap {
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 50px; /* footer height */
 }
 
-#update-form{
-    text-align: center;
-  
-
+.wrapper {
+	margin: 0;
+	height: auto;
+	min-height: 100%;
+	padding-bottom: 50px;
+	text-align: -webkit-center;
 }
 
-#update-form > input{
-    width: 85%;
-    height: 45px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    background-color: #F8F8F8;
-}
-#update-form > input::value{
-    color: #D2D2D2;
-}
-
-#update-form > input[type="button"]{
-    color: #fff;
-    font-size: 16px;
-    background-color: #F2BE5C;
-}
-.info-name{
-	text-align: left;
-	padding-left: 20px;
-	padding-bottom: 5px;
-	font-size: 0.8em;
-	font-weight: bold;
+.title_wrap {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 86%;
+	height: 100%;
+	padding: 23px;
+	justify-items: center;
+	align-items: center;
+	justify-content: center;
 }
 
+.title_wrap>input[type="button"] {
+	color: #000;
+	font-size: 16px;
+	background-color: #F2BE5C;
+	border-radius: 6px;
+	width: 100px;
+	height: 40px;
+	justify-self: flex-end;
+}
 
-#join{
-    padding-top: 20px;
+#title_name {
+	font-size: 1.6em;
+	grid-column-start: 1;
+	justify-self: left;
 }
 
 .info_wrap {
-    width: 80%; 
-    height: 500px;
-    margin: auto;
-    padding: 20px;
-
+	width: 100%;
+	height: 100%;
+	padding: 23px;
+	box-sizing: border-box;
+	display: flex;
+	border-color: transparent;
+	flex-direction: column;
+	text-align: -webkit-center;
 }
 
-.info_wrap .text {
-    height: 550px; 
-    border: 1px solid black; 
-    background-color: white;
-    white-space: pre-line; 
-    overflow-y: scroll; 
-    margin: 0 auto 20px;
-    border-radius: 5px;
-}
-.info_wrap p {
-    text-align: right;
-    padding-bottom: 15px;    
+#update-form {
+	text-align: center;
 }
 
-#relation{
-    width: 85%;
-    height: 48px;
-    box-sizing: border-box;
-    margin-top: 20px;
-    border-radius: 6px;
-    background-color: #F8F8F8;
+#update-form>input {
+	width: 100%;
+	height: 48px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	border-radius: 6px;
+	background-color: #F8F8F8;
+	border-radius: 6px;
+	padding-left: 1em;
 }
 
-#address{
-    display: flex;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    padding-left: 20px;
-    justify-content: space-between;
+#update-form>input::value {
+	color: #D2D2D2;
 }
 
-/*비밀번호 일치*/
-.pw_re_input_1{
-	color : green;
-	display : none;
-	font-size : 12px;
-	padding-top: 3px;
+.info-name {
+	text-align: left;
+	padding-bottom: 5px;
+	font-size: 1em;
+	font-weight: bold
 }
-/*비밀번호 불일치*/
-.pw_re_input_2{
-	color : red;
-	display : none;
-	font-size : 12px;
-	padding-top: 3px;
+
+#joinstring {
+	font-size: 0.8em;
+	text-align: -webkit-left;
+	margin-bottom: 1.5em;
 }
-/*비밀번호 정규식 불충족*/
-.pw_input{
-	color : red;
-	display : none;
-	font-size : 12px;
-	padding-top: 3px;
+
+.pw_re_input_1 {
+	font-size: 0.8em;
+	display: none;
+	color: red;
 }
-#joinstring{
-    border : none;
-    font-size : 10px;
-  	height : auto;
-    width: 80%; 
-    margin: auto;
-	text-align : left;
-	padding-bottom: 10px;
+
+.pw_re_input_2 {
+	font-size: 0.8em;
+	display: none;
+	color: red;
+}
+
+.pw_input {
+	font-size: 0.8em;
+	display: none;
+	color: red;
 }
 
 select {
-    height: 45px;
-    width: 49%; 
-    border: 1px solid #999;
-    font-family: inherit;  
-    background: url('../image/arrow.jpg') no-repeat 95% 50%; 
-    border-radius: 0px; 
-    -webkit-appearance: none; 
-    -moz-appearance: none;
-    appearance: none;
-    border-radius: 6px;
-    text-align: center;
-    }
+	width: 48%;
+	height: 48px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+	border-radius: 6px;
+	background-color: #F8F8F8;
+	border: solid 2px black;
+	text-align: center;
+}
+
+#address {
+	display: flex;
+	justify-content: space-between;
+}

@@ -4,6 +4,13 @@ import java.util.Date;
 
 import lombok.Data;
 
+/**
+ * 알람 정보를 담는 클래스입니다.
+ * 
+ * @author 문수지
+ * @since 2023.04.03
+ *
+ */
 @Data
 public class AlarmVO {
 	private int alarmId;

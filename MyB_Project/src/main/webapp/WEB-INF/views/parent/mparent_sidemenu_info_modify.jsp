@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../p_header.jsp"%>     
+<%@include file="../p_header2.jsp"%>     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
@@ -15,9 +15,12 @@
 
 </head>
 <body>
+<div class="wrapper">
 	<div class="title_wrap">
-		<div id="title_name" style="font-weight : 700;">내 정보</div>
+		<div id="title_name" style="font-weight : 700;">정보 수정하기</div>
+		<input type="button" class="update_btn" value="수정완료">	
 	</div>
+	
 	<div class="info_wrap">
         <form id="update-form" action="<c:url value='/parent/mparent_sidemenu_info_modify'/>" method="post">
 
@@ -46,22 +49,19 @@
 
 			<div class="info-name">주소</div>
             <div id="address">
-               <select name="parentCity" id="parentCity" style="background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" class="parentCity_input" onChange="chnGu(this.value)" required>
-                   <option value="">- 시 선택</option>
+               <select name="parentCity" id="parentCity" class="parentCity_input" onChange="chnGu(this.value)" required>
+                   <option value="">시 선택</option>
                    <option value="서울특별시">서울특별시</option>
                    <option value="부산광역시">부산광역시</option>
                    <option value="광주광역시">광주광역시</option>
                </select>
-               <br>
-               <select name="parentGu" id="parentGu" style="background: url(../resources/images/arrow.jpg) no-repeat 95% 50%;" display:none; class="parentGu_input" required>
-					<option value="">- 구 선택</option>
+               <select name="parentGu" id="parentGu" class="parentGu_input" required>
+					<option value="">구 선택</option>
                </select>
            </div>
-
-            <input type="button" class="update_btn" value="수정완료">
         </form>
     </div>
-    
+</div>    
 <script type="text/javascript">
 
 	// 유효성 검사 체크
@@ -177,3 +177,6 @@
     
 </body>
 </html>
+
+
+<%@include file="../p_footer.jsp"%>

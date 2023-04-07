@@ -16,7 +16,7 @@
 <body>
     <div class="border">
 		<div class="headgrid">
-			<div id="login_logo"><img src="../resources/images/logo.png"></div>	
+			<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>	
 			<div id="textlow1"><b>회원가입</b></div>
 		</div>
 

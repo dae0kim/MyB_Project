@@ -32,7 +32,7 @@ import com.project.myapp.myb.notice.NoticeVO;
 /**
  * 교사와 관련된 기능을 담는 컨트롤러클래스입니다.
  * 
- * @author 손일형,김대영
+ * @author 손일형,김대영,문수지
  * @since 2023.04.04
  *
  */
@@ -73,19 +73,21 @@ public class TeacherController {
 		return "/teacher/mteacher_web_main";
 	}
 
-	// 원생 질병관리 이동 + 질병정보 입력 + 반 정보 입력
+	/**
+	 * 원생 질병관리 이동시 데이터를 넘겨주는 메서드입니다
+	 * 
+	 * @param teacherId 교사 식별번호를 입력합니다.
+	 * @return 원생 질병관리 화면을 반환합니다
+	 */
 	@RequestMapping(value = "/teacher/mteacher_disease/{teacherId}")
 	public String moveDisease(@PathVariable int teacherId, Model model, HttpSession session) {
 
-		// 질병명 리스트
 		List<DiseaseVO> diseaseList = diseaseService.getDiseaseList();
 		model.addAttribute("diseaseList", diseaseList);
 
-		// 반 원생 리스트
 		List<ChildVO> getChildNameList = childService.getChildNameList(teacherId);
 		model.addAttribute("getChildNameList", getChildNameList);
 
-		// 반 이름
 		ClassroomVO teacherclass = classroomService.getTeacherClass(teacherId);
 		model.addAttribute("teacherclass", teacherclass);
 
@@ -100,15 +102,27 @@ public class TeacherController {
 		return "/teacher/mteacher_disease";
 	}
 
-	// 로그인 관련
+	/**
+	 * 교사 로그인 페이지로 이동하는 메서드입니다
+	 * 
+	 * @return 교사 로그인 화면을 반환합니다.
+	 */
 	@RequestMapping(value = "/teacher/mteacher_login", method = RequestMethod.GET)
 	public String teacherLogin() {
 		return "teacher/mteacher_login";
 	}
-
+	
+	/**
+	 * 교사 로그인시 사용되는 메서드입니다
+	 * 
+	 * @param teacherEmail 교사 이메일을 입력합니다
+	 * @param teacherPw 교사 비밀번호를 입력합니다
+	 * @param session 세션을 넘겨줍니다
+	 * @param model 을 통하여 메세지를 출력합니다
+	 * @return 로그인 성공/실패 여부에 따른 페이지가 나옵니다.
+	 */
 	@RequestMapping(value = "/teacher/mteacher_login", method = RequestMethod.POST)
 	public String teacherLogin(String teacherEmail, String teacherPw, HttpSession session, Model model) {
-		System.out.println(teacherEmail);
 		TeacherVO teacher = teacherService.selectTeacher(teacherEmail);
 		ClassroomVO classroom = classroomService.getClassName(teacherEmail);
 		KindergartenVO kindergarten = kindergartenService.getKindergartenName(teacherEmail);
@@ -136,9 +150,15 @@ public class TeacherController {
 		}
 		session.invalidate();
 		return "teacher/mteacher_login";
-	}// 로그인 관련 끝
+	}
 
-	// 로그아웃
+	/**
+	 * 로그아웃시 사용되는 메서드입니다
+	 * 
+	 * @param session 세션정보를 입력합니다
+	 * @param request 모델 객체를 입력합니다
+	 * @return 인덱스 화면으로 이동합니다.
+	 */
 	@RequestMapping(value = "/teacher/mteacher_logout", method = RequestMethod.GET)
 	public String teacherLogout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
@@ -146,7 +166,12 @@ public class TeacherController {
 		return "mindex";
 	}
 
-	// login email check
+	/**
+	 * 교사 로그인시 이메일 중복여부를 확인하는 메서드입니다.
+	 * 
+	 * @param teacherEmail 교사 이메일을 입력합니다
+	 * @return IF문에 따른 결과를 출력합니다.
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/teacher/teacherEmailChk", method = RequestMethod.POST)
 	public String teacherEmailCheck(String teacherEmail) throws Exception {
@@ -158,21 +183,33 @@ public class TeacherController {
 		}
 	}
 
-	// login password check
+	/**
+	 * 교사의 비밀번호 일치 여부를 확인합니다
+	 * 
+	 * @param teacherEmail 이메일을 입력합니다
+	 * @param teacherPw 비밀번호를 입력합니다
+	 * @return 일치여부에 따른 결과를 표시합니다
+	 * @throws Exception
+	 */
 	@ResponseBody
 	@RequestMapping(value = "/teacher/teacherPwChk", method = RequestMethod.POST)
 	public String teacherPwCheck(@Param(value = "teacherEmail") String teacherEmail,
 			@Param(value = "teacherPw") String teacherPw) throws Exception {
 		int result = teacherService.pwChk(teacherEmail, teacherPw);
-		System.out.println("결과값 = " + result);
 		if (result != 0) {
-			return "fail"; // 비밀번호 틀림
+			return "fail"; 
 		} else {
-			return "success"; // 비밀번호 맞춤
+			return "success"; 
 		}
 	}
-	
-	// 알림 목록으로 이동 (0403 문수지)
+
+	/**
+	 * 교사 사용자의 알람 목록 페이지로 이동하는 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 알람 목록 페이지를 반환합니다.
+	 */
 	@RequestMapping(value="/teacher/mteacher_alarm")
 	public String parentAlarm(HttpSession session, Model model) {
 		int teacherId = (int) session.getAttribute("teacherId");

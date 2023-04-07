@@ -14,34 +14,27 @@
      <link href="${pageContext.request.contextPath}/resources/css/mobile/all_notice_detail.css" rel="stylesheet">
 </head>
 
-<body>
+<body style="font-family: Nanum Gothic">
 <div class="wrap">
 		<div class="title_wrap">
         <div id="title_name" style="font-weight : 700;">공지사항</div>
         <div id="noticedetail_btn">
-            <button type="button" onClick="location.href='javascript:history.back();'">돌아가기</button>
+            <button type="button" href='<c:url value="${pageContext.request.contextPath}/mteacher_web_main"/>'>돌아가기</button>
         </div>
         </div>
 
     <div class="noticedetailcontent_wrap">
                 <table class="notice_table">
-                	<thead>
 					<tr>
-						<th scope="cols">글번호</th>
-						<th scope="cols">날짜</th>						
-						<th scope="cols">제목</th>
+						<th scope="cols" style="width:70%;">제목</th>
+						<th scope="cols" style="width:30%;">날짜</th>							
 					</tr>
-					</thead>
-					<tbody>
 						<c:forEach var="noticelist" items="${noticelist}">
-					
 					<tr>
-						<td class="noticeId">${noticelist.noticeId}</td>
-						<td class="noticeDate"> <fmt:formatDate pattern="yyyy-MM-dd" value="${noticelist.noticeDate}"/></td>
-						<td><a class="noticeTitle" href="<c:url value="/teacher/notice/${noticelist.noticeId}"/>">${noticelist.noticeTitle}</a></td>
+						<td><a class="noticeTitle" href="<c:url value="/parent/notice/${noticelist.noticeId}"/>">${noticelist.noticeTitle}</a></td>
+						<td class="noticeDate"> <fmt:formatDate pattern="MM'월' dd'일'" value="${noticelist.noticeDate}"/></td>
 					</tr>
 						</c:forEach>
-					</tbody>
 				</table>
 				
 				

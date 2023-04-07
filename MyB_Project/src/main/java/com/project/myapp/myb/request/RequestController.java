@@ -48,7 +48,13 @@ public class RequestController {
 	@Autowired
 	INoticeService noticeService;
 
-	// 요청하기 폼으로 이동 (0328 문수지)
+	/**
+	 * 요청하기 폼으로 이동하는 메서드입니다
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 요청하기 화면을 반환합니다.
+	 */
 	@RequestMapping(value = "/parent/mparent_request", method = RequestMethod.GET)
 	public String requestForm(HttpSession session, Model model) {
 		String parentEmail = (String) session.getAttribute("parentEmail");
@@ -58,19 +64,32 @@ public class RequestController {
 		return "parent/mparent_request";
 	}
 
-	// 요청하기 (0328 문수지)
+	/**
+	 * 요청을 하는 메서드입니다.
+	 * 
+	 * @param request 요청내용을 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @return 요청이 완료되면 메인화면으로 이동합니다.
+	 */
 	@RequestMapping(value = "/parent/mparent_request", method = RequestMethod.POST)
 	public String request(RequestVO request, Model model) {
 		requestService.insertRequest(request);
 		
-		// 공지사항
-        List<NoticeVO> noticelist = noticeService.getNoticeList();
-        model.addAttribute("noticelist", noticelist);
+		/* 주석 : 이제 메인에서 공지사항 안보여서 주석처리(0406 손일형)
+		 * // 공지사항 List<NoticeVO> noticelist = noticeService.getNoticeList();
+		 * model.addAttribute("noticelist", noticelist);
+		 */
 		
 		return "parent/mparent_web_main";
 	}
 
-	// 요청확인 폼으로 이동 (0330 문수지)
+	/**
+	 * 요청확인 폼으로 이동하는 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @param model 모댈 객체를 입력합니다.
+	 * @return 요청확인 페이지를 반환합니다.
+	 */
 	@RequestMapping(value = "/parent/mparent_request_check", method = RequestMethod.GET)
 	public String requestCheckForm(HttpSession session, Model model) {
 		String parentEmail = (String) session.getAttribute("parentEmail");
@@ -80,7 +99,15 @@ public class RequestController {
 		return "parent/mparent_request_check";
 	}
 
-	// 요청확인 (0330 문수지)
+	/**
+	 * 요청을 확인하는 메서드입니다.
+	 * 
+	 * @param childId 자녀 식별번호를 입력합니다.
+	 * @param requestDate 요청날짜를 입력합니다.
+	 * @param model 모댈 객체를 입력합니다 
+	 * @param redirectAttributes 리다이렉트가 발생하기 전 모든 플래시 속성을 세션에 복사합니다.
+	 * @return 요청확인을 반환합니다.
+	 */
 	@RequestMapping(value = "/parent/mparent_request_check", method = RequestMethod.POST)
 	public String requestCheck(@Param("childId") int childId, @Param("requestDate") String requestDate, Model model,
 			RedirectAttributes redirectAttributes) {
@@ -93,7 +120,12 @@ public class RequestController {
 		return "redirect:/parent/mparent_request_check";
 	}
 
-	// 자녀선택 시 필요한 정보 불러오기 (0329 문수지)
+	/**
+	 * 자녀선택 시 필요한 정보를 불러오는 메서드입니다.
+	 * 
+	 * @param childId 자녀 식별번호를 입력합니다
+	 * @return 식별번호에 맞는 childVO 형식으로 반환합니다
+	 */
 	@RequestMapping(value = "/parent/childIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public ChildVO childIdChk(@Param(value = "childId") int childId) throws Exception {
@@ -101,7 +133,13 @@ public class RequestController {
 		return child;
 	}
 
-	// (0329 합침 일형추가)
+	/**
+	 * 요청사항 리스트를 불러오는 메서드입니다
+	 * 
+	 * @param teacherId 교사 식별번호를 입력합니다
+	 * @param model 모델 객체를 입력합니다
+	 * @return 요청 리스트를 반환합니다
+	 */
 	@RequestMapping(value = "/teacher/mteacher_requset_list/{teacherId}")
 	public String getRequestList(@PathVariable int teacherId, Model model) {
 
@@ -111,8 +149,14 @@ public class RequestController {
 		return "/teacher/mteacher_requset_list";
 	}
 
-	// (0329 합침 일형추가)
-	// (0401 수지 수정)
+	/**
+	 * 요청사항 상세페이지를 불러오는 메서드입니다.
+	 * 
+	 * @param requestId 요청 식별번호를 입력합니다.
+	 * @param parentId 부모 식별번호를 입력합니다.
+	 * @param model 모댈 객체를 입력합니다.
+	 * @return 요청에 대한 상세를 반환합니다.
+	 */
 	@RequestMapping(value = "/teacher/mteacher_requset_check/{requestId}")
 	public String getCheckDetail(@PathVariable int requestId, @Param(value = "parentId") int parentId, Model model) {	//(0401 수지 parmeter 추가)
 		RequestVO getCheckDetail = requestService.getCheckDetail(requestId);
@@ -126,8 +170,15 @@ public class RequestController {
 		return "/teacher/mteacher_requset_check";
 	}
 
-	// (0329 합침 일형추가)
-	//(0401 수지 수정)
+	/**
+	 * 요청사항의 상태를 업데이트하는 메서드입니다.
+	 * 
+	 * @param requestvo 요청VO를 입력합니다.
+	 * @param parentId 부모 식별번호를 입력합니다.
+	 * @param model 모델 객체를 입력합니다. 
+	 * @param session 세션 정보를 입력합니다.
+	 * @return 요청사항 리스트 페이지를 반환합니다.
+	 */
 	@RequestMapping(value = "/teacher/mteacher_requset_check", method = RequestMethod.POST)
 	public String updateRequest(RequestVO requestvo, @RequestParam("parentId") int parentId, @RequestParam("childId") int childId, Model model, HttpSession session) {	//(0401 수지 parameter 추가)
 

@@ -13,11 +13,27 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface IComplainRepository {
 	
-	// 1:1문의 작성 (0328 문수지 작성)
+	/**
+	 * 부모 사용자가 원장에게 1:1 문의을 작성하기 위한 메소드입니다.
+	 * 
+	 * @param complain 1:1 문의 정보가 담긴 객체를 입력합니다.
+	 */
 	void insertComplain(ComplainVO complain);
-	// 1:1문의 리스트 불러오기 (0328 문수지 작성)
+	
+	/**
+	 * 부모 사용자가 작성한 1:1 문의를 가져오기 위한 메서드입니다.
+	 * 
+	 * @param parentId 부모 사용자 식별번호를 입력합니다.
+	 * @return 해당하는 부모 사용자의 1:1 문의 객체 리스트를 반환합니다.
+	 */
 	List<ComplainVO> selectComplainList(int parentId);
-	// 1:1문의 상세보기 (0328 문수지 작성)
+	
+	/**
+	 * 부모 사용자가 작성한 1:1 문의 상세정보 확인을 위한 메서드입니다.
+	 * 
+	 * @param complainId 1:1 문의 식별번호를 입력합니다.
+	 * @return 해당 식별번호를 가진 1:1문의 정보를 VO객체로 반환합니다.
+	 */
 	ComplainVO selectComplain(@Param("complainId") int complainId);
 	
 	/* -----------------------------웹 기능 : 김대영----------------------------- */

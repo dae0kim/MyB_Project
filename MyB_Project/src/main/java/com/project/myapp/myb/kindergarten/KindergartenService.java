@@ -24,24 +24,19 @@ public class KindergartenService implements IKindergartenService {
 	@Qualifier("IKindergartenRepository")
 	IKindergartenRepository kindergartenRepository;
 	
-	
-	// 어린이집 검색 (0323 문수지 작성)
 	@Override
 	public List<KindergartenVO> searchListByNameKeyword(String kindergartenNameKeyword, String kindergartenCity,
 			String kindergartenGu) {
 		return kindergartenRepository.searchListByNameKeyword("%"+kindergartenNameKeyword+"%", kindergartenCity, kindergartenGu);
 	}
 
-	// 어린이집 정보 불어오기 (0324 문수지 작성)
 	@Override
 	public KindergartenVO selectKindergartenById(int kindergartenId) {
 		return kindergartenRepository.selectKindergartenById(kindergartenId);
 	}
 
-	// (0329 합침 일형추가)
 	@Override
 	public KindergartenVO getKindergartenName(String kindergartenName) {
-		// TODO Auto-generated method stub
 		return kindergartenRepository.getKindergartenName(kindergartenName);
 	}
 	

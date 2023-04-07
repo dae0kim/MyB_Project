@@ -5,6 +5,7 @@ html {
 body {
 	margin: 0;
 	height: 100%;
+	font-family: Nanum Gothic !important;
 }
 
 .wrap {
@@ -136,10 +137,16 @@ table.notice_table th {
 }
 
 table.notice_table td {
-  width: 155px;
+  width: 100%;
   padding: 7px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
   background: #F8F8F8;
+  cursor:pointer;
+}
+
+
+a{
+	text-decoration : none;
 }
 

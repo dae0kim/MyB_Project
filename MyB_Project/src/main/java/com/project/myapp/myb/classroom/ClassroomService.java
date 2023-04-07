@@ -20,32 +20,25 @@ public class ClassroomService implements IClassroomService {
 	@Qualifier("IClassroomRepository")
 	IClassroomRepository classroomRepository;
 	
-
-	// 해당하는 어린이집의 반들 출력(0323 문수지 작성)
 	@Override
 	public List<ClassroomVO> selectClassroomList(int kindergartenId) {
 		return classroomRepository.selectClassroomList(kindergartenId);
 	}
 
-	// 어린이집 정보 불러오기(0327 문수지 작성)
 	@Override
 	public ClassroomVO selectClassroom(int classroomId) {
 		return classroomRepository.selectClassroom(classroomId);
 	}
 
-	// (0329 합침 일형추가)
 	@Override
 	public ClassroomVO getTeacherClass(int teacherId) {
 		return classroomRepository.getTeacherClass(teacherId);
 	}
 
-
-	// (0329 합침 일형추가)
 	@Override
 	public ClassroomVO getClassName(String classroomName) {
 		return classroomRepository.getClassName(classroomName);
 	}
-	
 	
 	/* -----------------------------웹 기능 : 김대영----------------------------- */
 	@Override

@@ -15,12 +15,12 @@
 <body>
 	<div class="border">
 		<div class="headgrid">
-			<div id="login_logo"><img src="../resources/images/logo.png"></div>	
+			<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>	
 			<div id="textlow1"><b>학부모 로그인</b></div>
 		</div>
 
 		<div class="title_img">
-			<div id="titleimage"><img src="../resources/images/mobile/main.png"></div>
+			<div id="titleimage"><img src="${pageContext.request.contextPath}/resources/images/mobile/main.png"></div>
 		</div>
 
 

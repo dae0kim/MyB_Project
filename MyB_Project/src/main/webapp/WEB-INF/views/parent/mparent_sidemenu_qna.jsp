@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../p_header.jsp"%> 
+<%@include file="../p_header2.jsp"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
@@ -8,43 +8,42 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sidemenuqna</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/reset.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/mparent_sidemenu_qna.css">    
 </head>
 <body>
+<div class="wrap">
     <div class="title_wrap">
 		<div id="title_name" style="font-weight : 700;">1:1 문의</div>
-		<input type="button" value="문의하기" onClick="location.href='./mparent_sidemenu_qnawrite'">	
+		<input type="button" value="글 쓰기" onClick="location.href='${pageContext.request.contextPath}/parent/mparent_sidemenu_qnawrite'">	
 	</div>
-	<div id="sidemenuqna_subtitle">어린이집에 대한 문의 및 불편사항을 적어주세요.</div>
+        	
 	
-    <div class="sidemenuqna_wrap">
-    	<div class="sidemenuqnacontent_wrap">
-	        <table>
-	            <thead>
+
+   <div class="qna_wrap">
+	        <table class="qna_table">
 	                <tr>
-	                    <td scope="col" style="padding-left:50px; padding-right:3px;">제목</td>
-	                    <td scope="col" style="padding-left:50px; padding-right:3px;">날짜</td>
-	                    <td scope="col" style="padding-left:50px; padding-right:3px;">상태</td>
+	                    <th scope="cols" style="width:65%;">제목</th>
+						<th scope="cols" style="width:25%;">날짜</th>	
+						<th scope="cols" style="width:10%;">확인여부</th>	
 	                </tr>
-	            </thead>
-	            <c:forEach var="complain" items="${complainList}">
-		            <tbody>
+	            		<c:forEach var="complain" items="${complainList}">
 		                <tr>
-		                    <td scope="row" style="padding-left:10px; padding-right:3px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">
-		                    	<a href="./mparent_sidemenu_qnadetail/${complain.complainId}">${complain.complainTitle}</a>
+		                    <td scope="row">
+		                    <a href="${pageContext.request.contextPath}/mparent_sidemenu_qnadetail/${complain.complainId}">${complain.complainTitle}</a>
 		                    </td>
-		                    <td scope="row" style="padding-left:10px; padding-right:3px;"><fmt:formatDate pattern="yyyy-MM-dd" value="${complain.complainDate}"/></td>
-		                    <td scope="row" style="padding-left:10px; padding-right:3px;">${complain.complainStat}</td>
+		                    <td scope="row"><fmt:formatDate  pattern="MM'월' dd'일'" value="${complain.complainDate}"/></td>
+		                    <td scope="row">${complain.complainStat}</td>
 		                </tr>
-		            </tbody>
 		         </c:forEach>   
 	        </table>
     	</div>
     	
     </div>
-    
+    </div>
 </body>
 </html>
+
+<%@include file="../p_footer.jsp"%>

@@ -13,6 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * 알람 기능을 담은 컨트롤러클래스입니다.
+ * 
+ * @author 문수지
+ * @since 2023.04.03
+ *
+ */
 @Controller
 public class AlarmController {
 	
@@ -22,8 +29,12 @@ public class AlarmController {
 	@Autowired
 	AlarmService alarmService;
 	
-	// 부모 알람 (0403 문수지)
-	// 알람 올 경우
+	/**
+	 * ajax 요청에 따른 부모 유저에게 알람이 왔을 경우 표시해주는 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @return ajax 요청의 결과값을 반환합니다.
+	 */
 	@RequestMapping(value = "/checkalarm", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Map<String, Boolean> checkForNewAlarm(HttpSession session) {
@@ -34,16 +45,23 @@ public class AlarmController {
 	    return result;
 	}
 	
-	// 알람 확인 시
+	/**
+	 * ajax 요청에 따른 부모 유저의 알람 메시지를 읽음 상태로 처리해주는 메서드입니다.
+	 * 
+	 * @param parentId 부모 유저의 식별번호를 입력합니다.
+	 */
 	@RequestMapping(value = "/updatealarm", method = RequestMethod.POST)
 	@ResponseBody
 	public void updateAlarmChecked(@RequestParam int parentId) {
-		System.out.println(parentId);
 	    alarmService.updateAlarmChecked(parentId);
 	}
 	
-	// 선생 알람 (0403 문수지)
-	// 알람 올 경우
+	/**
+	 * ajax 요청에 따른 교사 유저에게 알람이 왔을 경우 표시해주는 메서드입니다.
+	 * 
+	 * @param session 세션정보를 입력합니다.
+	 * @return ajax 요청의 결과값을 반환합니다.
+	 */
 	@RequestMapping(value = "/checkteacheralarm", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Map<String, Boolean> checkForNewTeacherAlarm(HttpSession session) {
@@ -54,11 +72,14 @@ public class AlarmController {
 	    return result;
 	}
 	
-	// 알람 확인 시
+	/**
+	 * ajax 요청에 따른 교사 유저의 알람 메시지를 읽음 상태로 처리해주는 메서드입니다.
+	 * 
+	 * @param teacherId 교사 유저의 식별번호를 입력합니다.
+	 */
 	@RequestMapping(value = "/updateteacheralarm", method = RequestMethod.POST)
 	@ResponseBody
 	public void updateTeacherAlarmChecked(@RequestParam int teacherId) {
-		System.out.println(teacherId);
 	    alarmService.updateTeacherAlarmChecked(teacherId);
 	}
 

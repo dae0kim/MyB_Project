@@ -11,18 +11,37 @@ import java.util.List;
  */
 public interface IClassroomRepository {
 	
-	// 해당하는 어린이집의 반들 출력(0323 문수지 작성)
+	/**
+	 * 어린이집 선택 시 해당하는 반 정보를 가져오기 위한 메서드입니다.
+	 *  
+	 * @param kindergartenId 어린이집 식별번호를 입력합니다.
+	 * @return 해당 식별번호를 가진 어린이집의 반 정보 리스트를 반환합니다. 
+	 */
 	List<ClassroomVO> selectClassroomList(int kindergartenId);
 	
-	// 어린이집 정보 불러오기(0327 문수지 작성)
+	/**
+	 * 해당하는 반 정보를 VO객체로 가져오기 위한 메서드입니다.
+	 * 
+	 * @param classroomId 반 식별번호를 입력합니다.
+	 * @return 해당 식별번호를 가진 반 정보를 VO객체로 반환합니다.
+	 */
 	ClassroomVO selectClassroom(int classroomId);
 	
-	// (0329 합침 일형추가)
+	/**
+	 * 교사 사용자가 담당하는 반 정보를 VO객체로 가져오기 위한 메서드입니다.
+	 * 
+	 * @param teacherId 교사 식별번호를 입력합니다.
+	 * @return 해당 식별번호를 가진 교사가 담당하는 반 정보를 VO객체로 반환합니다.
+	 */
 	ClassroomVO getTeacherClass(int teacherId);
 
-	// (0329 합침 일형추가)
-	ClassroomVO getClassName(String classroomName);	
-
+	/**
+	 * 교사 사용자가 담당하는 반 정보를 VO객체로 가져오기 위한 메서드입니다.
+	 * 
+	 * @param classroomName 반 이름을 입력합니다.
+	 * @return 교사가 담당하는 반 정보를 VO객체로 반환합니다.
+	 */
+	ClassroomVO getClassName(String classroomName);
 	
 	/* -----------------------------웹 기능 : 김대영----------------------------- */
 	/**

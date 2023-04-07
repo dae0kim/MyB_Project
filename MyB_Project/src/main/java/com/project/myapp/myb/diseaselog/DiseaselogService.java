@@ -21,17 +21,9 @@ public class DiseaselogService implements IDiseaselogService {
 	@Qualifier("IDiseaselogRepository")
 	IDiseaselogRepository diseaselogRepository;
 
-	// (0329 합침 일형추가)
 	@Override
 	public void insertDiseaseLog(DiseaselogVO diseaselogvo) {
 		diseaselogRepository.insertDiseaseLog(diseaselogvo);
-
-	}
-
-	@Override
-	public List<DiseaselogVO> defaultDisase(int teacherId) {
-		// TODO Auto-generated method stub return
-		return diseaselogRepository.defaultDisase(teacherId);
 	}
 
 	@Override

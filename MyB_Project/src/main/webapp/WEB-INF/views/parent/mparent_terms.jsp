@@ -15,7 +15,7 @@
 <body>
     <div class="border">
 		<div class="headgrid">
-			<div id="login_logo"><img src="../resources/images/logo.png"></div>	
+			<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>	
 			<div id="textlow1"><b>이용약관 확인</b></div>
 		</div>
     <div class="terms_wrap">
