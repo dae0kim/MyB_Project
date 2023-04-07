@@ -130,9 +130,8 @@ public class TeacherController {
 		if (teacher != null) {
 			String dbPassword = teacher.getTeacherPw();
 			if (dbPassword == null) {
-				model.addAttribute("message", "NOT_VALID_TEACHER");
+				model.addAttribute("message", "아이디 또는 비밀번호를 확인하세요.");
 			} else {
-				System.out.println(teacherPw);
 				if (dbPassword.equals(teacherPw)) {
 					session.setAttribute("teacherEmail", teacherEmail);
 					session.setAttribute("loginUser", teacher);
@@ -142,11 +141,11 @@ public class TeacherController {
 
 					return "redirect:/teacher/mteacher_web_main";
 				} else {
-					model.addAttribute("message", "WRONG_PASSWORD");
+					model.addAttribute("message", "비밀번호를 확인하세요.");
 				}
 			}
 		} else {
-			model.addAttribute("message", "TEACHER_NOT_FOUND");
+			model.addAttribute("message", "존재하지 않는 계정입니다.");
 		}
 		session.invalidate();
 		return "teacher/mteacher_login";
@@ -164,23 +163,6 @@ public class TeacherController {
 		session.invalidate();
 
 		return "mindex";
-	}
-
-	/**
-	 * 교사 로그인시 이메일 중복여부를 확인하는 메서드입니다.
-	 * 
-	 * @param teacherEmail 교사 이메일을 입력합니다
-	 * @return IF문에 따른 결과를 출력합니다.
-	 */
-	@ResponseBody
-	@RequestMapping(value = "/teacher/teacherEmailChk", method = RequestMethod.POST)
-	public String teacherEmailCheck(String teacherEmail) throws Exception {
-		int result = teacherService.emailChk(teacherEmail);
-		if (result != 0) {
-			return "fail"; // 중복된 이메일
-		} else {
-			return "success"; // 중복된 이메일X
-		}
 	}
 
 	/**

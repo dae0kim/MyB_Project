@@ -26,18 +26,6 @@ public class TeacherService implements ITeacherService {
 	}
 
 	// (0329 합침 일형추가)
-	/*
-	 * @Override public TeacherVO getTeacherInfo(String teacherId) { return
-	 * teacherRepository.getTeacherInfo(teacherId); }
-	 */
-
-	// (0329 합침 일형추가)
-	@Override
-	public int emailChk(String teacherEmail) throws Exception {
-		return teacherRepository.emailChk(teacherEmail);
-	}
-
-	// (0329 합침 일형추가)
 	@Override
 	public int pwChk(String teacherEmail, String teacherPw) throws Exception {
 		return teacherRepository.pwChk(teacherEmail, teacherPw);

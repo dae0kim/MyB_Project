@@ -32,16 +32,6 @@
 		WHERE teacher_id=#{teacherId}
 	</select>
 
-
-	<select id="emailChk" resultType="int">
-		<![CDATA[
-			SELECT count(*)
-			FROM teacher
-			WHERE teacher_email=#{teacherEmail}
-		]]>
-	</select>
-
-
 	<select id="pwChk" resultType="int" parameterType="map">
 		<![CDATA[
 			SELECT count(*)

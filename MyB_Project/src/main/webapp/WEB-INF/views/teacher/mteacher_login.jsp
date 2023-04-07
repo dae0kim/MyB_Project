@@ -28,57 +28,17 @@
 
     <div class="login-wrap">    
        <form action="<c:url value='/teacher/mteacher_login'/>" method="post" id="teacher-login-form">
-            <input type="text" class="teacherEmail_input" name="teacherEmail" id="teacherEmail" placeholder="　Email">
-            <input type="password" class="teacherPw_input" name="teacherPw" id="teacherPw" placeholder="　Password">
-            <input type="submit" value="Login">
+            <input type="text" class="teacherEmail_input" name="teacherEmail" id="teacherEmail" placeholder="　Email" required>
+            <input type="password" class="teacherPw_input" name="teacherPw" id="teacherPw" placeholder="　Password" required>
             
-            <span class="email_ok">존재하지 않는 이메일입니다.</span>
-            <span class="pw_fail">비밀번호가 틀렸습니다.</span>
+            <div>
+	        	<span style="color:red;">${message}</span>
+	        </div>
+            
+            <input type="submit" value="Login">
+
         </form>
         </div>
     </div>
-    
- <script type="text/javascript">
- 
-//이메일 존재유무
-	$('.teacherEmail_input').on("propertychange change keyup paste input", function() {
-		var teacherEmail = $('.teacherEmail_input').val(); // teacherEmail_input에 입력되는 값
-		var data = {teacherEmail : teacherEmail} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
-		
-		$.ajax({
-			type : "post",
-			url : "./teacherEmailChk",
-			data : data,
-			success : function(result) {
-				if(result != 'fail') {
-					$('.email_ok').css("display", "inline-block");
-				} else {
-					$('.email_ok').css("display", "none");
-				}
-			}
-		});
-	});
-	
-	//올바른 비밀번호 입력체크 
-	$('.teacherPw_input').on("propertychange change keyup paste input", function() {
-		var teacherEmail = $('.teacherEmail_input').val();
-		var teacherPw = $('.teacherPw_input').val();
-		var data = {"teacherEmail" : teacherEmail, "teacherPw" : teacherPw}; // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
-		
-		$.ajax({
-			type : "post",
-			url : "./teacherPwChk",
-			data : data,
-			success : function(result) {
-				if(result != 'fail') {
-					$('.pw_fail').css("display", "inline-block"); // 비밀번호 틀림
-				} else {
-					$('.pw_fail').css("display", "none");
-				}
-			}
-		});
-	});
-</script>
-
 </body>
 </html>

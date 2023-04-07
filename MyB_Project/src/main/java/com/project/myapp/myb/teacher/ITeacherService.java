@@ -13,8 +13,6 @@ public interface ITeacherService {
 	
 	TeacherVO selectTeacher(String teacherEmail);
 	
-	// 로그인 체크부분(0329 합침 일형추가)
-	int emailChk(String teacherEmail) throws Exception;
 	// (0329 합침 일형추가)
 	int pwChk(String teacherEmail, String teacherPw) throws Exception;
 	// adminId에 따른 teacherId 가져오기 (0403 문수지)

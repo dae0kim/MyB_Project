@@ -39,13 +39,13 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-success text-white" id="basic-addon1"><i class="ti-user"></i></span>
                                     </div>
-                                    <input type="text" name="email" class="form-control form-control-lg" placeholder="아이디" aria-label="Username" aria-describedby="basic-addon1" required="">
+                                    <input type="text" name="email" class="form-control form-control-lg" placeholder="아이디" aria-label="Username" aria-describedby="basic-addon1" required>
                                 </div>
                                 <div class="input-group mb-3" style="margin-bottom:1rem;">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text bg-warning text-white" id="basic-addon2"><i class="ti-pencil"></i></span>
                                     </div>
-                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="비밀번호" aria-label="Password" aria-describedby="basic-addon1" required=""> 
+                                    <input type="password" name="password" class="form-control form-control-lg" placeholder="비밀번호" aria-label="Password" aria-describedby="basic-addon1" required> 
                                 </div>
                             </div>
                         </div>

@@ -22,14 +22,6 @@ public interface ITeacherRepository {
 	TeacherVO selectTeacher(String teacherEmail);
 	
 	/**
-	 * 교사 로그인시 이메일 중복여부를 확인하는 메서드입니다.
-	 * 
-	 * @param teacherEmail 교사 이메일을 입력합니다
-	 * @return IF문에 따른 결과를 출력합니다.
-	 */
-	int emailChk(String teacherEmail);
-	
-	/**
 	 * 교사의 비밀번호 일치 여부를 확인합니다
 	 * 
 	 * @param teacherEmail 이메일을 입력합니다
