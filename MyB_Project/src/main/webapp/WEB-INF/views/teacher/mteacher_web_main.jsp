@@ -16,55 +16,46 @@
      
 </head>
 <body>
-	<div class="profile_box">
-		<div class="profile_icon">
-			<img id="porfile_img"
-				src="${pageContext.request.contextPath}/resources/image/teacher_woman_student.png">
-		</div>
-		<div class="teacher_name">${loginUser.teacherName}</div>
-		<div class="classroom_name">${classroom.classroomName}</div>
-		<div class="kindergarten_class">${kindergarten.kindergartenName}</div>
-		
+<div class="wrapper">
+
+
+	<div class="notice_box">
+		<button type="button" id="noticebtn"  onClick="location.href='./mteacher_notice_detail'">
+			<div class="noticeimg">
+				<div class="noticewrite">
+					<span id="noticetitle">공지사항</span>
+					<span id="noticecontent">공지사항을 확인할 수 있어요</span>
+				</div>
+				<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_notice.png" width="148" style="padding-top:13px;">
+			</div>
+		</button>
 	</div>
-
-
-	<div class="teachermain_wrap">
-		<div>
-			<div id="noticebox_title">공지사항</div>
 			
-		
-			<div class="notice_box">
-				<table class="notice_table">
-					<tr>
-						<th>날짜</th>						
-						<th>내용</th>
-					</tr>
-						<c:forEach var="noticelist" items="${noticelist}">
-					<tr>
-						<td class="noticeDate"> <fmt:formatDate pattern="yyyy-MM-dd" value="${noticelist.noticeDate}"/></td>
-						<td class="noticeContent">${noticelist.noticeContent}</td>
-					</tr>
-				</c:forEach>
-				</table>
+	<div class="request_wrap">
+			<div id="request">
+            <button type="button" id="requestbtn"  onClick="location.href='./mteacher_requset_list/${loginUser.teacherId}'">
+            	<div class="btnimg">
+					<div class="btnwrite">
+						<span class="btntitle">요청사항 확인</span>
+						<span class="btncontent">학부모의 요청사항을 확인하세요</span>
+					</div>
+					<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_request.png" width="100%" style="padding-top:20px;">
+				</div>
+            </button>
 			</div>
 			
-			<div id="notice_list">
-				<a href='<c:url value="./mteacher_notice_detail" />'>더보기</a>
+			
+			<div id="requestchk">
+            <button type="button" id="requestchkbtn" onClick="location.href='./mteacher_disease/${loginUser.teacherId}'">
+            	<div class="btnimg">
+					<div class="btnwrite">
+						<span class="btntitle">원생 질병관리</span>
+						<span class="btncontent">원생의 질병상태를 입력하세요</span>
+					</div>
+					<img src="${pageContext.request.contextPath}/resources/images/mobile/mparent_requestchk.png" width="100%" style="padding-top:20px;">
+				</div>
+            </button>
 			</div>
-		</div>
-
-		<div>
-
-			<button id="request_list" type="button">
-				<a href='<c:url value="./mteacher_requset_list/${loginUser.teacherId}" />'>요청사항 확인</a>
-			</button>
-				
-				
-			<button id="disease_list" type="button">
-				<a href='<c:url value="./mteacher_disease/${loginUser.teacherId}" />'>원생 질병관리</a>
-			</button>
-
-
-		</div>
-	</div>
+    </div>
+</div>
 </body>

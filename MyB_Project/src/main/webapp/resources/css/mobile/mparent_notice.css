@@ -40,7 +40,7 @@ body {
 .title_wrap button{
     color: #000;
     font-size: 16px;
-    background-color: #F2BE5C;
+    background-color: #F2BE5C;;
     border-radius: 6px;
     width: 100px;
     height: 40px;
@@ -96,13 +96,14 @@ body {
    width:100%;
    margin:15px 0;
    border:0;
-   background-color:#fef1d1;
+   background-color: #f2be5c24;
    padding: 0.7em;
    
 }
 .notice_table th {
-   background-color:#FFB400;
+   background-color: #ffe795;
    color:#000000;
+   font-weight: bold;
 }
 .notice_table,.notice_table th,.table4_5 td {
    font-size:0.95em;
@@ -111,7 +112,7 @@ body {
    border-collapse:collapse;
    font-size: 1.1em;
     text-align: center;
-    padding: 1em;
+    padding: 2%;
     border-collapse: collapse;
 }
 
@@ -120,13 +121,13 @@ td{
    padding: 1.5% !important;
 }
 .notice_table th,.table4_5 td {
-   border: 1px solid #fed46d;
-   border-width:1px 0 1px 0;
+   border: 1em solid #ffffff;;
+   border-width:0.1em 0 0.1em 0;
    }
 
 .notice_table tr {
-   border: 1px solid #fed46d;
-   background-color:#fef1d1;
+   border: 0.1em solid #ffffff;
+   background-color: #efefef;
 }
 
 a{

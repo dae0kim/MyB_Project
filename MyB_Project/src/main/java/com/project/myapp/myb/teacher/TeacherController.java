@@ -136,8 +136,10 @@ public class TeacherController {
 					session.setAttribute("teacherEmail", teacherEmail);
 					session.setAttribute("loginUser", teacher);
 					session.setAttribute("teacherId", teacher.getTeacherId());
+					session.setAttribute("teacherName", teacher.getTeacherName());
 					session.setAttribute("classroom", classroom);
 					session.setAttribute("kindergarten", kindergarten);
+					
 
 					return "redirect:/teacher/mteacher_web_main";
 				} else {

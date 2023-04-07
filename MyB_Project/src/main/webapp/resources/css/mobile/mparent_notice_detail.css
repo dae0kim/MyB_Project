@@ -96,5 +96,29 @@ select{
     background-color: #F8F8F8;
     border : solid 2px black;
     text-align: center;
+    display:flex;
 }
 
+
+
+.notice_content{
+	width: 100%;
+    height: auto;
+    min-height: 480px;
+    box-sizing: border-box;
+    background-color: #F8F8F8;
+    border-radius: 6px;
+    white-space: normal;
+    border: solid 2px black;
+    padding: 1em;
+    margin-bottom: 3em;
+    text-align: start;
+	
+	
+}
+
+
+#titlegrid{
+	display:flex;
+	justify-content: space-between;
+}

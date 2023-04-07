@@ -17,19 +17,25 @@
 <body>
 <div class="wrapper">
 	<div class="title_wrap">
-		<div id="title_name" style="font-weight : 700;">내 정보</div>
-		<input type="button" onClick="location.href='./mparent_sidemenu_info_modify'" value="수정하기">	
+		<div id="title_name" style="font-weight : 700;">공지사항 상세</div>
+		<input type="button" onClick="location.href='./mparent_sidemenu_info_modify'" value="돌아가기">	
 	</div>
 
     <div class="notice_wrap">
     	<div id="notice_form">
-    		<div class="title">제목
+    		<div class="title">
+    		<div id = "titlegrid">
+    		<div>제목</div>
+    		<div>작성일: <fmt:formatDate pattern="MM'월' dd'일'" value="${noticeview.noticeDate}"/></div>
+    		</div>
+    		</div>
 			<input type="text" class="notice_title" name="notcietitle" id="noticetitle" value="${noticeview.noticeTitle}" readonly>
 			
 			<div class="title">내용</div>
-			<input type="text" class="notice_content" name="noticecontent" id="noticecontent" value="${noticeview.noticeContent}" readonly>
-			
+			<div class="notice_content">
+			${noticeview.noticeContent}
         </div>
+    </div>
     </div>
     </div>
 </body>
