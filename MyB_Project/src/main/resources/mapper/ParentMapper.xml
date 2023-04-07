@@ -25,22 +25,6 @@
 		]]>
 	</select>
 
-	<select id="emailChk" resultType="int">
-		<![CDATA[
-			SELECT count(*)
-			FROM parent
-			WHERE parent_email=#{parentEmail}
-		]]>
-	</select>
-
-	<select id="phoneChk" resultType="int">
-		<![CDATA[
-			SELECT count(*)
-			FROM parent
-			WHERE parent_phone=#{parentPhone}
-		]]>
-	</select>
-
 	<select id="pwChk" resultType="int" parameterType="map">
 		<![CDATA[
 			SELECT count(*)

@@ -87,30 +87,6 @@ public class ParentController {
 		session.setAttribute("parentEmail", parentEmail); // 사용자 이메일을 세션에 저장
 		return "parent/mparent_select_kinder";
 	}
-   
-	// 이메일&번호 체크는 device로~ 삭제필요★★★★★★★★★★★★★★★★
-	@RequestMapping(value="/parent/parentEmailChk", method=RequestMethod.POST)
-	@ResponseBody
-	public String parentEmailCheck(String parentEmail) throws Exception {
-		int result = parentService.emailChk(parentEmail);
-		if(result != 0) { // 중복된 이메일이 있을 경우 (입력된 이메일과 일치하는 정보가 1 이상일 경우)
-			return "fail";	// 중복된 이메일
-		} else {
-			return "success"; // 중복된 이메일X
-		}
-	}
-   
-	// 이메일&번호 체크는 device로~ 삭제필요★★★★★★★★★★★★★★★★
-	@RequestMapping(value="/parent/parentPhoneChk", method=RequestMethod.POST)
-	@ResponseBody
-	public String parentPhoneCheck(String parentPhone) throws Exception {
-		int result = parentService.phoneChk(parentPhone);
-		if(result != 0) { // 중복된 전화번호가 있을 경우 (입력된 전화번호과 일치하는 정보가 1 이상일 경우)
-			return "fail";	// 중복된 전화번호
-		} else {
-			return "success"; // 중복된 전화번호X
-		}
-	}
 	
 	/**
 	 * ajax 요청에 따른 로그인 시 입력한 부모 사용자의 이메일과 비밀번호가 일치하는 지 확인하는 메서드입니다.
@@ -157,7 +133,7 @@ public class ParentController {
 		if(parent != null) {
 			String dbPassword = parent.getParentPw();
 			if(dbPassword == null) {
-				model.addAttribute("message", "NOT_VALID_PARENT");
+				model.addAttribute("message", "아이디 또는 비밀번호를 확인하세요.");
 			} else {
 				if(dbPassword.equals(parentPw)) {
 					session.setAttribute("parentEmail", parentEmail);
@@ -175,18 +151,14 @@ public class ParentController {
 					int classroomId = child.getClassroomId();
 					ClassroomVO classroom = classroomService.selectClassroom(classroomId);
 					session.setAttribute("classroomName", classroom.getClassroomName());
-               
-					// 공지사항 삭제필요★★★★★★★★★★★★★★★★
-//					List<NoticeVO> noticelist = noticeService.getNoticeList();
-//					model.addAttribute("noticelist", noticelist);
-        
+
 					return "parent/mparent_web_main";
 				} else {
-					model.addAttribute("message", "WRONG_PASSWORD");
+					model.addAttribute("message", "비밀번호를 확인하세요.");
 				}
 			}
 		} else {
-			model.addAttribute("message", "PARENT_NOT_FOUND");
+			model.addAttribute("message", "존재하지 않는 계정입니다.");
 		}
 		session.invalidate();
 		return "parent/mparent_login";

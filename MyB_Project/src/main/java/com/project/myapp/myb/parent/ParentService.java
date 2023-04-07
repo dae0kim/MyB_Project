@@ -31,16 +31,6 @@ public class ParentService implements IParentService {
 	}
 
 	@Override
-	public int emailChk(String parentEmail) throws Exception {
-		return parentRepository.emailChk(parentEmail);
-	}
-
-	@Override
-	public int phoneChk(String parentPhone) throws Exception {
-		return parentRepository.phoneChk(parentPhone);
-	}
-
-	@Override
 	public int pwChk(String parentEmail, String parentPw) throws Exception {
 		return parentRepository.pwChk(parentEmail, parentPw);
 	}

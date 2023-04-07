@@ -28,10 +28,6 @@ public interface IParentRepository {
 	 */
 	ParentVO selectParent(String parentEmail);
 	
-	// 이메일&번호 체크는 device로~ 삭제필요★★★★★★★★★★★★★★★★
-	int emailChk(String parentEmail);
-	int phoneChk(String parentPhone);
-	
 	/**
 	 * 로그인을 시도한 부모 사용자의 이메일과 비밀번호가 일치하는 지 확인하는 메서드입니다.
 	 * 

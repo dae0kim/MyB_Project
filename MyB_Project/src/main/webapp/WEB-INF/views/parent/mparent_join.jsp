@@ -32,12 +32,15 @@
 			
 
             <input type="password" class="parentPw_input" name="parentPw" id="parentPw" value="${parentVO.parentPw}" placeholder="　Password" onkeyup="noSpace(this);" onchange="noSpace(this);" required>
+            <span class="pw_input">비밀번호 조건을 충족해주세요.</span>
+            <div id="joinstring">
+            	● 비밀번호는 8자리~20자리 이내로 해주세요.<br>
+            	● 영문, 숫자, 특수문자중 2가지 이상 혼합 해주세요.
+            </div>
+            
             <input type="password" class="parentPw_re_input" name="parentPw_re" id="parentPw_re" placeholder="　Password2" onkeyup="noSpace(this);" onchange="noSpace(this);" required>
             <span class="pw_re_input_1">비밀번호가 일치합니다.</span>
             <span class="pw_re_input_2">비밀번호가 일치하지 않습니다.</span>
-            <span class="pw_input">비밀번호 조건을 충족해주세요.</span>
-            <div id="joinstring">● 비밀번호는 8자리~20자리 이내로 해주세요.<br>
-            ● 영문, 숫자, 특수문자중 2가지 이상 혼합 해주세요.</div>
             
             <input type="text" class="parentName_input" name="parentName" id="parentName" value="${parentVO.parentName}" placeholder="　Name" onkeyup="noSpace(this);" onchange="noSpace(this);" required>
             
@@ -101,13 +104,13 @@
 	});
 	
 	// 이메일 중복검사
-	$('.parentEmail_input').on("propertychange change keyup paste input", function() {
-		var parentEmail = $('.parentEmail_input').val(); // parentEmail_input에 입력되는 값
-		var data = {parentEmail : parentEmail} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
+	$('.parentEmail_input').on("focusout", function() {
+		var email = $('.parentEmail_input').val(); // parentEmail_input에 입력되는 값
+		var data = {email : email} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
 		
 		$.ajax({
 			type : "post",
-			url : "./parentEmailChk",
+			url : "<c:url value='/device/userEmailChk'/>",
 			data : data,
 			success : function(result) {
 				if(result != 'fail') {
@@ -176,13 +179,13 @@
 	}
 	
 	// 휴대폰 번호 중복검사
-	$('.parentPhone_input').on("propertychange change keyup paste input", function() {
-		var parentPhone = $('.parentPhone_input').val(); // parentEmail_input에 입력되는 값
-		var data = {parentPhone : parentPhone} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
+	$('.parentPhone_input').on("focusout", function() {
+		var phone = $('.parentPhone_input').val(); // parentEmail_input에 입력되는 값
+		var data = {phone : phone} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
 		
 		$.ajax({
 			type : "post",
-			url : "./parentPhoneChk",
+			url : "<c:url value='/device/userPhoneChk'/>",
 			data : data,
 			success : function(result) {
 				if(result != 'fail') {

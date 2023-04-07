@@ -26,59 +26,19 @@
 
     <div class="login-wrap">    
         <form action="<c:url value='/parent/mparent_login'/>" method="post" id="login-form">
-            <input type="text" class="parentEmail_input" name="parentEmail" id="parentEmail" placeholder="　Email">
-            <input type="password" class="parentPw_input" name="parentPw" id="parentPw" placeholder="　Password">
+            <input type="text" class="parentEmail_input" name="parentEmail" id="parentEmail" placeholder="　Email" required>
+            <input type="password" class="parentPw_input" name="parentPw" id="parentPw" placeholder="　Password" required>
+            
+            <div>
+	        	<span style="color:red;">${message}</span>
+	        </div>
+            
             <input type="submit" value="Login">
             
-            <span class="email_ok">존재하지 않는 이메일입니다.</span>
-            <span class="pw_fail">비밀번호가 틀렸습니다.</span>
         </form>
         
         <div id="join">아직 회원이 아니시라면?  <a href='<c:url value="/parent/mparent_terms"/>'>회원가입</a></div>
     </div>
-    
- <script type="text/javascript">
-
-	//이메일 존재유무
-	$('.parentEmail_input').on("propertychange change keyup paste input", function() {
-		var parentEmail = $('.parentEmail_input').val(); // parentEmail_input에 입력되는 값
-		var data = {parentEmail : parentEmail} // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
-		
-		$.ajax({
-			type : "post",
-			url : "./parentEmailChk",
-			data : data,
-			success : function(result) {
-				if(result != 'fail') {
-					$('.email_ok').css("display", "inline-block");
-				} else {
-					$('.email_ok').css("display", "none");
-				}
-			}
-		});
-	});
-	
-	//올바른 비밀번호 입력체크 
-	$('.parentPw_input').on("propertychange change keyup paste input", function() {
-		var parentEmail = $('.parentEmail_input').val();
-		var parentPw = $('.parentPw_input').val();
-		var data = {"parentEmail" : parentEmail, "parentPw" : parentPw}; // 컨트롤에 넘길 데이터 이름 : 데이터(입력값)
-		
-		$.ajax({
-			type : "post",
-			url : "./parentPwChk",
-			data : data,
-			success : function(result) {
-				if(result != 'fail') {
-					$('.pw_fail').css("display", "none");
-				} else {
-					$('.pw_fail').css("display", "inline-block"); // 비밀번호 틀림
-				}
-			}
-		});
-	});
-	
-</script>
 </div>
     
 </body>
