@@ -16,7 +16,8 @@
 	<div class="border">
 		<div class="headgrid">
 			<div id="login_logo"><img src="${pageContext.request.contextPath}/resources/images/logo.png"></div>	
-			<div id="textlow1"><b>학부모 로그인</b></div>
+			<div id="textlow1">Welcome to MyB</div>
+			<div id="textlow2">학부모 로그인</div>
 		</div>
 
 		<div class="title_img">

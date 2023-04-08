@@ -7,12 +7,12 @@
     <!-- 요청사항 알람 테이블에 알림 삽입 (0401 문수지) -->
     <insert id="insertAlarm" parameterType="map">
     	<![CDATA[
-			MERGE INTO alarm USING
+    		MERGE INTO alarm USING
 			(SELECT * FROM DUAL)
-			ON (child_id = #{childId} AND alarm_date = to_char(sysdate,'yyyy-mm-dd'))
+			ON (child_id = #{childId} AND to_char(alarm_date, 'yyyy-mm-dd') = to_char(SYSDATE, 'yyyy-mm-dd'))
 			WHEN NOT MATCHED THEN
 			INSERT (alarm_id, parent_id, child_id, alarm_message, alarm_date, alarm_checked) 
-			VALUES (alarmSeq.nextval, #{parentId}, #{childId}, #{alarmMessage}, to_char(sysdate,'yyyy-mm-dd'), 'no')
+			VALUES (alarmSeq.nextval, #{parentId}, #{childId}, #{alarmMessage}, SYSDATE, 'no')
     	]]>
     </insert>
 

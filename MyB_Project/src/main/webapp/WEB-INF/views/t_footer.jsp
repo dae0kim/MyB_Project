@@ -15,8 +15,7 @@
 		<div class="mouseevent">
 			<div id="childplus">
 				<a href='<c:url value="/teacher/mteacher_requset_list/${loginUser.teacherId}"/>'>
-					<i class="fa-solid fa-baby fa-xl" style="color: #5e5e5e; font-size: 1.4em;"></i>
-					<i class="fa-solid fa-plus fa-xs" style="color: #5e5e5e; font-size: 0.7em;"></i>
+					<i class="fa-solid fa-list-check" style="color: #000000;"></i>
 				</a>
 			</div>
 			<p>요청확인</p>
@@ -25,7 +24,7 @@
 	<div id="footer2">
 		<div class="mouseevent">
 			<a href='<c:url value="/teacher/mteacher_disease/${loginUser.teacherId}"/>'>
-				<i class="fa-solid fa-user" style="color: #5e5e5e;"></i>
+				<i class="fa-solid fa-virus" style="color: #000000;"></i>
 			</a>
 			<p>질병관리</p>
 		</div>
@@ -33,7 +32,7 @@
 	<div id="footer3">
 		<div class="mouseevent">
 			<a href='<c:url value="/teacher/mteacher_web_main"/>'>
-				<i class="fa-solid fa-house" style="color: #5e5e5e;"></i>
+				<i class="fa-solid fa-house" style="color: #000000;"></i>
 			</a>
 			<p>홈</p>
 		</div>
@@ -41,7 +40,7 @@
 	<div id="footer4">
 		<div class="mouseevent">
 			<a href='<c:url value="/teacher/mteacher_notice_detail"/>'>
-				<i class="fa-solid fa-comments" style="color: #5e5e5e;"></i>
+				<i class="fa-solid fa-clipboard" style="color: #000000;"></i>
 			</a>
 			<p>공지사항</p>
 		</div>
@@ -49,7 +48,7 @@
 	<div id="footer5">
 		<div class="mouseevent">
 			<a href='<c:url value="/teacher/mteacher_logout"/>'>
-				<i class="fa-solid fa-right-from-bracket" style="color: #5e5e5e;"></i>
+				<i class="fa-solid fa-right-from-bracket" style="color: #000000;"></i>
 			</a>
 			<p>로그아웃</p>
 		</div>	

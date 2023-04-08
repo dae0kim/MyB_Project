@@ -1,0 +1,138 @@
+html {
+   height: 100%;
+}
+
+body {
+   margin: 0;
+   height: 100%;
+   font-family: Nanum Gothic !important;
+}
+
+.wrap {
+   min-height: 100%;
+   position: relative;
+   padding-bottom: 50px; /* footer height */
+   text-align: -webkit-center;
+}
+
+
+.wrapper {
+   margin: 0;
+   height: auto;
+   min-height: 100%;
+   padding-bottom: 50px;
+   text-align: -webkit-center;
+}
+
+.title_wrap {
+   display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 86%;
+    height: 100%;
+    padding: 23px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: end;
+}
+
+
+.title_wrap button{
+    color: #000;
+    font-size: 16px;
+    background-color: #7fbce1;
+    border-radius: 6px;
+    width: 100px;
+    height: 40px;
+    float: right;
+}
+
+
+#title_name {
+   font-size: 1.6em;
+   grid-column-start: 1;
+   justify-self: left;
+   color: #000000;
+}
+
+
+.noticedetailcontent_wrap {
+   width: 100%;
+    height: 100%;
+   padding: 23px;
+   box-sizing: border-box;
+   display: flex;
+   border-color: transparent;
+   flex-direction: column;
+   text-align: -webkit-center;
+}
+
+
+#request-form{
+    text-align: center;
+}
+
+#request-form>input {
+   width: 100%;
+    height: 48px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background-color: #F8F8F8;
+}
+
+#request-form > input::value{
+    color: #D2D2D2;
+}
+
+.request-name {
+   text-align: left;
+    padding-bottom: 5px;
+    font-size: 1em;
+    font-weight: bold
+}
+
+
+.notice_table table {
+   width:100%;
+   margin:15px 0;
+   border:0;
+   padding: 0.7em;
+   
+}
+.notice_table th {
+   background-color: #c4e3f1;
+   color:#000000;
+   font-weight: bold;
+}
+.notice_table,.notice_table th,.table4_5 td {
+   font-size:0.94em;
+   text-align:center;
+   padding:4px;
+   border-collapse:collapse;
+   font-size: 1.1em;
+    text-align: center;
+    padding: 2%;
+    border-collapse: collapse;
+}
+
+
+td{
+   padding: 1.5% 1.5% 1.5% 5%;
+   font-size: 0.88em;
+   text-align: left;
+}
+.notice_table th,.table4_5 td {
+   border: 1em solid #ffffff;;
+   border-width:0.1em 0 0.1em 0;
+   }
+
+.notice_table tr {
+   border: 0.1em solid #ffffff;
+   background-color: #efefef;
+}
+
+a{
+   text-decoration : none;
+   color:#000000;
+}

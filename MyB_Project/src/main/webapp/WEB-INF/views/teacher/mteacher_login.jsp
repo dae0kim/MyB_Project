@@ -18,7 +18,8 @@
 	<div class="border">
 		<div class="headgrid">
 			<div id="login_logo"><img src="../resources/images/logo.png"></div>	
-			<div id="textlow1"><b>교사 로그인</b></div>
+			<div id="textlow1">Welcome to MyB</div>
+			<div id="textlow2">교사 로그인</div>
 		</div>
 
 		<div class="title_img">

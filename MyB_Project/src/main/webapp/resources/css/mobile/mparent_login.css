@@ -15,7 +15,7 @@ body {
 .headgrid {
     display: grid;
     grid-template-rows: repeat(1, 50px);
-    grid-template-columns: 40px 250px;
+    grid-template-columns: 1fr 50fr;
     width: 80%;
     height: 5%;
     justify-items: start;
@@ -32,21 +32,24 @@ body {
 #textlow1 {
 	grid-row: 1;
     grid-column: 2; 
-    font-weight: 700;
+    font-weight: bold;
     font-size: 2em; 
+    padding-left: 2%;
 }
 
 #textlow2 {
 	grid-row: 2;
-	grid-column: 2;	
+	grid-column: 2;
+    font-size: 1.8em; 
+    padding-left: 2%;
+    padding-top: 2%;
 }
 
 .title_img {
     display: grid;
     align-items: center;
-    padding: 15px;
+    padding: 0 15px 0 15px;
     justify-items: center;
-    padding-top: 0px;
     
 }
 
@@ -54,7 +57,7 @@ body {
 	width: 20em;
     height: auto;
     margin-bottom: 3em;
-    margin-top: 3em;
+    margin-top: 6em;
 }
   
   

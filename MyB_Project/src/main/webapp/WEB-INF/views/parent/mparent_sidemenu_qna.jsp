@@ -38,7 +38,16 @@
 		                    <td><a class="comtitle" href="${pageContext.request.contextPath}/parent/mparent_sidemenu_qnadetail/${complain.complainId}">${complain.complainTitle}</a>
 		                    </td>
 		                    <td class="comdate"><fmt:formatDate  pattern="MM'월' dd'일'" value="${complain.complainDate}"/></td>
-		                    <td class="comstat">${complain.complainStat}</td>
+		                    <td class="comstat">
+		                    	<c:choose>
+		                    		<c:when test="${complain.complainStat eq 'Y'}">
+			                    		확인완료
+			                    	</c:when>
+			                    	<c:otherwise>
+			                    		미완료
+			                    	</c:otherwise>
+		                    	</c:choose>
+		                    </td>
 		                </tr>
 		         </c:forEach>   
 	        </table>

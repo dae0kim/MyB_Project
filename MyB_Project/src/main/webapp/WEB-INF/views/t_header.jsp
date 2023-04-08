@@ -27,8 +27,8 @@
 		</div>
 			
 		<div id="textlow1">
-			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="notbell" class="fa-regular fa-bell" style="color: #000000;"></i></a>
-			<a href='<c:url value="/parent/mparent_alarm"/>'><i id="bell" class="fa-solid fa-bell" style="color: #f00000; display: none;"></i></a>
+			<a href='<c:url value="/teacher/mteacher_alarm"/>'><i id="notbell" class="fa-regular fa-bell" style="color: #000000;"></i></a>
+			<a href='<c:url value="/teacher/mteacher_alarm"/>'><i id="bell" class="fa-solid fa-bell" style="color: #f00000; display: none;"></i></a>
 		</div>
 			
 		<div id="textlow2">
@@ -79,7 +79,7 @@
 		    $.ajax({
 		        url: '${pageContext.request.contextPath}/updatealarm',
 		        type: 'POST',
-		        data: {parentId: '${parentId}'},
+		        data: {teacherId: '${teacherId}'},
 		        success: function() {
 		            console.log("Alarm update successful");
 		           
