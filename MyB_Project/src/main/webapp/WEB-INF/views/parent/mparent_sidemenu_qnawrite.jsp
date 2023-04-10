@@ -50,3 +50,4 @@
     </form>
 </body>
 </html>
+<%@include file="../p_footer.jsp"%>
