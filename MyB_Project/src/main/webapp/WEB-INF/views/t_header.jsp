@@ -48,11 +48,11 @@
 		
 		window.onload = function checkForNotifications() {
 		    $.ajax({
-		        url: '${pageContext.request.contextPath}/checkalarm',
+		        url: '${pageContext.request.contextPath}/checkteacheralarm',
 		        type: 'GET',
 		        dataType: 'json',
 		        success: function(data) {
-		        	if (data.hasNewAlarm) {
+		        	if (data.hasNewTeacherAlarm) {
 		        		//새로운 알림이 있으면 빨간색으로 변경
 		        	   
 		        	    $('#bell').css('display', 'inline-block');
@@ -77,7 +77,7 @@
 
 		$(document).on('click', '#textlow1', function() {
 		    $.ajax({
-		        url: '${pageContext.request.contextPath}/updatealarm',
+		        url: '${pageContext.request.contextPath}/updateteacheralarm',
 		        type: 'POST',
 		        data: {teacherId: '${teacherId}'},
 		        success: function() {
