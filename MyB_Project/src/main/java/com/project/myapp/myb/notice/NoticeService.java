@@ -20,17 +20,17 @@ public class NoticeService implements INoticeService {
 	@Qualifier("INoticeRepository")
 	INoticeRepository noticeRepository;
 	
-	// (0329 합침 일형추가)
-	@Override
-	public List<NoticeVO> getNoticeList() {
-		return noticeRepository.getNoticeList();
-	}
 
 	// (0329 합침 일형추가)
 	@Override
 	public NoticeVO setNoticeView(int noticeId) {
 		// TODO Auto-generated method stub
 		return noticeRepository.setNoticeView(noticeId);
+	}
+	
+	@Override
+	public List<NoticeVO> getNoticeList(int teacherId) {
+		return noticeRepository.getNoticeList(teacherId);
 	}
 	
 	/* -----------------------------웹 기능 : 김대영----------------------------- */
@@ -58,5 +58,7 @@ public class NoticeService implements INoticeService {
 	public void deleteNotice(int noticeId) {
 		noticeRepository.deleteNotice(noticeId);
 	}
+
+
 
 }

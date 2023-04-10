@@ -44,10 +44,13 @@ public class NoticeController {
 	 * @param model 모델객체를 입력합니다
 	 * @return 공지사항 리스트 페이지를 반환합니다.
 	 */
-	@RequestMapping(value = "/teacher/mteacher_notice_detail")
-	public String noticeDetail(Model model) {
+	@RequestMapping(value = "/teacher/mteacher_notice_detail/{teacherId}")
+	public String noticeDetail(@PathVariable int teacherId, Model model, HttpSession session) {
 
-		List<NoticeVO> noticelist = noticeService.getNoticeList();
+		
+		model.addAttribute("teacherId", teacherId);
+		
+		List<NoticeVO> noticelist = noticeService.getNoticeList(teacherId);
 		model.addAttribute("noticelist", noticelist);
 
 		System.out.println("noticelist : " + noticelist);
@@ -81,11 +84,17 @@ public class NoticeController {
 	 * @param model 모델객체를 입력합니다
 	 * @return 공지사항 리스트 페이지를 반환합니다.
 	 */
-	@RequestMapping(value = "/parent/mparent_notice_detail")
-	public String parentNoticeDetail(Model model) {
+	@RequestMapping(value = "/parent/mparent_notice_detail/{teacherId}")
+	public String parentNoticeDetail(Model model, HttpSession session) {
 
-		List<NoticeVO> noticelist = noticeService.getNoticeList();
+		int teacherId = (Integer) session.getAttribute("teacherId");
+		
+		model.addAttribute("teacherId", teacherId);
+		System.out.println("11111111 :" + teacherId);
+		
+		List<NoticeVO> noticelist = noticeService.getNoticeList(teacherId);
 		model.addAttribute("noticelist", noticelist);
+		System.out.println("2222222222 :" + noticelist);
 
 		return "/parent/mparent_notice_detail";
 	}
@@ -97,12 +106,18 @@ public class NoticeController {
 	 * @param model 모델객체를 입력합니다
 	 * @return 공지사항의 상세내용을 반환합니다.
 	 */
-	@RequestMapping(value = "/parent/notice/{noticeId}")
-	public String setParentNoticeView(@PathVariable int noticeId, Model model) {
+	@RequestMapping(value = "/parent/notice/{teacherId}")
+	public String setParentNoticeView(Model model, HttpSession session) {
 
-		NoticeVO noticeview = noticeService.setNoticeView(noticeId);
+		int teacherId = (Integer) session.getAttribute("teacherId");
+		model.addAttribute("teacherId", teacherId);
+		System.out.println("33333333 :" + teacherId);
+		
+		
+		NoticeVO noticeview = noticeService.setNoticeView(teacherId);
 		model.addAttribute("noticeview", noticeview);
-
+		System.out.println("4444444444 :" + noticeview);
+		
 		return "/parent/mparent_notice_detail_view";
 
 	}
@@ -193,6 +208,7 @@ public class NoticeController {
 	 */
 	@RequestMapping(value = "/notice/update/{noticeId}", method = RequestMethod.GET)
 	public String updateNotice(@PathVariable int noticeId, Model model) {
+		
 		NoticeVO noticeVO = noticeService.selectNoticeInfo(noticeId);
 		model.addAttribute("noticeVO", noticeVO);
 		return "/principal/notice/noticeupdate";

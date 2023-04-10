@@ -20,7 +20,7 @@ public interface INoticeRepository {
 	 */
 	// (0329 합침 일형추가)
 	// 공지 불러오기
-	List<NoticeVO> getNoticeList();
+	List<NoticeVO> getNoticeList(int teacherId);
 	
 	
 	/**

@@ -49,5 +49,11 @@ public class ParentService implements IParentService {
 	public List<Integer> selectParentIdByAdmin(int adminId) {
 		return parentRepository.selectParentIdByAdmin(adminId);
 	}
+
+	// 0410 수지ㅜ가
+	@Override
+	public int getTeacherId(int parentId) {
+		return parentRepository.getTeacherId(parentId);
+	}
 	
 }

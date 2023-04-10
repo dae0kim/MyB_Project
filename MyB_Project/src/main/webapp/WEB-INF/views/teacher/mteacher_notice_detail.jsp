@@ -22,7 +22,7 @@
             <button type="button" onclick = "location.href = '${pageContext.request.contextPath}/teacher/mteacher_web_main' ">돌아가기</button>
         </div>
         </div>
-
+<%-- 	<input type="hidden" value="${noticelist.teacherId}"></div> --%>
     <div class="noticedetailcontent_wrap">
                 <table class="notice_table">
 					<tr>

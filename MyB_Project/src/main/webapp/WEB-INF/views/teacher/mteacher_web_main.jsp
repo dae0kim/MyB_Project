@@ -18,9 +18,9 @@
 <body>
 <div class="wrapper">
 
-
+<input type="hidden" value="${loginUser.teacherId}">
 	<div class="notice_box">
-		<button type="button" id="noticebtn"  onClick="location.href='./mteacher_notice_detail'">
+		<button type="button" id="noticebtn"  onClick="location.href='./mteacher_notice_detail/${loginUser.teacherId}'">
 			<div class="noticeimg">
 				<div class="noticewrite">
 					<span id="noticetitle">공지사항</span>

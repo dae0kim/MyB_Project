@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +23,8 @@ import com.project.myapp.myb.classroom.IClassroomService;
 import com.project.myapp.myb.disease.IDiseaseService;
 import com.project.myapp.myb.kindergarten.IKindergartenService;
 import com.project.myapp.myb.kindergarten.KindergartenVO;
+import com.project.myapp.myb.notice.INoticeService;
+import com.project.myapp.myb.notice.NoticeVO;
 
 /**
  * 부모 사용자와 관련된 기능을 담는 컨트롤러클래스입니다.
@@ -50,6 +53,10 @@ public class ParentController {
    
 	@Autowired
 	IAlarmService alarmService;
+	
+	@Autowired
+	INoticeService noticeService;	
+	
 	
 	/**
 	 * 회원가입 시 이용약관 페이지로 이동하는 메서드입니다.
@@ -129,7 +136,8 @@ public class ParentController {
 	public String parentLogin(String parentEmail, String parentPw, HttpSession session, Model model) {
 		ParentVO parent = parentService.selectParent(parentEmail);
 		ChildVO child = childService.selectChild(parentEmail);
-      
+		
+		
 		if(parent != null) {
 			String dbPassword = parent.getParentPw();
 			if(dbPassword == null) {
@@ -141,7 +149,13 @@ public class ParentController {
 					session.setAttribute("parentId", parent.getParentId());  // 사용자 아이디를 세션에 저장
 					session.setAttribute("childName", child.getChildName());// 자녀 이름
 					session.setAttribute("parentName", parent.getParentName());	//부모 이름을 세션에 저장
-
+					
+					int parentId = (Integer) session.getAttribute("parentId");
+					int teacherId = parentService.getTeacherId(parentId);
+					
+					session.setAttribute("teacherId", teacherId);
+					
+					
 					// 자녀 어린이집
 					int kindergartenId = child.getKindergartenId();
 					KindergartenVO kindergarten = kindergartenService.selectKindergartenById(kindergartenId);
@@ -183,7 +197,8 @@ public class ParentController {
 	 * @return 부모 사용자 메인 페이지를 반환합니다.
 	 */
 	@RequestMapping(value="/parent/mparent_web_main", method=RequestMethod.GET)
-	public String moveMain() {
+	public String moveMain(HttpSession session, Model model) {
+	
 		return "parent/mparent_web_main";
 	}
    

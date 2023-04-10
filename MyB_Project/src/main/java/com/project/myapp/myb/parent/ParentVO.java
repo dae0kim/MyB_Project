@@ -19,5 +19,6 @@ public class ParentVO {
 	private String parentRelation;
 	private String parentGu;
 	private String parentCity;
-	private int requestId;
+	private int requestId;	
+	
 }

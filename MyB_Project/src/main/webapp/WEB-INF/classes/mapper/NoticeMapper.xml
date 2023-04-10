@@ -12,7 +12,7 @@
 			n.notice_title AS noticeTitle,
 			t.teacher_id AS teacherId
 			FROM  TEACHER t , notice n
-			WHERE (t.admin_id = n.admin_id)
+			WHERE (t.admin_id = n.admin_id) AND (t.teacher_id = #{teacherId})
 	</select>
 	
 	<!-- (0329 합침 일형추가) -->

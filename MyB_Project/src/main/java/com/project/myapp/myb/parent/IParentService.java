@@ -57,4 +57,8 @@ public interface IParentService {
 	 * @return 해당 식별번호를 가진 교사가 담당하는 반의 부모 이름 리스트를 반환합니다.
 	 */
 	List<ParentVO> getParentName(int teacherId);
+	
+	
+	//0410 수치추가 : 공지사항 상세때 teacherId쓰려고 
+	int getTeacherId (int parentId);	
 }

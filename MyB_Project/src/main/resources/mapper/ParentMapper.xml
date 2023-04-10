@@ -72,5 +72,15 @@
 
 
 	</select>
+	
+	
+	
+	<select id="getTeacherId"  parameterType="int" resultType="int">
+	SELECT teacher_id AS teacherId
+	FROM teacher
+	WHERE classroom_id = (SELECT c.classroom_id
+							FROM parent p, child c
+							WHERE p.parent_id=#{parentId} AND p.parent_id = c.parent_id AND rownum = 1)
+	</select>
 
 </mapper>

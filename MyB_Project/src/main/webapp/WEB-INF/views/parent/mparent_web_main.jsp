@@ -18,7 +18,12 @@
 
 
 	<div class="notice_box">
-		<button type="button" id="noticebtn"  onClick="location.href='./mparent_notice_detail'">
+	
+
+	<input type="hidden" value="${teacherId}"> 
+	
+	
+		<button type="button" id="noticebtn"  onClick="location.href='./mparent_notice_detail/${teacherId}'">
 			<div class="noticeimg">
 				<div class="noticewrite">
 					<span id="noticetitle">공지사항</span>

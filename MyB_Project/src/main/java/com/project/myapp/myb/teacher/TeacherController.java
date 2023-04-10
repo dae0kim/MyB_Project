@@ -65,10 +65,14 @@ public class TeacherController {
 
 	// 교사 웹 메인 이동
 	@RequestMapping(value = "/teacher/mteacher_web_main")
-	public String moveTeacherMain(Model model) {
-
-		List<NoticeVO> noticelist = noticeService.getNoticeList();
+	public String moveTeacherMain(Model model, HttpSession session) {
+		
+		
+		//0410 일형추가
+		int teacherId = ((Integer)session.getAttribute("teacherId")).intValue();
+		List<NoticeVO> noticelist = noticeService.getNoticeList(teacherId);
 		model.addAttribute("noticelist", noticelist);
+		model.addAttribute("teacherId", teacherId);
 
 		return "/teacher/mteacher_web_main";
 	}
