@@ -47,7 +47,7 @@
                         	<a href="<c:url value='/kindergarten/request/list' />">
                             <div class="box bg-cyan text-center">
                                 <h1 class="font-light text-white"><i class="fa-solid fa-chalkboard"></i></h1>
-                                <h6 class="text-white">어린이집 등록 요청 확인</h6>
+                                <h6 class="text-white">어린이집 등록 관리</h6>
                             </div>
                             </a>
                         </div>

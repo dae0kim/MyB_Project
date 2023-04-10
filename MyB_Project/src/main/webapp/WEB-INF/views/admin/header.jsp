@@ -68,7 +68,7 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav" style="padding-top: 30px;">
-                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/kindergarten/request/list' />" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">어린이집 등록요청 확인</span></a></li>
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/kindergarten/request/list' />" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu" style="font-size:1.5rem">어린이집 등록관리</span></a></li>
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<c:url value='/diseaselog/check' />" aria-expanded="false"><i class="fa-solid fa-virus-covid"></i><span class="hide-menu">질병 통계</span></a></li>
             </ul>
         </nav>

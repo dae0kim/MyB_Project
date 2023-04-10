@@ -37,7 +37,7 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
+            <div class="container-fluid" style="padding:10%;">
             	<div id="web_map_container">	
 					<div class="mapArea" style="display:inline-block;">
 				      <div id="paper"></div>				      
@@ -46,7 +46,7 @@
 			      	  	*지도를 클릭하시면 해당 구의 환자 데이터를 보실 수 있습니다.
 			      	  </div>
 				    </div>
-				    <div id="adfsa" style="display:inline-block;">
+				    <div id="web_gu_piechart">
 				    	<div id="web_chart_container">
 				      	  <div id="web_chart_title_container">
 				      	  	<!-- <div id="locName"></div> -->
@@ -61,6 +61,15 @@
 				      </div>
 				    </div>
 				</div>
+				<c:choose>
+			  	<c:when test="${loginUser.adminLevel eq 'admin'}">
+				  	<div id="disease_alarm_btn_container" style="text-align:center; margin-top:4rem; display:none;">
+						<button class="btn btn-warning btn-lg" type="button" onclick="alarmConfirm()">알림전송</button>
+					</div>
+			  	</c:when>
+			  	<c:when test="${loginUser.adminLevel eq 'principal'}">
+			  	</c:when>
+			  </c:choose>
             </div>
             <div id="statisticsInfo">	      	
 	    		<input type="hidden" id="gangnamCount" value="${gangnamCount}" />	      		
@@ -396,6 +405,16 @@
 	
 	function getShow(){
 	 document.getElementById("web_chart_container").style.display = "block";
+	 document.getElementById("disease_alarm_btn_container").style.display = "block";
+	}
+	
+	// 알림전송 버튼 누를 때
+	function alarmConfirm(){
+		if(confirm("알림을 전송하시겠습니까?") == true){
+			alert("전송되었습니다.");			
+		}else{			
+			alert("취소되었습니다.");
+		}
 	}
 	
 	

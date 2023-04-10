@@ -87,8 +87,11 @@
 	margin-bottom:30px;
 }
 #web_classroom_chart_title{
-	font-size:5rem;
+	font-size:2.5rem;
 	font-weight:700;
+}
+#web_gu_piechart{
+	display:inline-block;
 }
 
 /* 교사 등록 */

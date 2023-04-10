@@ -101,10 +101,7 @@
 		      async: false
 		      }).responseText;
 		  
-		  var data = new google.visualization.DataTable(jsonData);
-		
-		  console.log(data);
-		  
+		  var data = new google.visualization.DataTable(jsonData);	  
 		  
 		  var options = {
 		    chart: {
@@ -124,7 +121,6 @@
 		
 		function classroomChk(){
 			classroomId = $("#classroomDropBox option:selected").val();
-			console.log(classroomId);
 			
 			redraw(classroomId);
 			getShow();
@@ -142,7 +138,6 @@
 		            }).responseText;
 		
 		  	  var data2 = new google.visualization.DataTable(jsonData2);
-		  	  console.log("데이터 테이블2 :" +data2);
 		  	  
 		      var options = {
 		    	legend: 'right',		

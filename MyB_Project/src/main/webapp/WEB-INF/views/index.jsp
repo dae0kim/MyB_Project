@@ -37,7 +37,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#myPage"><span id="index_logo_text">MyB</span></a>
+          <a class="navbar-brand" href="#myPage">
+          	<img alt="index_logo" id="web_index_logo" src="${pageContext.request.contextPath}/resources/images/webicons/favicon.png">
+          	<span id="index_logo_text">MyB</span>
+          </a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav navbar-right">
