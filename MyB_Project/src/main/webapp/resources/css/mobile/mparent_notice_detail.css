@@ -108,13 +108,12 @@ select{
     box-sizing: border-box;
     background-color: #F8F8F8;
     border-radius: 6px;
-    white-space: normal;
+    white-space: pre-line;
     border: solid 2px black;
     padding: 1em;
     margin-bottom: 3em;
     text-align: start;
-	
-	
+    line-height: 18PX;
 }
 
 
