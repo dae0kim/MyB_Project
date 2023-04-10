@@ -58,7 +58,11 @@ public interface IParentService {
 	 */
 	List<ParentVO> getParentName(int teacherId);
 	
-	
-	//0410 수치추가 : 공지사항 상세때 teacherId쓰려고 
+	/**
+	 * 교사 식별번호를 가져오기 위한 메서드입니다.
+	 * 
+	 * @param parentId 교사 식별번호를 입력합니다
+	 * @return 부모 식별번호에 해당하는 교사 식별번호를 반환합니다.
+	 */
 	int getTeacherId (int parentId);	
 }

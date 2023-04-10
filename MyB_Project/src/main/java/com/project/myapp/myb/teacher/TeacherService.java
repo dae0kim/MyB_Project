@@ -25,7 +25,6 @@ public class TeacherService implements ITeacherService {
 		return teacherRepository.selectTeacher(teacherEmail);
 	}
 
-	// (0329 합침 일형추가)
 	@Override
 	public int pwChk(String teacherEmail, String teacherPw) throws Exception {
 		return teacherRepository.pwChk(teacherEmail, teacherPw);

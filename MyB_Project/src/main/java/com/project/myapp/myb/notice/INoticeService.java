@@ -11,12 +11,19 @@ import java.util.List;
  */
 public interface INoticeService {
 
-	// (0329 합침 일형추가)
-	// 공지 불러오기
+	/**
+	 * 공지사항 리스트를 불러오는 메서드입니다
+	 * 
+	 * @return 공지사항 게시글을 리스트형태로 출력합니다.
+	 */
 	List<NoticeVO> getNoticeList(int teacherId);
 	
-	// (0329 합침 일형추가)
-	//공지 상세
+	/**
+	 * 공지 상세를 확인하는 메서드 입니다.
+	 * 
+	 * @param noticeId 공지사항 식별번호가 입력됩니다
+	 * @return 공지사항의 상세가 출력됩니다.
+	 */
 	NoticeVO setNoticeView(int noticeId);
 	
 	/* -----------------------------웹 기능 : 김대영----------------------------- */

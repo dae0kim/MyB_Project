@@ -22,6 +22,13 @@ import com.project.myapp.myb.classroom.IClassroomService;
 import com.project.myapp.myb.parent.IParentRepository;
 import com.project.myapp.myb.parent.ParentVO;
 
+/**
+ * 요청사항과 관련된 기능을 담는 컨트롤러
+ * 
+ * @author 손일형,문수지
+ * @since 2023.04.04
+ *
+ */
 @Controller
 public class RequestController {
 

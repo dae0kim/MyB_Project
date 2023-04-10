@@ -19,10 +19,12 @@ public interface IDiseaselogRepository {
 	 */
 	void insertDiseaseLog (DiseaselogVO diseaselogvo);
 	
-	/*
-	 * //안쓰이는거같은데 확인해라 List<DiseaselogVO> defaultDisase(int teacherId);
+	/**
+	 * 질병로그에 필요한 기타 파라메터를 리스트로 불러오기 위한 메서드입니다.
+	 * 
+	 * @param classroomId 반 식별번호를 입력합니다
+	 * @return VO객체를 리스트형태로 반환합니다.
 	 */
-	
 	List<DiseaselogEtcVO> test(int classroomId);
 	
 	/* -----------------------------웹 기능 : 김대영----------------------------- */

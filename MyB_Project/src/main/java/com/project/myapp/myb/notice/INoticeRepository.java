@@ -18,8 +18,6 @@ public interface INoticeRepository {
 	 * 
 	 * @return 공지사항 게시글을 리스트형태로 출력합니다.
 	 */
-	// (0329 합침 일형추가)
-	// 공지 불러오기
 	List<NoticeVO> getNoticeList(int teacherId);
 	
 	

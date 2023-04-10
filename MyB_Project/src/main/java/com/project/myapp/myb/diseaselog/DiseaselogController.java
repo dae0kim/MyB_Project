@@ -29,7 +29,17 @@ public class DiseaselogController {
 	@Autowired
 	IDiseaselogService diseaselogService;
 	
-	// (0329 합침 일형추가)
+	/**
+	 * 질병로그를 입력하기 위해 사용되는 메서드입니다
+	 * 
+	 * @param classroomId 반 식별번호를 입력합니다
+	 * @param kindergartenId 어린이집 식별번호를 입력합니다
+	 * @param kindergartenCity 어린이집 시를 입력합니다
+	 * @param kindergartenGu 어린이집 구를 입력합니다
+	 * @param childIds 자녀 식별번호를 배열로 입력합니다
+	 * @param diseaseIds 질병 식별번호를 배열로 입력합니다
+	 * @return 질병로그가 입력되면 교사 웹 메인을 반환합니다
+	 */
 	@RequestMapping(value="/teacher/mteacher_disease", method=RequestMethod.POST)
 	public String insertDiseaseLog(@RequestParam("classroomId") int classroomId, 
 								   @RequestParam("kindergartenId") int kindergartenId,
@@ -40,19 +50,14 @@ public class DiseaselogController {
 		for (int i=0; i<diseaseIds.length; i++) {
 	        DiseaselogVO diseaselogvo = new DiseaselogVO();
 	        
-	        
-	        // diseaseId = 0 이 아닐때만 작동함
+
 	        if(diseaseIds[i] != 0) {
 		        diseaselogvo.setClassroomId(classroomId);
 		        diseaselogvo.setKindergartenId(kindergartenId);
 		        diseaselogvo.setKindergartenCity(kindergartenCity);
 		        diseaselogvo.setKindergartenGu(kindergartenGu);
-		        
-		        // 반복해서 들어가는 요소
 		        diseaselogvo.setDiseaseId(diseaseIds[i]);
 		        diseaselogvo.setChildId(childIds[i]);
-		        
-		        // vo 추가로인한 set추가 (의미없음)
 		        diseaselogvo.setTotalPatient(i);
 		        
 		        

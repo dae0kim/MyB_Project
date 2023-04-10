@@ -28,7 +28,6 @@ public class DiseaselogService implements IDiseaselogService {
 
 	@Override
 	public List<DiseaselogEtcVO> test(int classroomId) {
-		// TODO Auto-generated method stub
 		return diseaselogRepository.test(classroomId);
 	}
 

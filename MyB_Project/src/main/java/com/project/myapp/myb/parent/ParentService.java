@@ -50,7 +50,6 @@ public class ParentService implements IParentService {
 		return parentRepository.selectParentIdByAdmin(adminId);
 	}
 
-	// 0410 수지ㅜ가
 	@Override
 	public int getTeacherId(int parentId) {
 		return parentRepository.getTeacherId(parentId);

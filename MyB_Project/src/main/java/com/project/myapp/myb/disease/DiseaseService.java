@@ -13,15 +13,10 @@ public class DiseaseService implements IDiseaseService {
 	@Qualifier("IDiseaseRepository")
 	IDiseaseRepository diseaseRepository;
 
-	// (0329 합침 일형추가)
 	@Override
 	public List<DiseaseVO> getDiseaseList() {
 		return diseaseRepository.getDiseaseList();
 	}
-
-
-
-	
 }
 
 

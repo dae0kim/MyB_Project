@@ -58,11 +58,13 @@ public interface IParentRepository {
 	 * @param teacherId 교사 사용자의 식별번호를 입력합니다.
 	 * @return 해당 식별번호를 가진 교사가 담당하는 반의 부모 이름 리스트를 반환합니다.
 	 */
-	List<ParentVO> getParentName(@Param(value="teacherId")int teacherId);
+	List<ParentVO> getParentName(@Param(value="teacherId")int teacherId);	
 	
-	
-	
-	
-	//0410 수치추가 : 공지사항 상세때 teacherId쓰려고 
+	/**
+	 * 교사 식별번호를 가져오기 위한 메서드입니다.
+	 * 
+	 * @param parentId 교사 식별번호를 입력합니다
+	 * @return 부모 식별번호에 해당하는 교사 식별번호를 반환합니다.
+	 */
 	int getTeacherId (int parentId);
 }

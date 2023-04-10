@@ -63,7 +63,13 @@ public class TeacherController {
 	@Autowired
 	IAlarmService alarmService;
 
-	// 교사 웹 메인 이동
+	/**
+	 * 교사 웹 메인으로 이동하는 메서드입니다
+	 * 
+	 * @param model 모델객체를 통해 데이터를 넘겨줍니다.
+	 * @param session teacherId를 세션으로 넘겨줍니다
+	 * @return 교사 웹 메인화면을 반환합니다.
+	 */
 	@RequestMapping(value = "/teacher/mteacher_web_main")
 	public String moveTeacherMain(Model model, HttpSession session) {
 		
