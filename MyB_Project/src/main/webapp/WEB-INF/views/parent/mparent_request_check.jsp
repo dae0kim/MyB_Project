@@ -42,6 +42,7 @@
 				
 				</div>
 				
+				<hr>
 				
 				<div class="request-name">요청사항을 확인해주세요.</div>
 				

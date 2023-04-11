@@ -71,6 +71,7 @@ body {
     margin-bottom: 20px;
     border-radius: 6px;
     background-color: #F8F8F8;
+    font-size: 1em;
 }
 
 #request-form > input::value{
@@ -92,7 +93,8 @@ select{
     border-radius: 6px;
     background-color: #F8F8F8;
     border : solid 2px black;
-    text-align: center;
+    text-align: left;
+    font-size: 1em;
 }
 
 

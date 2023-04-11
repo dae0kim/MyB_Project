@@ -26,13 +26,13 @@
     <div class="noticedetailcontent_wrap">
                 <table class="notice_table">
 					<tr>
-						<th scope="cols" style="width:70%;">제목</th>
-						<th scope="cols" style="width:30%;">날짜</th>							
+						<th scope="cols" style="width:73%;">제목</th>
+						<th scope="cols" style="width:27%;">날짜</th>							
 					</tr>
 						<c:forEach var="noticelist" items="${noticelist}">
 					<tr>
 						<td><a class="noticeTitle" href="<c:url value="/teacher/notice/${noticelist.noticeId}"/>">${noticelist.noticeTitle}</a></td>
-						<td class="noticeDate"> <fmt:formatDate pattern="MM'월' dd'일'" value="${noticelist.noticeDate}"/></td>
+						<td class="noticeDate"> <fmt:formatDate pattern="YY'.'MM'.'dd" value="${noticelist.noticeDate}"/></td>
 					</tr>
 						</c:forEach>
 				</table>

@@ -74,6 +74,7 @@ body {
     background-color: #F8F8F8;
     border-radius: 6px;
     padding-left: 1em;
+    font-size: 0.9em;
 }
 
 #notice_form > input::value{

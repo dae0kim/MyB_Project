@@ -37,7 +37,7 @@
 		                <tr>
 		                    <td><a class="comtitle" href="${pageContext.request.contextPath}/parent/mparent_sidemenu_qnadetail/${complain.complainId}">${complain.complainTitle}</a>
 		                    </td>
-		                    <td class="comdate"><fmt:formatDate  pattern="MM'월' dd'일'" value="${complain.complainDate}"/></td>
+		                    <td class="comdate"><fmt:formatDate  pattern="YY'.'MM'.'dd" value="${complain.complainDate}"/></td>
 		                    <td class="comstat">
 		                    	<c:choose>
 		                    		<c:when test="${complain.complainStat eq 'Y'}">
