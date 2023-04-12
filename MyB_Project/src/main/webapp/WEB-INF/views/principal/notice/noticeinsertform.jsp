@@ -44,7 +44,7 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label class="col-md-3">상단 고정여부</label>
+                            <label class="col-sm-3 text-right control-label col-form-label">상단 고정여부</label>
                             <div class="col-md-9">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="customControlValidation1" name="noticeStat" value='O' required>

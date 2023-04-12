@@ -34,7 +34,7 @@
 				  	</div>
 			  	</div>
 				
-				<div id="columnchart_material"></div>
+				<div id="columnchart_material" style="padding-right:1rem;"></div>
 				<div id="web_classroom_select">
 					<select id="classroomDropBox" class="select2 form-control custom-select" style="width: 10%; height:36px;">
 						<c:forEach items="${classroomNameList}" var="classroomNameList">
@@ -107,8 +107,8 @@
 		    chart: {
 		      title: '',
 		      subtitle: '',
-		      fontSize: 20,
-		    }
+		    },
+		      fontSize: 20		    
 		  };
 		
 		  var chart = new google.charts.Bar(document.getElementById('columnchart_material'));

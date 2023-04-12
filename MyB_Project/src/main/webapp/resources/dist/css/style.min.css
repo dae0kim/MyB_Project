@@ -9430,7 +9430,7 @@ html[dir="ltr"] body .p-l-0 {
 #main-wrapper .left-sidebar[data-sidebarbg="skin5"],
 #main-wrapper .left-sidebar[data-sidebarbg="skin5"] ul {
   background: #1f262d;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 }
 #main-wrapper .left-sidebar[data-sidebarbg="skin5"] .create-btn,
 #main-wrapper .left-sidebar[data-sidebarbg="skin5"] ul .create-btn {
@@ -10034,7 +10034,7 @@ ul.list-style-none li a:hover {
   -ms-flex-align: center;
   align-items: center;
   margin: 0px;
-  padding: 0 10px 0 10px;
+  padding: 0 10px 0 30px;
 }
 .topbar .top-navbar .navbar-header .navbar-brand .dark-logo {
   display: none;

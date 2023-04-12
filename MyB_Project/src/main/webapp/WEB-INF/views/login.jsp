@@ -27,7 +27,7 @@
                     <div class="text-center p-t-20 p-b-20" style="padding-top:20px; padding-bottom:20px;">
                         <span class="db">
                         	<a href="<c:url value='/' />">
-                        		<img src="${pageContext.request.contextPath}/resources/images/webicons/logo5.png" alt="logo" style="width:178px; height:70px;"/>
+                        		<img src="${pageContext.request.contextPath}/resources/images/webicons/logo5.png" alt="logo" style="width:auto; height:70px;"/>
                         	</a>
                         </span>
                     </div>
