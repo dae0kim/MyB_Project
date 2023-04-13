@@ -18,14 +18,14 @@
                 <b class="logo-icon" style="padding-left: 10px;">
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
-                    <img src="${pageContext.request.contextPath}/resources/images/webicons/favicon.png" alt="homepage" class="light-logo" style="width:30px; height:28px;"/>
+                    <img src="${pageContext.request.contextPath}/resources/images/webicons/favicon.png" alt="homepage" class="light-logo" style="width:auto; height:28px;"/>
                    
                 </b>
                 <!--End Logo icon -->
                  <!-- Logo text -->
                 <span class="logo-text">
                      <!-- dark Logo text -->
-                     <img src="${pageContext.request.contextPath}/resources/images/webicons/logo-text-white.png" alt="homepage" class="light-logo" style="width:140px; height:64px; margin-top:9px;"/>
+                     <img src="${pageContext.request.contextPath}/resources/images/webicons/logo-text-white.png" alt="homepage" class="light-logo" style="width:auto; height:64px; margin-top:9px;"/>
                     
                 </span>
             </a>
