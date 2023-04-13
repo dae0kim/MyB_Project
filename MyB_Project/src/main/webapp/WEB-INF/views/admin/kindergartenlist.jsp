@@ -48,7 +48,14 @@
                                                 <td><a href="<c:url value='/kindergarten/info/${kindergartenList.kindergartenId}'/>">${kindergartenList.kindergartenName}</a></td>
                                                 <td>${kindergartenList.kindergartenPhone}</td>
                                                 <td>${kindergartenList.kindergartenAddress}</td>
-                                            	<td>${kindergartenList.kindergartenStat}</td>
+                                                <c:choose>
+                                                	<c:when test="${kindergartenList.kindergartenStat eq 'Y'}">
+														<td>승인</td>
+													</c:when>		
+													<c:when test="${kindergartenList.kindergartenStat eq 'N'}">
+														<td>대기중</td>
+													</c:when>
+                                                </c:choose>                                                
                                             </tr>
                                             </c:forEach>
                                         </tbody>

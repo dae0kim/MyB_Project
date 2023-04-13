@@ -46,7 +46,14 @@
                                                 <td>${complainList.complainId}</td>
                                                 <td><a href="<c:url value='/complain/info/${complainList.complainId}'/>">${complainList.complainTitle}</a></td>
                                                 <td><fmt:formatDate value="${complainList.complainDate}" pattern="YYYY-MM-dd"/></td>
-                                                <td>${complainList.complainStat}</td>
+                                                <c:choose>
+                                                	<c:when test="${complainList.complainStat eq 'Y'}">
+														<td>확인 완료</td>
+													</c:when>		
+													<c:when test="${complainList.complainStat eq 'N'}">
+														<td>미처리</td>
+													</c:when>
+                                                </c:choose>
                                             </tr>
                                             </c:forEach>
                                         </tbody>
