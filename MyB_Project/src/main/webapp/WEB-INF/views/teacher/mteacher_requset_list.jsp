@@ -24,7 +24,7 @@
 		<div id="diseaseform">
 		
 		
-			<div id="childname">${getParentId.parentName}　${getParentId.parentRelation}</div>
+			<div id="childname">${getChildNameList[status.index].childName}　${getParentId.parentRelation}</div>
 		
 			
 			<button type="button" onclick = "location.href = '${pageContext.request.contextPath}/teacher/mteacher_requset_check/${getParentId.requestId}?parentId=${getParentId.parentId}' ">요청사항 확인</button>

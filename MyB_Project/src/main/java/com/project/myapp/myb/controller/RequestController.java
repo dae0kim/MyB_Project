@@ -139,7 +139,11 @@ public class RequestController {
 	 */
 	@RequestMapping(value = "/teacher/mteacher_requset_list/{teacherId}")
 	public String getRequestList(@PathVariable int teacherId, Model model) {
-
+		
+		List<ChildVO> getChildNameList = childService.getChildNameList(teacherId);
+		System.out.println("getChildNameList : " + getChildNameList);
+		model.addAttribute("getChildNameList", getChildNameList);
+		
 		List<ParentVO> getParentId = parentRepository.getParentName(teacherId);
 		model.addAttribute("getParentId", getParentId);
 
