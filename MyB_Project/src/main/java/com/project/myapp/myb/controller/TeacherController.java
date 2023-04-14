@@ -1,4 +1,4 @@
-package com.project.myapp.myb.teacher;
+package com.project.myapp.myb.controller;
 
 import java.util.List;
 
@@ -28,6 +28,8 @@ import com.project.myapp.myb.kindergarten.IKindergartenService;
 import com.project.myapp.myb.kindergarten.KindergartenVO;
 import com.project.myapp.myb.notice.INoticeService;
 import com.project.myapp.myb.notice.NoticeVO;
+import com.project.myapp.myb.teacher.ITeacherService;
+import com.project.myapp.myb.teacher.TeacherVO;
 
 /**
  * 교사와 관련된 기능을 담는 컨트롤러클래스입니다.

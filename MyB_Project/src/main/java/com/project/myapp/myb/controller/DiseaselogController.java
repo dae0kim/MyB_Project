@@ -1,4 +1,4 @@
-package com.project.myapp.myb.diseaselog;
+package com.project.myapp.myb.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.project.myapp.myb.diseaselog.DiseaselogVO;
+import com.project.myapp.myb.diseaselog.IDiseaselogService;
 
 /**
  * 질병로그 데이터와 관련된 기능을 담는 컨트롤러클래스입니다.

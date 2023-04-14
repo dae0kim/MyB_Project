@@ -1,4 +1,4 @@
-package com.project.myapp.myb.parent;
+package com.project.myapp.myb.controller;
 
 import java.util.List;
 
@@ -25,6 +25,8 @@ import com.project.myapp.myb.kindergarten.IKindergartenService;
 import com.project.myapp.myb.kindergarten.KindergartenVO;
 import com.project.myapp.myb.notice.INoticeService;
 import com.project.myapp.myb.notice.NoticeVO;
+import com.project.myapp.myb.parent.IParentService;
+import com.project.myapp.myb.parent.ParentVO;
 
 /**
  * 부모 사용자와 관련된 기능을 담는 컨트롤러클래스입니다.

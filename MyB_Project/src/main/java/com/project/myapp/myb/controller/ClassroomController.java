@@ -1,4 +1,4 @@
-package com.project.myapp.myb.classroom;
+package com.project.myapp.myb.controller;
 
 import java.util.List;
 
@@ -11,6 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.project.myapp.myb.classroom.ClassroomListVO;
+import com.project.myapp.myb.classroom.ClassroomSeqVO;
+import com.project.myapp.myb.classroom.ClassroomVO;
+import com.project.myapp.myb.classroom.IClassroomService;
 
 /**
  * 반과 관련된 기능을 담는 컨트롤러클래스입니다.

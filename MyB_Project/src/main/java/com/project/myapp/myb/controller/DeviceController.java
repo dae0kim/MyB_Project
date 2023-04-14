@@ -1,4 +1,4 @@
-package com.project.myapp.myb.device;
+package com.project.myapp.myb.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.project.myapp.myb.device.IDeviceService;
 
 /**
  * 사용자 정보 조회와 관련된 기능을 담는 컨트롤러 클래스입니다.

@@ -1,4 +1,4 @@
-package com.project.myapp.myb.request;
+package com.project.myapp.myb.controller;
 
 import java.util.List;
 
@@ -21,6 +21,9 @@ import com.project.myapp.myb.child.IChildService;
 import com.project.myapp.myb.classroom.IClassroomService;
 import com.project.myapp.myb.parent.IParentRepository;
 import com.project.myapp.myb.parent.ParentVO;
+import com.project.myapp.myb.request.IRequestRepository;
+import com.project.myapp.myb.request.IRequestService;
+import com.project.myapp.myb.request.RequestVO;
 
 /**
  * 요청사항과 관련된 기능을 담는 컨트롤러

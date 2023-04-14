@@ -1,4 +1,4 @@
-package com.project.myapp.myb.admin;
+package com.project.myapp.myb.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.project.myapp.myb.admin.AdminVO;
+import com.project.myapp.myb.admin.IAdminService;
 import com.project.myapp.myb.kindergarten.IKindergartenService;
 import com.project.myapp.myb.kindergarten.KindergartenVO;
 

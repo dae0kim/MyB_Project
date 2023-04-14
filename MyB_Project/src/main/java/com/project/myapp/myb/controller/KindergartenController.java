@@ -1,4 +1,4 @@
-package com.project.myapp.myb.kindergarten;
+package com.project.myapp.myb.controller;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -29,6 +29,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.myapp.myb.classroom.ClassroomVO;
 import com.project.myapp.myb.classroom.IClassroomService;
+import com.project.myapp.myb.kindergarten.IKindergartenService;
+import com.project.myapp.myb.kindergarten.KindergartenVO;
 import com.project.myapp.myb.uploadfile.UploadFileVO;
 
 /**

@@ -1,4 +1,4 @@
-package com.project.myapp.myb.alarm;
+package com.project.myapp.myb.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.project.myapp.myb.alarm.AlarmService;
+import com.project.myapp.myb.alarm.IAlarmRepository;
 
 /**
  * 알람 기능을 담은 컨트롤러클래스입니다.

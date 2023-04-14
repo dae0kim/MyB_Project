@@ -1,4 +1,4 @@
-package com.project.myapp.myb.notice;
+package com.project.myapp.myb.controller;
 
 import java.util.List;
 
@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.myapp.myb.alarm.IAlarmService;
+import com.project.myapp.myb.notice.INoticeService;
+import com.project.myapp.myb.notice.NoticeVO;
 import com.project.myapp.myb.parent.IParentService;
 import com.project.myapp.myb.teacher.ITeacherService;
 
