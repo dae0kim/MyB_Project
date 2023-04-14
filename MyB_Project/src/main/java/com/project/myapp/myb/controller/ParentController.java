@@ -138,7 +138,7 @@ public class ParentController {
 	public String parentLogin(String parentEmail, String parentPw, HttpSession session, Model model) {
 		ParentVO parent = parentService.selectParent(parentEmail);
 		ChildVO child = childService.selectChild(parentEmail);
-		
+	
 		
 		if(parent != null) {
 			String dbPassword = parent.getParentPw();
@@ -156,6 +156,7 @@ public class ParentController {
 					int teacherId = parentService.getTeacherId(parentId);
 					
 					session.setAttribute("teacherId", teacherId);
+					session.setAttribute("childId", child.getChildId()); //첫째 자녀Id 저장
 					
 					
 					// 자녀 어린이집

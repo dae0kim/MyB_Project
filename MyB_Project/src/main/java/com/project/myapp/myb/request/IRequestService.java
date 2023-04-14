@@ -20,6 +20,9 @@ public interface IRequestService {
 	 */
 	RequestVO selectRequest(int childId, String requestDate);	
 	
+	
+	RequestVO selectTodayRequest(int childId);
+	
 	/**
 	 * 요청사항 리스트 페이지를 출력하는 메서드입니다
 	 * 

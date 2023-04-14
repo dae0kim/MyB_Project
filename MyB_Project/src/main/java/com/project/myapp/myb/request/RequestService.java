@@ -44,4 +44,9 @@ public class RequestService implements IRequestService{
 		// TODO Auto-generated method stub
 		requestRepository.updateRequest(requestvo);
 	}
+
+	@Override
+	public RequestVO selectTodayRequest(int childId) {
+		return requestRepository.selectTodayRequest(childId);
+	}
 }

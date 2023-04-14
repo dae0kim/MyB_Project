@@ -93,6 +93,10 @@ public class RequestController {
 		String parentEmail = (String) session.getAttribute("parentEmail");
 		List<ChildVO> childList = childService.selectAllChildList(parentEmail);
 		model.addAttribute("childList", childList);
+		
+		int childId = (Integer) session.getAttribute("childId");
+		RequestVO todayrequest = requestService.selectTodayRequest(childId);
+		model.addAttribute("todayrequest", todayrequest);
 
 		return "parent/mparent_request_check";
 	}
@@ -106,15 +110,20 @@ public class RequestController {
 	 * @return 요청확인을 반환합니다.
 	 */
 	@RequestMapping(value = "/parent/mparent_request_check", method = RequestMethod.POST)
-	public String requestCheck(@Param("childId") int childId, @Param("requestDate") String requestDate,
-			RedirectAttributes redirectAttributes) {
-
-		RequestVO request = requestService.selectRequest(childId, requestDate);
-		if (request == null) {
+	@ResponseBody
+	public RequestVO requestCheck(@Param("childId") int childId, @Param("requestDate") String requestDate,
+			RedirectAttributes redirectAttributes, HttpSession session, Model model) {
+		String parentEmail = (String) session.getAttribute("parentEmail");
+		List<ChildVO> childList = childService.selectAllChildList(parentEmail);
+		model.addAttribute("childList", childList);
+		
+		RequestVO requestVO = requestService.selectRequest(childId, requestDate);
+		if (requestVO == null) {
 			// 예외 처리
 		}
-		redirectAttributes.addFlashAttribute("requestVO", request);
-		return "redirect:/parent/mparent_request_check";
+
+		model.addAttribute("requestVO", requestVO);
+		return requestVO;
 	}
 
 	/**

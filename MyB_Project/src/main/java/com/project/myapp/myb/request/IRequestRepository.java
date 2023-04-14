@@ -21,6 +21,9 @@ public interface IRequestRepository {
 	 * @return 식별번호와 날짜에 맞는 요청사항을 확인합니다.
 	 */
 	RequestVO selectRequest(@Param("childId") int childId, @Param("requestDate") String requestDate);
+
+	
+	RequestVO selectTodayRequest(int childId);
 	
 	/**
 	 * 요청사항 리스트 페이지를 출력하는 메서드입니다

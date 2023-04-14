@@ -57,6 +57,29 @@
 			WHERE TO_CHAR(request_date, 'YYYY/MM/DD') = #{requestDate} AND child_id = #{childId}		
 		]]>
 	</select>
+	
+	<!-- 첫째 요청사항 확인하기 (0414 문수지) -->
+	<select id="selectTodayRequest" parameterType="int"
+		resultType="com.project.myapp.myb.request.RequestVO">
+		<![CDATA[
+			SELECT
+				request_id AS requestId,
+				request_date AS requestDate,
+				request_content1 AS requestContent1,
+				request_content2 AS requestContent2,
+				request_content3 AS requestContent3,
+				request_content4 AS requestContent4,
+				request_content5 AS requestContent5,
+				request_comment AS requestComment,
+				request_stat1 AS requestStat1,
+				request_stat2 AS requestStat2,
+				request_stat3 AS requestStat3,
+				request_stat4 AS requestStat4,
+				request_stat5 AS requestStat5
+			FROM request
+			WHERE TO_CHAR(request_date, 'YYYY/MM/DD') = TO_CHAR(SYSDATE, 'YYYY/MM/DD') AND child_id = #{childId}		
+		]]>
+	</select>
 
 
 	<!-- (0329 합침 일형추가) -->

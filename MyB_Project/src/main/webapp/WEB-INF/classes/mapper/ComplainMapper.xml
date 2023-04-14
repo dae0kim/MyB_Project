@@ -31,7 +31,7 @@
 				complain
 			WHERE
 				parent_id = #{parentId}
-			ORDER BY complain_id
+			ORDER BY complain_id DESC
 		]]>
 	</select>
 

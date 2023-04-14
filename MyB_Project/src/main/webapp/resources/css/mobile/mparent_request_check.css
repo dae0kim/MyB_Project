@@ -45,7 +45,7 @@ body {
 }
 
 
-.title_wrap>input[type="submit"] {
+.title_wrap>input[type="button"] {
     color: #000;
     font-size: 16px;
     background-color: #F2BE5C;
