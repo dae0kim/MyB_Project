@@ -147,15 +147,15 @@
                           <h5 class="mb-0">
                             <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 <i class="m-r-5 fa fa-circle-info" aria-hidden="true"></i>
-                                <span>컴플레인 & 공지사항</span>
+                                <span>1:1문의 & 공지사항</span>
                             </a>
                           </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                           <div class="card-body">
                           	<p>
-                          		[컴플레인]<br>
-                          		학부모가 등록한 컴플레인 게시물을 확인할 수 있습니다. 
+                          		[1:1문의]<br>
+                          		학부모가 등록한 1:1문의 게시물을 확인할 수 있습니다. 
                           		처리상태를 변경하여 확인한 게시물임을 알 수 있습니다.
                           	</p>
                           	<p>
