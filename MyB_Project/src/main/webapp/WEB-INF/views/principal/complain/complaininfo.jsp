@@ -28,7 +28,7 @@
             <div class="card" style="margin:10% 15% 10% 15%;">
                 <form class="form-horizontal">
                     <div class="card-body">
-                        <h4 class="card-title">컴플레인 정보</h4>
+                        <h4 class="card-title">1:1문의 정보</h4>
                         
                         <div class="form-group row">
                             <label for="fname" class="col-sm-3 text-right control-label col-form-label">제목</label>
@@ -92,7 +92,7 @@
 	                        <div class="card-body">
 	                        	<c:choose>
 	                        		<c:when test="${complainVO.complainStat eq 'N'}">
-			                            <button type="button" class="btn btn-success" onclick="approveConfirm()">요청확인</button>
+			                            <button type="button" class="btn btn-success" onclick="approveConfirm()">확인완료</button>
 	                        		</c:when>
 	                        	</c:choose>
 	                            <button type="button" class="btn btn-secondary" onclick="location.href='<c:url value='/complain/list/${loginUser.adminId}'/>'">돌아가기</button>

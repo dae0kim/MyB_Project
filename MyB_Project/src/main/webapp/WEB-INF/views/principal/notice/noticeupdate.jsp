@@ -61,7 +61,7 @@
                     </div>
                     <div class="border-top">
                         <div class="card-body">
-                            <button type="submit" class="btn btn-success" onclick="showMessage()">수정하기</button>
+                            <button type="submit" class="btn btn-success" onclick="showMessage()">저장하기</button>
                             <button type="button" class="btn btn-secondary" onclick="location.href='<c:url value='/notice/info/${noticeVO.noticeId}'/>'">돌아가기</button>
                         </div>
                     </div>

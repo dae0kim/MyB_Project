@@ -68,8 +68,8 @@
                         <div class="card card-hover">
                             <a href="<c:url value='/complain/list/${loginUser.adminId}' />">
                             <div class="box bg-warning text-center">
-                                <h1 class="font-light text-white"><i class="fa-regular fa-face-angry"></i></h1>
-                                <h6 class="text-white">컴플레인</h6>
+                                <h1 class="font-light text-white"><i class="fa-solid fa-comments"></i></h1>
+                                <h6 class="text-white">1:1문의</h6>
                             </div>
                             </a>
                         </div>

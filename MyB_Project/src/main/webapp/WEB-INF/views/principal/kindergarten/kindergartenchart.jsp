@@ -46,10 +46,7 @@
 				<div id="web_classroom_chart_container">
 					<div id="web_classroom_chart_title_container">
 					  	<div id="web_classroom_chart_title">
-					  		질병별 환자 수
-					  	</div>
-					  	<div id="web_classroom_chart_subtitle">
-					  		[부제목]
+					  		<span id="selectedClassroomName"></span> 질병별 환자 수
 					  	</div>
 				  	</div>
 				  	<div id="piechart2_3d"></div>
@@ -118,9 +115,13 @@
 		
 		//각 반별 차트
 		var classroomId=0;
+		var selectedClassroomName="";
 		
 		function classroomChk(){
 			classroomId = $("#classroomDropBox option:selected").val();
+			selectedClassroomName = $("#classroomDropBox option:selected").text();
+			
+			$("#selectedClassroomName").text(selectedClassroomName);
 			
 			redraw(classroomId);
 			getShow();

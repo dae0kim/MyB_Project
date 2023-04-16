@@ -75,7 +75,7 @@
                         
 	                    <div class="border-top">
 	                        <div class="card-body">
-	                        	<button type="button" id="join_btn" class="btn btn-success">수정하기</button>
+	                        	<button type="button" id="join_btn" class="btn btn-success">저장하기</button>
 	                            <button type="button" class="btn btn-secondary" onclick="location.href='<c:url value='/teacher/info/${teacherInfo.teacherId}'/>'">돌아가기</button>
 	                        </div>
 	                    </div>
