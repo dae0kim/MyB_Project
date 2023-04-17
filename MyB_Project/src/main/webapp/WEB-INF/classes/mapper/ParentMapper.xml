@@ -49,6 +49,7 @@
 			SELECT c.parent_id AS "parentId"
 			FROM child c, kindergarten k
 			WHERE c.kindergarten_id = k.kindergarten_id AND k.admin_id=#{adminId}
+			GROUP BY c.parent_id
 		]]>
 	</select>
 
