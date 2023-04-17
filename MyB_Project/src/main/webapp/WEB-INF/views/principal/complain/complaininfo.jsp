@@ -75,7 +75,7 @@
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">내용</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" id="complainContent" name="complainContent" readonly>${complainVO.complainContent}</textarea>
+                                <textarea class="form-control" id="complainContent" name="complainContent" style="height:6.25rem;"  readonly>${complainVO.complainContent}</textarea>
                             </div>
                         </div>
                         

@@ -39,7 +39,7 @@
                         <div class="form-group row">
                             <label for="lname" class="col-sm-3 text-right control-label col-form-label">내용</label>
                             <div class="col-sm-5">
-                                <textarea class="form-control" id="noticeContent" name="noticeContent" required>${noticeVO.noticeContent}</textarea>
+                                <textarea class="form-control" id="noticeContent" name="noticeContent" style="height:6.25rem;" required>${noticeVO.noticeContent}</textarea>
                             </div>
                         </div>
                         
