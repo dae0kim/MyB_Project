@@ -23,16 +23,15 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">어린이집 일일 출결 현황</h4>
+                    </div>
+                </div>
+            </div>
             <div class="container-fluid">
             	<input type="hidden" id="kindergartenId" value="${kindergartenId}">
-				<div id="web_classroom_chart_title_container">
-				  	<div id="web_classroom_chart_title">
-				  		어린이집 출결 현황
-				  	</div>
-				  	<div id="web_classroom_chart_subtitle">
-				  		[금일 데이터를 제공합니다]
-				  	</div>
-			  	</div>
 				
 				<div id="columnchart_material" style="padding-right:1rem;"></div>
 				<div id="web_classroom_select">
@@ -46,7 +45,7 @@
 				<div id="web_classroom_chart_container">
 					<div id="web_classroom_chart_title_container">
 					  	<div id="web_classroom_chart_title">
-					  		<span id="selectedClassroomName"></span> 질병별 환자 수
+					  		<span id="selectedClassroomName"></span> 질병별 일일 환자 수
 					  	</div>
 				  	</div>
 				  	<div id="piechart2_3d"></div>

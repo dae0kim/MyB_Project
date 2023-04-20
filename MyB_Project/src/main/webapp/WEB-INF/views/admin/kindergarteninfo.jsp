@@ -62,7 +62,14 @@
                         <div class="form-group row">
                             <label for="sname" class="col-sm-3 text-right control-label col-form-label">처리상태</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" name="kindergartenStat" value="${kindergartenVO.kindergartenStat}" readonly>
+                            	<c:choose>
+									<c:when test="${kindergartenVO.kindergartenStat eq 'Y'}">
+										<input type="text" class="form-control" name="kindergartenStat" value="승인" readonly>
+									</c:when>		
+									<c:when test="${kindergartenVO.kindergartenStat eq 'N'}">
+										<input type="text" class="form-control" name="kindergartenStat" value="대기중" readonly>
+									</c:when>
+								</c:choose>
                             </div>
                         </div>
 

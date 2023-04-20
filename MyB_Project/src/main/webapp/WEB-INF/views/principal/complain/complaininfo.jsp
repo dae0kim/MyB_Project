@@ -82,7 +82,14 @@
                         <div class="form-group row">
                             <label for="sname" class="col-sm-3 text-right control-label col-form-label">처리상태</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" name="complainStat" value="${complainVO.complainStat}" readonly>
+                                <c:choose>
+									<c:when test="${complainVO.complainStat eq 'Y'}">
+										<input type="text" class="form-control" name="complainStat" value="확인 완료" readonly>
+									</c:when>		
+									<c:when test="${complainVO.complainStat eq 'N'}">
+										<input type="text" class="form-control" name="complainStat" value="미처리" readonly>
+									</c:when>
+								</c:choose>
                             </div>
                         </div>
                         <input type="hidden" name="adminId" value="${loginUser.adminId}">
