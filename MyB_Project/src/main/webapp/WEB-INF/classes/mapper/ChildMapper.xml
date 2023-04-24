@@ -41,14 +41,17 @@
 			ORDER BY child_id					
 		]]>
 	</select>
-
+	
 	<!-- 	(0329 합침 일형추가) -->
 	<select id = "getChildNameList" resultType="com.project.myapp.myb.child.ChildVO" parameterType="int">	
 		SELECT 
-			child_name AS childName,
-			child_id AS childId
-		FROM child c, teacher t
-		WHERE t.teacher_id=#{teacherId} AND (c.classroom_id = t.classroom_id)
+		    c.child_name AS childName,
+		    c.child_id AS childId
+		FROM child c, teacher t, request r
+		WHERE t.teacher_id=#{teacherId} 
+		    AND (c.classroom_id = t.classroom_id)
+		    AND r.request_date = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+		    AND r.child_id = c.child_id
 		ORDER BY 2
 	</select>
 	
