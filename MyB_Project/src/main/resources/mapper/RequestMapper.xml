@@ -88,11 +88,9 @@
 		SELECT
 		request_id AS requestId,
 		request_content1 AS requestContent1,
-		request_content2 AS
-		requestContent2,
+		request_content2 AS requestContent2,
 		request_content3 AS requestContent3,
-		request_content4
-		AS requestContent4,
+		request_content4 AS requestContent4,
 		request_content5 AS requestContent5,
 		request_comment AS requestComment,
 		request_stat1 AS requestStat1,
