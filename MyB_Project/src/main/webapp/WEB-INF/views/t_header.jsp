@@ -62,13 +62,10 @@
 		        	    $('#bell').css('display', 'none'); 
 		        	    $('#notbell').css('display', 'inline-block');
 		        	}
-		            //다음 실행 시간 설정
-// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
 		        },
 		        // data 전송 실패 시
 		        error: function(jqXHR, textStatus, errorThrown) {
 		            console.error('Error checking for notifications:', textStatus, errorThrown);
-// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
 		        }
 		    });
 		}

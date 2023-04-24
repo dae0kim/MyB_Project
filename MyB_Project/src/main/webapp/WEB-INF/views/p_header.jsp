@@ -42,27 +42,6 @@
 	</div>
 </div>
 	
-<%-- 		<div id="11">
-			<img src="../resources/images/logo.png" style="width: 35px; height: 35px;">
-		</div>
-		
-		<div id="21">
-			<a href='<c:url value="/parent/mparent_alarm"/>'><i class="fa-regular fa-bell"></i></a>
-		</div>
-		
-		<div id="22">
-		    <div id="child_name">   
-	            ${childName}
-	        </div>
-	        <div id="kindergarten_name">
-	            ${kindergartenName}
-	        </div>
-	        <div id="kindergarten_class">
-	             ${classroomName}
-	        </div>
-		</div> --%>
-		
-
 	<script>
 		
 		window.onload = function checkForNotifications() {
@@ -81,13 +60,10 @@
 		        	    $('#bell').css('display', 'none'); 
 		        	    $('#notbell').css('display', 'inline-block');
 		        	}
-		            //다음 실행 시간 설정
-// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
 		        },
 		        // data 전송 실패 시
 		        error: function(jqXHR, textStatus, errorThrown) {
 		            console.error('Error checking for notifications:', textStatus, errorThrown);
-// 		            setTimeout(checkForNotifications, 5000); // 5초마다 실행
 		        }
 		    });
 		}
@@ -115,34 +91,3 @@
 	</script>
 
 </body>
-
-
-
-
-
-
-		<%-- <div id="sidewrap">
-			<aside id="sidebar" style="user-select: auto; left: -200px;">
-				<button style="margin-top: 16px;">
-					<span class="header_menu">☰</span>
-				</button>
-
-				<div id="teachername">
-					<i class="fa-solid fa-house"></i> <span>${childName} ${parentRelation}</span>
-				</div>
-
-				<div id="menulist">
-					<div class="menu">
-						<a href='<c:url value="/parent/mparent_select_kinder_mypage"/>'>자녀 등록</a>
-					</div>
-					<div class="menu">
-						<a href='<c:url value="/parent/mparent_sidemenu_info"/>'>내 정보</a>
-					</div>
-					<div class="menu">
-						<a href='<c:url value="/parent/mparent_sidemenu_qna"/>'>1:1 문의</a>
-					</div>
-				</div>
-				
-				<div id="logout">
-					<a href='<c:url value="/parent/mparent_logout"/>'>로그아웃</a>
-				</div> --%>

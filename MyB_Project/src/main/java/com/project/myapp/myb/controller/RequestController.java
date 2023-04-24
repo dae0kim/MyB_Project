@@ -150,7 +150,6 @@ public class RequestController {
 	public String getRequestList(@PathVariable int teacherId, Model model) {
 		
 		List<ChildVO> getChildNameList = childService.getChildNameList(teacherId);
-		System.out.println("getChildNameList : " + getChildNameList);
 		model.addAttribute("getChildNameList", getChildNameList);
 		
 		List<ParentVO> getParentId = parentRepository.getParentName(teacherId);
@@ -230,7 +229,6 @@ public class RequestController {
 		}
 
 		model.addAttribute("requestvo", requestvo);
-		System.out.println("requestvo : " + requestvo);
 
 		requestRepository.updateRequest(requestvo);
 

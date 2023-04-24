@@ -2,8 +2,6 @@ package com.project.myapp.myb.notice;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 /**
  * 공지사항과 관련된 기능을 담는 레포지토리 인터페이스입니다.
  * 
