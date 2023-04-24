@@ -166,6 +166,7 @@ input[type="checkbox" i] {
     border-radius: 6px;
     font-size: 1em;
     text-align: left;
+    white-space: pre-line;
 }
 
 #comment p {
