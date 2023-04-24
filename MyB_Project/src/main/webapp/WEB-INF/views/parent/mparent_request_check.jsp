@@ -88,28 +88,28 @@
 					<div class="request-name">요청사항을 확인해주세요.</div>
 					
 					<div id = "reqcheck">
-					<input type="text" class="requestContent1_input" name="requestContent1" value="${requestVO.requestContent1}" readonly>
-					<input type="checkbox" name="requestStat1" <c:if test="${requestVO.requestStat1 eq 'Y'}">checked</c:if> onClick="return false;">
+					<input type="text" class="requestContent1_input" name="requestContent1" value="" readonly>				
+					<input type="checkbox" id="requestStat1" name="requestStat1" onClick="return false;">
 					</div>
 					
 					<div id = "reqcheck">
-					<input type="text" class="requestContent2_input" name="requestContent2" value="${requestVO.requestContent2}" readonly>
-					<input type="checkbox" name="requestStat2" <c:if test="${requestVO.requestStat2 eq 'Y'}">checked</c:if> onClick="return false;">
+					<input type="text" class="requestContent2_input" name="requestContent2" value="" readonly>
+					<input type="checkbox" id="requestStat2" name="requestStat2" onClick="return false;">
 					</div>
 					
 					<div id = "reqcheck">
-					<input type="text" class="requestContent3_input" name="requestContent3" value="${requestVO.requestContent3}" readonly>
-					<input type="checkbox" name="requestStat3" <c:if test="${requestVO.requestStat3 eq 'Y'}">checked</c:if> onClick="return false;">
+					<input type="text" class="requestContent3_input" name="requestContent3" value="" readonly>
+					<input type="checkbox" id="requestStat3" name="requestStat3" onClick="return false;">
 					</div>
 					
 					<div id = "reqcheck">
-					<input type="text" class="requestContent4_input" name="requestContent4" value="${requestVO.requestContent4}" readonly>
-					<input type="checkbox" name="requestStat4" <c:if test="${requestVO.requestStat4 eq 'Y'}">checked</c:if> onClick="return false;">
+					<input type="text" class="requestContent4_input" name="requestContent4" value="" readonly>
+					<input type="checkbox" id="requestStat4" name="requestStat4" onClick="return false;">
 					</div>
 					
 					<div id = "reqcheck">
-					<input type="text" class="requestContent5_input" name="requestContent5" value="${requestVO.requestContent5}" readonly>
-		        	<input type="checkbox" name="requestStat5" <c:if test="${requestVO.requestStat5 eq 'Y'}">checked</c:if> onClick="return false;">
+					<input type="text" class="requestContent5_input" name="requestContent5" value="" readonly>
+		        	<input type="checkbox" id="requestStat5" name="requestStat5" onClick="return false;">
 		        	</div>
 		        	
 		        	<div>
@@ -117,7 +117,7 @@
 			        
 			            <div id="comment">
 					        <div class="text" id="requestComment">
-					            ${requestVO.requestComment}
+					        	<span class="requestComment_input" id="requestComment"></span>
 					        </div>
 	   				  </div>
 			        </div>
@@ -177,13 +177,25 @@
 				$('input[name=requestContent2]').attr('value', requestContent2);
 				$('input[name=requestContent3]').attr('value', requestContent3);
 				$('input[name=requestContent4]').attr('value', requestContent4);
-				$('input[name=requestContent5]').attr('value', requestContent5);				
-				$('input[name=requestStat1]').attr('value', requestStat1);
-				$('input[name=requestStat2]').attr('value', requestStat2);
-				$('input[name=requestStat3]').attr('value', requestStat3);
-				$('input[name=requestStat4]').attr('value', requestStat4);
-				$('input[name=requestStat5]').attr('value', requestStat5);
-				$('#requestComment').attr('value', requestComment);
+				$('input[name=requestContent5]').attr('value', requestContent5);	
+				
+				if(requestStat1 == 'Y') {
+					$('#requestStat1').attr('checked', true);
+				}
+				if(requestStat2 == 'Y') {
+					$('#requestStat2').attr('checked', true);
+				}
+				if(requestStat3 == 'Y') {
+					$('#requestStat3').attr('checked', true);
+				}
+				if(requestStat4 == 'Y') {
+					$('#requestStat4').attr('checked', true);
+				}
+				if(requestStat5 == 'Y') {
+					$('#requestStat5').attr('checked', true);
+				}
+				
+				$('#requestComment').text(requestComment);
 				
 				$('#todayrq').css('display', 'none');
 				$('#selectrq').css('display', 'block');
@@ -199,12 +211,12 @@
 		$('input[name=requestContent3]').attr('value', '');
 		$('input[name=requestContent4]').attr('value', '');
 		$('input[name=requestContent5]').attr('value', '');				
-		$('input[name=requestStat1]').attr('value', '');
-		$('input[name=requestStat2]').attr('value', '');
-		$('input[name=requestStat3]').attr('value', '');
-		$('input[name=requestStat4]').attr('value', '');
-		$('input[name=requestStat5]').attr('value', '');
-		$('#requestComment').attr('value', '');
+		$('#requestStat1').attr('checked', false);
+		$('#requestStat2').attr('checked', false);
+		$('#requestStat3').attr('checked', false);
+		$('#requestStat4').attr('checked', false);
+		$('#requestStat5').attr('checked', false);
+		$('#requestComment').text('');
 
 	}
 	
