@@ -70,6 +70,7 @@
 		r.parent_id = p.parent_id AND
 		c.child_id = r.child_id
 		AND (r.request_date = to_char(sysdate,'yyyy-mm-dd'))
+		ORDER BY 6
 
 
 	</select>
