@@ -39,7 +39,7 @@
 	</div>
 	<div id="footer4">
 		<div class="mouseevent">
-			<a href='<c:url value="/teacher/mteacher_notice_detail"/>'>
+			<a href='<c:url value="/teacher/mteacher_notice_detail/${loginUser.teacherId}"/>'>
 				<i class="fa-solid fa-clipboard" style="color: #000000;"></i>
 			</a>
 			<p>공지사항</p>
