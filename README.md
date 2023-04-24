@@ -39,4 +39,4 @@ KOSA 4차 프로젝트 - MyB
 
 + IDE : Eclipse 2022-09R, Oracle SQL Developer 20.4
 
-+ 적용 기술 : JSP/HTML/CSS, JQuery, Ajax, Spring FrameWork, Mybatis, Raphael.js, Bootstrap, Oracle JOP SCHEDULER
++ 적용 기술 : JSP/HTML/CSS, JQuery, Ajax, Spring FrameWork, Mybatis, Raphael.js, Bootstrap, Oracle JOB SCHEDULER
