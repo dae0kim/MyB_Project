@@ -32,14 +32,6 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="50000000"/>
 	</beans:bean>
-	
-	<!--  websocket handler -->
-<!--     <websocket:handlers> -->
-<!-- 		<websocket:mapping handler="alarmHandler" path="/alarmHandler"/>		 -->
-<!-- 		<websocket:sockjs></websocket:sockjs> -->
-<!-- 	</websocket:handlers> -->
-	
-<!-- 	<beans:bean id="alarmHandler" class="com.project.myapp.myb.websocket.AlarmHandler"/> -->
 
 </beans:beans>
 
