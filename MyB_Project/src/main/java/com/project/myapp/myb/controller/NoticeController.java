@@ -55,8 +55,6 @@ public class NoticeController {
 		List<NoticeVO> noticelist = noticeService.getNoticeList(teacherId);
 		model.addAttribute("noticelist", noticelist);
 
-		System.out.println("noticelist : " + noticelist);
-
 		return "/teacher/mteacher_notice_detail";
 	}
 
@@ -73,8 +71,6 @@ public class NoticeController {
 
 		NoticeVO noticeview = noticeService.setNoticeView(noticeId);
 		model.addAttribute("noticeview", noticeview);
-
-		System.out.println("noticeview : " + noticeview);
 
 		return "/teacher/mteacher_notice_detail_view";
 

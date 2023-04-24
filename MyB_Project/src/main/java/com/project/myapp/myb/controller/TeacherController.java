@@ -104,12 +104,10 @@ public class TeacherController {
 		model.addAttribute("teacherclass", teacherclass);
 
 		int classroomIdd = teacherclass.getClassroomId();
-		System.out.println("classroomIdd : " + classroomIdd);
 
 		int teacherid = ((Integer) session.getAttribute("teacherId")).intValue();
 		List<DiseaselogEtcVO> diseaselogetcvo = diseaselogService.test(teacherid);
 		model.addAttribute("diseaselogetcvo", diseaselogetcvo);
-		System.out.println("diseaselogetcvo : " + diseaselogetcvo);
 
 		return "/teacher/mteacher_disease";
 	}

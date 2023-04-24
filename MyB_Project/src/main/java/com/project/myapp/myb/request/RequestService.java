@@ -35,13 +35,11 @@ public class RequestService implements IRequestService{
 
 	@Override
 	public RequestVO getCheckDetail(int requestId) {
-		System.out.println("서비스동작확인");
 		return requestRepository.getCheckDetail(requestId);
 	}
 
 	@Override
 	public void updateRequest(RequestVO requestvo) {
-		// TODO Auto-generated method stub
 		requestRepository.updateRequest(requestvo);
 	}
 
