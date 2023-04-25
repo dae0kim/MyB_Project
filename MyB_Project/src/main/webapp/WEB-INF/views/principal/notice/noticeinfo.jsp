@@ -25,35 +25,35 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form class="form-horizontal">
                     <div class="card-body">
                         <h4 class="card-title">공지사항 정보</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">제목</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">제목</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" value="${noticeVO.noticeTitle}" readonly>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="bname" class="col-sm-3 text-right control-label col-form-label">작성일</label>
-                            <div class="col-sm-5">
+                            <label for="bname" class="col-sm-2 text-right control-label col-form-label">작성일</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="noticeDate" name="noticeDate" value="<fmt:formatDate value="${noticeVO.noticeDate}" pattern="YYYY-MM-dd HH:mm:ss"/>" readonly />
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">내용</label>
-                            <div class="col-sm-5">
-                                <textarea class="form-control" id="noticeContent" name="noticeContent" style="height:6.25rem;" readonly>${noticeVO.noticeContent}</textarea>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">내용</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="noticeContent" name="noticeContent" style="height:20rem;" readonly>${noticeVO.noticeContent}</textarea>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="sname" class="col-sm-3 text-right control-label col-form-label">상단 고정 여부</label>
-                            <div class="col-sm-5">
+                            <label for="sname" class="col-sm-2 text-right control-label col-form-label">상단 고정 여부</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" name="noticeStat" value="${noticeVO.noticeStat}" readonly>
                             </div>
                         </div>

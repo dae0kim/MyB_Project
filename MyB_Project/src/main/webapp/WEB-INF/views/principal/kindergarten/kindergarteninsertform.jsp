@@ -24,27 +24,27 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form class="form-horizontal" action="<c:url value='/kindergarten/insert'/>" method="post" enctype="multipart/form-data">
                     <div class="card-body">
                         <h4 class="card-title">어린이집 정보</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">이름</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-1 text-right control-label col-form-label">이름</label>
+                            <div class="col-sm-8">
                                 <input type="text" class="form-control" id="kindergartenName" name="kindergartenName" placeholder="어린이집 이름" required>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">전화번호</label>
-                            <div class="col-sm-5">
+                            <label for="lname" class="col-sm-1 text-right control-label col-form-label">전화번호</label>
+                            <div class="col-sm-8">
                                 <input type="tel" class="form-control" id="kindergartenPhone" name="kindergartenPhone" placeholder="어린이집 전화번호" required>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">주소</label>
+                            <label for="lname" class="col-sm-1 text-right control-label col-form-label">주소</label>
                             <div class="col-sm-9">
                             	<div class="row mb-3">
                             		<div class="col-lg-3">
@@ -71,13 +71,13 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label">증명 서류</label>
-                            <div class="col-sm-5">
+                            <label for="email1" class="col-sm-1 text-right control-label col-form-label">증명 서류</label>
+                            <div class="col-sm-8">
                                 <input type="file" class="form-control" id="file" name="file" accept=".zip" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="email1" class="col-sm-3 text-right control-label col-form-label"></label>
+                            <label for="email1" class="col-sm-1 text-right control-label col-form-label"></label>
                             <div class="col-sm-9">
                                 *모든 서류를 하나의 압축파일로 만들어 업로드 하세요.
                             </div>

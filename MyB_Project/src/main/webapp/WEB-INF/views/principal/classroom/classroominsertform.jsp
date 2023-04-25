@@ -24,14 +24,14 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form class="form-horizontal" action="<c:url value='/classroom/insert'/>" method="post">
                     <div class="card-body">
                         <h4 class="card-title">반 등록</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">반 이름</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">반 이름</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="classroomName" name="classroomName" required>
                             </div>
                         </div>

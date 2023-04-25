@@ -25,22 +25,21 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form class="form-horizontal">
                     <div class="card-body">
-                        <h4 class="card-title">반 정보</h4>
-                        
+                        <h5 class="card-title">반 정보</h5>
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">반 이름</label>
-                            <div class="col-sm-5">
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">반 이름</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="noticeContent" name="noticeContent" value="${classroomName}" readonly>
                             </div>
                         </div>
                         
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">담당 교사</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">담당 교사</label>
+                            <div class="col-sm-6">
                             	<c:choose>
 									<c:when test="${empty classroomInfo.teacherName}">
                                 		<input type="text" class="form-control" id="teacherName" name="teacherName" value="등록된 교사가 없습니다." readonly>
@@ -55,8 +54,8 @@
                         
                         
                         <div class="form-group row">
-                            <label for="sname" class="col-sm-3 text-right control-label col-form-label">원생 수</label>
-                            <div class="col-sm-5">
+                            <label for="sname" class="col-sm-2 text-right control-label col-form-label">원생 수</label>
+                            <div class="col-sm-6">
                             	<c:choose>
 									<c:when test="${empty classroomInfo.count}">
 		                                <input type="text" class="form-control" name="count" value="소속된 원생이 없습니다." readonly>

@@ -24,27 +24,27 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form class="form-horizontal" action="<c:url value='/notice/insert'/>" method="post">
                     <div class="card-body">
                         <h4 class="card-title">공지사항 등록</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">제목</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">제목</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="noticeTitle" name="noticeTitle" required>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">내용</label>
-                            <div class="col-sm-5">
-                                <textarea class="form-control" id="noticeContent" name="noticeContent" style="height:6.25rem;" required></textarea>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">내용</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="noticeContent" name="noticeContent" style="height:20rem;" required></textarea>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label class="col-sm-3 text-right control-label col-form-label">상단 고정여부</label>
+                            <label class="col-sm-2 text-right control-label col-form-label">상단 고정여부</label>
                             <div class="col-md-9">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="customControlValidation1" name="noticeStat" value='O' required>

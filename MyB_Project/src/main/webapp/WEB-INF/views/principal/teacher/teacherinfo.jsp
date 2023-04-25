@@ -25,42 +25,42 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form class="form-horizontal">
                     <div class="card-body">
                         <h4 class="card-title">교사 정보</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">이름</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">이름</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherName" name="teacherName" value="${teacherInfo.teacherName}" readonly>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="bname" class="col-sm-3 text-right control-label col-form-label">이메일</label>
-                            <div class="col-sm-5">
+                            <label for="bname" class="col-sm-2 text-right control-label col-form-label">이메일</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherEmail" name="teacherEmail" value="${teacherInfo.teacherEmail}" readonly />
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">비밀번호</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">비밀번호</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherPw" name="teacherPw" value="${teacherInfo.teacherPw}"  readonly/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">연락처</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">연락처</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherPhone" name="teacherPhone" value="${teacherInfo.teacherPhone}"  readonly/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="dname" class="col-sm-3 text-right control-label col-form-label">담당교실</label>
-                            <div class="col-sm-5">
+                            <label for="dname" class="col-sm-2 text-right control-label col-form-label">담당교실</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="classroomName" name="classroomName" value="${teacherInfo.classroomName}"  readonly/>
                             </div>
                         </div>

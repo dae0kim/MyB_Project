@@ -25,35 +25,35 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form id="join-form" class="form-horizontal" action="<c:url value='/teacher/update'/>" method="post">
                     <div class="card-body">
                         <h4 class="card-title">교사 정보 수정</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">이름</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">이름</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherName" name="teacherName" value="${teacherInfo.teacherName}" required>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="bname" class="col-sm-3 text-right control-label col-form-label">이메일</label>
-                            <div class="col-sm-5">
+                            <label for="bname" class="col-sm-2 text-right control-label col-form-label">이메일</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherEmail" name="teacherEmail" value="${teacherInfo.teacherEmail}" readonly />
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">비밀번호</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">비밀번호</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherPw" name="teacherPw" value="${teacherInfo.teacherPw}" required/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">연락처</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">연락처</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherPhone" name="teacherPhone" value="${teacherInfo.teacherPhone}" placeholder="　('-'없이 번호만 입력)" oninput="autoHyphen(this)" maxlength="13" autofocus required/>
                             </div>
                             <div class="web_join_warning_text">
@@ -62,8 +62,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="dname" class="col-sm-3 text-right control-label col-form-label">담당교실</label>
-                            <div class="col-sm-5">
+                            <label for="dname" class="col-sm-2 text-right control-label col-form-label">담당교실</label>
+                            <div class="col-sm-6">
                             	<select name="classroomId" class="select2 form-control custom-select" style="width: 40%; height:36px;">
 									<c:forEach items="${classroomList}" var="classroomList">
 										<option value="${classroomList.classroomId}">${classroomList.classroomName}</option>

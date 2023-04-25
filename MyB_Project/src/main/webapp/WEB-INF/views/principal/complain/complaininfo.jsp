@@ -25,63 +25,63 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form class="form-horizontal">
                     <div class="card-body">
                         <h4 class="card-title">1:1문의 정보</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">제목</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">제목</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="complainTitle" name="complainTitle" value="${complainVO.complainTitle}" readonly>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="bname" class="col-sm-3 text-right control-label col-form-label">작성일</label>
-                            <div class="col-sm-5">
+                            <label for="bname" class="col-sm-2 text-right control-label col-form-label">작성일</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="complainDate" name="complainDate" value="<fmt:formatDate value="${complainVO.complainDate}" pattern="YYYY-MM-dd HH:mm:ss"/>" readonly />
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">작성자</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">작성자</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="parentName" name="parentName" value="${complainDetailVO.parentName}"  readonly/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">작성자 연락처</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">작성자 연락처</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="parentPhone" name="parentPhone" value="${complainDetailVO.parentPhone}"  readonly/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="dname" class="col-sm-3 text-right control-label col-form-label">자녀</label>
-                            <div class="col-sm-5">
+                            <label for="dname" class="col-sm-2 text-right control-label col-form-label">자녀</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="childName" name="childName" value="${complainDetailVO.childName}"  readonly/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="ename" class="col-sm-3 text-right control-label col-form-label">자녀 교실</label>
-                            <div class="col-sm-5">
+                            <label for="ename" class="col-sm-2 text-right control-label col-form-label">자녀 교실</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="classroomName" name="classroomName" value="${complainDetailVO.classroomName}"  readonly/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="lname" class="col-sm-3 text-right control-label col-form-label">내용</label>
-                            <div class="col-sm-5">
-                                <textarea class="form-control" id="complainContent" name="complainContent" style="height:6.25rem;"  readonly>${complainVO.complainContent}</textarea>
+                            <label for="lname" class="col-sm-2 text-right control-label col-form-label">내용</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="complainContent" name="complainContent" style="height:20rem;"  readonly>${complainVO.complainContent}</textarea>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="sname" class="col-sm-3 text-right control-label col-form-label">처리상태</label>
-                            <div class="col-sm-5">
+                            <label for="sname" class="col-sm-2 text-right control-label col-form-label">처리상태</label>
+                            <div class="col-sm-6">
                                 <c:choose>
 									<c:when test="${complainVO.complainStat eq 'Y'}">
 										<input type="text" class="form-control" name="complainStat" value="확인 완료" readonly>

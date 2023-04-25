@@ -25,21 +25,21 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form id="join-form" class="form-horizontal" action="<c:url value='/teacher/insert'/>" method="post">
                     <div class="card-body">
                         <h4 class="card-title">교사 정보 등록</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">이름</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">이름</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherName" name="teacherName" required>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="bname" class="col-sm-3 text-right control-label col-form-label">이메일</label>
-                            <div class="col-sm-5">
+                            <label for="bname" class="col-sm-2 text-right control-label col-form-label">이메일</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherEmail" name="teacherEmail" onkeyup="noSpace(this);" onchange="noSpace(this);" required />
                             </div>
                             <div class="web_join_warning_text">
@@ -51,15 +51,15 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">비밀번호</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">비밀번호</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherPw" name="teacherPw" required/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">연락처</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">연락처</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="teacherPhone" name="teacherPhone" placeholder="　('-'없이 번호만 입력)" oninput="autoHyphen(this)" maxlength="13" required/>
                             </div>
                             <div class="web_join_warning_text">
@@ -68,8 +68,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="dname" class="col-sm-3 text-right control-label col-form-label">담당교실</label>
-                            <div class="col-sm-5">
+                            <label for="dname" class="col-sm-2 text-right control-label col-form-label">담당교실</label>
+                            <div class="col-sm-6">
                             	<select name="classroomId" class="select2 form-control custom-select" style="width: 40%; height:36px;">
 									<c:forEach items="${classroomList}" var="classroomList">
 										<option value="${classroomList.classroomId}">${classroomList.classroomName}</option>

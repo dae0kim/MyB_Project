@@ -26,42 +26,42 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-            <div class="card" style="margin:10% 15% 10% 15%;">
+            <div class="card">
                 <form class="form-horizontal">
                     <div class="card-body">
                         <h4 class="card-title">요청사항 정보</h4>
                         
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label">글 번호</label>
-                            <div class="col-sm-5">
+                            <label for="fname" class="col-sm-2 text-right control-label col-form-label">글 번호</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="kindergartenId" name="kindergartenId" value="${kindergartenVO.kindergartenId}" readonly>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="bname" class="col-sm-3 text-right control-label col-form-label">어린이집 이름</label>
-                            <div class="col-sm-5">
+                            <label for="bname" class="col-sm-2 text-right control-label col-form-label">어린이집 이름</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="kindergartenName" name="kindergartenName" value="${kindergartenVO.kindergartenName}" readonly />
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">어린이집 전화번호</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">어린이집 전화번호</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="kindergartenPhone" name="kindergartenPhone" value="${kindergartenVO.kindergartenPhone}"  readonly/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="cname" class="col-sm-3 text-right control-label col-form-label">주소</label>
-                            <div class="col-sm-5">
+                            <label for="cname" class="col-sm-2 text-right control-label col-form-label">주소</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="kindergartenAddress" name="kindergartenAddress" value="${kindergartenVO.kindergartenAddress}"  readonly/>
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label for="sname" class="col-sm-3 text-right control-label col-form-label">처리상태</label>
-                            <div class="col-sm-5">
+                            <label for="sname" class="col-sm-2 text-right control-label col-form-label">처리상태</label>
+                            <div class="col-sm-6">
                             	<c:choose>
 									<c:when test="${kindergartenVO.kindergartenStat eq 'Y'}">
 										<input type="text" class="form-control" name="kindergartenStat" value="승인" readonly>
@@ -74,8 +74,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="sname" class="col-sm-3 text-right control-label col-form-label">증명서류</label>
-                            <div class="col-sm-5">
+                            <label for="sname" class="col-sm-2 text-right control-label col-form-label">증명서류</label>
+                            <div class="col-sm-6">
                                 <c:set var="len" value="${fn:length(kindergartenVO.fileName)}"/>
 								<c:set var="filetype" value="${fn:toUpperCase(fn:substring(kindergartenVO.fileName, len-4, len))}"/>
 								<a href='<c:url value="/file/${kindergartenVO.fileId}"/>'>${kindergartenVO.fileName} (<fmt:formatNumber>${kindergartenVO.fileSize}</fmt:formatNumber>byte)</a>
