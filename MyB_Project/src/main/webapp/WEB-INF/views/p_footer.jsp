@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MyB</title>
  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/mobile/p_footer.css">
 </head>
 <body style="font-family: Nanum Gothic">

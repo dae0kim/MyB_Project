@@ -89,7 +89,9 @@ public class TeacherController {
 	 * 원생 질병관리 이동시 데이터를 넘겨주는 메서드입니다
 	 * 
 	 * @param teacherId 교사 식별번호를 입력합니다.
-	 * @return 원생 질병관리 화면을 반환합니다
+	 * @param model 모델 객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
+	 * @return 원생 질병관리 화면을 반환합니다.
 	 */
 	@RequestMapping(value = "/teacher/mteacher_disease/{teacherId}")
 	public String moveDisease(@PathVariable int teacherId, Model model, HttpSession session) {
@@ -183,7 +185,7 @@ public class TeacherController {
 	 * @param teacherEmail 이메일을 입력합니다
 	 * @param teacherPw 비밀번호를 입력합니다
 	 * @return 일치여부에 따른 결과를 표시합니다
-	 * @throws Exception
+	 * @throws Exception 예외처리 합니다.
 	 */
 	@ResponseBody
 	@RequestMapping(value = "/teacher/teacherPwChk", method = RequestMethod.POST)

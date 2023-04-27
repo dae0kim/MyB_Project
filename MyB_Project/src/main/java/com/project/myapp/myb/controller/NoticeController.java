@@ -43,7 +43,9 @@ public class NoticeController {
 	/**
 	 * (사용자 : 교사)공지사항을 리스트로 출력하는 메서드입니다
 	 * 
-	 * @param model 모델객체를 입력합니다
+	 * @param teacherId 교사 식별번호를 입력합니다
+	 * @param model 모델객체를 입력합니다.
+	 * @param session 로그인 세션을 받습니다.
 	 * @return 공지사항 리스트 페이지를 반환합니다.
 	 */
 	@RequestMapping(value = "/teacher/mteacher_notice_detail/{teacherId}")
@@ -80,6 +82,7 @@ public class NoticeController {
 	 * (사용자 : 학부모)공지사항을 리스트로 출력하는 메서드입니다
 	 * 
 	 * @param model 모델객체를 입력합니다
+	 * @param session 세션을 받습니다
 	 * @return 공지사항 리스트 페이지를 반환합니다.
 	 */
 	@RequestMapping(value = "/parent/mparent_notice_detail/{teacherId}")

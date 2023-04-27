@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-    <title>Document</title>
+    <title>MyB</title>
     <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_select_class.css" rel="stylesheet"> 
 </head>

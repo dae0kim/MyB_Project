@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MyB</title>
      <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
      <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_notice_detail.css" rel="stylesheet">
 </head>

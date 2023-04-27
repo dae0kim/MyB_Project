@@ -14,6 +14,7 @@ public interface INoticeRepository {
 	/**
 	 * 공지사항 리스트를 불러오는 메서드입니다
 	 * 
+	 * @param teacherId 교사 식별번호를 매개변수로 받습니다.
 	 * @return 공지사항 게시글을 리스트형태로 출력합니다.
 	 */
 	List<NoticeVO> getNoticeList(int teacherId);

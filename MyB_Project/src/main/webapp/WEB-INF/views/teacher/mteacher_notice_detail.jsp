@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MyB</title>
 	 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
      <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
      <link href="${pageContext.request.contextPath}/resources/css/mobile/mteacher_notice.css" rel="stylesheet">
