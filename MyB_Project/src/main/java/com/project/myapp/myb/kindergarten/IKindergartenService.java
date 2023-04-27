@@ -60,6 +60,7 @@ public interface IKindergartenService {
 	 * 어린이집 등록을 위한 메서드입니다.
 	 * 
 	 * @param kindergartenVO 어린이집 정보가 담긴 객체와 파일 정보가 담긴 객체를 입력합니다.
+	 * @param file 어린이집 증빙 서류파일 객체를 입력합니다.
 	 */
 	void insertKindergarten(KindergartenVO kindergartenVO,UploadFileVO file);
 	
