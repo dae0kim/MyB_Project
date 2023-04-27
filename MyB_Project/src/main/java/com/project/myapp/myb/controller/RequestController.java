@@ -70,6 +70,24 @@ public class RequestController {
 	}
 
 	/**
+	 * 요청을 확인하는 메서드입니다.
+	 * 
+	 * @param childId 자녀 식별번호를 입력합니다.
+	 * @param requestDate 요청날짜를 입력합니다.
+	 * @return 요청확인을 반환합니다.
+	 * @throws Exception 예외처리합니다.
+	 */
+	@RequestMapping(value = "/parent/getRequestByChildnDate", method = RequestMethod.POST)
+	@ResponseBody
+	public RequestVO getRequestByChildnDate(@Param(value = "childId") int childId, @Param("requestDate") String requestDate) throws Exception {
+		RequestVO requestVO = requestService.selectRequest(childId, requestDate);
+		if (requestVO == null) {
+			// 예외 처리
+		}
+		return requestVO;
+	}
+
+	/**
 	 * 요청을 하는 메서드입니다.
 	 * 
 	 * @param request 요청내용을 입력합니다.
@@ -78,6 +96,8 @@ public class RequestController {
 	@RequestMapping(value = "/parent/mparent_request", method = RequestMethod.POST)
 	public String request(RequestVO request) {
 		requestService.insertRequest(request);
+		requestService.updateRequestByStat(request);
+		
 		return "parent/mparent_web_main";
 	}
 
@@ -102,35 +122,11 @@ public class RequestController {
 	}
 
 	/**
-	 * 요청을 확인하는 메서드입니다.
-	 * 
-	 * @param childId 자녀 식별번호를 입력합니다.
-	 * @param requestDate 요청날짜를 입력합니다.
-	 * @param redirectAttributes 리다이렉트가 발생하기 전 모든 플래시 속성을 세션에 복사합니다.
-	 * @return 요청확인을 반환합니다.
-	 */
-	@RequestMapping(value = "/parent/mparent_request_check", method = RequestMethod.POST)
-	@ResponseBody
-	public RequestVO requestCheck(@Param("childId") int childId, @Param("requestDate") String requestDate,
-			RedirectAttributes redirectAttributes, HttpSession session, Model model) {
-		String parentEmail = (String) session.getAttribute("parentEmail");
-		List<ChildVO> childList = childService.selectAllChildList(parentEmail);
-		model.addAttribute("childList", childList);
-		
-		RequestVO requestVO = requestService.selectRequest(childId, requestDate);
-		if (requestVO == null) {
-			// 예외 처리
-		}
-
-		model.addAttribute("requestVO", requestVO);
-		return requestVO;
-	}
-
-	/**
 	 * 자녀선택 시 필요한 정보를 불러오는 메서드입니다.
 	 * 
 	 * @param childId 자녀 식별번호를 입력합니다
 	 * @return 식별번호에 맞는 childVO 형식으로 반환합니다
+	 * @throws Exception 예외처리합니다.
 	 */
 	@RequestMapping(value = "/parent/childIdChk", method = RequestMethod.POST)
 	@ResponseBody
@@ -184,6 +180,7 @@ public class RequestController {
 	 * 
 	 * @param requestvo 요청VO를 입력합니다.
 	 * @param parentId 부모 식별번호를 입력합니다.
+	 * @param childId 자녀 식별번호를 입력합니다.
 	 * @param model 모델 객체를 입력합니다. 
 	 * @param session 세션 정보를 입력합니다.
 	 * @return 요청사항 리스트 페이지를 반환합니다.

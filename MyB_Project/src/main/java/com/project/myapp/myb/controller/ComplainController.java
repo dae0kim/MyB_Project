@@ -94,7 +94,7 @@ public class ComplainController {
 	 * @param complainId 1:1 문의 식별번호를 입력합니다.
 	 * @param session 세션정보를 입력합니다.
 	 * @param model 모델객체를 입력합니다.
-	 * @return
+	 * @return 1:1 문의 상세 정보 화면으로 이동하라는 요청을 반환합니다.
 	 */
 	@RequestMapping(value="/parent/mparent_sidemenu_qnadetail/{complainId}", method=RequestMethod.GET)
 	public String parentQnaView(@PathVariable int complainId, HttpSession session, Model model) {

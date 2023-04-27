@@ -32,6 +32,7 @@ public interface IParentService {
 	 * @param parentEmail 부모 사용자의 이메일을 입력합니다.
 	 * @param parentPw 부모 사용자의 비밀번호를 입력합니다.
 	 * @return 해당 이메일과 비밀번호가 일치하는 정보의 개수를 반환합니다.
+	 * @throws Exception 예외처리합니다.
 	 */
 	int pwChk(String parentEmail, String parentPw) throws Exception;
 	

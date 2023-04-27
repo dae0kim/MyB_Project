@@ -80,6 +80,21 @@
 			WHERE TO_CHAR(request_date, 'YYYY/MM/DD') = TO_CHAR(SYSDATE, 'YYYY/MM/DD') AND child_id = #{childId}		
 		]]>
 	</select>
+	
+	<!-- 요청사항 수정하기 (0425 문수지) -->
+	<update id="updateRequestByStat"
+		parameterType="com.project.myapp.myb.request.RequestVO">
+		<![CDATA[
+	        UPDATE request
+	        SET
+	            request_content1 = CASE WHEN request_stat1 = 'N' THEN #{requestContent1} ELSE request_content1 END,
+	            request_content2 = CASE WHEN request_stat2 = 'N' THEN #{requestContent2} ELSE request_content2 END,
+	            request_content3 = CASE WHEN request_stat3 = 'N' THEN #{requestContent3} ELSE request_content3 END,
+	            request_content4 = CASE WHEN request_stat4 = 'N' THEN #{requestContent4} ELSE request_content4 END,
+	            request_content5 = CASE WHEN request_stat5 = 'N' THEN #{requestContent5} ELSE request_content5 END
+	        WHERE request_id = #{requestId}
+		]]>
+	</update>
 
 
 	<!-- (0329 합침 일형추가) -->

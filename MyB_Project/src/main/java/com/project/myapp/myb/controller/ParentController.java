@@ -103,6 +103,7 @@ public class ParentController {
 	 * @param parentEmail 부모 사용자의 이메일을 입력합니다.
 	 * @param parentPw 부모 사용자의 비밀번호를 입력합니다.
 	 * @return 로그인에 성공 시 "success"를, 실패 시 "fail"을 반환합니다.
+	 * @throws Exception 예외처리합니다.
 	 */
 	@RequestMapping(value="/parent/parentPwChk", method=RequestMethod.POST)
 	@ResponseBody
@@ -193,14 +194,14 @@ public class ParentController {
 		session.invalidate();
 		return "mindex";
 	}
-   
+	
 	/**
 	 * 부모 사용자 메인 페이지로 이동하는 메서드입니다.
 	 * 
 	 * @return 부모 사용자 메인 페이지를 반환합니다.
 	 */
 	@RequestMapping(value="/parent/mparent_web_main", method=RequestMethod.GET)
-	public String moveMain(HttpSession session, Model model) {
+	public String moveMain() {
 	
 		return "parent/mparent_web_main";
 	}

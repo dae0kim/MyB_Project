@@ -47,4 +47,9 @@ public class RequestService implements IRequestService{
 	public RequestVO selectTodayRequest(int childId) {
 		return requestRepository.selectTodayRequest(childId);
 	}
+	
+	@Override
+	public void updateRequestByStat(RequestVO request) {
+		requestRepository.updateRequestByStat(request);
+	}
 }

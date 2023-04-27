@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-    <title>request</title>
+    <title>MyB</title>
     <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_request_check.css" rel="stylesheet">    
 </head>
@@ -20,7 +20,6 @@
 <div class="wrapper">
 	    <div class="title_wrap">
 			<div id="title_name" style="font-weight : 700;">요청사항 확인</div>
-			<input type="button" id="reqeustbtn" value="확인하기" >	
 		</div>
 		
 	    <div class="request_wrap">
@@ -148,8 +147,8 @@
 		$('#selectrq').css('display', 'none');
 	}
 	
-	// 자녀+날짜 클릭 시 요청사항
-	$('#reqeustbtn').on("click", function(){
+	// 요청사항 불러오기
+	$('#childId, #requestDate').on('change', function() {
 		var childId = $('#childId').val();
 		var requestDate = $('#requestDate').val();
 		var data = {childId: childId, requestDate: requestDate};
@@ -157,10 +156,11 @@
 		resetRequest();
 		
 		$.ajax({
-			url: '${pageContext.request.contextPath}/parent/mparent_request_check',
-			type: 'POST',
+			type: "POST",
+			url: '${pageContext.request.contextPath}/parent/getRequestByChildnDate',
 			data: data,
 			success: function(data) {
+				
 				var requestContent1 = data.requestContent1;
 				var requestContent2 = data.requestContent2;
 				var requestContent3 = data.requestContent3;
@@ -177,8 +177,7 @@
 				$('input[name=requestContent2]').attr('value', requestContent2);
 				$('input[name=requestContent3]').attr('value', requestContent3);
 				$('input[name=requestContent4]').attr('value', requestContent4);
-				$('input[name=requestContent5]').attr('value', requestContent5);	
-				
+				$('input[name=requestContent5]').attr('value', requestContent5);
 				if(requestStat1 == 'Y') {
 					$('#requestStat1').attr('checked', true);
 				}
@@ -194,7 +193,6 @@
 				if(requestStat5 == 'Y') {
 					$('#requestStat5').attr('checked', true);
 				}
-				
 				$('#requestComment').text(requestComment);
 				
 				$('#todayrq').css('display', 'none');

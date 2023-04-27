@@ -54,4 +54,11 @@ public interface IRequestRepository {
 	 * @param requestvo 업데이트된 요청사항이 담긴 객체를 VO형태로 반환합니다.
 	 */
 	void updateRequest(RequestVO requestvo);
+
+	/**
+	 * 요청사항을 수정하는 메서드입니다.
+	 * 
+	 * @param request 수정한 요청사항의 정보를 담은 객체를 VO형태로 반환합니다.
+	 */
+	void updateRequestByStat(RequestVO request);
 }

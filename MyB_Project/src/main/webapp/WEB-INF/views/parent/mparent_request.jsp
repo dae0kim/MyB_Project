@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 	<script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-    <title>request</title>
+    <title>MyB</title>
     <link href="${pageContext.request.contextPath}/resources/css/mobile/reset.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/mobile/mparent_request.css" rel="stylesheet">    
 </head>
@@ -48,6 +48,7 @@
 				<input type="text" class="requestContent3_input" name="requestContent3" id="requestContent3">
 				<input type="text" class="requestContent4_input" name="requestContent4" id="requestContent4">
 				<input type="text" class="requestContent5_input" name="requestContent5" id="requestContent5">
+	        	<input type="hidden" name="requestId" value="">
 	        </div>
 	    </div>
     </form>
@@ -69,7 +70,7 @@
 					var kindergartenId = data.kindergartenId;
 					$('input[name=classroomId]').attr('value', classroomId);
 					$('input[name=kindergartenId]').attr('value', kindergartenId);
-	
+					
 			}
 		});
 	});
@@ -90,6 +91,68 @@
  
             });
 	});
+	
+	// 요청사항 불러오기
+	$('#childId, #requestDate').on('change', function() {
+		var childId = $('#childId').val();
+		var requestDate = $('#requestDate').val();
+		var data = {childId: childId, requestDate: requestDate};
+		
+		resetRequest();
+		
+		$.ajax({
+			type: "POST",
+			url: '${pageContext.request.contextPath}/parent/getRequestByChildnDate',
+			data: data,
+			success: function(data) {
+				
+				var requestContent1 = data.requestContent1;
+				var requestContent2 = data.requestContent2;
+				var requestContent3 = data.requestContent3;
+				var requestContent4 = data.requestContent4;
+				var requestContent5 = data.requestContent5;
+				var requestId = data.requestId;
+				
+				if(!requestId){
+			        $('input[name=requestId]').attr("disabled", true);
+			        return false;
+			    }else{
+			        $('input[name=requestId]').attr("disabled", false);
+			        $('input[name=requestId]').attr('value', requestId);
+			    }
+				
+				var requestStat1 = data.requestStat1;
+			    var requestStat2 = data.requestStat2;
+			    var requestStat3 = data.requestStat3;
+			    var requestStat4 = data.requestStat4;
+			    var requestStat5 = data.requestStat5;
+
+				$('input[name=requestContent1]').attr('value', requestContent1).prop('readonly', requestStat1 === 'Y').click(function(){showAlertIfCompleted(requestStat1);});
+				$('input[name=requestContent2]').attr('value', requestContent2).prop('readonly', requestStat2 === 'Y').click(function(){showAlertIfCompleted(requestStat2);});
+				$('input[name=requestContent3]').attr('value', requestContent3).prop('readonly', requestStat3 === 'Y').click(function(){showAlertIfCompleted(requestStat3);});
+				$('input[name=requestContent4]').attr('value', requestContent4).prop('readonly', requestStat4 === 'Y').click(function(){showAlertIfCompleted(requestStat4);});
+				$('input[name=requestContent5]').attr('value', requestContent5).prop('readonly', requestStat5 === 'Y').click(function(){showAlertIfCompleted(requestStat5);});
+				
+			}
+		});
+	});
+	
+	// 요청사항 리셋
+	function resetRequest() {
+		
+		$('input[name=requestContent1]').attr('value', '').prop('readonly', false).off('click');
+		$('input[name=requestContent2]').attr('value', '').prop('readonly', false).off('click');
+		$('input[name=requestContent3]').attr('value', '').prop('readonly', false).off('click');
+		$('input[name=requestContent4]').attr('value', '').prop('readonly', false).off('click');
+		$('input[name=requestContent5]').attr('value', '').prop('readonly', false).off('click');
+		$('input[name=requestId]').attr('value', '').prop('readonly', false).off('click');
+	}
+	
+	function showAlertIfCompleted(requestStat) {
+	    if (requestStat === 'Y') {
+	        alert('조치가 완료된 요청사항입니다.');
+	    }
+	}
 </script>
 </body>
 </html>
