@@ -102,8 +102,9 @@ public class NoticeController {
 	/**
 	 * (사용자 : 학부모)공지사항의 상세내용을 출력하는 메서드입니다.
 	 * 
-	 * @param noticeId 공지사항 식별번호를 입력합니다
-	 * @param model 모델객체를 입력합니다
+	 * @param noticeId 공지사항 식별번호를 입력합니다.
+	 * @param model 모델객체를 입력합니다.
+	 * @param session 세션정보를 입력합니다.
 	 * @return 공지사항의 상세내용을 반환합니다.
 	 */
 	@RequestMapping(value = "/parent/notice/{noticeId}")
